@@ -11,8 +11,8 @@ assignees: ''
 설명을 작성해 주세요
 
 ## TO DO
--[] to do 1
--[] to do 2
+- [ ] to do 1
+- [ ] to do 2
 
 ## Etc
 기타 사항
