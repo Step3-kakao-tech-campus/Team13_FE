@@ -2,8 +2,8 @@ function MenuIcon() {
   return (
     <>
       <img
-        width="32"
-        height="32"
+        width="28"
+        height="28"
         src="https://img.icons8.com/material-rounded/32/menu--v1.png"
         alt="menu--v1"
       />
