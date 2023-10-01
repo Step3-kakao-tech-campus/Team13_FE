@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
-import MobileNavBar from "@/components/common/nav-bar/MobileNavBar.jsx";
+import MobileNavBar from "@/components/common/nav-bar/moblie/MobileNavBar.jsx";
 
 const Styled = {
   Body: styled.div`

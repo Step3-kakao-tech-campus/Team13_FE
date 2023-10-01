@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { PropTypes } from "prop-types";
 
 import MenuIcon from "@/assets/MenuIcon.jsx";
-import MobileTabList from "@/components/common/nav-bar/MobileTabList.jsx";
-import MobileSideBar from "@/components/common/nav-bar/MobileSideBar.jsx";
+import MobileTabList from "@/components/common/nav-bar/moblie/MobileTabList.jsx";
+import MobileSideBar from "@/components/common/nav-bar/moblie/MobileSideBar.jsx";
 
 const Styled = {
   Container: styled.nav`
@@ -35,7 +35,7 @@ const Styled = {
 };
 
 function MobileNavBar({ isTabList }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <>
