@@ -1,5 +1,12 @@
+import PageTitle from "@/components/common/PageTitle.jsx";
+
 function Home() {
-  return <div>home</div>;
+  return (
+    <>
+      <PageTitle />
+      <div>home</div>
+    </>
+  );
 }
 
 export default Home;
