@@ -1,8 +1,8 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
-
-import routes from "@/constants/routes.js";
 import { useEffect } from "react";
+
+import PAGE_LIST from "@/constants/PAGE_LIST.js";
 
 const Styled = {
   TabList: styled.ul`
@@ -50,24 +50,18 @@ function MobileTabList() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const tabPageList = [
-    { name: "홈", uri: routes.home },
-    { name: "펀딩", uri: routes.fund },
-    { name: "셀럽", uri: routes.celebrity },
-  ];
-
   useEffect(() => {
     console.log(location);
   }, [location]);
   return (
     <Styled.TabList>
-      {tabPageList.map((tabPage) => (
+      {PAGE_LIST.NAV_BAR_TAB.map((page) => (
         <Styled.Tab
-          key={tabPage.name}
-          aria-selected={tabPage.uri === location.pathname && true}
-          onClick={() => navigate(tabPage.uri)}
+          key={page.title}
+          aria-selected={page.uri === location.pathname && true}
+          onClick={() => navigate(page.uri)}
         >
-          <span>{tabPage.name}</span>
+          <span>{page.title}</span>
         </Styled.Tab>
       ))}
     </Styled.TabList>

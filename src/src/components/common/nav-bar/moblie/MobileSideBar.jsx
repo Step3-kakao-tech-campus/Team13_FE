@@ -1,6 +1,7 @@
 import { useRef, memo } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { PropTypes } from "prop-types";
 
 import Portal from "@/components/common/Portal.jsx";
 import OriginBackdrop from "@/styles/Backdrop.js";
@@ -8,7 +9,7 @@ import TestAccountIcon from "@/assets/TestAccountIcon.jsx";
 import routes from "@/constants/routes.js";
 import useBodyStyleFixed from "@/hooks/useBodyStyleFixed.js";
 import useOutsideClick from "@/hooks/useOutsideClick.js";
-import { PropTypes } from "prop-types";
+import PAGE_LIST from "@/constants/PAGE_LIST.js";
 
 const Styled = {
   Backdrop: styled(OriginBackdrop)`
@@ -72,11 +73,6 @@ function MobileSideBar({ setIsSideBarOpen }) {
     name: "경주원",
   };
 
-  const menuList = [
-    { title: "MY 펀딩", uri: routes.myFund },
-    { title: "내 계정", uri: routes.setting },
-  ];
-
   return (
     <Portal>
       <Styled.Backdrop>
@@ -104,14 +100,14 @@ function MobileSideBar({ setIsSideBarOpen }) {
 
           {isLoggedIn && (
             <ul>
-              {menuList.map((menu) => (
+              {PAGE_LIST.USER_MENU.map((page) => (
                 <Styled.Menu
-                  key={menu.title}
+                  key={page.title}
                   onClick={() => {
-                    navigate(menu.uri);
+                    navigate(page.uri);
                   }}
                 >
-                  {menu.title}
+                  {page.title}
                 </Styled.Menu>
               ))}
             </ul>
