@@ -1,10 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { PropTypes } from "prop-types";
+import { useLocation } from "react-router-dom";
 
 import MenuIcon from "@/assets/MenuIcon.jsx";
 import MobileTabList from "@/components/common/nav-bar/moblie/MobileTabList.jsx";
 import MobileSideBar from "@/components/common/nav-bar/moblie/MobileSideBar.jsx";
+import routes from "@/constants/routes.js";
 
 const Styled = {
   Container: styled.nav`
@@ -34,8 +35,9 @@ const Styled = {
   `,
 };
 
-function MobileNavBar({ isTabList }) {
+function MobileNavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <>
@@ -52,20 +54,14 @@ function MobileNavBar({ isTabList }) {
           <div style={{ width: "2rem", height: "2rem" }}></div>
         </Styled.Head>
 
-        {isTabList && <MobileTabList />}
+        {[routes.home, routes.fund, routes.celebrity].includes(
+          location.pathname,
+        ) && <MobileTabList />}
       </Styled.Container>
 
       {isMenuOpen && <MobileSideBar setIsSideBarOpen={setIsMenuOpen} />}
     </>
   );
 }
-
-MobileNavBar.propTypes = {
-  isTabList: PropTypes.bool,
-};
-
-MobileNavBar.defaultProps = {
-  isTabList: false,
-};
 
 export default MobileNavBar;

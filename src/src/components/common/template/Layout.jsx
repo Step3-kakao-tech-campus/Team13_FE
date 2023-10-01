@@ -22,7 +22,7 @@ const Styled = {
 function Layout() {
   return (
     <Styled.Body>
-      {isMobile ? <MobileNavBar isTabList={true} /> : <PCNavBar />}
+      {isMobile ? <MobileNavBar /> : <PCNavBar />}
       <Outlet />
     </Styled.Body>
   );
