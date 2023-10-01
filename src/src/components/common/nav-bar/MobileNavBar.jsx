@@ -4,6 +4,7 @@ import { PropTypes } from "prop-types";
 
 import MenuIcon from "@/assets/MenuIcon.jsx";
 import MobileTabList from "@/components/common/nav-bar/MobileTabList.jsx";
+import MobileSideBar from "@/components/common/nav-bar/MobileSideBar.jsx";
 
 const Styled = {
   Container: styled.nav`
@@ -29,11 +30,12 @@ const Styled = {
     font-family: ${({ theme }) => theme.fontFamily.logo};
     font-weight: 300;
     font-size: 2rem;
+    color: ${({ theme }) => theme.color.highlight};
   `,
 };
 
 function MobileNavBar({ isTabList }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   return (
     <>
@@ -53,7 +55,7 @@ function MobileNavBar({ isTabList }) {
         {isTabList && <MobileTabList />}
       </Styled.Container>
 
-      {isMenuOpen && <div>hi</div>}
+      {isMenuOpen && <MobileSideBar setIsSideBarOpen={setIsMenuOpen} />}
     </>
   );
 }
