@@ -1,6 +1,9 @@
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
+import { isMobile } from "react-device-detect";
+
 import MobileNavBar from "@/components/common/nav-bar/moblie/MobileNavBar.jsx";
+import PCNavBar from "@/components/common/nav-bar/pc/PCNavBar.jsx";
 
 const Styled = {
   Body: styled.div`
@@ -19,7 +22,7 @@ const Styled = {
 function Layout() {
   return (
     <Styled.Body>
-      <MobileNavBar isTabList={true} />
+      {isMobile ? <MobileNavBar isTabList={true} /> : <PCNavBar />}
       <Outlet />
     </Styled.Body>
   );

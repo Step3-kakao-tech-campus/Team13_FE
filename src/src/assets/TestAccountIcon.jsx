@@ -1,6 +1,6 @@
 import { PropTypes } from "prop-types";
 
-function TestAccountIcon({ size }) {
+function TestAccountIcon({ size, ...props }) {
   return (
     <>
       <img
@@ -8,6 +8,7 @@ function TestAccountIcon({ size }) {
         height={size}
         src="https://img.icons8.com/color/40/test-account.png"
         alt="test-account"
+        {...props}
       />
       <div id="license" style={{ display: "none" }}>
         <a href="https://icons8.com/icon/z-JBA_KtSkxG/test-account">

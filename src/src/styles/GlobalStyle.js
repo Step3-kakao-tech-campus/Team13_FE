@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
     min-height: calc(var(--vh, 1vh) * 100);
     overflow-x: hidden;
     background-color: white;
+    text-underline-position: under;
   }
   
   button {
