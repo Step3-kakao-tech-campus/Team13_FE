@@ -1,9 +1,10 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { isMobile } from "react-device-detect";
 
 import MobileNavBar from "@/components/common/nav-bar/moblie/MobileNavBar.jsx";
 import PCNavBar from "@/components/common/nav-bar/pc/PCNavBar.jsx";
+import routes from "@/constants/routes.js";
 
 const Styled = {
   Body: styled.div`
@@ -17,13 +18,35 @@ const Styled = {
 
     background-color: ${({ theme }) => theme.color.bg};
   `,
+
+  Container: styled.div`
+    width: 100%;
+  `,
 };
 
 function Layout() {
+  const location = useLocation();
+
+  const calPadding = () => {
+    if (!isMobile) {
+      return "4rem";
+    }
+
+    if (
+      [routes.home, routes.fund, routes.celebrity].includes(location.pathname)
+    ) {
+      return "100px";
+    } else {
+      return "60px";
+    }
+  };
+
   return (
     <Styled.Body>
       {isMobile ? <MobileNavBar /> : <PCNavBar />}
-      <Outlet />
+      <Styled.Container style={{ paddingTop: calPadding() }}>
+        <Outlet />
+      </Styled.Container>
     </Styled.Body>
   );
 }
