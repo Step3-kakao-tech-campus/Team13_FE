@@ -52,7 +52,7 @@ const Styled = {
 function PCUserBtn() {
   const navigate = useNavigate();
   const userBtnRef = useRef();
-  const [isMenuModalOpen, setIsMenuModalOpen] = useState(true);
+  const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
   useOutsideClick(userBtnRef, () => setIsMenuModalOpen(false));
 
   const isLoggedIn = true;
