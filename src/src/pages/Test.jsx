@@ -8,7 +8,7 @@ const Styled = {
     height: 10rem;
   `,
 };
-function Home() {
+function Test() {
   return (
     <>
       <PageTitle />
@@ -29,4 +29,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Test;

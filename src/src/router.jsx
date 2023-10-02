@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import routes from "@/constants/routes.js";
-import Home from "@/pages/Home.jsx";
+import Test from "@/pages/Test.jsx";
 import Layout from "@/components/common/template/Layout.jsx";
 
 const router = createBrowserRouter([
@@ -13,31 +13,31 @@ const router = createBrowserRouter([
     children: [
       {
         path: routes.home,
-        element: <Home />,
+        element: <Test />,
       },
       {
         path: routes.fund,
-        element: <Home />,
+        element: <Test />,
       },
       {
         path: routes.celebrity,
-        element: <Home />,
+        element: <Test />,
       },
       {
         path: routes.myFund,
-        element: <Home />,
+        element: <Test />,
       },
       {
         path: routes.setting,
-        element: <Home />,
+        element: <Test />,
       },
       {
         path: routes.signIn,
-        element: <Home />,
+        element: <Test />,
       },
       {
         path: routes.signUp,
-        element: <Home />,
+        element: <Test />,
       },
     ],
   },
