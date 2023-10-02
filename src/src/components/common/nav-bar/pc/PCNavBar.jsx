@@ -8,6 +8,7 @@ const Styled = {
   Container: styled.nav`
     position: fixed;
     left: 0;
+    z-index: 100;
 
     padding: 0 calc((100vw - 70rem) / 2 + 4rem);
 
