@@ -14,8 +14,8 @@ const Styled = {
       transition: all ease-in-out 0.2s;
     }
 
-    ${({ isHoverStyle, type, theme }) =>
-      type === BUTTON_TYPE.PRIMARY &&
+    ${({ isHoverStyle, styleType, theme }) =>
+      styleType === BUTTON_TYPE.PRIMARY &&
       css`
         background-color: ${theme.color.mainRed};
 
@@ -27,8 +27,8 @@ const Styled = {
         `}
       `}
 
-    ${({ isHoverStyle, type, theme }) =>
-      type === BUTTON_TYPE.SECONDARY &&
+    ${({ isHoverStyle, styleType, theme }) =>
+      styleType === BUTTON_TYPE.SECONDARY &&
       css`
         background-color: ${theme.color.secondaryRed};
         border: 1px solid ${theme.color.mainRed};
@@ -43,8 +43,8 @@ const Styled = {
         `}
       `}
 
-    ${({ isHoverStyle, type, theme }) =>
-      type === BUTTON_TYPE.TERTIARY &&
+    ${({ isHoverStyle, styleType, theme }) =>
+      styleType === BUTTON_TYPE.TERTIARY &&
       css`
         background-color: ${theme.color.subBlack};
 
@@ -58,9 +58,9 @@ const Styled = {
   `,
 };
 
-function Button({ children, type, isHoverStyle, ...props }) {
+function Button({ children, styleType, isHoverStyle, ...props }) {
   return (
-    <Styled.Button type={type} isHoverStyle={isHoverStyle} {...props}>
+    <Styled.Button styleType={styleType} isHoverStyle={isHoverStyle} {...props}>
       {children}
     </Styled.Button>
   );
@@ -68,12 +68,12 @@ function Button({ children, type, isHoverStyle, ...props }) {
 
 Button.propTypes = {
   children: PropTypes.node,
-  type: PropTypes.string,
+  styleType: PropTypes.string,
   isHoverStyle: PropTypes.boolean,
 };
 
 Button.defaultProps = {
-  type: BUTTON_TYPE.PRIMARY,
+  styleType: BUTTON_TYPE.PRIMARY,
   isHoverStyle: true,
 };
 

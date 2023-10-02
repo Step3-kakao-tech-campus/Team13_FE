@@ -17,13 +17,13 @@ function Test() {
       <Button style={{ margin: "1rem" }}>PRIMARY</Button>
       <Button isHoverStyle={false}>PRIMARY</Button>
 
-      <Button type={BUTTON_TYPE.SECONDARY}>SECONDARY</Button>
-      <Button isHoverStyle={false} type={BUTTON_TYPE.SECONDARY}>
+      <Button styleType={BUTTON_TYPE.SECONDARY}>SECONDARY</Button>
+      <Button isHoverStyle={false} styleType={BUTTON_TYPE.SECONDARY}>
         SECONDARY
       </Button>
 
-      <Button type={BUTTON_TYPE.TERTIARY}>TERITARY</Button>
-      <Button isHoverStyle={false} type={BUTTON_TYPE.TERTIARY}>
+      <Button styleType={BUTTON_TYPE.TERTIARY}>TERITARY</Button>
+      <Button isHoverStyle={false} styleType={BUTTON_TYPE.TERTIARY}>
         TERITARY
       </Button>
 
