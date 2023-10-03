@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 
-import MenuIcon from "@/assets/MenuIcon.jsx";
+import MenuIcon from "@/assets/icon/MenuIcon.jsx";
 import MobileTabList from "@/components/common/nav-bar/moblie/MobileTabList.jsx";
 import MobileSideBar from "@/components/common/nav-bar/moblie/MobileSideBar.jsx";
 import routes from "@/constants/routes.js";

@@ -5,7 +5,7 @@ import { PropTypes } from "prop-types";
 
 import Portal from "@/components/common/Portal.jsx";
 import OriginBackdrop from "@/styles/Backdrop.js";
-import TestAccountIcon from "@/assets/TestAccountIcon.jsx";
+import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
 import routes from "@/constants/routes.js";
 import useBodyStyleFixed from "@/hooks/useBodyStyleFixed.js";
 import useOutsideClick from "@/hooks/useOutsideClick.js";
