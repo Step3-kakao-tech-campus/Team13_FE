@@ -13,6 +13,7 @@ const Styled = {
   Button: styled.button`
     margin: 0 0.5rem;
     background-color: transparent;
+    color: ${({ theme }) => theme.color.addition};
 
     &:first-child {
       content: none;
@@ -21,6 +22,7 @@ const Styled = {
     &:hover {
       text-decoration: underline;
       text-underline-position: under;
+      text-underline-color: ${({ theme }) => theme.color.body};
     }
 
     &:hover.selected {
@@ -29,6 +31,7 @@ const Styled = {
 
     &.selected {
       font-weight: 600;
+      color: ${({ theme }) => theme.color.body};
     }
   `,
   Divide: styled.div`
