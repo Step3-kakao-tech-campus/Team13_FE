@@ -3,6 +3,7 @@ import Grid from "@/components/common/template/Grid.jsx";
 import styled from "styled-components";
 import Button from "@/components/common/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
+import Carousel from "@/components/common/Carousel.jsx";
 
 const Styled = {
   GridExample: styled.article`
@@ -14,6 +15,8 @@ function Test() {
   return (
     <>
       <PageTitle />
+      <Carousel />
+
       <Button style={{ margin: "1rem" }}>PRIMARY</Button>
       <Button isHoverStyle={false}>PRIMARY</Button>
 
