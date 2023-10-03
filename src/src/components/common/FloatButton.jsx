@@ -1,0 +1,48 @@
+import styled from "styled-components";
+import { PropTypes } from "prop-types";
+import SignUpIcon from "@/assets/SignUpIcon.jsx";
+
+const Styled = {
+  Button: styled.button`
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+
+    padding: 0.75rem 1rem;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    background-color: ${({ theme }) => theme.color.white};
+    border-radius: 9999px;
+    box-shadow: 0 2px 21px 0 rgba(0, 0, 0, 0.2);
+
+    text-align: center;
+    line-height: normal;
+  `,
+  Icon: styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-right: 0.25rem;
+  `,
+};
+
+function FloatButton({ children, ...props }) {
+  return (
+    <Styled.Button {...props}>
+      <Styled.Icon>
+        <SignUpIcon />
+      </Styled.Icon>
+      <div>{children}</div>
+    </Styled.Button>
+  );
+}
+
+FloatButton.propTypes = {
+  children: PropTypes.node,
+};
+
+export default FloatButton;

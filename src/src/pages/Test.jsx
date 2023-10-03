@@ -6,6 +6,7 @@ import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import Tabs from "@/components/common/Tabs.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
 import routes from "@/constants/routes.js";
+import FloatButton from "@/components/common/FloatButton.jsx";
 
 const Styled = {
   GridExample: styled.article`
@@ -42,6 +43,13 @@ function Test() {
       <SearchBar placeholder={"펀딩 검색바"} uri={routes.fund} />
       <SearchBar placeholder={"셀럽 검색바"} uri={routes.celebrity} />
 
+      <FloatButton
+        onClick={() => {
+          console.log("셀럽 신청");
+        }}
+      >
+        셀럽 신청
+      </FloatButton>
 
       <Tabs tabInfoArray={tabInfoArray} />
       <Button style={{ margin: "1rem" }}>PRIMARY</Button>
