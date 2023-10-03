@@ -6,6 +6,7 @@ import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import Tabs from "@/components/common/Tabs.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
 import routes from "@/constants/routes.js";
+import SortButtons from "@/components/common/SortButtons.jsx";
 
 const Styled = {
   GridExample: styled.article`
@@ -14,6 +15,21 @@ const Styled = {
   `,
 };
 function Test() {
+  const sortTypeArray = [
+    {
+      key: "마감임박순",
+      func: () => {
+        console.log("마감임박순");
+      },
+    },
+    {
+      key: "최근등록순",
+      func: () => {
+        console.log("최근등록순");
+      },
+    },
+  ];
+
   const tabInfoArray = [
     {
       title: "팔로잉",
@@ -39,9 +55,10 @@ function Test() {
     <>
       <PageTitle />
 
+      <SortButtons sortTypeArray={sortTypeArray} />
+
       <SearchBar placeholder={"펀딩 검색바"} uri={routes.fund} />
       <SearchBar placeholder={"셀럽 검색바"} uri={routes.celebrity} />
-
 
       <Tabs tabInfoArray={tabInfoArray} />
       <Button style={{ margin: "1rem" }}>PRIMARY</Button>
