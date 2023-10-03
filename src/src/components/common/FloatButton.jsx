@@ -30,6 +30,12 @@ const Styled = {
   `,
 };
 
+/**
+ * 화면에 고정된 플로팅 버튼
+ * @param children 버튼 내 글자
+ * @param props 기타
+ */
+
 function FloatButton({ children, ...props }) {
   return (
     <Styled.Button {...props}>
