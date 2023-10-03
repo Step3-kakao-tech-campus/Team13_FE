@@ -11,6 +11,7 @@ const Styled = {
   Container: styled.nav`
     position: fixed;
     left: 0;
+    z-index: 100;
 
     background-color: ${({ theme }) => theme.color.white};
   `,
