@@ -14,12 +14,12 @@ const Styled = {
       transition: all ease-in-out 0.2s;
     }
 
-    ${({ isHoverStyle, styleType, theme }) =>
-      styleType === BUTTON_TYPE.PRIMARY &&
+    ${({ $isHoverStyle, $styleType, theme }) =>
+      $styleType === BUTTON_TYPE.PRIMARY &&
       css`
         background-color: ${theme.color.mainRed};
 
-        ${isHoverStyle &&
+        ${$isHoverStyle &&
         css`
           &:hover {
             background-color: ${theme.color.mainRedHover};
@@ -27,14 +27,14 @@ const Styled = {
         `}
       `}
 
-    ${({ isHoverStyle, styleType, theme }) =>
-      styleType === BUTTON_TYPE.SECONDARY &&
+    ${({ $isHoverStyle, $styleType, theme }) =>
+      $styleType === BUTTON_TYPE.SECONDARY &&
       css`
         background-color: ${theme.color.secondaryRed};
         border: 1px solid ${theme.color.mainRed};
         color: ${theme.color.mainRed};
 
-        ${isHoverStyle &&
+        ${$isHoverStyle &&
         css`
           &:hover {
             background-color: ${theme.color.secondaryRedHover};
@@ -43,12 +43,12 @@ const Styled = {
         `}
       `}
 
-    ${({ isHoverStyle, styleType, theme }) =>
-      styleType === BUTTON_TYPE.TERTIARY &&
+    ${({ $isHoverStyle, $styleType, theme }) =>
+      $styleType === BUTTON_TYPE.TERTIARY &&
       css`
         background-color: ${theme.color.subBlack};
 
-        ${isHoverStyle &&
+        ${$isHoverStyle &&
         css`
           &:hover {
             background-color: ${theme.color.subBlackHover};
@@ -60,7 +60,11 @@ const Styled = {
 
 function Button({ children, styleType, isHoverStyle, ...props }) {
   return (
-    <Styled.Button styleType={styleType} isHoverStyle={isHoverStyle} {...props}>
+    <Styled.Button
+      $styleType={styleType}
+      $isHoverStyle={isHoverStyle}
+      {...props}
+    >
       {children}
     </Styled.Button>
   );
@@ -69,7 +73,7 @@ function Button({ children, styleType, isHoverStyle, ...props }) {
 Button.propTypes = {
   children: PropTypes.node,
   styleType: PropTypes.string,
-  isHoverStyle: PropTypes.boolean,
+  isHoverStyle: PropTypes.bool,
 };
 
 Button.defaultProps = {
