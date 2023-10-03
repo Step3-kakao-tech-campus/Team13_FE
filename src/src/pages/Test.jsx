@@ -1,8 +1,10 @@
+import styled from "styled-components";
 import PageTitle from "@/components/common/PageTitle.jsx";
 import Grid from "@/components/common/template/Grid.jsx";
-import styled from "styled-components";
 import Button from "@/components/common/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
+import SearchBar from "@/components/common/SearchBar.jsx";
+import routes from "@/constants/routes.js";
 
 const Styled = {
   GridExample: styled.article`
@@ -14,6 +16,10 @@ function Test() {
   return (
     <>
       <PageTitle />
+
+      <SearchBar placeholder={"펀딩 검색바"} uri={routes.fund} />
+      <SearchBar placeholder={"셀럽 검색바"} uri={routes.celebrity} />
+
       <Button style={{ margin: "1rem" }}>PRIMARY</Button>
       <Button isHoverStyle={false}>PRIMARY</Button>
 
