@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import PageTitle from "@/components/common/PageTitle.jsx";
-import Grid from "@/components/common/template/Grid.jsx";
+import { GridTemplate } from "@/styles/CommonStyle.js";
 import Button from "@/components/common/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import CheckBox from "@/components/common/CheckBox.jsx";
@@ -15,6 +15,7 @@ const Styled = {
     height: 10rem;
   `,
 };
+
 function Test() {
   const tabInfoArray = [
     {
@@ -68,7 +69,7 @@ function Test() {
         TERITARY
       </Button>
 
-      <Grid>
+      <GridTemplate>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
@@ -78,7 +79,7 @@ function Test() {
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
-      </Grid>
+      </GridTemplate>
     </>
   );
 }
