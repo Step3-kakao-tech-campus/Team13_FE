@@ -10,6 +10,7 @@ import routes from "@/constants/routes.js";
 import Carousel from "@/components/common/Carousel.jsx";
 import FloatButton from "@/components/common/button/FloatButton.jsx";
 import SortButtons from "@/components/common/button/SortButtons.jsx";
+import CountdownBadge from "@/components/common/CountdownBadge.jsx";
 
 const Styled = {
   GridExample: styled.article`
@@ -59,6 +60,11 @@ function Test() {
     <>
       <PageTitle />
       <Carousel />
+
+      <CountdownBadge target={"2023-10-04 23:16:00"} />
+      <CountdownBadge target={"2023-10-05 00:16:00"} />
+      <CountdownBadge target={"2023-10-05 23:16:00"} />
+      <CountdownBadge target={"2024-11-05 23:16:00"} />
 
       <SortButtons sortTypeArray={sortTypeArray} />
 
