@@ -70,4 +70,26 @@ Form.propTypes = {
   children: PropTypes.node,
 };
 
+Form.defaultProps = {
+  onSubmit: (data) => {
+    console.log(data);
+  },
+  onError: (err) => {
+    console.log(err);
+  },
+  defaultValues: { userId: "" },
+  inputInformations: [
+    {
+      id: "userId",
+      label: "아이디",
+      type: "text",
+      placeholder: "placeholder",
+      validation: { required: "입력해 주세요" },
+      requireMsg: null,
+    },
+  ],
+  style: {},
+  children: null,
+};
+
 export default Form;

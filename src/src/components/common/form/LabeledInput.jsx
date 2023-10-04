@@ -91,4 +91,14 @@ LabeledInput.propTypes = {
   validation: PropTypes.object,
 };
 
+LabeledInput.defaultProps = {
+  id: "id-1",
+  label: "",
+  type: "text",
+  placeholder: "placeholder",
+  errorMsg: "",
+  requireMsg: "",
+  validation: undefined,
+};
+
 export default LabeledInput;
