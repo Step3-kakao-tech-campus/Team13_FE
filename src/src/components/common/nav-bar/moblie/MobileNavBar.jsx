@@ -36,6 +36,10 @@ const Styled = {
   `,
 };
 
+/**
+ * 모바일 나비게이션 바
+ */
+
 function MobileNavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
