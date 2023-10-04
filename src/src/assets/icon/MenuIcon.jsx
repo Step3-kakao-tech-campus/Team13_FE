@@ -1,5 +1,3 @@
-import { memo } from "react";
-
 function MenuIcon() {
   return (
     <>
@@ -17,4 +15,4 @@ function MenuIcon() {
   );
 }
 
-export default memo(MenuIcon);
+export default MenuIcon;

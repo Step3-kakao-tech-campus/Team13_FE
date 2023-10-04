@@ -1,5 +1,3 @@
-import { memo } from "react";
-
 function SearchIcon() {
   return (
     <>
@@ -17,4 +15,4 @@ function SearchIcon() {
   );
 }
 
-export default memo(SearchIcon);
+export default SearchIcon;
