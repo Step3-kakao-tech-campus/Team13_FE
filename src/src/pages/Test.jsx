@@ -1,12 +1,14 @@
 import PageTitle from "@/components/common/PageTitle.jsx";
-import Grid from "@/components/common/template/Grid.jsx";
 import styled from "styled-components";
+import { GridTemplate } from "@/styles/CommonStyle.js";
 import Button from "@/components/common/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
+import CheckBox from "@/components/common/CheckBox.jsx";
 import Tabs from "@/components/common/Tabs.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
 import routes from "@/constants/routes.js";
 import Carousel from "@/components/common/Carousel.jsx";
+import FloatButton from "@/components/common/FloatButton.jsx";
 
 const Styled = {
   GridExample: styled.article`
@@ -14,6 +16,7 @@ const Styled = {
     height: 10rem;
   `,
 };
+
 function Test() {
   const tabInfoArray = [
     {
@@ -44,6 +47,15 @@ function Test() {
       <SearchBar placeholder={"펀딩 검색바"} uri={routes.fund} />
       <SearchBar placeholder={"셀럽 검색바"} uri={routes.celebrity} />
 
+      <FloatButton
+        onClick={() => {
+          console.log("셀럽 신청");
+        }}
+      >
+        셀럽 신청
+      </FloatButton>
+      <CheckBox id={1} />
+      <CheckBox id={"hi"} />
 
       <Tabs tabInfoArray={tabInfoArray} />
       <Button style={{ margin: "1rem" }}>PRIMARY</Button>
@@ -59,7 +71,7 @@ function Test() {
         TERITARY
       </Button>
 
-      <Grid>
+      <GridTemplate>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
@@ -69,7 +81,7 @@ function Test() {
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
-      </Grid>
+      </GridTemplate>
     </>
   );
 }

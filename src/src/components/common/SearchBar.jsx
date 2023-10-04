@@ -85,7 +85,7 @@ function SearchBar({ placeholder, uri, ...props }) {
 
 SearchBar.propTypes = {
   placeholder: PropTypes.string,
-  uri: PropTypes.oneOf([routes.fund, routes.celebrity]),
+  uri: PropTypes.string,
 };
 
 SearchBar.defaultProps = {

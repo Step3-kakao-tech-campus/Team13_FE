@@ -62,6 +62,10 @@ const Styled = {
   `,
 };
 
+/**
+ * PC 나비게이션 바 컴포넌트
+ */
+
 function PCNavBar() {
   const navigate = useNavigate();
 

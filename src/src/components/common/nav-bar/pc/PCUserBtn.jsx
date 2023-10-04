@@ -49,6 +49,10 @@ const Styled = {
   `,
 };
 
+/**
+ * PC 나비게이션 바의 프로필 버튼 컴포넌트 (로그인 상태에 따라 변화)
+ */
+
 function PCUserBtn() {
   const navigate = useNavigate();
   const userBtnRef = useRef();

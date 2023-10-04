@@ -58,6 +58,14 @@ const Styled = {
   `,
 };
 
+/**
+ * 공통 버튼 컴포넌트
+ * @param {node} children
+ * @param {string} styleType 버튼 스타일 타입 BUTTON_TYPE.[PRIMARY || SECONDARY || TERTIARY]
+ * @param {boolean} isHoverStyle hover 스타일링 적용 여부
+ * @param props 기타
+ */
+
 function Button({ children, styleType, isHoverStyle, ...props }) {
   return (
     <Styled.Button
