@@ -90,6 +90,7 @@ function PCUserBtn() {
               key={page.title}
               onClick={() => {
                 navigate(page.uri);
+                setIsMenuModalOpen(false);
               }}
             >
               {page.title}
