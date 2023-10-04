@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import TestAccountIcon from "@/assets/TestAccountIcon.jsx";
+import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
 import routes from "@/constants/routes.js";
 import useOutsideClick from "@/hooks/useOutsideClick.js";
 import PAGE_LIST from "@/constants/PAGE_LIST.js";

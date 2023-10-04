@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import PageTitle from "@/components/common/PageTitle.jsx";
+import styled from "styled-components";
 import { GridTemplate } from "@/styles/CommonStyle.js";
 import Button from "@/components/common/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
@@ -7,6 +7,7 @@ import CheckBox from "@/components/common/CheckBox.jsx";
 import Tabs from "@/components/common/Tabs.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
 import routes from "@/constants/routes.js";
+import Carousel from "@/components/common/Carousel.jsx";
 import FloatButton from "@/components/common/FloatButton.jsx";
 
 const Styled = {
@@ -41,6 +42,7 @@ function Test() {
   return (
     <>
       <PageTitle />
+      <Carousel />
 
       <SearchBar placeholder={"펀딩 검색바"} uri={routes.fund} />
       <SearchBar placeholder={"셀럽 검색바"} uri={routes.celebrity} />
