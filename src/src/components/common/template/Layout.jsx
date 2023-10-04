@@ -24,6 +24,10 @@ const Styled = {
   `,
 };
 
+/**
+ * 반응형 나비게이션 바를 포함한 레이아웃
+ */
+
 function Layout() {
   const location = useLocation();
 

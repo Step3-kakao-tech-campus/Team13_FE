@@ -31,7 +31,7 @@ const Styled = {
 };
 
 /**
- * 화면에 고정된 플로팅 버튼
+ * 화면에 고정된 플로팅 버튼 공통 컴포넌트
  * @param children 버튼 내 글자
  * @param props 기타
  */
