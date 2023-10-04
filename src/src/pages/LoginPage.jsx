@@ -20,7 +20,7 @@ const Styled = {
     font-weight: bold;
     text-align: left;
   `,
-  BottomMsg: styled.div`
+  SignUpMsg: styled.div`
     font-size: 0.75rem;
     display: flex;
     justify-content: center;
@@ -70,13 +70,14 @@ function LoginPage() {
             color: "#000000",
             fontWeight: "bold",
           }}
+          isHoverStyle={false}
         >
           카카오 간편 로그인
         </Button>
-        <Styled.BottomMsg>
+        <Styled.SignUpMsg>
           아직 펀더링 계정이 없으신가요?
           <span onClick={() => navigate(routes.signUp)}>회원가입</span>
-        </Styled.BottomMsg>
+        </Styled.SignUpMsg>
       </div>
     </Styled.LoginContainer>
   );

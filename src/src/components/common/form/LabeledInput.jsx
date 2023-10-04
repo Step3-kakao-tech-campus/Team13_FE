@@ -36,7 +36,7 @@ const Styled = {
     }
 
     &.require-msg {
-      color: ${({ theme }) => theme.color.mainRed};
+      color: ${({ theme }) => theme.color.alertBlue};
     }
   `,
 };

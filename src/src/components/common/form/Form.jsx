@@ -1,11 +1,6 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { PropTypes } from "prop-types";
-import styled from "styled-components";
 import LabeledInput from "@/components/common/form/LabeledInput.jsx";
-
-const Styled = {
-  Form: styled.form``,
-};
 
 function Form({
   onSubmit,
@@ -22,7 +17,7 @@ function Form({
 
   return (
     <FormProvider {...methods}>
-      <Styled.Form onSubmit={handleSubmit(onSubmit, onError)}>
+      <form onSubmit={handleSubmit(onSubmit, onError)}>
         {inputInformations.map((input) => (
           <LabeledInput
             key={input.id}
@@ -36,7 +31,7 @@ function Form({
           />
         ))}
         {children}
-      </Styled.Form>
+      </form>
     </FormProvider>
   );
 }
