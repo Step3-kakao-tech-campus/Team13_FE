@@ -19,9 +19,6 @@ const Styled = {
       color: ${({ theme }) => theme.color.inactive};
       font-size: 1rem;
     }
-
-    &:focus {
-    }
   `,
 
   Message: styled.div`
@@ -40,6 +37,15 @@ const Styled = {
     }
   `,
 };
+
+/**
+ * LabeledInput - 라벨이 포함된 입력 폼 컴포넌트.
+ * @param {object} props 전달되는 props
+ * @param {object} props.validation 입력 유효성 검사 (React Hook Form의 register 함수와 함께 사용)
+ * @param {string} props.errorMsg 입력 유효성 검사 오류 메시지 (선택 사항)
+ * @param {string} props.requireMsg 필수 입력 메시지 (선택 사항)
+ * @returns {JSX.Element} LabeledInput 컴포넌트의 JSX 요소
+ */
 
 function LabeledInput({
   id,
