@@ -4,8 +4,8 @@ function SearchIcon() {
   return (
     <>
       <img
-        width="36"
-        height="36"
+        width="28"
+        height="28"
         src="https://img.icons8.com/material-rounded/192/4a4a4a/search.png"
         alt="search"
       />
