@@ -9,6 +9,7 @@ import SearchBar from "@/components/common/SearchBar.jsx";
 import routes from "@/constants/routes.js";
 import Carousel from "@/components/common/Carousel.jsx";
 import FloatButton from "@/components/common/FloatButton.jsx";
+import SortButtons from "@/components/common/SortButtons.jsx";
 
 const Styled = {
   GridExample: styled.article`
@@ -18,6 +19,21 @@ const Styled = {
 };
 
 function Test() {
+  const sortTypeArray = [
+    {
+      key: "마감임박순",
+      func: () => {
+        console.log("마감임박순");
+      },
+    },
+    {
+      key: "최근등록순",
+      func: () => {
+        console.log("최근등록순");
+      },
+    },
+  ];
+
   const tabInfoArray = [
     {
       title: "팔로잉",
@@ -43,6 +59,8 @@ function Test() {
     <>
       <PageTitle />
       <Carousel />
+
+      <SortButtons sortTypeArray={sortTypeArray} />
 
       <SearchBar placeholder={"펀딩 검색바"} uri={routes.fund} />
       <SearchBar placeholder={"셀럽 검색바"} uri={routes.celebrity} />

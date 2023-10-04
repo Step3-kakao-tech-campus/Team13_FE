@@ -68,7 +68,7 @@ function Carousel() {
     slidesToScroll: 1,
     autoplay: true,
     speed: 2000,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 4000,
     arrows: !isMobile,
   };
 
