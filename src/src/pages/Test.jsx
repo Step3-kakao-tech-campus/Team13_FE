@@ -1,15 +1,15 @@
 import PageTitle from "@/components/common/PageTitle.jsx";
 import styled from "styled-components";
 import { GridTemplate } from "@/styles/CommonStyle.js";
-import Button from "@/components/common/Button.jsx";
+import Button from "@/components/common/button/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
-import CheckBox from "@/components/common/CheckBox.jsx";
-import Tabs from "@/components/common/Tabs.jsx";
+import CheckBox from "@/components/common/button/CheckBox.jsx";
+import Tabs from "@/components/common/button/Tabs.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
 import routes from "@/constants/routes.js";
 import Carousel from "@/components/common/Carousel.jsx";
-import FloatButton from "@/components/common/FloatButton.jsx";
-import SortButtons from "@/components/common/SortButtons.jsx";
+import FloatButton from "@/components/common/button/FloatButton.jsx";
+import SortButtons from "@/components/common/button/SortButtons.jsx";
 
 const Styled = {
   GridExample: styled.article`

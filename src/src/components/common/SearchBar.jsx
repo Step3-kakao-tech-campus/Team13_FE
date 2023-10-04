@@ -4,7 +4,7 @@ import { PropTypes } from "prop-types";
 import { useNavigate } from "react-router-dom";
 
 import SearchIcon from "@/assets/SearchIcon.jsx";
-import Button from "@/components/common/Button.jsx";
+import Button from "@/components/common/button/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import routes from "@/constants/routes.js";
 
