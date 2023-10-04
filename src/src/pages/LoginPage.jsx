@@ -55,7 +55,6 @@ function LoginPage() {
     },
     {
       id: "password",
-      // label: "비밀번호",
       type: "password",
       placeholder: "8~20자 공백없이 영문/숫자/특수문자 포함",
       validation: {
