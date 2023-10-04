@@ -6,7 +6,7 @@ function SearchIcon() {
       <img
         width="36"
         height="36"
-        src="https://img.icons8.com/material-rounded/100/4a4a4a/search.png"
+        src="https://img.icons8.com/material-rounded/192/4a4a4a/search.png"
         alt="search"
       />
       <div id="license" style={{ display: "none" }}>

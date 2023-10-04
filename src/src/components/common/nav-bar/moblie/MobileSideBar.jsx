@@ -5,7 +5,7 @@ import { PropTypes } from "prop-types";
 
 import Portal from "@/components/common/Portal.jsx";
 import OriginBackdrop from "@/styles/Backdrop.js";
-import TestAccountIcon from "@/assets/TestAccountIcon.jsx";
+import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
 import routes from "@/constants/routes.js";
 import useBodyStyleFixed from "@/hooks/useBodyStyleFixed.js";
 import useOutsideClick from "@/hooks/useOutsideClick.js";
@@ -58,6 +58,13 @@ const Styled = {
     color: ${({ theme }) => theme.color.highlight};
   `,
 };
+
+/**
+ * 모바일 상단바 메뉴 버튼을 누르면 나오는 사이드바 컴포넌틑
+ * @param {func} setIsSideBarOpen
+ * @returns {JSX.Element}
+ * @constructor
+ */
 
 function MobileSideBar({ setIsSideBarOpen }) {
   const sideBarRef = useRef();
