@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import routes from "@/constants/routes.js";
 import styled from "styled-components";
 
-import Button from "@/components/common/Button.jsx";
+import Button from "@/components/common/button/Button.jsx";
 import Form from "@/components/common/form/Form.jsx";
 
 import FORM_INFO from "@/constants/FORM_INFO.js";
