@@ -1,16 +1,16 @@
-import PageTitle from '@/components/common/PageTitle.jsx';
-import styled from 'styled-components';
-import { GridTemplate } from '@/styles/CommonStyle.js';
-import Button from '@/components/common/Button.jsx';
-import BUTTON_TYPE from '@/constants/BUTTON_TYPE.js';
-import CheckBox from '@/components/common/CheckBox.jsx';
-import Tabs from '@/components/common/Tabs.jsx';
-import SearchBar from '@/components/common/SearchBar.jsx';
-import routes from '@/constants/routes.js';
-import Carousel from '@/components/common/Carousel.jsx';
-import FloatButton from '@/components/common/FloatButton.jsx';
-import SortButtons from '@/components/common/SortButtons.jsx';
-import CelebInfoGridCard from '@/components/common/CelebInfoGridCard';
+import PageTitle from "@/components/common/PageTitle.jsx";
+import styled from "styled-components";
+import { GridTemplate } from "@/styles/CommonStyle.js";
+import Button from "@/components/common/Button.jsx";
+import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
+import CheckBox from "@/components/common/CheckBox.jsx";
+import Tabs from "@/components/common/Tabs.jsx";
+import SearchBar from "@/components/common/SearchBar.jsx";
+import routes from "@/constants/routes.js";
+import Carousel from "@/components/common/Carousel.jsx";
+import FloatButton from "@/components/common/FloatButton.jsx";
+import SortButtons from "@/components/common/SortButtons.jsx";
+import CelebInfoGridCard from "@/components/common/CelebInfoGridCard.jsx";
 
 const Styled = {
   GridExample: styled.article`
@@ -22,36 +22,36 @@ const Styled = {
 function Test() {
   const sortTypeArray = [
     {
-      key: '마감임박순',
+      key: "마감임박순",
       func: () => {
-        console.log('마감임박순');
+        console.log("마감임박순");
       },
     },
     {
-      key: '최근등록순',
+      key: "최근등록순",
       func: () => {
-        console.log('최근등록순');
+        console.log("최근등록순");
       },
     },
   ];
 
   const tabInfoArray = [
     {
-      title: '팔로잉',
+      title: "팔로잉",
       func: () => {
-        console.log('팔로잉');
+        console.log("팔로잉");
       },
     },
     {
-      title: '찜한 목록',
+      title: "찜한 목록",
       func: () => {
-        console.log('찜한 목록');
+        console.log("찜한 목록");
       },
     },
     {
-      title: '펀딩 내역',
+      title: "펀딩 내역",
       func: () => {
-        console.log('펀딩 내역');
+        console.log("펀딩 내역");
       },
     },
   ];
@@ -63,21 +63,21 @@ function Test() {
 
       <SortButtons sortTypeArray={sortTypeArray} />
 
-      <SearchBar placeholder={'펀딩 검색바'} uri={routes.fund} />
-      <SearchBar placeholder={'셀럽 검색바'} uri={routes.celebrity} />
+      <SearchBar placeholder={"펀딩 검색바"} uri={routes.fund} />
+      <SearchBar placeholder={"셀럽 검색바"} uri={routes.celebrity} />
 
       <FloatButton
         onClick={() => {
-          console.log('셀럽 신청');
+          console.log("셀럽 신청");
         }}
       >
         셀럽 신청
       </FloatButton>
       <CheckBox id={1} />
-      <CheckBox id={'hi'} />
+      <CheckBox id={"hi"} />
 
       <Tabs tabInfoArray={tabInfoArray} />
-      <Button style={{ margin: '1rem' }}>PRIMARY</Button>
+      <Button style={{ margin: "1rem" }}>PRIMARY</Button>
       <Button isHoverStyle={false}>PRIMARY</Button>
 
       <Button styleType={BUTTON_TYPE.SECONDARY}>SECONDARY</Button>
@@ -100,9 +100,8 @@ function Test() {
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
+        <CelebInfoGridCard>d</CelebInfoGridCard>
       </GridTemplate>
-
-      <CelebInfoGridCard></CelebInfoGridCard>
     </>
   );
 }
