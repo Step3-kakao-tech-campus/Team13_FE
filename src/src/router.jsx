@@ -5,6 +5,7 @@ import Test from "@/pages/Test.jsx";
 import Layout from "@/components/common/template/Layout.jsx";
 import FundListPage from "@/pages/FundList.page.jsx";
 import LoginPage from "@/pages/LoginPage.jsx";
+import MyAccountPage from "@/pages/MyAccount.page.jsx";
 
 const router = createBrowserRouter([
   {
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: routes.myAccount,
-        element: <Test />,
+        element: <MyAccountPage />,
       },
       {
         path: routes.signIn,
