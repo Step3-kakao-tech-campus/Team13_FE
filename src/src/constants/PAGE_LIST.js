@@ -8,7 +8,7 @@ const NAV_BAR_TAB = [
 
 const USER_MENU = [
   { title: "MY 펀딩", uri: routes.myFund },
-  { title: "내 계정", uri: routes.setting },
+  { title: "내 계정", uri: routes.myAccount },
 ];
 
 Object.freeze(NAV_BAR_TAB);

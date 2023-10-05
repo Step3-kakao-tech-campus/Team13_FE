@@ -3,7 +3,7 @@ const routes = {
   fund: "/fund",
   celebrity: "/celebrity",
   myFund: "/my-fund",
-  setting: "/setting",
+  myAccount: "/my-account",
   signIn: "/sign-in",
   signUp: "/sign-up",
   user: "/user",
