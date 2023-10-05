@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useRef } from "react";
+import { useState } from "react";
 import ChangeProfileBox from "@/components/my-account/ChangeProfileBox.jsx";
 
 const Styled = {
@@ -32,7 +32,7 @@ const Styled = {
 };
 
 function MyAccountPage() {
-  const profileFileRef = useRef();
+  const [profileImageFile, setProfileImageFile] = useState(null);
 
   const loadedProfileUrl =
     "https://velog.velcdn.com/images/j8won/profile/55917697-2140-40be-ad07-d2d02137f38e/image.jpeg";
@@ -40,7 +40,11 @@ function MyAccountPage() {
   return (
     <Styled.Container>
       <Styled.Title>회원정보 수정하기</Styled.Title>
-      <ChangeProfileBox loadedUrl={loadedProfileUrl} fileRef={profileFileRef} />
+      <ChangeProfileBox
+        loadedUrl={loadedProfileUrl}
+        imageFile={profileImageFile}
+        setImageFile={setProfileImageFile}
+      />
     </Styled.Container>
   );
 }

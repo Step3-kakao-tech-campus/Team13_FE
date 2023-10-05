@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+import { PropTypes } from "prop-types";
+
 import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
 import useSetImageFileToUrl from "@/hooks/useSetImageFileToUrl.js";
 import CloseIcon from "@/assets/icon/CloseIcon.jsx";
@@ -66,8 +68,14 @@ const Styled = {
   `,
 };
 
-function ChangeProfileBox({ loadedUrl }) {
-  const [imageFile, setImageFile] = useState(null);
+/**
+ * 프로필 이미지 변경 컴포넌트
+ * @param {string} loadedUrl 기존 이미지 url
+ * @param imageFile 이미지 파일
+ * @param setImageFile set 이미지 파일
+ */
+
+function ChangeProfileBox({ loadedUrl, imageFile, setImageFile }) {
   const [imageUrl, setImageUrl] = useState("");
 
   const handleFileChange = (e) => {
@@ -90,7 +98,7 @@ function ChangeProfileBox({ loadedUrl }) {
     if (!loadedUrl || loadedUrl === "") return;
 
     loadProfile();
-  }, [loadedUrl]);
+  }, [loadedUrl, setImageFile]);
 
   useSetImageFileToUrl({
     file: imageFile,
@@ -124,5 +132,11 @@ function ChangeProfileBox({ loadedUrl }) {
     </Styled.Container>
   );
 }
+
+ChangeProfileBox.propTypes = {
+  loadedUrl: PropTypes.string,
+  imageFile: PropTypes.any.isRequired,
+  setImageFile: PropTypes.func.isRequired,
+};
 
 export default ChangeProfileBox;
