@@ -16,6 +16,13 @@ const Styled = {
     border-radius: 0.25rem;
     border: ${({ theme }) => theme.border.main};
     cursor: pointer;
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: rgba(0, 0, 0, 0.08) 0 12px 20px 0;
+      transition: all ease-in-out 0.25s;
+    }
+    }
   `,
   ThumbnailImg: styled.img`
     width: 100%;
