@@ -18,9 +18,9 @@ const Styled = {
     cursor: pointer;
 
     &:hover {
-      transform: translateY(-8px);
-      box-shadow: rgba(0, 0, 0, 0.08) 0 12px 20px 0;
-      transition: all ease-in-out 0.25s;
+      transform: ${({ theme }) => theme.transform.gridCard};
+      box-shadow: ${({ theme }) => theme.boxShadow.gridCard};
+      transition: ${({ theme }) => theme.transition.gridCard};
     }
     }
   `,
