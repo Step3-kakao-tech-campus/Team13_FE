@@ -10,7 +10,9 @@ import routes from "@/constants/routes.js";
 import Carousel from "@/components/common/Carousel.jsx";
 import FloatButton from "@/components/common/button/FloatButton.jsx";
 import SortButtons from "@/components/common/button/SortButtons.jsx";
-import CountdownBadge from "@/components/common/CountdownBadge.jsx";
+import CountdownBadge from "@/components/common/fund/CountdownBadge.jsx";
+import HeartButton from "@/components/common/fund/HeartButton.jsx";
+import { useState } from "react";
 
 const Styled = {
   GridExample: styled.article`
@@ -20,6 +22,7 @@ const Styled = {
 };
 
 function Test() {
+  const [isHeartClicked, setIsHeartClicked] = useState(false);
   const sortTypeArray = [
     {
       key: "마감임박순",
@@ -60,6 +63,11 @@ function Test() {
     <>
       <PageTitle />
       <Carousel />
+
+      <HeartButton
+        isActive={isHeartClicked}
+        onClick={() => setIsHeartClicked((prev) => !prev)}
+      />
 
       <CountdownBadge target={"2023-10-04 23:16:00"} />
       <CountdownBadge target={"2023-10-05 00:16:00"} />
