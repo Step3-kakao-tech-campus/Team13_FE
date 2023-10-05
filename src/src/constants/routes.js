@@ -6,6 +6,7 @@ const routes = {
   setting: "/setting",
   signIn: "/sign-in",
   signUp: "/sign-up",
+  user: "/user",
 };
 
 Object.freeze(routes);

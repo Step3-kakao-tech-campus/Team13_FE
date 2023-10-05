@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import routes from "@/constants/routes.js";
 import Test from "@/pages/Test.jsx";
 import Layout from "@/components/common/template/Layout.jsx";
-import FundPage from "@/pages/Fund.page.jsx";
+import FundListPage from "@/pages/FundList.page.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,10 +18,18 @@ const router = createBrowserRouter([
       },
       {
         path: routes.fund,
-        element: <FundPage />,
+        element: <FundListPage />,
+      },
+      {
+        path: `${routes.fund}/:fundId`,
+        element: <Test />,
       },
       {
         path: routes.celebrity,
+        element: <Test />,
+      },
+      {
+        path: `${routes.celebrity}/:celebrityId`,
         element: <Test />,
       },
       {
@@ -38,6 +46,10 @@ const router = createBrowserRouter([
       },
       {
         path: routes.signUp,
+        element: <Test />,
+      },
+      {
+        path: `${routes.user}/:userId`,
         element: <Test />,
       },
       {
