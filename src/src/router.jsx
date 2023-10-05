@@ -4,7 +4,7 @@ import routes from "@/constants/routes.js";
 import Test from "@/pages/Test.jsx";
 import Layout from "@/components/common/template/Layout.jsx";
 import FundListPage from "@/pages/FundList.page.jsx";
-import LoginPage from "@/pages/LoginPage.jsx";
+import LoginPage from "@/pages/Login.page.jsx";
 import MyAccountPage from "@/pages/MyAccount.page.jsx";
 
 const router = createBrowserRouter([
