@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import MenuIcon from "@/assets/icon/MenuIcon.jsx";
 import MobileTabList from "@/components/common/nav-bar/moblie/MobileTabList.jsx";
@@ -43,6 +43,7 @@ const Styled = {
 function MobileNavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -55,7 +56,9 @@ function MobileNavBar() {
           >
             <MenuIcon />
           </Styled.MenuBtn>
-          <Styled.Logo>fundering</Styled.Logo>
+          <Styled.Logo onClick={() => navigate(routes.home)}>
+            fundering
+          </Styled.Logo>
           <div style={{ width: "2rem", height: "2rem" }}></div>
         </Styled.Head>
 

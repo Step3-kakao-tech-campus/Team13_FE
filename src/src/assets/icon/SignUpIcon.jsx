@@ -1,5 +1,3 @@
-import { memo } from "react";
-
 function SignUpIcon() {
   return (
     <>
@@ -17,4 +15,4 @@ function SignUpIcon() {
   );
 }
 
-export default memo(SignUpIcon);
+export default SignUpIcon;

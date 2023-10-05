@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { PropTypes } from "prop-types";
 import { useNavigate } from "react-router-dom";
 
-import SearchIcon from "@/assets/SearchIcon.jsx";
-import Button from "@/components/common/Button.jsx";
+import SearchIcon from "@/assets/icon/SearchIcon.jsx";
+import Button from "@/components/common/button/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import routes from "@/constants/routes.js";
 
@@ -12,9 +12,9 @@ const Styled = {
   Container: styled.div`
     position: relative;
 
-    padding: 0 1rem;
+    padding: 0 0.5rem;
     width: 100%;
-    height: 4rem;
+    height: 3rem;
 
     display: flex;
     justify-content: flex-start;
@@ -26,12 +26,12 @@ const Styled = {
     background-color: ${({ theme }) => theme.color.white};
   `,
   Input: styled.input`
-    margin-left: 1rem;
+    margin-left: 0.5rem;
     width: calc(100% - 2rem - 36px - 4rem);
     height: 100%;
 
     border: none;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 500;
   `,
 };
@@ -89,7 +89,7 @@ SearchBar.propTypes = {
 };
 
 SearchBar.defaultProps = {
-  placeholder: "검색어를 입력하세요",
+  placeholder: "검색어를 입력해 주세요",
   uri: routes.fund,
 };
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { PropTypes } from "prop-types";
-import SignUpIcon from "@/assets/SignUpIcon.jsx";
+import SignUpIcon from "@/assets/icon/SignUpIcon.jsx";
 
 const Styled = {
   Button: styled.button`
