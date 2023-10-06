@@ -40,16 +40,18 @@ function LoginPage() {
         onError={(err) => console.log(err)}
         inputInformations={FORM_INFO.SIGN_IN}
         defaultValues={FORM_DEFAULT.SIGN_IN}
-      />
-      <Button
-        style={{
-          width: "100%",
-          padding: "1rem",
-          margin: "0.375rem 0",
-        }}
       >
-        로그인
-      </Button>
+        <Button
+          type="submit"
+          style={{
+            width: "100%",
+            padding: "1rem",
+            margin: "0.375rem 0",
+          }}
+        >
+          로그인
+        </Button>
+      </Form>
       <Button
         style={{
           width: "100%",
