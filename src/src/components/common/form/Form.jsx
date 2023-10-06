@@ -27,7 +27,10 @@ function Form({
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onSubmit, onError)}>
+      <form
+        onSubmit={handleSubmit(onSubmit, onError)}
+        style={{ width: "100%", maxWidth: "22rem" }}
+      >
         {inputInformations.map((input) => (
           <LabeledInput
             key={input.id}
@@ -64,7 +67,7 @@ Form.propTypes = {
         }),
       }),
       requireMsg: PropTypes.string,
-    })
+    }),
   ),
   style: PropTypes.object,
   children: PropTypes.node,
