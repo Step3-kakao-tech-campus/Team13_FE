@@ -29,18 +29,14 @@ const Styled = {
       width: 2rem;
       height: 2rem;
 
-      display: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       color: #646464;
       background-color: rgba(255, 255, 255, 0.9);
       box-shadow: rgba(0, 0, 0, 0.2) 0 0 8px 0;
       border-radius: 9999px;
-    }
-
-    &:hover .delete-button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
   `,
   Image: styled.img`
