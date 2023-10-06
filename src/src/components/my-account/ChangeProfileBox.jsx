@@ -135,8 +135,12 @@ function ChangeProfileBox({ loadedUrl, imageFile, setImageFile }) {
 
 ChangeProfileBox.propTypes = {
   loadedUrl: PropTypes.string,
-  imageFile: PropTypes.any.isRequired,
+  imageFile: PropTypes.any,
   setImageFile: PropTypes.func.isRequired,
+};
+
+ChangeProfileBox.defaultProps = {
+  imageFile: null,
 };
 
 export default ChangeProfileBox;
