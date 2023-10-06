@@ -7,16 +7,9 @@ import Form from "@/components/common/form/Form.jsx";
 
 import FORM_INFO from "@/constants/FORM_INFO.js";
 import FORM_DEFAULT from "@/constants/FORM_DEFAULT.js";
-import { Title } from "@/styles/CommonStyle.js";
+import { FormTemplate, Title } from "@/styles/CommonStyle.js";
 
 const Styled = {
-  LoginContainer: styled.div`
-    margin-top: 4rem;
-    padding: 0 calc((100vw - 22rem) / 2 - (100vw - 70rem) / 2 + 2rem);
-    @media (max-width: 70rem) {
-      padding: 0 calc((100vw - 22rem) / 2 - 2rem);
-    }
-  `,
   LoginTitle: styled(Title)`
     text-align: left;
     margin-bottom: 0.5rem;
@@ -40,7 +33,7 @@ function LoginPage() {
   const navigate = useNavigate();
 
   return (
-    <Styled.LoginContainer>
+    <FormTemplate>
       <Styled.LoginTitle>로그인</Styled.LoginTitle>
       <Form
         onSubmit={(data) => console.log(data)}
@@ -74,7 +67,7 @@ function LoginPage() {
         아직 펀더링 계정이 없으신가요?
         <span onClick={() => navigate(routes.signUp)}>회원가입</span>
       </Styled.SignUpMsg>
-    </Styled.LoginContainer>
+    </FormTemplate>
   );
 }
 
