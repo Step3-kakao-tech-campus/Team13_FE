@@ -22,6 +22,23 @@ function MyAccountPage() {
   const loadedProfileUrl =
     "https://velog.velcdn.com/images/j8won/profile/55917697-2140-40be-ad07-d2d02137f38e/image.jpeg";
 
+  const loadedDefaultValues = async () => {
+    try {
+      // api 통신 후 기존 회원정보 가지고 오기
+      // return FORM_DEFAULT.MY_ACCOUNT;
+      return {
+        nickname: "경주원",
+        phoneNumber: "010-1234-1234",
+        currentPassword: FORM_DEFAULT.MY_ACCOUNT.currentPassword,
+        changedPassword: FORM_DEFAULT.MY_ACCOUNT.changedPassword,
+      };
+    } catch (e) {
+      // 추후 react-hot-toast 에러 메시지 추가
+      alert(e.message);
+      return FORM_DEFAULT.MY_ACCOUNT;
+    }
+  };
+
   return (
     <FormTemplate>
       <Styled.Title>회원정보 수정하기</Styled.Title>
@@ -34,7 +51,7 @@ function MyAccountPage() {
         onSubmit={(data) => console.log(data)}
         onError={(err) => console.log(err)}
         inputInformations={FORM_INFO.MY_ACCOUNT}
-        defaultValues={FORM_DEFAULT.MY_ACCOUNT}
+        defaultValues={loadedDefaultValues}
       >
         <Button
           styleType={BUTTON_TYPE.PRIMARY}
