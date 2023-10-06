@@ -15,10 +15,7 @@ export const GridTemplate = styled.div`
 
 export const FormTemplate = styled.div`
   margin: 4rem 0;
-  padding: 0 calc((100vw - 22rem) / 2 - (100vw - 70rem) / 2 + 2rem);
-  @media (max-width: 70rem) {
-    padding: 0 calc((100vw - 22rem) / 2 - 2rem);
-  }
+  padding: 0 calc((100% - 22rem) / 2);
 `;
 
 export const Title = styled.div`

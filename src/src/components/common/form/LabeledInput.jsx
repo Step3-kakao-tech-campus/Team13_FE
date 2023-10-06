@@ -5,7 +5,6 @@ import styled, { css } from "styled-components";
 const Styled = {
   Container: styled.div`
     width: 100%;
-    max-width: 22rem;
     padding: 0.25rem 0;
   `,
   Input: styled.input`
