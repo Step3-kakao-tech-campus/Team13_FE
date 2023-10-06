@@ -1,33 +1,18 @@
 import styled from "styled-components";
 import { useState } from "react";
+
 import ChangeProfileBox from "@/components/my-account/ChangeProfileBox.jsx";
+import Form from "@/components/common/form/Form.jsx";
+import Button from "@/components/common/button/Button.jsx";
+import FORM_DEFAULT from "@/constants/FORM_DEFAULT.js";
+import FORM_INFO from "@/constants/FORM_INFO.js";
+import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
+import { FormTemplate } from "@/styles/CommonStyle.js";
 
 const Styled = {
-  Container: styled.div`
-    margin-top: 4rem;
-    padding: 0 calc((100vw - 22rem) / 2 - (100vw - 70rem) / 2 + 2rem);
-    @media (max-width: 70rem) {
-      padding: 0 calc((100vw - 22rem) / 2 - 2rem);
-    }
-  `,
   Title: styled.h2`
     font-size: 1.5rem;
     font-weight: 600;
-  `,
-  ProfileBox: styled.div`
-    padding: 1rem 0 0.75rem 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    .profile-img {
-      width: 100px;
-      height: 100px;
-      border-radius: 9999px;
-      object-fit: cover;
-    }
   `,
 };
 
@@ -38,14 +23,56 @@ function MyAccountPage() {
     "https://velog.velcdn.com/images/j8won/profile/55917697-2140-40be-ad07-d2d02137f38e/image.jpeg";
 
   return (
-    <Styled.Container>
+    <FormTemplate>
       <Styled.Title>회원정보 수정하기</Styled.Title>
       <ChangeProfileBox
         loadedUrl={loadedProfileUrl}
         imageFile={profileImageFile}
         setImageFile={setProfileImageFile}
       />
-    </Styled.Container>
+      <Form
+        onSubmit={(data) => console.log(data)}
+        onError={(err) => console.log(err)}
+        inputInformations={FORM_INFO.MY_ACCOUNT}
+        defaultValues={FORM_DEFAULT.MY_ACCOUNT}
+      >
+        <Button
+          styleType={BUTTON_TYPE.PRIMARY}
+          type="submit"
+          style={{
+            width: "100%",
+            padding: "1rem",
+            margin: "0.75rem 0 2rem 0",
+          }}
+        >
+          저장하기
+        </Button>
+      </Form>
+      <Styled.Title>로그아웃하기</Styled.Title>
+      <Button
+        styleType={BUTTON_TYPE.SECONDARY}
+        onClick={() => {
+          // accessToken, refreshToken 삭제
+        }}
+        style={{
+          width: "100%",
+          padding: "1rem",
+          margin: "1.25rem 0 2rem 0",
+        }}
+      >
+        로그아웃
+      </Button>
+      <Styled.Title>회원 탈퇴하기</Styled.Title>
+      <Button
+        styleType={BUTTON_TYPE.PRIMARY}
+        onClick={() => {
+          // 회원 탈퇴 api 통신
+        }}
+        style={{ width: "100%", padding: "1rem", margin: "1.25rem 0 0" }}
+      >
+        회원 탈퇴
+      </Button>
+    </FormTemplate>
   );
 }
 
