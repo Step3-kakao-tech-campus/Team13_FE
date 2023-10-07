@@ -35,6 +35,9 @@ const Styled = {
       width: 100%;
       justify-content: space-between;
     }
+    img {
+      margin-right: 0.25rem;
+    }
   `,
 };
 
