@@ -35,10 +35,6 @@ const Styled = {
       width: 100%;
       justify-content: space-between;
     }
-
-    .followBtn {
-      margin-left: 1rem;
-    }
   `,
 };
 
@@ -51,7 +47,10 @@ function CelebInfoGridCard() {
         <Styled.TextContainer>
           <Styled.Text main className="name">
             <span>손웅정</span>
-            <Button className="followBtn" isHoverStyle={BUTTON_TYPE.PRIMARY}>
+            <Button
+              style={{ marginLeft: "1rem" }}
+              isHoverStyle={BUTTON_TYPE.PRIMARY}
+            >
               팔로우
             </Button>
           </Styled.Text>
