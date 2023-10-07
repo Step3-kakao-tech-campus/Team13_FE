@@ -2,9 +2,9 @@ import { PropTypes } from "prop-types";
 import styled from "styled-components";
 
 import Celeb from "@/assets/celebinfo-card/Celeb.jsx";
-import InProgress from "@/assets/celebinfo-card/InProgress.jsx";
-import Money from "@/assets/celebinfo-card/Money.jsx";
-import User from "@/assets/celebinfo-card/User.jsx";
+import InProgress from "@/assets/icon/InProgressIcon.jsx";
+import Money from "@/assets/icon/MoneyIcon.jsx";
+import User from "@/assets/icon/UserIcon.jsx";
 import Button from "@/components/common/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 
