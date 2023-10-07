@@ -27,8 +27,8 @@ const Styled = {
     display: flex;
     align-items: center;
     margin-bottom: 0.5rem;
-
     font-size: ${({ main }) => (main ? "1.25rem" : "0.5rem")};
+    color: ${({ theme }) => theme.color.addition};
 
     .name {
       display: flex;
