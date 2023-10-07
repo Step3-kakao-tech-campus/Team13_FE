@@ -42,14 +42,21 @@ const Styled = {
 };
 
 // function CelebInfoGridCard({ children, ...props }) {
-function CelebInfoGridCard() {
+function CelebInfoGridCard({
+  id,
+  name,
+  profileUrl,
+  fundInProgressNum,
+  totalFundMoney,
+  followerNum,
+}) {
   return (
     <>
       <Styled.Container>
         <Celeb />
         <Styled.TextContainer>
           <Styled.Text main className="name">
-            <span>손웅정</span>
+            <span>{name}</span>
             <Button
               style={{ marginLeft: "1rem" }}
               isHoverStyle={BUTTON_TYPE.PRIMARY}
@@ -59,15 +66,15 @@ function CelebInfoGridCard() {
           </Styled.Text>
           <Styled.Text>
             <InProgress />
-            <span>3개의 펀딩 진행 중</span>
+            <span>{fundInProgressNum}개의 펀딩 진행 중</span>
           </Styled.Text>
           <Styled.Text>
             <Money />
-            <span>총 2,000,000원</span>
+            <span>총 {totalFundMoney}원</span>
           </Styled.Text>
           <Styled.Text>
             <User />
-            <span>7명이 팔로우 중</span>
+            <span>{followerNum}명이 팔로우 중</span>
           </Styled.Text>
         </Styled.TextContainer>
       </Styled.Container>
