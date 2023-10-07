@@ -1,5 +1,3 @@
-import { memo } from "react";
-
 function InProgress() {
   return (
     <>
@@ -18,4 +16,4 @@ function InProgress() {
   );
 }
 
-export default memo(InProgress);
+export default InProgress;
