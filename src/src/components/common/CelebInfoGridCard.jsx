@@ -10,11 +10,11 @@ import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 
 const Styled = {
   Container: styled.div`
-    background: #f1f3f5;
-    display: flex;
-    align-items: center;
+    background: ${({ theme }) => theme.color.white};
     padding: 1rem;
     position: relative;
+    display: flex;
+    align-items: center;
     justify-content: space-around;
   `,
 
