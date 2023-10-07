@@ -1,4 +1,3 @@
-import { PropTypes } from "prop-types";
 import styled from "styled-components";
 
 import Celeb from "@/assets/celebinfo-card/Celeb.jsx";
@@ -73,9 +72,5 @@ function CelebInfoGridCard() {
     </>
   );
 }
-
-CelebInfoGridCard.propTypes = {
-  children: PropTypes.node,
-};
 
 export default CelebInfoGridCard;
