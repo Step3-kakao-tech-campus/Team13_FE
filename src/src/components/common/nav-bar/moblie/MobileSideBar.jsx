@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { PropTypes } from "prop-types";
 
-import Portal from "@/components/common/Portal.jsx";
+import Portal from "@/components/common/modal/Portal.jsx";
 import OriginBackdrop from "@/styles/Backdrop.js";
 import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
 import routes from "@/constants/routes.js";
