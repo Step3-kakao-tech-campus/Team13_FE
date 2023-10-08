@@ -8,6 +8,7 @@ import Form from "@/components/common/form/Form.jsx";
 import FORM_INFO from "@/constants/FORM_INFO.js";
 import FORM_DEFAULT from "@/constants/FORM_DEFAULT.js";
 import { FormTemplate, Title } from "@/styles/CommonStyle.js";
+import PageTitle from "@/components/common/PageTitle.jsx";
 
 const Styled = {
   LoginTitle: styled(Title)`
@@ -33,43 +34,46 @@ function LoginPage() {
   const navigate = useNavigate();
 
   return (
-    <FormTemplate>
-      <Styled.LoginTitle>로그인</Styled.LoginTitle>
-      <Form
-        onSubmit={(data) => console.log(data)}
-        onError={(err) => console.log(err)}
-        inputInformations={FORM_INFO.SIGN_IN}
-        defaultValues={FORM_DEFAULT.SIGN_IN}
-      >
+    <>
+      <PageTitle title="로그인" />
+      <FormTemplate>
+        <Styled.LoginTitle>로그인</Styled.LoginTitle>
+        <Form
+          onSubmit={(data) => console.log(data)}
+          onError={(err) => console.log(err)}
+          inputInformations={FORM_INFO.SIGN_IN}
+          defaultValues={FORM_DEFAULT.SIGN_IN}
+        >
+          <Button
+            type="submit"
+            style={{
+              width: "100%",
+              padding: "1rem",
+              margin: "0.375rem 0",
+            }}
+          >
+            로그인
+          </Button>
+        </Form>
         <Button
-          type="submit"
           style={{
             width: "100%",
             padding: "1rem",
             margin: "0.375rem 0",
+            backgroundColor: "#FFEB02",
+            color: "#000000",
+            fontWeight: "bold",
           }}
+          isHoverStyle={false}
         >
-          로그인
+          카카오 간편 로그인
         </Button>
-      </Form>
-      <Button
-        style={{
-          width: "100%",
-          padding: "1rem",
-          margin: "0.375rem 0",
-          backgroundColor: "#FFEB02",
-          color: "#000000",
-          fontWeight: "bold",
-        }}
-        isHoverStyle={false}
-      >
-        카카오 간편 로그인
-      </Button>
-      <Styled.SignUpMsg>
-        아직 펀더링 계정이 없으신가요?
-        <span onClick={() => navigate(routes.signUp)}>회원가입</span>
-      </Styled.SignUpMsg>
-    </FormTemplate>
+        <Styled.SignUpMsg>
+          아직 펀더링 계정이 없으신가요?
+          <span onClick={() => navigate(routes.signUp)}>회원가입</span>
+        </Styled.SignUpMsg>
+      </FormTemplate>
+    </>
   );
 }
 
