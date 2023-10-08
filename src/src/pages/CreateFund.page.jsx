@@ -4,11 +4,18 @@ import TextareaAutoSize from "react-textarea-autosize";
 
 import { Title } from "@/styles/CommonStyle";
 import ThumbnailBox from "@/components/create-fund/ThumbnailBox.jsx";
+import IntroduceForm from "@/components/create-fund/IntroduceForm.jsx";
+import formatDateToYYYYMMDD from "@/utils/formateDateToYYYYMMDD.js";
 
 const Styled = {
   Container: styled.section`
     margin: 3rem 0;
     padding: 0 calc((100% - 41.5rem) / 2);
+
+    #thumbnail-note {
+      font-size: 0.75rem;
+      color: ${({ theme }) => theme.color.alertBlue};
+    }
   `,
   InputContainer: styled.article`
     margin: 2rem 0;
@@ -55,6 +62,19 @@ const Styled = {
 
 function CreateFundPage() {
   const [thumbnailFile, setThumbnailFile] = useState(null);
+
+  const date = new Date();
+  date.setDate(date.getDate() + 30);
+
+  const [introduceInput, setIntroduceInput] = useState({
+    targetMoney: "0",
+    dueDate: formatDateToYYYYMMDD(date),
+    celebrity: {
+      id: "sonny",
+      name: "손흥민",
+    },
+  });
+
   return (
     <Styled.Container>
       <Title>펀딩 주최하기</Title>
@@ -63,7 +83,13 @@ function CreateFundPage() {
       </Styled.InputContainer>
 
       <Styled.Subtitle>썸네일</Styled.Subtitle>
+      <div id="thumbnail-note" style={{ fontSize: "0.75rem" }}>
+        16:10 비율이 가장 적절합니다
+      </div>
       <ThumbnailBox file={thumbnailFile} setFile={setThumbnailFile} />
+
+      <Styled.Subtitle>소개</Styled.Subtitle>
+      <IntroduceForm input={introduceInput} setInput={setIntroduceInput} />
     </Styled.Container>
   );
 }
