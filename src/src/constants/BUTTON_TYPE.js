@@ -1,0 +1,9 @@
+const BUTTON_TYPE = {
+  PRIMARY: "PRIMARY",
+  SECONDARY: "SECONDARY",
+  TERTIARY: "TERTIARY",
+};
+
+Object.freeze(BUTTON_TYPE);
+
+export default BUTTON_TYPE;

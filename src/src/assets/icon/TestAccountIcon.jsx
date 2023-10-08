@@ -1,4 +1,11 @@
 import { PropTypes } from "prop-types";
+import { memo } from "react";
+
+/**
+ * 프로필 아이콘
+ * @param {number} size px 단위
+ * @param props 기타
+ */
 
 function TestAccountIcon({ size, ...props }) {
   return (
@@ -6,7 +13,7 @@ function TestAccountIcon({ size, ...props }) {
       <img
         width={size}
         height={size}
-        src="https://img.icons8.com/color/40/test-account.png"
+        src="https://img.icons8.com/color/192/test-account.png"
         alt="test-account"
         {...props}
       />
@@ -28,4 +35,4 @@ TestAccountIcon.defaultProps = {
   size: 36,
 };
 
-export default TestAccountIcon;
+export default memo(TestAccountIcon);

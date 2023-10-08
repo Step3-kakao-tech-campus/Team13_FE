@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import TestAccountIcon from "@/assets/TestAccountIcon.jsx";
+import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
 import routes from "@/constants/routes.js";
 import useOutsideClick from "@/hooks/useOutsideClick.js";
 import PAGE_LIST from "@/constants/PAGE_LIST.js";
@@ -49,10 +49,14 @@ const Styled = {
   `,
 };
 
+/**
+ * PC 나비게이션 바의 프로필 버튼 컴포넌트 (로그인 상태에 따라 변화)
+ */
+
 function PCUserBtn() {
   const navigate = useNavigate();
   const userBtnRef = useRef();
-  const [isMenuModalOpen, setIsMenuModalOpen] = useState(true);
+  const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
   useOutsideClick(userBtnRef, () => setIsMenuModalOpen(false));
 
   const isLoggedIn = true;
@@ -86,6 +90,7 @@ function PCUserBtn() {
               key={page.title}
               onClick={() => {
                 navigate(page.uri);
+                setIsMenuModalOpen(false);
               }}
             >
               {page.title}

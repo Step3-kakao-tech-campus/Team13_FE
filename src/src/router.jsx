@@ -1,8 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import routes from "@/constants/routes.js";
-import Home from "@/pages/Home.jsx";
+import Test from "@/pages/Test.jsx";
 import Layout from "@/components/common/template/Layout.jsx";
+import FundListPage from "@/pages/FundList.page.jsx";
+import LoginPage from "@/pages/Login.page.jsx";
+import MyAccountPage from "@/pages/MyAccount.page.jsx";
 
 const router = createBrowserRouter([
   {
@@ -13,31 +16,47 @@ const router = createBrowserRouter([
     children: [
       {
         path: routes.home,
-        element: <Home />,
+        element: <Test />,
       },
       {
         path: routes.fund,
-        element: <Home />,
+        element: <FundListPage />,
+      },
+      {
+        path: `${routes.fund}/:fundId`,
+        element: <Test />,
       },
       {
         path: routes.celebrity,
-        element: <Home />,
+        element: <Test />,
+      },
+      {
+        path: `${routes.celebrity}/:celebrityId`,
+        element: <Test />,
       },
       {
         path: routes.myFund,
-        element: <Home />,
+        element: <Test />,
       },
       {
-        path: routes.setting,
-        element: <Home />,
+        path: routes.myAccount,
+        element: <MyAccountPage />,
       },
       {
         path: routes.signIn,
-        element: <Home />,
+        element: <LoginPage />,
       },
       {
         path: routes.signUp,
-        element: <Home />,
+        element: <Test />,
+      },
+      {
+        path: `${routes.user}/:userId`,
+        element: <Test />,
+      },
+      {
+        path: "/test",
+        element: <Test />,
       },
     ],
   },
