@@ -6,6 +6,7 @@ import Layout from "@/components/common/template/Layout.jsx";
 import FundListPage from "@/pages/FundList.page.jsx";
 import LoginPage from "@/pages/Login.page.jsx";
 import MyAccountPage from "@/pages/MyAccount.page.jsx";
+import CreateFundPage from "@/pages/CreateFund.page.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: routes.createFund,
-        element: <Test />,
+        element: <CreateFundPage />,
       },
       {
         path: routes.celebrity,
