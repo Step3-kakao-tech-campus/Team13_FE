@@ -27,6 +27,10 @@ const router = createBrowserRouter([
         element: <Test />,
       },
       {
+        path: routes.createFund,
+        element: <Test />,
+      },
+      {
         path: routes.celebrity,
         element: <Test />,
       },

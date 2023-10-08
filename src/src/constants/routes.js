@@ -1,6 +1,7 @@
 const routes = {
   home: "/",
   fund: "/fund",
+  createFund: "/fund/create",
   celebrity: "/celebrity",
   myFund: "/my-fund",
   myAccount: "/my-account",
