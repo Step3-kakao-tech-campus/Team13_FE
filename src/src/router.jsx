@@ -6,6 +6,7 @@ import Layout from "@/components/common/template/Layout.jsx";
 import FundListPage from "@/pages/FundList.page.jsx";
 import LoginPage from "@/pages/Login.page.jsx";
 import MyAccountPage from "@/pages/MyAccount.page.jsx";
+import SignUpPage from "./pages/SignUp.page";
 
 const router = createBrowserRouter([
   {
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: routes.signUp,
-        element: <Test />,
+        element: <SignUpPage />,
       },
       {
         path: `${routes.user}/:userId`,
