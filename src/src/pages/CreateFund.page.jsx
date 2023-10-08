@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useState } from "react";
 import TextareaAutoSize from "react-textarea-autosize";
 
 import { Title } from "@/styles/CommonStyle";
@@ -53,6 +54,7 @@ const Styled = {
 };
 
 function CreateFundPage() {
+  const [thumbnailFile, setThumbnailFile] = useState(null);
   return (
     <Styled.Container>
       <Title>펀딩 주최하기</Title>
@@ -61,7 +63,7 @@ function CreateFundPage() {
       </Styled.InputContainer>
 
       <Styled.Subtitle>썸네일</Styled.Subtitle>
-      <ThumbnailBox />
+      <ThumbnailBox file={thumbnailFile} setFile={setThumbnailFile} />
     </Styled.Container>
   );
 }
