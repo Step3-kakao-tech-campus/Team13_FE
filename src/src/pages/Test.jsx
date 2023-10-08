@@ -13,6 +13,7 @@ import SortButtons from "@/components/common/button/SortButtons.jsx";
 import CountdownBadge from "@/components/common/fund/CountdownBadge.jsx";
 import HeartButton from "@/components/common/fund/HeartButton.jsx";
 import { useState } from "react";
+import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
 
 const Styled = {
   GridExample: styled.article`
@@ -23,6 +24,8 @@ const Styled = {
 
 function Test() {
   const [isHeartClicked, setIsHeartClicked] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const sortTypeArray = [
     {
       key: "마감임박순",
@@ -63,6 +66,13 @@ function Test() {
     <>
       <PageTitle />
       <Carousel />
+
+      <Button onClick={() => setIsModalOpen(true)}>모달창</Button>
+      {isModalOpen && (
+        <BackdropModal setOpen={setIsModalOpen}>
+          <h1>안녕</h1>
+        </BackdropModal>
+      )}
 
       <HeartButton
         isActive={isHeartClicked}
