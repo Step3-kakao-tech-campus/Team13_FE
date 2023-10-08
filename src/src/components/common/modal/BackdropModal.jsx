@@ -6,6 +6,7 @@ import Portal from "@/components/common/modal/Portal.jsx";
 import Backdrop from "@/styles/Backdrop.js";
 import useBodyStyleFixed from "@/hooks/useBodyStyleFixed.js";
 import useOutsideClick from "@/hooks/useOutsideClick.js";
+import CloseIcon from "@/assets/icon/CloseIcon.jsx";
 
 const Keyframes = {
   appear: keyframes`
@@ -85,13 +86,7 @@ function BackdropModal({ setOpen, style, children }) {
       <Backdrop>
         <Styled.Container ref={modalRef} style={style} $isVisible={isVisible}>
           <Styled.CloseButton onClick={closeModal}>
-            {/* #40 merge 후 CloseIcon으로 변경 */}
-            <img
-              width="20"
-              height="20"
-              src="https://img.icons8.com/material-rounded/192/646464/delete-sign.png"
-              alt="delete-sign"
-            />
+            <CloseIcon />
           </Styled.CloseButton>
           {children}
         </Styled.Container>
