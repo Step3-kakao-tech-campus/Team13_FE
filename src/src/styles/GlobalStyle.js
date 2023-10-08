@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     min-height: calc(var(--vh, 1vh) * 100);
     overflow-x: hidden;
-    background-color: white;
+    background-color: #F8F9FA;
     text-underline-position: under;
   }
   

@@ -13,6 +13,11 @@ export const GridTemplate = styled.div`
   }
 `;
 
+export const FormTemplate = styled.div`
+  margin: 4rem 0;
+  padding: 0 calc((100% - 22rem) / 2);
+`;
+
 export const Title = styled.div`
   font-size: 1.75rem;
   font-weight: 600;

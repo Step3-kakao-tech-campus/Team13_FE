@@ -1,10 +1,10 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 import { isMobile } from "react-device-detect";
 
 import MobileNavBar from "@/components/common/nav-bar/moblie/MobileNavBar.jsx";
 import PCNavBar from "@/components/common/nav-bar/pc/PCNavBar.jsx";
-import routes from "@/constants/routes.js";
+import useIsInListPages from "@/hooks/useIsInListPages.js";
 
 const Styled = {
   Body: styled.div`
@@ -29,16 +29,14 @@ const Styled = {
  */
 
 function Layout() {
-  const location = useLocation();
+  const isInListPages = useIsInListPages();
 
   const calPadding = () => {
     if (!isMobile) {
       return "4rem";
     }
 
-    if (
-      [routes.home, routes.fund, routes.celebrity].includes(location.pathname)
-    ) {
+    if (isInListPages) {
       return "100px";
     } else {
       return "60px";
