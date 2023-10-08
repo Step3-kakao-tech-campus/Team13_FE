@@ -88,7 +88,7 @@ function CreateFundPage() {
       </div>
       <ThumbnailBox file={thumbnailFile} setFile={setThumbnailFile} />
 
-      <Styled.Subtitle>펀딩 소개</Styled.Subtitle>
+      <Styled.Subtitle>펀딩 설정</Styled.Subtitle>
       <Styled.InputContainer>
         <IntroduceForm input={introduceInput} setInput={setIntroduceInput} />
       </Styled.InputContainer>
