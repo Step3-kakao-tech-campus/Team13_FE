@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { PropTypes } from "prop-types";
+import { isMobile } from "react-device-detect";
 
 import CountdownBadge from "@/components/common/fund/CountdownBadge.jsx";
 import HeartButton from "@/components/common/fund/HeartButton.jsx";
@@ -16,12 +17,16 @@ const Styled = {
     border-radius: 0.25rem;
     border: ${({ theme }) => theme.border.main};
     cursor: pointer;
-
-    &:hover {
-      transform: ${({ theme }) => theme.transform.gridCard};
-      box-shadow: ${({ theme }) => theme.boxShadow.gridCard};
-      transition: ${({ theme }) => theme.transition.gridCard};
-    }
+    
+    ${({ $isMobile }) =>
+      $isMobile ||
+      css`
+        &:hover {
+          transform: ${({ theme }) => theme.transform.gridCard};
+          box-shadow: ${({ theme }) => theme.boxShadow.gridCard};
+          transition: ${({ theme }) => theme.transition.gridCard};
+        }
+      `}
     }
   `,
   ThumbnailImg: styled.img`
@@ -160,6 +165,7 @@ function FundInfoGridCard({
 
   return (
     <Styled.Container
+      $isMobile={isMobile}
       onClick={() => {
         navigate(`${routes.fund}/${fundId}`);
       }}
