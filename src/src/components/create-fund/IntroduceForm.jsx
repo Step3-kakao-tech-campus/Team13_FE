@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import AutoCelebSearch from "@/components/create-fund/AutoCelebSearch.jsx";
+import { PropTypes } from "prop-types";
 
 const Styled = {
   Target: styled.div`
@@ -55,6 +57,12 @@ const Styled = {
   ErrorMessage: styled.div``,
 };
 
+/**
+ * 펀딩 주최 펀딩 소개 작성 컴포넌트
+ * @param {{targetMoney: string, dueDate: string, celebId: string || number, celebName: string }} input 소개 input 상태
+ * @param setInput set 소개 input 상태
+ */
+
 function IntroduceForm({ input, setInput }) {
   const getNumber = (str) => {
     return str.replace(/\D/g, "");
@@ -100,10 +108,20 @@ function IntroduceForm({ input, setInput }) {
       </Styled.Target>
       <Styled.InputBox>
         <Styled.Label>셀럽</Styled.Label>
-        <Styled.Input type="text" value={input.celebrity.name} />
+        <AutoCelebSearch input={input} setInput={setInput} />
       </Styled.InputBox>
     </>
   );
 }
+
+IntroduceForm.propTypes = {
+  input: PropTypes.shape({
+    targetMoney: PropTypes.number,
+    dueDate: PropTypes.string,
+    celebId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    celebName: PropTypes.string,
+  }),
+  setInput: PropTypes.func.isRequired,
+};
 
 export default IntroduceForm;

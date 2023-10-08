@@ -16,6 +16,8 @@ const Styled = {
       font-size: 0.75rem;
       color: ${({ theme }) => theme.color.alertBlue};
     }
+
+    margin-bottom: 100rem;
   `,
   InputContainer: styled.article`
     margin: 2rem 0;
@@ -67,19 +69,17 @@ function CreateFundPage() {
   date.setDate(date.getDate() + 30);
 
   const [introduceInput, setIntroduceInput] = useState({
-    targetMoney: "0",
+    targetMoney: 0,
     dueDate: formatDateToYYYYMMDD(date),
-    celebrity: {
-      id: "sonny",
-      name: "손흥민",
-    },
+    celebId: "",
+    celebName: "",
   });
 
   return (
     <Styled.Container>
       <Title>펀딩 주최하기</Title>
       <Styled.InputContainer>
-        <Styled.TitleInput placeholder="펀딩 제목을 입력해 주세요" />
+        <Styled.TitleInput placeholder="펀딩 제목을 입력하세요" />
       </Styled.InputContainer>
 
       <Styled.Subtitle>썸네일</Styled.Subtitle>
@@ -88,8 +88,10 @@ function CreateFundPage() {
       </div>
       <ThumbnailBox file={thumbnailFile} setFile={setThumbnailFile} />
 
-      <Styled.Subtitle>소개</Styled.Subtitle>
-      <IntroduceForm input={introduceInput} setInput={setIntroduceInput} />
+      <Styled.Subtitle>펀딩 소개</Styled.Subtitle>
+      <Styled.InputContainer>
+        <IntroduceForm input={introduceInput} setInput={setIntroduceInput} />
+      </Styled.InputContainer>
     </Styled.Container>
   );
 }
