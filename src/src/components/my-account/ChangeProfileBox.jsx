@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { PropTypes } from "prop-types";
 
 import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
@@ -72,16 +72,11 @@ const Styled = {
  */
 
 function ChangeProfileBox({ loadedUrl, imageFile, setImageFile }) {
-  const [imageUrl, setImageUrl] = useState("");
-
-  const handleFileChange = (e) => {
-    setImageFile(e.target.files[0]);
-  };
-
-  const handleDeleteButtonClick = () => {
-    setImageFile(null);
-    setImageUrl("");
-  };
+  const { imageUrl, setImageUrl, handleFileChange, handleFileDelete } =
+    useSetImageFileToUrl({
+      file: imageFile,
+      setFile: setImageFile,
+    });
 
   useEffect(() => {
     const loadProfile = async () => {
@@ -96,19 +91,12 @@ function ChangeProfileBox({ loadedUrl, imageFile, setImageFile }) {
     loadProfile();
   }, [loadedUrl, setImageFile]);
 
-  useSetImageFileToUrl({
-    file: imageFile,
-    callback: (e) => {
-      setImageUrl(e);
-    },
-  });
-
   return (
     <Styled.Container>
       {imageUrl ? (
         <Styled.ImageBox>
           <Styled.Image src={imageUrl} />
-          <button className="delete-button" onClick={handleDeleteButtonClick}>
+          <button className="delete-button" onClick={handleFileDelete}>
             <CloseIcon />
           </button>
         </Styled.ImageBox>
