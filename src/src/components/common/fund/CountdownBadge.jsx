@@ -30,17 +30,20 @@ const Styled = {
  */
 
 function CountdownBadge({ target }) {
-  const targetDate = new Date(target).getTime();
-
-  const [countdown, setCountdown] = useState(targetDate - new Date().getTime());
+  const targetDateTime = new Date(target).getTime();
+  const [countdown, setCountdown] = useState(
+    targetDateTime - new Date().getTime(),
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCountdown(targetDate - new Date().getTime());
+      setCountdown(targetDateTime - new Date().getTime());
     }, 1000);
 
+    if (countdown / 1000 <= 0) return () => clearInterval(interval);
+
     return () => clearInterval(interval);
-  }, [targetDate]);
+  }, [targetDateTime]);
 
   const getReturnValues = (time) => {
     const days = Math.floor(time / (1000 * 60 * 60 * 24));
@@ -48,10 +51,10 @@ function CountdownBadge({ target }) {
     const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((time % (1000 * 60)) / 1000);
 
-    if (seconds <= 0) return "마감됨";
-    if (minutes <= 0) return `${seconds}초 남음`;
-    if (hours <= 0) return `${minutes}분 남음`;
-    if (days <= 0) return `${hours}시간 남음`;
+    if (time / 1000 <= 0) return "마감됨";
+    if (time / (1000 * 60) <= 1) return `${seconds}초 남음`;
+    if (time / (1000 * 60 * 60) <= 1) return `${minutes}분 남음`;
+    if (time / (1000 * 60 * 60 * 24) <= 1) return `${hours}시간 남음`;
     return `${days}일 남음`;
   };
 
