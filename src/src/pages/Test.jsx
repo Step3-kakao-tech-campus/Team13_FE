@@ -79,9 +79,11 @@ function Test() {
         onClick={() => setIsHeartClicked((prev) => !prev)}
       />
 
-      <CountdownBadge target={"2023-10-04 23:16:00"} />
-      <CountdownBadge target={"2023-10-05 00:16:00"} />
-      <CountdownBadge target={"2023-10-05 23:16:00"} />
+      <CountdownBadge target={"2023-10-08 17:53:00"} />
+      <CountdownBadge target={"2023-10-08 18:00:00"} />
+      <CountdownBadge target={"2023-10-08 18:30:00"} />
+      <CountdownBadge target={"2023-10-09 00:16:00"} />
+      <CountdownBadge target={"2023-11-09 23:16:00"} />
       <CountdownBadge target={"2024-11-05 23:16:00"} />
 
       <SortButtons sortTypeArray={sortTypeArray} />
