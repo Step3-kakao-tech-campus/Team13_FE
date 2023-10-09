@@ -6,7 +6,7 @@ const Styled = {
   Container: styled.div`
     width: 100%;
     max-width: 22rem;
-    margin: 0.5rem 0;
+    margin: 0;
   `,
   Input: styled.input`
     width: 100%;
