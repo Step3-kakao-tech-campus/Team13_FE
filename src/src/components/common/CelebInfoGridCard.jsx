@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Celeb from "@/assets/celebinfo-card/Celeb.jsx";
+// import Celeb from "@/assets/celebinfo-card/Celeb.jsx";
 import InProgress from "@/assets/icon/InProgressIcon.jsx";
 import Money from "@/assets/icon/MoneyIcon.jsx";
 import User from "@/assets/icon/UserIcon.jsx";
@@ -53,7 +53,7 @@ function CelebInfoGridCard({
   return (
     <>
       <Styled.Container>
-        <Celeb />
+        {/* <Celeb /> */}
         <Styled.TextContainer>
           <Styled.Text main className="name">
             <span>{name}</span>

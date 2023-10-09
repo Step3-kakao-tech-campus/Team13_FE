@@ -90,6 +90,10 @@ function Test() {
         TERITARY
       </Button>
 
+      <Button style={{ marginLeft: "1rem" }} isHoverStyle={BUTTON_TYPE.PRIMARY}>
+        팔로우
+      </Button>
+
       <GridTemplate>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
