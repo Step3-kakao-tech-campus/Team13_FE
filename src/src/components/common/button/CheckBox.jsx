@@ -71,7 +71,7 @@ function CheckBox({ id, ...props }) {
 }
 
 CheckBox.propTypes = {
-  id: PropTypes.string || PropTypes.number,
+  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default CheckBox;

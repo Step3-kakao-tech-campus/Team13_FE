@@ -29,6 +29,18 @@ const theme = {
   border: {
     main: "1px solid #F1F3F5",
   },
+
+  boxShadow: {
+    gridCard: "rgba(0, 0, 0, 0.08) 0 12px 20px 0",
+  },
+
+  transform: {
+    gridCard: "translateY(-8px)",
+  },
+
+  transition: {
+    gridCard: "all ease-in-out 0.25s",
+  },
 };
 
 Object.freeze(theme);

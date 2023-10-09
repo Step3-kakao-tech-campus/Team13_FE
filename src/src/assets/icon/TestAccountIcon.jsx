@@ -1,6 +1,12 @@
 import { PropTypes } from "prop-types";
 import { memo } from "react";
 
+/**
+ * 프로필 아이콘
+ * @param {number} size px 단위
+ * @param props 기타
+ */
+
 function TestAccountIcon({ size, ...props }) {
   return (
     <>

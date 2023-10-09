@@ -1,16 +1,20 @@
 import PageTitle from "@/components/common/PageTitle.jsx";
 import styled from "styled-components";
 import { GridTemplate } from "@/styles/CommonStyle.js";
-import Button from "@/components/common/Button.jsx";
+import Button from "@/components/common/button/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
-import CheckBox from "@/components/common/CheckBox.jsx";
-import Tabs from "@/components/common/Tabs.jsx";
+import CheckBox from "@/components/common/button/CheckBox.jsx";
+import Tabs from "@/components/common/button/Tabs.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
 import routes from "@/constants/routes.js";
 import Carousel from "@/components/common/Carousel.jsx";
-import FloatButton from "@/components/common/FloatButton.jsx";
-import SortButtons from "@/components/common/SortButtons.jsx";
+import FloatButton from "@/components/common/button/FloatButton.jsx";
+import SortButtons from "@/components/common/button/SortButtons.jsx";
 import CelebInfoGridCard from "@/components/common/CelebInfoGridCard.jsx";
+import CountdownBadge from "@/components/common/fund/CountdownBadge.jsx";
+import HeartButton from "@/components/common/fund/HeartButton.jsx";
+import { useState } from "react";
+import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
 
 const Styled = {
   GridExample: styled.article`
@@ -20,6 +24,9 @@ const Styled = {
 };
 
 function Test() {
+  const [isHeartClicked, setIsHeartClicked] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const sortTypeArray = [
     {
       key: "마감임박순",
@@ -60,6 +67,25 @@ function Test() {
     <>
       <PageTitle />
       <Carousel />
+
+      <Button onClick={() => setIsModalOpen(true)}>모달창</Button>
+      {isModalOpen && (
+        <BackdropModal setOpen={setIsModalOpen}>
+          <h1>안녕</h1>
+        </BackdropModal>
+      )}
+
+      <HeartButton
+        isActive={isHeartClicked}
+        onClick={() => setIsHeartClicked((prev) => !prev)}
+      />
+
+      <CountdownBadge target={"2023-10-08 17:53:00"} />
+      <CountdownBadge target={"2023-10-08 18:00:00"} />
+      <CountdownBadge target={"2023-10-08 18:30:00"} />
+      <CountdownBadge target={"2023-10-09 00:16:00"} />
+      <CountdownBadge target={"2023-11-09 23:16:00"} />
+      <CountdownBadge target={"2024-11-05 23:16:00"} />
 
       <SortButtons sortTypeArray={sortTypeArray} />
 
