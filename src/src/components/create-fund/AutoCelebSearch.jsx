@@ -35,6 +35,7 @@ const Styled = {
     position: absolute;
     bottom: -17rem;
     left: 0;
+    z-index: 10;
 
     margin: 2rem 0;
     width: 100%;

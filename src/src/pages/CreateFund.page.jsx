@@ -85,7 +85,7 @@ function CreateFundPage() {
   const handleCreateFundSubmit = () => {
     if (!title || title === "") return toast.error("펀딩 제목을 입력해 주세요");
     if (!thumbnailFile) return toast.error("썸네일 이미지를 추가해 주세요");
-    if (!settingInput.targetMoney)
+    if (!settingInput.targetMoney || !settingInput.targetMoney === "0")
       return toast.error("목표 금액을 설정해 주세요");
     if (!settingInput.dueDate) return toast.error("마감 날짜를 설정해 주세요");
     if (!settingInput.celebId || settingInput.celebId === "")
