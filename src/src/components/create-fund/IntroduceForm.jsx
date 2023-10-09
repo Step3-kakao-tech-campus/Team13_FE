@@ -77,7 +77,6 @@ function IntroduceForm({ input, setInput }) {
             className="target-money"
             value={input.targetMoney.toLocaleString()}
             onInput={(e) => {
-              console.log(input);
               setInput((prev) => {
                 return {
                   ...prev,
@@ -95,7 +94,6 @@ function IntroduceForm({ input, setInput }) {
             type="date"
             value={input.dueDate}
             onInput={(e) => {
-              console.log(input);
               setInput((prev) => {
                 return {
                   ...prev,

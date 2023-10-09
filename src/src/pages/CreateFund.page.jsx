@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
 import TextareaAutoSize from "react-textarea-autosize";
+import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 import { Title } from "@/styles/CommonStyle";
 import ThumbnailBox from "@/components/create-fund/ThumbnailBox.jsx";
@@ -8,6 +10,7 @@ import IntroduceForm from "@/components/create-fund/IntroduceForm.jsx";
 import formatDateToYYYYMMDD from "@/utils/formateDateToYYYYMMDD.js";
 import TextEditor from "@/components/common/TextEditor.jsx";
 import Button from "@/components/common/button/Button.jsx";
+import routes from "@/constants/routes.js";
 
 const Styled = {
   Container: styled.section`
@@ -18,8 +21,6 @@ const Styled = {
       font-size: 0.75rem;
       color: ${({ theme }) => theme.color.alertBlue};
     }
-
-    margin-bottom: 100rem;
   `,
   InputContainer: styled.article`
     margin: 2rem 0;
@@ -65,6 +66,8 @@ const Styled = {
 };
 
 function CreateFundPage() {
+  const navigate = useNavigate();
+  const [title, setTitle] = useState("");
   const [thumbnailFile, setThumbnailFile] = useState(null);
 
   const date = new Date();
@@ -80,16 +83,38 @@ function CreateFundPage() {
   const [introductionText, setIntroductionText] = useState("");
 
   const handleCreateFundSubmit = () => {
+    if (!title || title === "") return toast.error("펀딩 제목을 입력해 주세요");
+    if (!thumbnailFile) return toast.error("썸네일 이미지를 추가해 주세요");
+    if (!settingInput.targetMoney)
+      return toast.error("목표 금액을 설정해 주세요");
+    if (!settingInput.dueDate) return toast.error("마감 날짜를 설정해 주세요");
+    if (!settingInput.celebId || settingInput.celebId === "")
+      return toast.error("셀럽을 선택해 주세요");
+    if (!introductionText || introductionText === "")
+      return toast.error("소개글을 작성해 주세요");
+
     console.log(thumbnailFile);
     console.log(settingInput);
     console.log(introductionText);
+    // console.log 대신 api 통신
+
+    toast.success("성공적으로 펀딩을 주최했습니다!");
+    const goHome = setTimeout(() => {
+      navigate(routes.fund);
+    }, 2000);
+    return () => clearTimeout(goHome);
   };
 
   return (
     <Styled.Container>
+      <Toaster />
       <Title>펀딩 주최하기</Title>
       <Styled.InputContainer>
-        <Styled.TitleInput placeholder="펀딩 제목을 입력하세요" />
+        <Styled.TitleInput
+          placeholder="펀딩 제목을 입력하세요"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
       </Styled.InputContainer>
 
       <Styled.Subtitle>썸네일</Styled.Subtitle>
