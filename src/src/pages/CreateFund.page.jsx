@@ -106,14 +106,13 @@ function CreateFundPage() {
       <Styled.Subtitle>펀딩 소개</Styled.Subtitle>
       <TextEditor
         setText={setIntroductionText}
-        style={{ height: "calc(100vh - 15rem)" }}
+        style={{ height: "calc(100vh - 20rem)" }}
       />
 
       <Button
         onClick={handleCreateFundSubmit}
         style={{
           padding: "0.75rem",
-          marginTop: "4rem",
           width: "100%",
         }}
       >

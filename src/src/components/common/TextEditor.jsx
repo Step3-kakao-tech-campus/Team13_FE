@@ -4,8 +4,27 @@ import { PropTypes } from "prop-types";
 import ImageResize from "quill-image-resize-module-react/src/ImageResize.js";
 import "react-quill/dist/quill.snow.css";
 import "@/styles/quill.custom.css";
+import styled from "styled-components";
 
 Quill.register("modules/imageResize", ImageResize);
+
+const Styled = {
+  Container: styled.div`
+    margin-bottom: calc(42px + 1.5rem);
+
+    @media screen and (max-width: 633px) {
+      margin-bottom: calc(66px + 1.5rem);
+    }
+
+    @media screen and (max-width: 392px) {
+      margin-bottom: calc(90px + 1.5rem);
+    }
+
+    @media screen and (max-width: 323px) {
+      margin-bottom: calc(114px + 1.5rem);
+    }
+  `,
+};
 
 /**
  * 텍스트 에디터 컴포넌트
@@ -34,13 +53,15 @@ function TextEditor({ setText, ...props }) {
   };
 
   return (
-    <ReactQuill
-      ref={quillRef}
-      theme={"snow"}
-      modules={modules}
-      onChange={setText}
-      {...props}
-    />
+    <Styled.Container>
+      <ReactQuill
+        ref={quillRef}
+        theme={"snow"}
+        modules={modules}
+        onChange={setText}
+        {...props}
+      />
+    </Styled.Container>
   );
 }
 
