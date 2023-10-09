@@ -9,6 +9,11 @@ const SIGN_UP = {
   nickname: "",
 };
 
+const EMAIL = {
+  email: "",
+};
+
 Object.freeze(SIGN_IN);
 Object.freeze(SIGN_UP);
-export default { SIGN_IN, SIGN_UP };
+Object.freeze(EMAIL);
+export default { SIGN_IN, SIGN_UP, EMAIL };
