@@ -10,6 +10,7 @@ import routes from "@/constants/routes.js";
 import Carousel from "@/components/common/Carousel.jsx";
 import FloatButton from "@/components/common/button/FloatButton.jsx";
 import SortButtons from "@/components/common/button/SortButtons.jsx";
+import CelebInfoGridCard from "@/components/common/CelebInfoGridCard.jsx";
 import CountdownBadge from "@/components/common/fund/CountdownBadge.jsx";
 import HeartButton from "@/components/common/fund/HeartButton.jsx";
 import { useState } from "react";
@@ -115,6 +116,10 @@ function Test() {
         TERITARY
       </Button>
 
+      <Button style={{ marginLeft: "1rem" }} isHoverStyle={BUTTON_TYPE.PRIMARY}>
+        팔로우
+      </Button>
+
       <GridTemplate>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
@@ -125,6 +130,7 @@ function Test() {
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
+        <CelebInfoGridCard>d</CelebInfoGridCard>
       </GridTemplate>
     </>
   );

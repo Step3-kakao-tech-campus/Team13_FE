@@ -41,7 +41,6 @@ const Styled = {
  * @param {string} uri 검색 uri [routes.fund, routes.celebrity]
  * @param {any} props 기타
  */
-
 function SearchBar({ placeholder, uri, ...props }) {
   const inputRef = useRef();
   const navigate = useNavigate();
