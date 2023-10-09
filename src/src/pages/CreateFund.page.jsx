@@ -6,6 +6,8 @@ import { Title } from "@/styles/CommonStyle";
 import ThumbnailBox from "@/components/create-fund/ThumbnailBox.jsx";
 import IntroduceForm from "@/components/create-fund/IntroduceForm.jsx";
 import formatDateToYYYYMMDD from "@/utils/formateDateToYYYYMMDD.js";
+import TextEditor from "@/components/common/TextEditor.jsx";
+import Button from "@/components/common/button/Button.jsx";
 
 const Styled = {
   Container: styled.section`
@@ -68,12 +70,20 @@ function CreateFundPage() {
   const date = new Date();
   date.setDate(date.getDate() + 30);
 
-  const [introduceInput, setIntroduceInput] = useState({
+  const [settingInput, setSettingInput] = useState({
     targetMoney: 0,
     dueDate: formatDateToYYYYMMDD(date),
     celebId: "",
     celebName: "",
   });
+
+  const [introductionText, setIntroductionText] = useState("");
+
+  const handleCreateFundSubmit = () => {
+    console.log(thumbnailFile);
+    console.log(settingInput);
+    console.log(introductionText);
+  };
 
   return (
     <Styled.Container>
@@ -90,8 +100,25 @@ function CreateFundPage() {
 
       <Styled.Subtitle>펀딩 설정</Styled.Subtitle>
       <Styled.InputContainer>
-        <IntroduceForm input={introduceInput} setInput={setIntroduceInput} />
+        <IntroduceForm input={settingInput} setInput={setSettingInput} />
       </Styled.InputContainer>
+
+      <Styled.Subtitle>펀딩 소개</Styled.Subtitle>
+      <TextEditor
+        setText={setIntroductionText}
+        style={{ height: "calc(100vh - 15rem)" }}
+      />
+
+      <Button
+        onClick={handleCreateFundSubmit}
+        style={{
+          padding: "0.75rem",
+          marginTop: "4rem",
+          width: "100%",
+        }}
+      >
+        펀딩 주최하기
+      </Button>
     </Styled.Container>
   );
 }
