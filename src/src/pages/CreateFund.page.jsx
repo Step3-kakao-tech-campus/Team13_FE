@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import TextareaAutoSize from "react-textarea-autosize";
 import { useNavigate } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 import { Title } from "@/styles/CommonStyle";
 import ThumbnailBox from "@/components/create-fund/ThumbnailBox.jsx";
@@ -99,15 +99,11 @@ function CreateFundPage() {
     // console.log 대신 api 통신
 
     toast.success("성공적으로 펀딩을 주최했습니다!");
-    const goHome = setTimeout(() => {
-      navigate(routes.fund);
-    }, 2000);
-    return () => clearTimeout(goHome);
+    navigate(routes.fund);
   };
 
   return (
     <Styled.Container>
-      <Toaster />
       <Title>펀딩 주최하기</Title>
       <Styled.InputContainer>
         <Styled.TitleInput
