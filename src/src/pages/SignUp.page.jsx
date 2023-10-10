@@ -5,7 +5,6 @@ import styled from "styled-components";
 import Form from "@/components/common/form/Form.jsx";
 import Button from "@/components/common/button/Button.jsx";
 
-import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import FORM_INFO from "@/constants/FORM_INFO.js";
 import CheckBox from "@/components/common/button/CheckBox.jsx";
 import FORM_DEFAULT from "@/constants/FORM_DEFAULT.js";
@@ -65,21 +64,7 @@ function SignUpPage() {
       </Button>
 
       <Styled.SignUpTitle>이메일 간편가입</Styled.SignUpTitle>
-      <div className="email-check">
-        <Form
-          onSubmit={(data) => console.log(data)}
-          onError={(err) => console.log(err)}
-          inputInformations={FORM_INFO.EMAIL}
-          defaultValues={FORM_DEFAULT.EMAIL}
-        />
-        <Button
-          styleType={BUTTON_TYPE.SECONDARY}
-          isHoverStyle={false}
-          style={{ width: "5.6rem" }}
-        >
-          중복확인
-        </Button>
-      </div>
+
       <Form
         onSubmit={(data) => console.log(data)}
         onError={(err) => console.log(err)}
@@ -90,7 +75,6 @@ function SignUpPage() {
       <Styled.SignUpAgree>
         <div className="signUp-check">
           <CheckBox id={"signUp-agree"} />
-          <label htmlFor="signUp-agree"> 전체 약관 동의</label>
         </div>
         <p>
           자세한약관은 준비중입니다.자세한약관은 준비중입니다.자세한약관은
@@ -99,6 +83,7 @@ function SignUpPage() {
       </Styled.SignUpAgree>
 
       <Button
+        type="submit"
         onClick={onSignUpSubmit}
         style={{
           width: "100%",
