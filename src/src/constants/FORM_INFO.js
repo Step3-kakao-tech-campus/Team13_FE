@@ -28,6 +28,74 @@ const SIGN_IN = [
   },
 ];
 
+const SIGN_UP = [
+  {
+    id: "email",
+    label: "이메일",
+    type: "text",
+    placeholder: "이메일 계정",
+    validation: {
+      required: "이메일을 입력해 주세요",
+      pattern: {
+        value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+        message: "이메일 형식을 작성해 주세요",
+      },
+      validate: {
+        isEmailDuplicate: async (value) => {
+          if (value.length <= 2) {
+            return;
+          }
+          // 실제 API 연동 시 수정될 부분(현재 테스트용)
+          const isEmailDuplicated = async () => {
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+            return Math.random() < 0.5;
+          };
+          try {
+            const isDuplicate = await isEmailDuplicated(value);
+            if (isDuplicate) {
+              console.log("중복된 이메일");
+              return "중복된 이메일입니다";
+            }
+          } catch (e) {
+            console.error("이메일 중복 확인 중 오류발생:", e);
+          }
+        },
+      },
+    },
+  },
+  {
+    id: "nickname",
+    label: "닉네임",
+    type: "text",
+    placeholder: "닉네임 입력(특수문자 제외, 6글자 이내)",
+    validation: {
+      required: "닉네임을 입력해주세요",
+      pattern: {
+        value: /^[ㄱ-ㅎ가-힣a-zA-Z0-9]+$/,
+        message: "특수문자를 제외하고 입력해주세요",
+      },
+      maxLength: { value: 6, message: "6글자 이내로 입력해주세요!" },
+    },
+  },
+  {
+    id: "password",
+    label: "비밀번호",
+    type: "password",
+    placeholder: "비밀번호 입력",
+    validation: {
+      required: "비밀번호는 필수입력입니다",
+      pattern: {
+        value:
+          /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+=\-{}[\]|\\:;"'<>,.?/~`])[\S]{8,20}$/,
+        message: "영문, 숫자, 특수문자 모두 포함해주세요!",
+      },
+      minLength: { value: 8, message: "비밀번호는 8글자 이상입니다" },
+      maxLength: { value: 20, message: "비밀번호는 20글자 이내입니다" },
+    },
+    requireMsg: "8~20자 공백 없이 영문/숫자/특수문자 포함",
+  },
+];
+
 const MY_ACCOUNT = [
   {
     id: "nickname",
@@ -95,4 +163,6 @@ const MY_ACCOUNT = [
 
 Object.freeze(SIGN_IN);
 Object.freeze(MY_ACCOUNT);
-export default { SIGN_IN, MY_ACCOUNT };
+Object.freeze(SIGN_UP);
+
+export default { SIGN_IN, SIGN_UP, MY_ACCOUNT };
