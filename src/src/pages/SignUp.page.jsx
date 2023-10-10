@@ -70,29 +70,29 @@ function SignUpPage() {
         onError={(err) => console.log(err)}
         inputInformations={FORM_INFO.SIGN_UP}
         defaultValues={FORM_DEFAULT.SIGN_UP}
-      />
-
-      <Styled.SignUpAgree>
-        <div className="signUp-check">
-          <CheckBox id={"signUp-agree"} />
-        </div>
-        <p>
-          자세한약관은 준비중입니다.자세한약관은 준비중입니다.자세한약관은
-          준비중입니다.자세한약관은 준비중입니다.자세한약관은 준비중입니다.
-        </p>
-      </Styled.SignUpAgree>
-
-      <Button
-        type="submit"
-        onClick={onSignUpSubmit}
-        style={{
-          width: "100%",
-          padding: "1rem",
-          margin: "0.375rem 0",
-        }}
       >
-        전송
-      </Button>
+        <Styled.SignUpAgree>
+          <div className="signUp-check">
+            <CheckBox id={"signUp-agree"} />
+          </div>
+          <p>
+            자세한약관은 준비중입니다.자세한약관은 준비중입니다.자세한약관은
+            준비중입니다.자세한약관은 준비중입니다.자세한약관은 준비중입니다.
+          </p>
+        </Styled.SignUpAgree>
+
+        <Button
+          type="submit"
+          onClick={onSignUpSubmit}
+          style={{
+            width: "100%",
+            padding: "1rem",
+            margin: "0.375rem 0",
+          }}
+        >
+          전송
+        </Button>
+      </Form>
     </Styled.SignUpContainer>
   );
 }
