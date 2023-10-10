@@ -3,6 +3,12 @@ const SIGN_IN = {
   password: "",
 };
 
+const SIGN_UP = {
+  email: "",
+  password: "",
+  nickname: "",
+};
+
 const MY_ACCOUNT = {
   nickname: "",
   phoneNumber: "",
@@ -11,5 +17,6 @@ const MY_ACCOUNT = {
 };
 
 Object.freeze(SIGN_IN);
+Object.freeze(SIGN_UP);
 Object.freeze(MY_ACCOUNT);
-export default { SIGN_IN, MY_ACCOUNT };
+export default { SIGN_IN, SIGN_UP, MY_ACCOUNT };
