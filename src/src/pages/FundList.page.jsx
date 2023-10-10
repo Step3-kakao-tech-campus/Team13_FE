@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import MainLayout from "@/components/common/template/MainLayout.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
@@ -9,6 +9,7 @@ import FundInfoGridCard from "@/components/common/fund/FundInfoGridCard.jsx";
 import { GridTemplate, Title } from "@/styles/CommonStyle.js";
 import routes from "@/constants/routes.js";
 import PageTitle from "@/components/common/PageTitle.jsx";
+import FloatButton from "@/components/common/button/FloatButton.jsx";
 
 const Styled = {
   Title: styled(Title)`
@@ -28,6 +29,7 @@ const Styled = {
 
 function FundListPage() {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const [keyword, setKeyword] = useState(searchParams.get("keyword"));
 
@@ -98,6 +100,14 @@ function FundListPage() {
             />
           ))}
         </GridTemplate>
+
+        <FloatButton
+          onClick={() => {
+            navigate(routes.createFund);
+          }}
+        >
+          펀딩 주최
+        </FloatButton>
       </MainLayout>
     </>
   );
