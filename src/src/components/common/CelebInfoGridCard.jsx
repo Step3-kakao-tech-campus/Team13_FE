@@ -4,7 +4,7 @@ import styled from "styled-components";
 import InProgress from "@/assets/icon/InProgressIcon.jsx";
 import Money from "@/assets/icon/MoneyIcon.jsx";
 import User from "@/assets/icon/UserIcon.jsx";
-import Button from "@/components/common/Button.jsx";
+import Button from "@/components/common/button/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 
 const Styled = {
