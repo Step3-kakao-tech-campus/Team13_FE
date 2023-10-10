@@ -30,6 +30,40 @@ const SIGN_IN = [
 
 const SIGN_UP = [
   {
+    id: "email",
+    label: "이메일",
+    type: "text",
+    placeholder: "이메일 계정",
+    validation: {
+      required: "이메일을 입력해 주세요",
+      pattern: {
+        value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+        message: "이메일 형식을 작성해 주세요",
+      },
+      validate: {
+        isEmailDuplicate: async (value) => {
+          if (value.length <= 2) {
+            return;
+          }
+          // 실제 API 연동 시 수정될 부분(현재 테스트용)
+          const isEmailDuplicated = async () => {
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+            return Math.random() < 0.5;
+          };
+          try {
+            const isDuplicate = await isEmailDuplicated(value);
+            if (isDuplicate) {
+              console.log("중복된 이메일");
+              return "중복된 이메일입니다";
+            }
+          } catch (e) {
+            console.error("이메일 중복 확인 중 오류발생:", e);
+          }
+        },
+      },
+    },
+  },
+  {
     id: "nickname",
     label: "닉네임",
     type: "text",
@@ -58,24 +92,10 @@ const SIGN_UP = [
       minLength: { value: 8, message: "비밀번호는 8글자 이상입니다" },
       maxLength: { value: 20, message: "비밀번호는 20글자 이내입니다" },
     },
-  },
-  {
-    id: "password-confirm",
-    type: "password",
-    placeholder: "비밀번호 확인",
-    validation: {
-      required: "비밀번호 확인은 필수입력입니다",
-      onChange: (e, getValues) => {
-        const password = getValues("password");
-        const confirmPassword = e.target.value;
-        if (password !== confirmPassword) {
-          return "비밀번호가 일치하지 않습니다!";
-        }
-      },
-    },
-    requireMsg: "8~20자 공백 없이 영문, 숫자, 특수문자 모두 포함",
+    requireMsg: "8~20자 공백 없이 영문/숫자/특수문자 포함",
   },
 ];
+
 const MY_ACCOUNT = [
   {
     id: "nickname",
@@ -141,27 +161,8 @@ const MY_ACCOUNT = [
   },
 ];
 
-const EMAIL = [
-  {
-    id: "email",
-    label: "이메일",
-    type: "text",
-    placeholder: "이메일 계정",
-    validation: {
-      required: "이메일을 입력해 주세요",
-      pattern: {
-        value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-        message: "이메일 형식을 작성해 주세요",
-      },
-      validate: {
-        isEmailDuplicate: "api오면 체크해서 결정해드림",
-      },
-    },
-  },
-];
-
 Object.freeze(SIGN_IN);
 Object.freeze(MY_ACCOUNT);
 Object.freeze(SIGN_UP);
-Object.freeze(EMAIL);
-export default { SIGN_IN, MY_ACCOUNT, SIGN_UP, EMAIL };
+
+export default { SIGN_IN, SIGN_UP, MY_ACCOUNT };
