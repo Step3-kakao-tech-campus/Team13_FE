@@ -1,11 +1,12 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import MenuIcon from "@/assets/icon/MenuIcon.jsx";
 import MobileTabList from "@/components/common/nav-bar/moblie/MobileTabList.jsx";
 import MobileSideBar from "@/components/common/nav-bar/moblie/MobileSideBar.jsx";
 import routes from "@/constants/routes.js";
+import useIsInListPages from "@/hooks/useIsInListPages.js";
 
 const Styled = {
   Container: styled.nav`
@@ -42,8 +43,8 @@ const Styled = {
 
 function MobileNavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
   const navigate = useNavigate();
+  const isInListPages = useIsInListPages();
 
   return (
     <>
@@ -62,9 +63,7 @@ function MobileNavBar() {
           <div style={{ width: "2rem", height: "2rem" }}></div>
         </Styled.Head>
 
-        {[routes.home, routes.fund, routes.celebrity].includes(
-          location.pathname,
-        ) && <MobileTabList />}
+        {isInListPages && <MobileTabList />}
       </Styled.Container>
 
       {isMenuOpen && <MobileSideBar setIsSideBarOpen={setIsMenuOpen} />}

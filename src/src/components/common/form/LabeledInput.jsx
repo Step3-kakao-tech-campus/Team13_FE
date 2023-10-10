@@ -1,12 +1,11 @@
 import { useFormContext } from "react-hook-form";
 import { PropTypes } from "prop-types";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Styled = {
   Container: styled.div`
     width: 100%;
-    max-width: 22rem;
-    margin: 0;
+    padding: 0.25rem 0;
   `,
   Input: styled.input`
     width: 100%;
@@ -15,6 +14,12 @@ const Styled = {
     margin: 0.5rem 0 0;
     border: 1px solid ${({ theme }) => theme.color.inactive};
     border-radius: 4px;
+
+    ${({ $isMessage }) =>
+      !$isMessage &&
+      css`
+        margin-bottom: 1rem;
+      `}
 
     &::placeholder {
       color: ${({ theme }) => theme.color.inactive};
@@ -25,11 +30,10 @@ const Styled = {
       text-overflow: ellipsis;
     }
   `,
-
   Message: styled.div`
-    height: 0.8rem;
+    height: 0.75rem;
     text-align: right;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     font-weight: 400;
     margin-top: 4px;
 
@@ -74,10 +78,12 @@ function LabeledInput({
       <Styled.Input
         id={id}
         type={type}
+        autoComplete={type === "password" ? "off" : "on"}
         placeholder={placeholder}
         className={errorMsg && "error"}
         {...register(id, validation)}
         {...props}
+        $isMessage={!getValues(id) || errorMsg}
       />
       {errorMsg ? (
         <Styled.Message className="error-msg">{errorMsg}</Styled.Message>

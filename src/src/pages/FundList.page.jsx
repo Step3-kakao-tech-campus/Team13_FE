@@ -8,6 +8,7 @@ import SortButtons from "@/components/common/button/SortButtons.jsx";
 import FundInfoGridCard from "@/components/common/fund/FundInfoGridCard.jsx";
 import { GridTemplate, Title } from "@/styles/CommonStyle.js";
 import routes from "@/constants/routes.js";
+import PageTitle from "@/components/common/PageTitle.jsx";
 
 const Styled = {
   Title: styled(Title)`
@@ -53,43 +54,52 @@ function FundListPage() {
   };
 
   return (
-    <MainLayout>
-      <Styled.Title style={{ paddingBottom: "2rem" }}>펀딩</Styled.Title>
-      <SearchBar uri={routes.fund} style={{ marginBottom: "2rem" }} />
+    <>
+      <PageTitle
+        title={
+          searchParams?.get("keyword")
+            ? `${searchParams?.get("keyword")} 펀딩`
+            : "펀딩"
+        }
+      />
+      <MainLayout>
+        <Styled.Title style={{ paddingBottom: "2rem" }}>펀딩</Styled.Title>
+        <SearchBar uri={routes.fund} style={{ marginBottom: "2rem" }} />
 
-      <Styled.TopBar>
-        <Styled.Title>
-          {keyword ? `${keyword} 검색 결과` : "모든 펀딩"}
-        </Styled.Title>
+        <Styled.TopBar>
+          <Styled.Title>
+            {keyword ? `${keyword} 검색 결과` : "모든 펀딩"}
+          </Styled.Title>
 
-        <SortButtons
-          sortTypeArray={[
-            { key: "마감임박순", func: () => {} },
-            { key: "최근등록순", func: () => {} },
-          ]}
-        />
-      </Styled.TopBar>
-
-      <GridTemplate>
-        {new Array(10).fill(sonnyFundInfo).map((info, index) => (
-          <FundInfoGridCard
-            key={index}
-            fundId={info.fundId}
-            fundTitle={info.fundTitle}
-            thumbnailUrl={info.thumbnailUrl}
-            targetDate={info.targetDate}
-            targetMoney={info.targetMoney}
-            currentMoney={info.currentMoney}
-            celebrityId={info.celebrityId}
-            celebrityProfileUrl={info.celebrityProfileUrl}
-            celebrityName={info.celebrityName}
-            organizerId={info.organizerId}
-            organizerName={info.organizerName}
-            isInUserWishList={info.isInUserWishList}
+          <SortButtons
+            sortTypeArray={[
+              { key: "마감임박순", func: () => {} },
+              { key: "최근등록순", func: () => {} },
+            ]}
           />
-        ))}
-      </GridTemplate>
-    </MainLayout>
+        </Styled.TopBar>
+
+        <GridTemplate>
+          {new Array(10).fill(sonnyFundInfo).map((info, index) => (
+            <FundInfoGridCard
+              key={index}
+              fundId={info.fundId}
+              fundTitle={info.fundTitle}
+              thumbnailUrl={info.thumbnailUrl}
+              targetDate={info.targetDate}
+              targetMoney={info.targetMoney}
+              currentMoney={info.currentMoney}
+              celebrityId={info.celebrityId}
+              celebrityProfileUrl={info.celebrityProfileUrl}
+              celebrityName={info.celebrityName}
+              organizerId={info.organizerId}
+              organizerName={info.organizerName}
+              isInUserWishList={info.isInUserWishList}
+            />
+          ))}
+        </GridTemplate>
+      </MainLayout>
+    </>
   );
 }
 
