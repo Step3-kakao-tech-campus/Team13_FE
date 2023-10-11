@@ -4,7 +4,7 @@ function MenuIcon() {
       <img
         width="28"
         height="28"
-        src="https://img.icons8.com/material-rounded/32/menu--v1.png"
+        src="https://img.icons8.com/material-rounded/192/menu--v1.png"
         alt="menu--v1"
       />
       <div id="license" style={{ display: "none" }}>

@@ -8,6 +8,7 @@ const Styled = {
   Container: styled.nav`
     position: fixed;
     left: 0;
+    z-index: 100;
 
     padding: 0 calc((100vw - 70rem) / 2 + 4rem);
 
@@ -60,6 +61,10 @@ const Styled = {
     background-color: ${({ theme }) => theme.color.white};
   `,
 };
+
+/**
+ * PC 나비게이션 바 컴포넌트
+ */
 
 function PCNavBar() {
   const navigate = useNavigate();

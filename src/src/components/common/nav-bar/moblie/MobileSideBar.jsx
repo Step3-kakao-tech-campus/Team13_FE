@@ -1,15 +1,28 @@
 import { useRef, memo } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { PropTypes } from "prop-types";
 
-import Portal from "@/components/common/Portal.jsx";
+import Portal from "@/components/common/modal/Portal.jsx";
 import OriginBackdrop from "@/styles/Backdrop.js";
-import TestAccountIcon from "@/assets/TestAccountIcon.jsx";
+import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
 import routes from "@/constants/routes.js";
 import useBodyStyleFixed from "@/hooks/useBodyStyleFixed.js";
 import useOutsideClick from "@/hooks/useOutsideClick.js";
 import PAGE_LIST from "@/constants/PAGE_LIST.js";
+
+const Keyframes = {
+  appear: keyframes`
+    0% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  `,
+};
 
 const Styled = {
   Backdrop: styled(OriginBackdrop)`
@@ -20,6 +33,7 @@ const Styled = {
     width: 250px;
     height: 100vh;
     background-color: ${({ theme }) => theme.color.white};
+    animation: ${Keyframes.appear} 0.5s 1;
   `,
   Profile: styled.article`
     padding: 2rem;
@@ -58,6 +72,13 @@ const Styled = {
     color: ${({ theme }) => theme.color.highlight};
   `,
 };
+
+/**
+ * 모바일 상단바 메뉴 버튼을 누르면 나오는 사이드바 컴포넌틑
+ * @param {func} setIsSideBarOpen
+ * @returns {JSX.Element}
+ * @constructor
+ */
 
 function MobileSideBar({ setIsSideBarOpen }) {
   const sideBarRef = useRef();
