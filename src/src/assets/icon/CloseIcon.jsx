@@ -1,9 +1,11 @@
-function CloseIcon() {
+import { PropTypes } from "prop-types";
+
+function CloseIcon({ size }) {
   return (
     <>
       <img
-        width="20"
-        height="20"
+        width={size}
+        height={size}
         src="https://img.icons8.com/material-rounded/192/646464/delete-sign.png"
         alt="delete-sign"
       />
@@ -14,5 +16,13 @@ function CloseIcon() {
     </>
   );
 }
+
+CloseIcon.propTypes = {
+  size: PropTypes.number,
+};
+
+CloseIcon.defaultProps = {
+  size: 20,
+};
 
 export default CloseIcon;

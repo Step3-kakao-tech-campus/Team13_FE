@@ -8,6 +8,8 @@ import LoginPage from "@/pages/Login.page.jsx";
 import MyAccountPage from "@/pages/MyAccount.page.jsx";
 import CreateFundPage from "@/pages/CreateFund.page.jsx";
 import FundDetailPage from "@/pages/FundDetail.page.jsx";
+import SignUpPage from "./pages/SignUp.page";
+
 
 const router = createBrowserRouter([
   {
@@ -54,7 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: routes.signUp,
-        element: <Test />,
+        element: <SignUpPage />,
       },
       {
         path: `${routes.user}/:userId`,
