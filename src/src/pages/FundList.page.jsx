@@ -5,7 +5,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import MainLayout from "@/components/common/template/MainLayout.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
 import SortButtons from "@/components/common/button/SortButtons.jsx";
-import FundInfoGridCard from "@/components/common/fund/FundInfoGridCard.jsx";
+import FundInfoGridCard from "@/components/fund/FundInfoGridCard.jsx";
 import { GridTemplate, Title } from "@/styles/CommonStyle.js";
 import routes from "@/constants/routes.js";
 import PageTitle from "@/components/common/PageTitle.jsx";
