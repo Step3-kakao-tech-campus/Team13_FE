@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
-// import Celeb from "@/assets/celebinfo-card/Celeb.jsx";
 import InProgress from "@/assets/icon/InProgressIcon.jsx";
 import Money from "@/assets/icon/MoneyIcon.jsx";
 import User from "@/assets/icon/UserIcon.jsx";
-import Button from "@/components/common/Button.jsx";
+import Button from "@/components/common/button/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 
 const Styled = {
@@ -27,7 +26,7 @@ const Styled = {
     display: flex;
     align-items: center;
     margin-bottom: 0.5rem;
-    font-size: ${({ main }) => (main ? "1.25rem" : "0.5rem")};
+    font-size: ${({ $main }) => ($main ? "1.25rem" : "0.5rem")};
     color: ${({ theme }) => theme.color.addition};
 
     .name {
@@ -41,7 +40,6 @@ const Styled = {
   `,
 };
 
-// function CelebInfoGridCard({ children, ...props }) {
 function CelebInfoGridCard({
   id,
   name,
@@ -55,11 +53,12 @@ function CelebInfoGridCard({
       <Styled.Container>
         {/* <Celeb /> */}
         <Styled.TextContainer>
-          <Styled.Text main className="name">
+          <Styled.Text $main={true} className="name">
             <span>{name}</span>
             <Button
               style={{ marginLeft: "1rem" }}
-              isHoverStyle={BUTTON_TYPE.PRIMARY}
+              styleType={BUTTON_TYPE.PRIMARY}
+              useHoverStyle={false}
             >
               팔로우
             </Button>

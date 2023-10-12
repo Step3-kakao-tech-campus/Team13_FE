@@ -3,7 +3,7 @@ import { PropTypes } from "prop-types";
 
 /**
  * head title을 변경
- * @param {string} title undefined면 title은 Fundering
+ * @param {string=} title undefined면 title은 Fundering
  */
 
 function PageTitle({ title }) {

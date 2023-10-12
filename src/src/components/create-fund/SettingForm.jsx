@@ -59,11 +59,11 @@ const Styled = {
 
 /**
  * 펀딩 주최 펀딩 소개 작성 컴포넌트
- * @param {{targetMoney: string, dueDate: string, celebId: string || number, celebName: string }} input 소개 input 상태
- * @param setInput set 소개 input 상태
+ * @param {{targetMoney: string | number, dueDate: string, celebId: string || number, celebName: string }} input 소개 input 상태
+ * @param {React.Dispatch.SetStateAction} setInput set 소개 input 상태
  */
 
-function IntroduceForm({ input, setInput }) {
+function SettingForm({ input, setInput }) {
   const getNumber = (str) => {
     return str.replace(/\D/g, "");
   };
@@ -104,6 +104,7 @@ function IntroduceForm({ input, setInput }) {
           />
         </Styled.InputBox>
       </Styled.Target>
+
       <Styled.InputBox>
         <Styled.Label>셀럽</Styled.Label>
         <AutoCelebSearch input={input} setInput={setInput} />
@@ -112,9 +113,9 @@ function IntroduceForm({ input, setInput }) {
   );
 }
 
-IntroduceForm.propTypes = {
+SettingForm.propTypes = {
   input: PropTypes.shape({
-    targetMoney: PropTypes.number,
+    targetMoney: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     dueDate: PropTypes.string,
     celebId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     celebName: PropTypes.string,
@@ -122,4 +123,4 @@ IntroduceForm.propTypes = {
   setInput: PropTypes.func.isRequired,
 };
 
-export default IntroduceForm;
+export default SettingForm;

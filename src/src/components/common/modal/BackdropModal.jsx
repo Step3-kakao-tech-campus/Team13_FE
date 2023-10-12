@@ -62,12 +62,12 @@ const Styled = {
 
 /**
  * 배경이 반투명인 반응형 모달창
- * @param {function} setOpen 모달창 열림 상태 변경하는 set 함수
+ * @param {React.Dispatch.SetStateAction} setOpen 모달창 열림 상태 변경하는 set 함수
  * @param {object} style 모달창 스타일링
- * @param children 모달창 내부 컴포넌트 및 엘리먼트
+ * @param {React.ReactNode} children 모달창 내부 컴포넌트 및 엘리먼트
  */
 
-function BackdropModal({ setOpen, style, children }) {
+function BackdropModal({ setOpen, modalStyle, children }) {
   const [isVisible, setIsVisible] = useState(true);
   const modalRef = useRef();
   useBodyStyleFixed();
@@ -84,7 +84,11 @@ function BackdropModal({ setOpen, style, children }) {
   return (
     <Portal>
       <Backdrop>
-        <Styled.Container ref={modalRef} style={style} $isVisible={isVisible}>
+        <Styled.Container
+          ref={modalRef}
+          style={modalStyle}
+          $isVisible={isVisible}
+        >
           <Styled.CloseButton onClick={closeModal}>
             <CloseIcon />
           </Styled.CloseButton>
@@ -97,12 +101,12 @@ function BackdropModal({ setOpen, style, children }) {
 
 BackdropModal.propTypes = {
   setOpen: PropTypes.func.isRequired,
-  style: PropTypes.object,
+  modalStyle: PropTypes.object,
   children: PropTypes.node,
 };
 
 BackdropModal.defaultProps = {
-  style: {},
+  modalStyle: {},
   children: "",
 };
 

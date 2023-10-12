@@ -28,7 +28,7 @@ const Styled = {
 
 /**
  * 텍스트 에디터 컴포넌트
- * @param setText set text 상태
+ * @param {React.Dispatch.SetStateAction} setText set text 상태
  * @param props 기타
  */
 

@@ -75,9 +75,7 @@ const Styled = {
 
 /**
  * 모바일 상단바 메뉴 버튼을 누르면 나오는 사이드바 컴포넌틑
- * @param {func} setIsSideBarOpen
- * @returns {JSX.Element}
- * @constructor
+ * @param {React.Dispatch.SetStateAction} setIsSideBarOpen
  */
 
 function MobileSideBar({ setIsSideBarOpen }) {

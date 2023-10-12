@@ -42,16 +42,16 @@ const Styled = {
 
 /**
  * Tabs 공통 컴포넌트
- * @param tabInfoArray title과 func 정보를 객체로 담은 정보 배열
- * @param tabStyle 기존 style과 동일
- * @param props 기타 props
+ * @param {Array<{title: string, func: function}>}tabInfoArray title과 func 정보를 객체로 담은 정보 배열
+ * @param {Object} tabStyle 기존 style과 동일
+ * @param {React.htmlAttributes} tabBtnContainerProps 기타 탭 버튼 container props
  */
 
-function Tabs({ tabInfoArray, tabStyle, ...props }) {
+function Tabs({ tabInfoArray, tabStyle, ...tabBtnContainerProps }) {
   const [selectedTab, setSelectedTab] = useState(0);
 
   return (
-    <Styled.Container {...props}>
+    <Styled.Container {...tabBtnContainerProps}>
       {tabInfoArray.map((tab, index) => (
         <Styled.Tab
           value={index}

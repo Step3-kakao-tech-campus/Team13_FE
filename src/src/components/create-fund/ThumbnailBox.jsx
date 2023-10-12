@@ -58,8 +58,8 @@ const Styled = {
 
 /**
  * 펀딩 주최 페이지의 썸네일 컴포넌트
- * @param file 이미지 파일
- * @param setFile set 이미지 파일
+ * @param {Blob} file 이미지 파일
+ * @param {React.Dispatch.SetStateAction} setFile set 이미지 파일
  */
 
 function ThumbnailBox({ file, setFile }) {

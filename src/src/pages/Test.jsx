@@ -104,19 +104,19 @@ function Test() {
 
       <Tabs tabInfoArray={tabInfoArray} />
       <Button style={{ margin: "1rem" }}>PRIMARY</Button>
-      <Button isHoverStyle={false}>PRIMARY</Button>
+      <Button useHoverStyle={false}>PRIMARY</Button>
 
       <Button styleType={BUTTON_TYPE.SECONDARY}>SECONDARY</Button>
-      <Button isHoverStyle={false} styleType={BUTTON_TYPE.SECONDARY}>
+      <Button useHoverStyle={false} styleType={BUTTON_TYPE.SECONDARY}>
         SECONDARY
       </Button>
 
       <Button styleType={BUTTON_TYPE.TERTIARY}>TERITARY</Button>
-      <Button isHoverStyle={false} styleType={BUTTON_TYPE.TERTIARY}>
+      <Button useHoverStyle={false} styleType={BUTTON_TYPE.TERTIARY}>
         TERITARY
       </Button>
 
-      <Button style={{ marginLeft: "1rem" }} isHoverStyle={BUTTON_TYPE.PRIMARY}>
+      <Button style={{ marginLeft: "1rem" }} styleType={BUTTON_TYPE.PRIMARY}>
         팔로우
       </Button>
 

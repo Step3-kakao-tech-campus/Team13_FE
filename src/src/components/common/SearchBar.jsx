@@ -39,9 +39,9 @@ const Styled = {
 /** 검색바 컴포넌트
  * @param {string} placeholder input의 placeholder
  * @param {string} uri 검색 uri [routes.fund, routes.celebrity]
- * @param {any} props 기타
+ * @param {React.htmlAttributes} htmlDivProps 기타
  */
-function SearchBar({ placeholder, uri, ...props }) {
+function SearchBar({ placeholder, uri, ...htmlDivProps }) {
   const inputRef = useRef();
   const navigate = useNavigate();
 
@@ -62,7 +62,7 @@ function SearchBar({ placeholder, uri, ...props }) {
   };
 
   return (
-    <Styled.Container {...props}>
+    <Styled.Container {...htmlDivProps}>
       <SearchIcon />
       <Styled.Input
         ref={inputRef}
@@ -71,7 +71,7 @@ function SearchBar({ placeholder, uri, ...props }) {
         onKeyPress={handleEnterKeyPress}
       />
       <Button
-        isHoverStyle={false}
+        useHoverStyle={false}
         styleType={BUTTON_TYPE.TERTIARY}
         style={{ position: "absolute", right: "1rem" }}
         onClick={() => navigateToKeyword(inputRef.current.value)}

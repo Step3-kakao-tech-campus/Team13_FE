@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 
 /**
  * 파일 관련 useState를 받아 이미지 url로 변환
- * @param file 이미지 파일 상태
- * @param setFile set 이미지 파일 상태
- * @returns {{setImageUrl: (value: (((prevState: string) => string) | string)) => void, imageUrl: string, handleFileChange: handleFileChange, handleFileDelete: handleFileDelete}}
+ * @param {Blob} file 이미지 파일 상태
+ * @param {React.Dispatch.SetStateAction} setFile set 이미지 파일 상태
+ * @returns {{setImageUrl: React.Dispatch.SetStateAction, imageUrl: string, handleFileChange: function, handleFileDelete: function}}
  */
 
 function useSetImageFileToUrl({ file, setFile }) {

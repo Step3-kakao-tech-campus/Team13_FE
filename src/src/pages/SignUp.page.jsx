@@ -58,7 +58,7 @@ function SignUpPage() {
           color: "#000000",
           fontWeight: "bold",
         }}
-        isHoverStyle={false}
+        useHoverStyle={false}
       >
         카카오로 시작하기
       </Button>

@@ -67,8 +67,8 @@ const Styled = {
 /**
  * 프로필 이미지 변경 컴포넌트
  * @param {string} loadedUrl 기존 이미지 url
- * @param imageFile 이미지 파일
- * @param setImageFile set 이미지 파일
+ * @param {Blob} imageFile 이미지 파일
+ * @param {React.Dispatch.SetStateAction} setImageFile set 이미지 파일
  */
 
 function ChangeProfileBox({ loadedUrl, imageFile, setImageFile }) {
