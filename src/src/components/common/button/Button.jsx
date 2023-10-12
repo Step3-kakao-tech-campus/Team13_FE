@@ -1,60 +1,41 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { PropTypes } from "prop-types";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
+
+const backgroundColor = {
+  PRIMARY: (theme) => theme.color.mainRed,
+  SECONDARY: (theme) => theme.color.secondaryRed,
+  TERTIARY: (theme) => theme.color.subBlack,
+};
+
+const hoverBackgroundColor = {
+  PRIMARY: (theme) => theme.color.mainRedHover,
+  SECONDARY: (theme) => theme.color.secondaryRedHover,
+  TERTIARY: (theme) => theme.color.subBlackHover,
+};
 
 const Styled = {
   Button: styled.button`
     padding: 0.5rem 1rem;
 
-    color: ${({ theme }) => theme.color.white};
+    color: ${({ $styleType, theme }) =>
+      $styleType === BUTTON_TYPE.SECONDARY
+        ? theme.color.mainRed
+        : theme.color.white};
 
+    border: ${({ $styleType, theme }) =>
+      $styleType === BUTTON_TYPE.SECONDARY &&
+      `1px solid ${theme.color.mainRed}`};
     border-radius: 0.25rem;
+
+    background-color: ${({ $styleType, theme }) =>
+      backgroundColor[$styleType](theme)};
 
     &:hover {
       transition: all ease-in-out 0.2s;
+      background-color: ${({ $useHoverStyle, $styleType, theme }) =>
+        $useHoverStyle && hoverBackgroundColor[$styleType](theme)};
     }
-
-    ${({ $isHoverStyle, $styleType, theme }) =>
-      $styleType === BUTTON_TYPE.PRIMARY &&
-      css`
-        background-color: ${theme.color.mainRed};
-
-        ${$isHoverStyle &&
-        css`
-          &:hover {
-            background-color: ${theme.color.mainRedHover};
-          }
-        `}
-      `}
-
-    ${({ $isHoverStyle, $styleType, theme }) =>
-      $styleType === BUTTON_TYPE.SECONDARY &&
-      css`
-        background-color: ${theme.color.secondaryRed};
-        border: 1px solid ${theme.color.mainRed};
-        color: ${theme.color.mainRed};
-
-        ${$isHoverStyle &&
-        css`
-          &:hover {
-            background-color: ${theme.color.secondaryRedHover};
-            color: ${theme.color.mainRed};
-          }
-        `}
-      `}
-
-    ${({ $isHoverStyle, $styleType, theme }) =>
-      $styleType === BUTTON_TYPE.TERTIARY &&
-      css`
-        background-color: ${theme.color.subBlack};
-
-        ${$isHoverStyle &&
-        css`
-          &:hover {
-            background-color: ${theme.color.subBlackHover};
-          }
-        `}
-      `}
   `,
 };
 
@@ -75,7 +56,7 @@ function Button({
   return (
     <Styled.Button
       $styleType={styleType}
-      $isHoverStyle={useHoverStyle}
+      $useHoverStyle={useHoverStyle}
       {...htmlButtonProps}
     >
       {children}
