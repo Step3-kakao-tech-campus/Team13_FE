@@ -2,49 +2,6 @@ import styled, { css } from "styled-components";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import Button from "./Button.jsx";
 
-const Styled = {
-  Button: styled.button`
-    padding: 0.5rem 1rem;
-
-    color: ${({ theme }) => theme.color.white};
-
-    border-radius: 0.25rem;
-
-    &:hover {
-      transition: all ease-in-out 0.2s;
-    }
-
-    ${({ $isHoverStyle, $styleType, theme }) =>
-      $styleType === BUTTON_TYPE.PRIMARY &&
-      css`
-        background-color: ${theme.color.mainRed};
-
-        ${$isHoverStyle &&
-        css`
-          &:hover {
-            background-color: ${theme.color.mainRedHover};
-          }
-        `}
-      `}
-
-      ${({ $isHoverStyle, $styleType, theme }) =>
-      $styleType === BUTTON_TYPE.SECONDARY &&
-      css`
-        background-color: ${theme.color.secondaryRed};
-        border: 1px solid ${theme.color.mainRed};
-        color: ${theme.color.mainRed};
-
-        ${$isHoverStyle &&
-        css`
-          &:hover {
-            background-color: ${theme.color.secondaryRedHover};
-            color: ${theme.color.mainRed};
-          }
-        `}
-      `}
-  `,
-};
-
 /**
  * 팔로우 버튼 컴포넌트
  * @param {node} children
@@ -57,19 +14,23 @@ const Styled = {
 
 function FollowButton({ children, styleType, isHoverStyle, celebId, isFollowing, ...props }) {
     
-  const handleButtonClick = () => {
+  const handleFollowClick = () => {
     // 팔로우 버튼 클릭 시 로직
-    console.log('click!')
+    console.log('셀럽을 팔로우합니다!')
+  }
+  const handleUnFollowClick = () => {
+    // 팔로우 버튼 클릭 시 로직
+    console.log('셀럽을 언팔합니다!')
   }
   return (
-        <Button 
-          styleType={styleType}
-          isHoverStyle={isHoverStyle}
-          onClick={handleButtonClick}
-          {...props}
-        >
-          {isFollowing ? "Unfollow" : "Follow"}
-        </Button>
+        // <Button 
+        //   styleType={styleType}
+        //   isHoverStyle={isHoverStyle}
+        //   onClick={handleButtonClick}
+        //   {...props}
+        // >
+        //   {isFollowing ? "팔로우" : "팔로잉"}
+        // </Button>
       );
 }
 
