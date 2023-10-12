@@ -118,8 +118,8 @@ function Test() {
       </Button>
 
 
-      <FollowButton styleType={BUTTON_TYPE.PRIMARY} isHoverStyle={true} celebId={1} isFollowing={true}>팔로우</FollowButton>
-      <FollowButton styleType={BUTTON_TYPE.SECONDARY} isHoverStyle={false} celebId={2} isFollowing={false}>팔로잉</FollowButton>
+      <FollowButton styleType={BUTTON_TYPE.PRIMARY} isHoverStyle={true} celebId={1} isFollowing={false}>팔로우</FollowButton>
+      <FollowButton styleType={BUTTON_TYPE.SECONDARY} isHoverStyle={false} celebId={2} isFollowing={true}>팔로잉</FollowButton>
 
 
 
