@@ -43,7 +43,7 @@ const Styled = {
 
 /**
  * 검색 순서 선택 버튼 컴포넌트
- * @param sortTypeArray [{ key: string || number, func: func }] 검색 순서 타입 배열
+ * @param {Array.<{ key: string | number, func: function}>} sortTypeArray  검색 순서 타입 배열
  */
 
 function SortButtons({ sortTypeArray }) {

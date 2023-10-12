@@ -79,8 +79,8 @@ const sonnyData = {
 
 /**
  * 펀딩 주최 자동완성 기능이 포함된 셀럽 선택 컴포넌트
- * @param {{targetMoney: string, dueDate: string, celebId: string || number, celebName: string }} input 소개 input 상태
- * @param setInput set 소개 input 상태
+ * @param {Object<targetMoney: string | number , dueDate: string, celebId: string | number, celebName: string >} input 소개 input 상태
+ * @param {React.Dispatch.SetStateAction} setInput set 소개 input 상태
  */
 
 function AutoCelebSearch({ input, setInput }) {
@@ -156,7 +156,7 @@ function AutoCelebSearch({ input, setInput }) {
 
 AutoCelebSearch.propTypes = {
   input: PropTypes.shape({
-    targetMoney: PropTypes.number,
+    targetMoney: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     dueDate: PropTypes.string,
     celebId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     celebName: PropTypes.string,

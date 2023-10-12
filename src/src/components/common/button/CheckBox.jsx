@@ -57,14 +57,14 @@ const Styled = {
 
 /**
  * 공통 체크박스 컴포넌트 - 라벨을 활용해 스타일링, 추가 라벨 금지
- * @param id 다른 체크박스와 구분되어야 함
- * @param props 기타
+ * @param {number | string} id 다른 체크박스와 구분되어야 함
+ * @param {React.htmlAttributes} checkboxProps 기타 체크박스 props
  */
 
-function CheckBox({ id, ...props }) {
+function CheckBox({ id, ...checkboxProps }) {
   return (
     <Styled.Container>
-      <Styled.CheckBox {...props} id={id} name={id} type="checkbox" />
+      <Styled.CheckBox {...checkboxProps} id={id} name={id} type="checkbox" />
       <Styled.Label htmlFor={id} />
     </Styled.Container>
   );

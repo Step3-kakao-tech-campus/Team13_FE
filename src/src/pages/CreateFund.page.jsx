@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 import { Title } from "@/styles/CommonStyle";
 import ThumbnailBox from "@/components/create-fund/ThumbnailBox.jsx";
-import IntroduceForm from "@/components/create-fund/IntroduceForm.jsx";
+import SettingForm from "@/components/create-fund/SettingForm.jsx";
 import formatDateToYYYYMMDD from "@/utils/formateDateToYYYYMMDD.js";
 import TextEditor from "@/components/common/TextEditor.jsx";
 import Button from "@/components/common/button/Button.jsx";
@@ -74,7 +74,7 @@ function CreateFundPage() {
   date.setDate(date.getDate() + 30);
 
   const [settingInput, setSettingInput] = useState({
-    targetMoney: 0,
+    targetMoney: "0",
     dueDate: formatDateToYYYYMMDD(date),
     celebId: "",
     celebName: "",
@@ -121,7 +121,7 @@ function CreateFundPage() {
 
       <Styled.Subtitle>펀딩 설정</Styled.Subtitle>
       <Styled.InputContainer>
-        <IntroduceForm input={settingInput} setInput={setSettingInput} />
+        <SettingForm input={settingInput} setInput={setSettingInput} />
       </Styled.InputContainer>
 
       <Styled.Subtitle>펀딩 소개</Styled.Subtitle>
