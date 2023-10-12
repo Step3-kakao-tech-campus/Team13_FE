@@ -28,6 +28,7 @@ const theme = {
 
   border: {
     main: "1px solid #F1F3F5",
+    strong: "1px solid #EAECEF",
   },
 
   boxShadow: {
