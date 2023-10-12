@@ -23,14 +23,25 @@ function FollowButton({ children, styleType, isHoverStyle, celebId, isFollowing,
     console.log('셀럽을 언팔합니다!')
   }
   return (
-        // <Button 
-        //   styleType={styleType}
-        //   isHoverStyle={isHoverStyle}
-        //   onClick={handleButtonClick}
-        //   {...props}
-        // >
-        //   {isFollowing ? "팔로우" : "팔로잉"}
-        // </Button>
+    <div>
+      {isFollowing ? (
+        <Button
+        styleType={BUTTON_TYPE.PRIMARY}
+        onClick={handleUnfollowClick}
+        {...props}
+      >
+        팔로잉
+      </Button>
+      ) : (
+        <Button
+          styleType={BUTTON_TYPE.SECONDARY}
+          onClick={handleFollowClick}
+          {...props}
+        >
+          팔로우
+        </Button>
+      )}
+    </div>
       );
 }
 
