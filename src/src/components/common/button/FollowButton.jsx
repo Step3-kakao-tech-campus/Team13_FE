@@ -27,7 +27,7 @@ function FollowButton({ children, styleType, isHoverStyle, celebId, isFollowing,
       {isFollowing ? (
         <Button
         styleType={BUTTON_TYPE.PRIMARY}
-        onClick={handleUnfollowClick}
+        onClick={handleUnFollowClick}
         {...props}
       >
         팔로잉
