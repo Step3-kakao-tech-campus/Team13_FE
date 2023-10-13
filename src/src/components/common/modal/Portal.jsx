@@ -3,6 +3,7 @@ import { PropTypes } from "prop-types";
 
 /**
  * div#portal로 렌더링
+ * @props {React.ReactNode} children
  */
 
 function Portal({ children }) {

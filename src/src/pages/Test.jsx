@@ -11,8 +11,8 @@ import Carousel from "@/components/common/Carousel.jsx";
 import FloatButton from "@/components/common/button/FloatButton.jsx";
 import SortButtons from "@/components/common/button/SortButtons.jsx";
 import CelebInfoGridCard from "@/components/common/CelebInfoGridCard.jsx";
-import CountdownBadge from "@/components/common/fund/CountdownBadge.jsx";
-import HeartButton from "@/components/common/fund/HeartButton.jsx";
+import CountdownBadge from "@/components/fund/CountdownBadge.jsx";
+import HeartButton from "@/components/fund/HeartButton.jsx";
 import { useState } from "react";
 import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
 import FollowButton from "@/components/common/button/FollowButton";
@@ -105,15 +105,15 @@ function Test() {
 
       <Tabs tabInfoArray={tabInfoArray} />
       <Button style={{ margin: "1rem" }}>PRIMARY</Button>
-      <Button isHoverStyle={false}>PRIMARY</Button>
+      <Button useHoverStyle={false}>PRIMARY</Button>
 
       <Button styleType={BUTTON_TYPE.SECONDARY}>SECONDARY</Button>
-      <Button isHoverStyle={false} styleType={BUTTON_TYPE.SECONDARY}>
+      <Button useHoverStyle={false} styleType={BUTTON_TYPE.SECONDARY}>
         SECONDARY
       </Button>
 
       <Button styleType={BUTTON_TYPE.TERTIARY}>TERITARY</Button>
-      <Button isHoverStyle={false} styleType={BUTTON_TYPE.TERTIARY}>
+      <Button useHoverStyle={false} styleType={BUTTON_TYPE.TERTIARY}>
         TERITARY
       </Button>
 
@@ -121,10 +121,6 @@ function Test() {
       <FollowButton styleType={BUTTON_TYPE.PRIMARY} isHoverStyle={true} celebId={1} isFollowing={false}>팔로우</FollowButton>
       <FollowButton styleType={BUTTON_TYPE.SECONDARY} isHoverStyle={false} celebId={2} isFollowing={true}>팔로잉</FollowButton>
 
-
-
-
-      
 
       <GridTemplate>
         <Styled.GridExample>d</Styled.GridExample>

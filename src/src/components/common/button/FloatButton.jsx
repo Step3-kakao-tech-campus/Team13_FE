@@ -32,13 +32,13 @@ const Styled = {
 
 /**
  * 화면에 고정된 플로팅 버튼 공통 컴포넌트
- * @param children 버튼 내 글자
- * @param props 기타
+ * @param {React.ReactNode} children 버튼 내 글자
+ * @param {React.htmlAttributes} htmlButtonProps 기타 버튼 props
  */
 
-function FloatButton({ children, ...props }) {
+function FloatButton({ children, ...htmlButtonProps }) {
   return (
-    <Styled.Button {...props}>
+    <Styled.Button {...htmlButtonProps}>
       <Styled.Icon>
         <SignUpIcon />
       </Styled.Icon>
