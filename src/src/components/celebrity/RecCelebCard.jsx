@@ -1,9 +1,11 @@
 import styled, { css } from "styled-components";
 import { isMobile } from "react-device-detect";
 import { PropTypes } from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
 import FollowButton from "./FollowButton.jsx";
+import routes from "@/constants/routes.js";
 
 /**
  * 메인페에지의 추천셀럽카드
@@ -68,8 +70,15 @@ function RecCelebCard({
   followerNum,
   isFollowing,
 }) {
+  const navigate = useNavigate();
+
   return (
-    <Styled.Container>
+    <Styled.Container
+      $isMobile={isMobile}
+      onClick={() => {
+        navigate(`${routes.celebrity}/${celebId}`);
+      }}
+    >
       {profileUrl ? (
         <Styled.ProfileImage
           src={profileUrl}
