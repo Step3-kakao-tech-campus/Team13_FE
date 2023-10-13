@@ -16,6 +16,7 @@ import HeartButton from "@/components/fund/HeartButton.jsx";
 import { useState } from "react";
 import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
 import FollowButton from "@/components/celebrity/FollowButton.jsx";
+import RecCelebCard from "@/components/celebrity/RecCelebCard.jsx";
 
 const Styled = {
   GridExample: styled.article`
@@ -78,7 +79,7 @@ function Test() {
 
       <HeartButton
         isActive={isHeartClicked}
-        onClick={() => setIsHeartClicked(prev => !prev)}
+        onClick={() => setIsHeartClicked((prev) => !prev)}
       />
 
       <CountdownBadge target={"2023-10-08 17:53:00"} />
@@ -141,6 +142,15 @@ function Test() {
           followerNum={820200}
           isFollowing={true}
           totalFundMoney={1000000}
+        />
+        <RecCelebCard
+          profileUrl={
+            "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg"
+          }
+          celebId="sonny"
+          celebName="손흥민"
+          followerNum={1000}
+          isFollowing={false}
         />
 
         <Styled.GridExample>d</Styled.GridExample>
