@@ -29,7 +29,10 @@ function FollowButton({ celebId, isFollowing = false, ...htmlButtonProps }) {
       {isFollowingButton ? (
         <Button
           styleType={BUTTON_TYPE.PRIMARY}
-          onClick={handleFollowClick}
+          onClick={e => {
+            e.stopPropagation();
+            handleFollowClick();
+          }}
           useHoverStyle={false}
           {...htmlButtonProps}
         >
@@ -38,7 +41,10 @@ function FollowButton({ celebId, isFollowing = false, ...htmlButtonProps }) {
       ) : (
         <Button
           styleType={BUTTON_TYPE.SECONDARY}
-          onClick={handleUnFollowClick}
+          onClick={e => {
+            e.stopPropagation();
+            handleUnFollowClick();
+          }}
           useHoverStyle={false}
           {...htmlButtonProps}
         >
