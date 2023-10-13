@@ -15,7 +15,7 @@ import CountdownBadge from "@/components/fund/CountdownBadge.jsx";
 import HeartButton from "@/components/fund/HeartButton.jsx";
 import { useState } from "react";
 import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
-import FollowButton from "@/components/common/button/FollowButton";
+import FollowButton from "@/components/celebrity/FollowButton.jsx";
 
 const Styled = {
   GridExample: styled.article`

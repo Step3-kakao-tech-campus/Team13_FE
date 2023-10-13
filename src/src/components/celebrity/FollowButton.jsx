@@ -1,5 +1,5 @@
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
-import Button from "./Button.jsx";
+import Button from "../common/button/Button.jsx";
 import { useState } from "react";
 import { PropTypes } from "prop-types";
 
