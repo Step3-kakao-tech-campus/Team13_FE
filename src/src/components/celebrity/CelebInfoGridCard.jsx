@@ -1,21 +1,39 @@
-import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import styled, { css } from "styled-components";
+import { isMobile } from "react-device-detect";
 
 import InProgress from "@/assets/icon/InProgressIcon.jsx";
 import Money from "@/assets/icon/MoneyIcon.jsx";
 import User from "@/assets/icon/UserIcon.jsx";
 import Button from "@/components/common/button/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
-import { useNavigate } from "react-router-dom";
 import routes from "@/constants/routes.js";
 
 const Styled = {
   Container: styled.div`
     background: ${({ theme }) => theme.color.white};
+    
     padding: 1rem;
+    height: 9.25rem;
     position: relative;
+    
     display: flex;
     align-items: center;
     justify-content: space-around;
+
+    border-radius: 0.25rem;
+    cursor: pointer;
+
+    ${({ $isMobile }) =>
+      $isMobile ||
+      css`
+        &:hover {
+          transform: ${({ theme }) => theme.transform.gridCard};
+          box-shadow: ${({ theme }) => theme.boxShadow.gridCard};
+          transition: ${({ theme }) => theme.transition.gridCard};
+        }
+      `}
+  }
   `,
 
   TextContainer: styled.div`
@@ -54,11 +72,11 @@ function CelebInfoGridCard({
 
   return (
     <Styled.Container
+      $isMobile={isMobile}
       onClick={() => {
         navigate(`${routes.celebrity}/${celebId}`);
       }}
     >
-      {/* <Celeb /> */}
       <Styled.TextContainer>
         <Styled.Text $main={true} className="name">
           <span>{name}</span>
