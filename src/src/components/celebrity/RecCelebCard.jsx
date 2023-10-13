@@ -5,6 +5,15 @@ import { PropTypes } from "prop-types";
 import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
 import FollowButton from "./FollowButton.jsx";
 
+/**
+ * 메인페에지의 추천셀럽카드
+ * @param {string | number} celebId 셀럽 아이디
+ * @param {string} celebName 셀럽 이름
+ * @param {string=} profileUrl 셀럽 프로필 사진 url
+ * @param {number} followerNum 셀럽 팔로워 수
+ * @param {boolean} isFollowing 셀럽 팔로잉 여부
+ */
+
 const Styled = {
   Container: styled.div`
     background: ${({ theme }) => theme.color.white};
@@ -25,16 +34,19 @@ const Styled = {
         }
       `}
   `,
+
   ProfileImage: styled.img`
     width: 50px;
     height: 50px;
     border-radius: 9999px;
   `,
+
   TextContainer: styled.div`
     display: flex;
     flex-direction: column;
     margin-left: 0.75rem;
   `,
+
   Text: styled.span`
     &.celebName {
       font-size: 0.875rem;
