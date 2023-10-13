@@ -3,15 +3,15 @@ import { PropTypes } from "prop-types";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 
 const backgroundColor = {
-  PRIMARY: (theme) => theme.color.mainRed,
-  SECONDARY: (theme) => theme.color.secondaryRed,
-  TERTIARY: (theme) => theme.color.subBlack,
+  PRIMARY: theme => theme.color.mainRed,
+  SECONDARY: theme => theme.color.secondaryRed,
+  TERTIARY: theme => theme.color.subBlack,
 };
 
 const hoverBackgroundColor = {
-  PRIMARY: (theme) => theme.color.mainRedHover,
-  SECONDARY: (theme) => theme.color.secondaryRedHover,
-  TERTIARY: (theme) => theme.color.subBlackHover,
+  PRIMARY: theme => theme.color.mainRedHover,
+  SECONDARY: theme => theme.color.secondaryRedHover,
+  TERTIARY: theme => theme.color.subBlackHover,
 };
 
 const Styled = {
@@ -24,8 +24,9 @@ const Styled = {
         : theme.color.white};
 
     border: ${({ $styleType, theme }) =>
-      $styleType === BUTTON_TYPE.SECONDARY &&
-      `1px solid ${theme.color.mainRed}`};
+      $styleType === BUTTON_TYPE.SECONDARY
+        ? `1px solid ${theme.color.mainRed}`
+        : "1px solid transparent"};
     border-radius: 0.25rem;
 
     background-color: ${({ $styleType, theme }) =>
