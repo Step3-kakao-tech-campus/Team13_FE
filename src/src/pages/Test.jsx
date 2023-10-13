@@ -10,7 +10,7 @@ import routes from "@/constants/routes.js";
 import Carousel from "@/components/common/Carousel.jsx";
 import FloatButton from "@/components/common/button/FloatButton.jsx";
 import SortButtons from "@/components/common/button/SortButtons.jsx";
-import CelebInfoGridCard from "@/components/common/CelebInfoGridCard.jsx";
+import CelebInfoGridCard from "@/components/celebrity/CelebInfoGridCard.jsx";
 import CountdownBadge from "@/components/fund/CountdownBadge.jsx";
 import HeartButton from "@/components/fund/HeartButton.jsx";
 import { useState } from "react";
