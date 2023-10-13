@@ -3,7 +3,7 @@ import { useState } from "react";
 import InfoContainer from "@/components/fund-detail/InfoContainer.jsx";
 import DynamicDetailRender from "@/components/fund-detail/DynamicDetailRender.jsx";
 import TABS from "@/constants/TABS.js";
-import Tabs from "@/components/common/button/Tabs.jsx";
+import Tabs from "@/components/common/button/TabButtons.jsx";
 
 const Styled = {
   Container: styled.section`
@@ -42,7 +42,7 @@ const Styled = {
 function FundDetailPage() {
   const [selectedTab, setSelectedTab] = useState(TABS.FUND_DETAIL.INTRO);
 
-  const tabInfoArray = Object.keys(TABS.FUND_DETAIL).map((key) => {
+  const tabInfoArray = Object.keys(TABS.FUND_DETAIL).map(key => {
     return {
       title: TABS.KOREAN[key],
       func: () => {

@@ -4,7 +4,7 @@ import { GridTemplate } from "@/styles/CommonStyle.js";
 import Button from "@/components/common/button/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import CheckBox from "@/components/common/button/CheckBox.jsx";
-import Tabs from "@/components/common/button/Tabs.jsx";
+import Tabs from "@/components/common/button/TabButtons.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
 import routes from "@/constants/routes.js";
 import Carousel from "@/components/common/Carousel.jsx";
