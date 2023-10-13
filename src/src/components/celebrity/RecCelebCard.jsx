@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { isMobile } from "react-device-detect";
+import { PropTypes } from "prop-types";
 
 import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
 import FollowButton from "./FollowButton.jsx";
@@ -11,8 +12,6 @@ const Styled = {
     height: 4.15rem;
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
-
     border-radius: 0.25rem;
     cursor: pointer;
 
@@ -38,8 +37,10 @@ const Styled = {
   `,
   Text: styled.span`
     &.celebName {
-      font-size: 14px;
+      font-size: 0.875rem;
+      font-weight: 500;
       margin-bottom: 0.25rem;
+      color: ${({ theme }) => theme.color.body};
     }
     &.followerNum {
       font-size: 12px;
@@ -79,5 +80,13 @@ function RecCelebCard({
     </Styled.Container>
   );
 }
+
+RecCelebCard.propTypes = {
+  celebId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  celebName: PropTypes.string,
+  profileUrl: PropTypes.string,
+  followerNum: PropTypes.number,
+  isFollowing: PropTypes.bool,
+};
 
 export default RecCelebCard;
