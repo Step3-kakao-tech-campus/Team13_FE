@@ -32,6 +32,8 @@ const Styled = {
     background-color: ${({ $styleType, theme }) =>
       backgroundColor[$styleType](theme)};
 
+    white-space: nowrap;
+
     &:hover {
       transition: all ease-in-out 0.2s;
       background-color: ${({ $useHoverStyle, $styleType, theme }) =>
