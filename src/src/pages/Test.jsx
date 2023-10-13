@@ -122,7 +122,13 @@ function Test() {
       <FollowButton celebId={2} isFollowing={true} />
 
       <GridTemplate>
-        <CelebInfoGridCard celebId="sonny" celebName="손흥민" />
+        <CelebInfoGridCard
+          celebId="sonny"
+          celebName="손흥민"
+          profileUrl={
+            "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg"
+          }
+        />
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>

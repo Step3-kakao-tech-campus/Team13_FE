@@ -24,6 +24,7 @@ function FollowButton({ celebId, isFollowing = false, ...htmlButtonProps }) {
     console.log(celebId + " 셀럽을 언팔합니다!");
     setIsFollowingButton(true);
   };
+
   return (
     <div>
       {isFollowingButton ? (

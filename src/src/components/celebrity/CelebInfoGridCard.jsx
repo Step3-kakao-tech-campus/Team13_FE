@@ -7,6 +7,7 @@ import Money from "@/assets/icon/MoneyIcon.jsx";
 import User from "@/assets/icon/UserIcon.jsx";
 import routes from "@/constants/routes.js";
 import FollowButton from "@/components/celebrity/FollowButton.jsx";
+import TestAccountIcon from "@/assets/icon/TestAccountIcon";
 
 const Styled = {
   Container: styled.div`
@@ -18,7 +19,7 @@ const Styled = {
     
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
 
     border-radius: 0.25rem;
     cursor: pointer;
@@ -34,7 +35,14 @@ const Styled = {
       `}
   }
   `,
+  ProfileImage: styled.img`
+    width: 100px;
+    height: 100px;
+    border-radius: 9999px;
+  `,
+
   TextContainer: styled.div`
+    width: calc(100% - 100px - 1rem);
     display: flex;
     flex-direction: column;
     margin-left: 1rem;
@@ -78,19 +86,35 @@ function CelebInfoGridCard({
         navigate(`${routes.celebrity}/${celebId}`);
       }}
     >
+      {profileUrl ? (
+        <Styled.ProfileImage
+          src={profileUrl}
+          alt={`${celebName} 프로필 사진`}
+        />
+      ) : (
+        <TestAccountIcon size={100} />
+      )}
+
       <Styled.TextContainer>
         <Styled.Text className="name">
           <span>{celebName}</span>
-          <FollowButton celebId={celebId} isFollowing={isFollowing} />
+          <FollowButton
+            celebId={celebId}
+            isFollowing={isFollowing}
+            style={{ padding: "6px 8px", fontSize: "14px" }}
+          />
         </Styled.Text>
+
         <Styled.Text>
           <InProgress />
           <span>{fundInProgressNum}개의 펀딩 진행 중</span>
         </Styled.Text>
+
         <Styled.Text>
           <Money />
           <span>총 {totalFundMoney}원</span>
         </Styled.Text>
+
         <Styled.Text>
           <User />
           <span>{followerNum}명이 팔로우 중</span>
