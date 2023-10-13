@@ -4,7 +4,7 @@ function UserIcon() {
       <img
         width="16"
         height="16"
-        src="https://img.icons8.com/material-rounded/192/000000/user.png"
+        src="https://img.icons8.com/material-rounded/192/aaaaaa/user.png"
         alt="user"
       />
       <div id="license" style={{ display: "none" }}>
