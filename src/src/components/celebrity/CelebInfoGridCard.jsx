@@ -5,9 +5,8 @@ import { isMobile } from "react-device-detect";
 import InProgress from "@/assets/icon/InProgressIcon.jsx";
 import Money from "@/assets/icon/MoneyIcon.jsx";
 import User from "@/assets/icon/UserIcon.jsx";
-import Button from "@/components/common/button/Button.jsx";
-import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import routes from "@/constants/routes.js";
+import FollowButton from "@/components/celebrity/FollowButton.jsx";
 
 const Styled = {
   Container: styled.div`
@@ -35,7 +34,6 @@ const Styled = {
       `}
   }
   `,
-
   TextContainer: styled.div`
     display: flex;
     flex-direction: column;
@@ -46,14 +44,16 @@ const Styled = {
     display: flex;
     align-items: center;
     margin-bottom: 0.5rem;
-    font-size: ${({ $main }) => ($main ? "1.25rem" : "0.5rem")};
+    font-size: 0.5rem;
     color: ${({ theme }) => theme.color.addition};
 
-    .name {
-      display: flex;
+    &.name {
       width: 100%;
+      display: flex;
       justify-content: space-between;
+      font-size: 1.25rem;
     }
+
     img {
       margin-right: 0.25rem;
     }
@@ -62,11 +62,12 @@ const Styled = {
 
 function CelebInfoGridCard({
   celebId,
-  name,
+  celebName,
   profileUrl,
   fundInProgressNum,
   totalFundMoney,
   followerNum,
+  isFollowing,
 }) {
   const navigate = useNavigate();
 
@@ -78,15 +79,9 @@ function CelebInfoGridCard({
       }}
     >
       <Styled.TextContainer>
-        <Styled.Text $main={true} className="name">
-          <span>{name}</span>
-          <Button
-            style={{ marginLeft: "1rem" }}
-            styleType={BUTTON_TYPE.PRIMARY}
-            useHoverStyle={false}
-          >
-            팔로우
-          </Button>
+        <Styled.Text className="name">
+          <span>{celebName}</span>
+          <FollowButton celebId={celebId} isFollowing={isFollowing} />
         </Styled.Text>
         <Styled.Text>
           <InProgress />

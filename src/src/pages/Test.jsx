@@ -122,7 +122,7 @@ function Test() {
       <FollowButton celebId={2} isFollowing={true} />
 
       <GridTemplate>
-        <CelebInfoGridCard celebId="sonny" />
+        <CelebInfoGridCard celebId="sonny" celebName="손흥민" />
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
