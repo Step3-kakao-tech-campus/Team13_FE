@@ -85,7 +85,7 @@ function RecCelebCard({
           alt={`${celebName} 프로필 사진`}
         />
       ) : (
-        <TestAccountIcon size={"100"} />
+        <TestAccountIcon size={"50"} />
       )}
       <Styled.TextContainer>
         <Styled.Text className="celebName">{celebName}</Styled.Text>
