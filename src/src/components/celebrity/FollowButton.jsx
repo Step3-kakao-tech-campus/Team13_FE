@@ -5,13 +5,18 @@ import { PropTypes } from "prop-types";
 
 /**
  * 팔로우 버튼 컴포넌트
- * @param {React.ReactNode} children
  * @param {string | number} celebId 셀럽 아이디
  * @param {boolean} isFollowing 팔로잉 여부
+ * @param {boolean} useHoverStyle 호버 스타일링 적용 여부
  * @param {html.Attributes} htmlButtonProps 기타
  */
 
-function FollowButton({ celebId, isFollowing = false, ...htmlButtonProps }) {
+function FollowButton({
+  celebId,
+  isFollowing = false,
+  useHoverStyle = true,
+  ...htmlButtonProps
+}) {
   const [isFollowingButton, setIsFollowingButton] = useState(!isFollowing);
 
   const handleFollowClick = () => {
@@ -34,7 +39,7 @@ function FollowButton({ celebId, isFollowing = false, ...htmlButtonProps }) {
             e.stopPropagation();
             handleFollowClick();
           }}
-          useHoverStyle={false}
+          useHoverStyle={useHoverStyle}
           {...htmlButtonProps}
         >
           팔로우
@@ -46,7 +51,7 @@ function FollowButton({ celebId, isFollowing = false, ...htmlButtonProps }) {
             e.stopPropagation();
             handleUnFollowClick();
           }}
-          useHoverStyle={false}
+          useHoverStyle={useHoverStyle}
           {...htmlButtonProps}
         >
           팔로잉
@@ -58,6 +63,7 @@ function FollowButton({ celebId, isFollowing = false, ...htmlButtonProps }) {
 
 FollowButton.propTypes = {
   celebId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  useHoverStyle: PropTypes.bool,
   isFollowing: PropTypes.bool,
 };
 
