@@ -1,4 +1,4 @@
-function InProgress() {
+function UserIcon() {
   return (
     <>
       <img
@@ -15,4 +15,4 @@ function InProgress() {
   );
 }
 
-export default InProgress;
+export default UserIcon;

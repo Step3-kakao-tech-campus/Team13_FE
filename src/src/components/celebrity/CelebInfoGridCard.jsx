@@ -2,12 +2,13 @@ import { useNavigate } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { isMobile } from "react-device-detect";
 
-import InProgress from "@/assets/icon/InProgressIcon.jsx";
-import Money from "@/assets/icon/MoneyIcon.jsx";
-import User from "@/assets/icon/UserIcon.jsx";
-import routes from "@/constants/routes.js";
 import FollowButton from "@/components/celebrity/FollowButton.jsx";
 import TestAccountIcon from "@/assets/icon/TestAccountIcon";
+import routes from "@/constants/routes.js";
+
+import InProgressIcon from "@/assets/icon/InProgressIcon.jsx";
+import MoneyIcon from "@/assets/icon/MoneyIcon.jsx";
+import UserIcon from "@/assets/icon/UserIcon.jsx";
 
 const Styled = {
   Container: styled.div`
@@ -106,17 +107,17 @@ function CelebInfoGridCard({
         </Styled.Text>
 
         <Styled.Text>
-          <InProgress />
+          <InProgressIcon />
           <span>{fundInProgressNum}개의 펀딩 진행 중</span>
         </Styled.Text>
 
         <Styled.Text>
-          <Money />
+          <MoneyIcon />
           <span>총 {totalFundMoney}원</span>
         </Styled.Text>
 
         <Styled.Text>
-          <User />
+          <UserIcon />
           <span>{followerNum}명이 팔로우 중</span>
         </Styled.Text>
       </Styled.TextContainer>
