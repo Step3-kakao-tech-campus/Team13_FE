@@ -4,18 +4,18 @@ import { GridTemplate } from "@/styles/CommonStyle.js";
 import Button from "@/components/common/button/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import CheckBox from "@/components/common/button/CheckBox.jsx";
-import Tabs from "@/components/common/button/Tabs.jsx";
+import Tabs from "@/components/common/button/TabButtons.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
 import routes from "@/constants/routes.js";
 import Carousel from "@/components/common/Carousel.jsx";
 import FloatButton from "@/components/common/button/FloatButton.jsx";
 import SortButtons from "@/components/common/button/SortButtons.jsx";
-import CelebInfoGridCard from "@/components/common/CelebInfoGridCard.jsx";
+import CelebInfoGridCard from "@/components/celebrity/CelebInfoGridCard.jsx";
 import CountdownBadge from "@/components/fund/CountdownBadge.jsx";
 import HeartButton from "@/components/fund/HeartButton.jsx";
 import { useState } from "react";
 import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
-import FollowButton from "@/components/common/button/FollowButton";
+import FollowButton from "@/components/celebrity/FollowButton.jsx";
 
 const Styled = {
   GridExample: styled.article`
@@ -78,7 +78,7 @@ function Test() {
 
       <HeartButton
         isActive={isHeartClicked}
-        onClick={() => setIsHeartClicked((prev) => !prev)}
+        onClick={() => setIsHeartClicked(prev => !prev)}
       />
 
       <CountdownBadge target={"2023-10-08 17:53:00"} />
@@ -117,12 +117,32 @@ function Test() {
         TERITARY
       </Button>
 
+      <FollowButton celebId={1} isFollowing={false} />
 
-      <FollowButton styleType={BUTTON_TYPE.PRIMARY} isHoverStyle={true} celebId={1} isFollowing={false}>팔로우</FollowButton>
-      <FollowButton styleType={BUTTON_TYPE.SECONDARY} isHoverStyle={false} celebId={2} isFollowing={true}>팔로잉</FollowButton>
-
+      <FollowButton celebId={2} isFollowing={true} />
 
       <GridTemplate>
+        <CelebInfoGridCard
+          celebId="sonny"
+          celebName="손흥민"
+          profileUrl={
+            "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg"
+          }
+          fundInProgressNum={30}
+          followerNum={1000}
+          isFollowing={false}
+          totalFundMoney={35000000}
+        />
+
+        <CelebInfoGridCard
+          celebId="joowon"
+          celebName="경주원"
+          fundInProgressNum={100}
+          followerNum={820200}
+          isFollowing={true}
+          totalFundMoney={1000000}
+        />
+
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
@@ -132,7 +152,6 @@ function Test() {
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
-        <CelebInfoGridCard>d</CelebInfoGridCard>
       </GridTemplate>
     </>
   );

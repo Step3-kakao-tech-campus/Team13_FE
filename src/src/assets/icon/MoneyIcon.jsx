@@ -1,10 +1,10 @@
-function InProgress() {
+function MoneyIcon() {
   return (
     <>
       <img
         width="16"
         height="16"
-        src="https://img.icons8.com/material-rounded/192/000000/money-bag.png"
+        src="https://img.icons8.com/material-rounded/192/aaaaaa/money-bag.png"
         alt="money-bag"
       />
       <div id="license" style={{ display: "none" }}>
@@ -15,4 +15,4 @@ function InProgress() {
   );
 }
 
-export default InProgress;
+export default MoneyIcon;
