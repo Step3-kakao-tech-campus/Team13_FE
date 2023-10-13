@@ -1,50 +1,57 @@
-import styled, { css } from "styled-components";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import Button from "./Button.jsx";
+import { useState } from "react";
+import { PropTypes } from "prop-types";
 
 /**
  * 팔로우 버튼 컴포넌트
  * @param {React.ReactNode} children
- * @param {string} styleType 버튼 스타일 타입 BUTTON_TYPE.[PRIMARY || SECONDARY || TERTIARY]
- * @param {boolean} isHoverStyle hover 스타일링 적용 여부
  * @param {string | number} celebId 셀럽 아이디
  * @param {boolean} isFollowing 팔로잉 여부
  * @param {html.Attributes} htmlButtonProps 기타
  */
 
-function FollowButton({ children, isHoverStyle , celebId, isFollowing, ...props }) {
-    
+function FollowButton({ celebId, isFollowing = false, ...htmlButtonProps }) {
+  const [isFollowingButton, setIsFollowingButton] = useState(!isFollowing);
+
   const handleFollowClick = () => {
     // 팔로우 버튼 클릭 시 로직
-    console.log('셀럽을 팔로우합니다!')
-  }
+    console.log(celebId + " 셀럽을 팔로우합니다!");
+    setIsFollowingButton(false);
+  };
   const handleUnFollowClick = () => {
     // 팔로우 버튼 클릭 시 로직
-    console.log('셀럽을 언팔합니다!')
-  }
+    console.log(celebId + " 셀럽을 언팔합니다!");
+    setIsFollowingButton(true);
+  };
   return (
     <div>
-      {isFollowing ? (
+      {isFollowingButton ? (
         <Button
-        styleType={BUTTON_TYPE.PRIMARY}
-        onClick={handleUnFollowClick}
-        isHoverStyle={false}
-        {...props}
-      >
-        팔로잉
-      </Button>
-      ) : (
-        <Button
-          styleType={BUTTON_TYPE.SECONDARY}
+          styleType={BUTTON_TYPE.PRIMARY}
           onClick={handleFollowClick}
-          isHoverStyle={false}
-          {...props}
+          useHoverStyle={false}
+          {...htmlButtonProps}
         >
           팔로우
         </Button>
+      ) : (
+        <Button
+          styleType={BUTTON_TYPE.SECONDARY}
+          onClick={handleUnFollowClick}
+          useHoverStyle={false}
+          {...htmlButtonProps}
+        >
+          팔로잉
+        </Button>
       )}
     </div>
-      );
+  );
 }
+
+FollowButton.propTypes = {
+  celebId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  isFollowing: PropTypes.bool,
+};
 
 export default FollowButton;

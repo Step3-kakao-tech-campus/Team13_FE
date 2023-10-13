@@ -78,7 +78,7 @@ function Test() {
 
       <HeartButton
         isActive={isHeartClicked}
-        onClick={() => setIsHeartClicked((prev) => !prev)}
+        onClick={() => setIsHeartClicked(prev => !prev)}
       />
 
       <CountdownBadge target={"2023-10-08 17:53:00"} />
@@ -117,10 +117,9 @@ function Test() {
         TERITARY
       </Button>
 
+      <FollowButton celebId={1} isFollowing={false} />
 
-      <FollowButton styleType={BUTTON_TYPE.PRIMARY} isHoverStyle={true} celebId={1} isFollowing={false}>팔로우</FollowButton>
-      <FollowButton styleType={BUTTON_TYPE.SECONDARY} isHoverStyle={false} celebId={2} isFollowing={true}>팔로잉</FollowButton>
-
+      <FollowButton celebId={2} isFollowing={true} />
 
       <GridTemplate>
         <Styled.GridExample>d</Styled.GridExample>
