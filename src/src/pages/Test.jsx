@@ -128,6 +128,10 @@ function Test() {
           profileUrl={
             "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg"
           }
+          fundInProgressNum={30}
+          followerNum={1000}
+          isFollowing={false}
+          totalFundMoney={35000000}
         />
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>

@@ -16,7 +16,6 @@ const Styled = {
     
     padding: 1rem;
     height: 9.25rem;
-    position: relative;
     
     display: flex;
     align-items: center;
@@ -61,10 +60,14 @@ const Styled = {
       display: flex;
       justify-content: space-between;
       font-size: 1.25rem;
+      color: ${({ theme }) => theme.color.body};
     }
 
-    img {
-      margin-right: 0.25rem;
+    span {
+      margin-left: 0.25rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   `,
 };
@@ -108,17 +111,17 @@ function CelebInfoGridCard({
 
         <Styled.Text>
           <InProgressIcon />
-          <span>{fundInProgressNum}개의 펀딩 진행 중</span>
+          <span>{fundInProgressNum || 0}개의 펀딩 진행 중</span>
         </Styled.Text>
 
         <Styled.Text>
           <MoneyIcon />
-          <span>총 {totalFundMoney}원</span>
+          <span>총 {totalFundMoney.toLocaleString("ko-KR") || 0}원</span>
         </Styled.Text>
 
         <Styled.Text>
           <UserIcon />
-          <span>{followerNum}명이 팔로우 중</span>
+          <span>팔로워 {followerNum || 0}명</span>
         </Styled.Text>
       </Styled.TextContainer>
     </Styled.Container>
