@@ -133,6 +133,16 @@ function Test() {
           isFollowing={false}
           totalFundMoney={35000000}
         />
+
+        <CelebInfoGridCard
+          celebId="joowon"
+          celebName="경주원"
+          fundInProgressNum={100}
+          followerNum={820200}
+          isFollowing={true}
+          totalFundMoney={1000000}
+        />
+
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>

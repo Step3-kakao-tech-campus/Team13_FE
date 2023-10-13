@@ -9,6 +9,7 @@ import routes from "@/constants/routes.js";
 import InProgressIcon from "@/assets/icon/InProgressIcon.jsx";
 import MoneyIcon from "@/assets/icon/MoneyIcon.jsx";
 import UserIcon from "@/assets/icon/UserIcon.jsx";
+import { PropTypes } from "prop-types";
 
 const Styled = {
   Container: styled.div`
@@ -72,6 +73,17 @@ const Styled = {
   `,
 };
 
+/**
+ * 셀럽 목록 조회 시, grid 템플릿 내부 정보 카드
+ * @param {string | number} celebId 셀럽 아이디
+ * @param {string} celebName 셀럽 이름
+ * @param {string=} profileUrl 셀럽 프로필 사진 url
+ * @param {number} fundInProgressNum 진행 중인 셀럽 관련 펀딩 개수
+ * @param {number} totalFundMoney 셀럽 관련 총 펀딩 금액
+ * @param {number} followerNum 셀럽 팔로워 수
+ * @param {boolean} isFollowing 셀럽 팔로잉 여부
+ */
+
 function CelebInfoGridCard({
   celebId,
   celebName,
@@ -127,5 +139,15 @@ function CelebInfoGridCard({
     </Styled.Container>
   );
 }
+
+CelebInfoGridCard.propTypes = {
+  celebId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  celebName: PropTypes.string,
+  profileUrl: PropTypes.string,
+  fundInProgressNum: PropTypes.number,
+  totalFundMoney: PropTypes.number,
+  followerNum: PropTypes.number,
+  isFollowing: PropTypes.bool,
+};
 
 export default CelebInfoGridCard;
