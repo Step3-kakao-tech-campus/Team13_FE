@@ -15,6 +15,7 @@ import CountdownBadge from "@/components/fund/CountdownBadge.jsx";
 import HeartButton from "@/components/fund/HeartButton.jsx";
 import { useState } from "react";
 import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
+import FollowButton from "@/components/common/button/FollowButton";
 
 const Styled = {
   GridExample: styled.article`
@@ -116,9 +117,10 @@ function Test() {
         TERITARY
       </Button>
 
-      <Button style={{ marginLeft: "1rem" }} styleType={BUTTON_TYPE.PRIMARY}>
-        팔로우
-      </Button>
+
+      <FollowButton styleType={BUTTON_TYPE.PRIMARY} isHoverStyle={true} celebId={1} isFollowing={false}>팔로우</FollowButton>
+      <FollowButton styleType={BUTTON_TYPE.SECONDARY} isHoverStyle={false} celebId={2} isFollowing={true}>팔로잉</FollowButton>
+
 
       <GridTemplate>
         <Styled.GridExample>d</Styled.GridExample>
