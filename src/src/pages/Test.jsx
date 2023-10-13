@@ -143,6 +143,13 @@ function Test() {
           isFollowing={true}
           totalFundMoney={1000000}
         />
+
+        <RecCelebCard
+          celebId="sonny"
+          celebName="손흥민"
+          followerNum={1000}
+          isFollowing={false}
+        />
         <RecCelebCard
           profileUrl={
             "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg"
@@ -150,6 +157,24 @@ function Test() {
           celebId="sonny"
           celebName="손흥민"
           followerNum={1000}
+          isFollowing={false}
+        />
+        <RecCelebCard
+          profileUrl={
+            "https://i.namu.wiki/i/sfvk_xnvWlwCiFo3X6cdfzf621AlwLjGRZ88bIcrIt99EwxqOQVGGp7gMEH6gllADZl1kLJdIeJD3Ooq4LOYOg.webp"
+          }
+          celebId="kingin"
+          celebName="이강인"
+          followerNum={900}
+          isFollowing={false}
+        />
+        <RecCelebCard
+          profileUrl={
+            "https://i.namu.wiki/i/Ji8IqBWQ5rblmmB1u6C9gUytAe1cx8r4jtooUCyqjdHUdO5hg3SEHoNfl5z8euRheGdgcHh2wdwHUj9N0PG-Jw.webp"
+          }
+          celebId="woo"
+          celebName="정우영"
+          followerNum={500}
           isFollowing={false}
         />
 
