@@ -5,6 +5,8 @@ import Money from "@/assets/icon/MoneyIcon.jsx";
 import User from "@/assets/icon/UserIcon.jsx";
 import Button from "@/components/common/button/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
+import { useNavigate } from "react-router-dom";
+import routes from "@/constants/routes.js";
 
 const Styled = {
   Container: styled.div`
@@ -41,43 +43,47 @@ const Styled = {
 };
 
 function CelebInfoGridCard({
-  id,
+  celebId,
   name,
   profileUrl,
   fundInProgressNum,
   totalFundMoney,
   followerNum,
 }) {
+  const navigate = useNavigate();
+
   return (
-    <>
-      <Styled.Container>
-        {/* <Celeb /> */}
-        <Styled.TextContainer>
-          <Styled.Text $main={true} className="name">
-            <span>{name}</span>
-            <Button
-              style={{ marginLeft: "1rem" }}
-              styleType={BUTTON_TYPE.PRIMARY}
-              useHoverStyle={false}
-            >
-              팔로우
-            </Button>
-          </Styled.Text>
-          <Styled.Text>
-            <InProgress />
-            <span>{fundInProgressNum}개의 펀딩 진행 중</span>
-          </Styled.Text>
-          <Styled.Text>
-            <Money />
-            <span>총 {totalFundMoney}원</span>
-          </Styled.Text>
-          <Styled.Text>
-            <User />
-            <span>{followerNum}명이 팔로우 중</span>
-          </Styled.Text>
-        </Styled.TextContainer>
-      </Styled.Container>
-    </>
+    <Styled.Container
+      onClick={() => {
+        navigate(`${routes.celebrity}/${celebId}`);
+      }}
+    >
+      {/* <Celeb /> */}
+      <Styled.TextContainer>
+        <Styled.Text $main={true} className="name">
+          <span>{name}</span>
+          <Button
+            style={{ marginLeft: "1rem" }}
+            styleType={BUTTON_TYPE.PRIMARY}
+            useHoverStyle={false}
+          >
+            팔로우
+          </Button>
+        </Styled.Text>
+        <Styled.Text>
+          <InProgress />
+          <span>{fundInProgressNum}개의 펀딩 진행 중</span>
+        </Styled.Text>
+        <Styled.Text>
+          <Money />
+          <span>총 {totalFundMoney}원</span>
+        </Styled.Text>
+        <Styled.Text>
+          <User />
+          <span>{followerNum}명이 팔로우 중</span>
+        </Styled.Text>
+      </Styled.TextContainer>
+    </Styled.Container>
   );
 }
 

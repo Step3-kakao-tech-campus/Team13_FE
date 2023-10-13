@@ -122,6 +122,7 @@ function Test() {
       <FollowButton celebId={2} isFollowing={true} />
 
       <GridTemplate>
+        <CelebInfoGridCard celebId="sonny" />
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
@@ -131,7 +132,6 @@ function Test() {
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
-        <CelebInfoGridCard>d</CelebInfoGridCard>
       </GridTemplate>
     </>
   );
