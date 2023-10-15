@@ -7,6 +7,11 @@ const FUND = {
   GET_LIST: "/posts",
 };
 
+const QUERY_KEY = {
+  POST_LOGIN: "postLogIn",
+};
+
 Object.freeze(AUTH);
 Object.freeze(FUND);
-export default { AUTH, FUNDS: FUND };
+Object.freeze(QUERY_KEY);
+export default { AUTH, FUND, QUERY_KEY };
