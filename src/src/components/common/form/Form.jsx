@@ -4,12 +4,11 @@ import LabeledInput from "@/components/common/form/LabeledInput.jsx";
 
 /**
  * Form - 입력폼 렌더링 및 관리
- * @param {object} props 전달되는 props
- * @param {function} props.onSubmit 폼 제출 이벤트 핸들러 함수
- * @param {object|function} props.defaultValues 입력 요소의 기본값을 설정하는 객체 또는 함수
- * @param {Array} props.inputInformations 입력 요소에 대한 정보를 포함하는 배열
- * @param {ReactNode} props.children - 자식 컴포넌트 (선택 사항)
- * @returns {JSX.Element} Form 컴포넌트의 JSX 요소
+ * @param {function} onSubmit 폼 제출 이벤트 핸들러 함수
+ * @param {function} onError 폼 제출 에러 이벤트 핸들러 함수
+ * @param {object|function} defaultValues 입력 요소의 기본값을 설정하는 객체 또는 함수
+ * @param {Array.<{id: string | number, label: string | number, type: string, placeholder: string, validation: Object, requireMsg: string}>} inputInformations 입력 요소에 대한 정보를 포함하는 배열
+ * @param {React.ReactNode} children - 자식 컴포넌트 (선택 사항)
  */
 
 function Form({

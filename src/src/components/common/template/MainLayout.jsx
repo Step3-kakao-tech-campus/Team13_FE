@@ -10,7 +10,7 @@ const Styled = {
 
 /**
  * Carousel이 포함된 레이아웃
- * @param {node} children
+ * @param {React.ReactNode} children
  */
 
 function MainLayout({ children }) {

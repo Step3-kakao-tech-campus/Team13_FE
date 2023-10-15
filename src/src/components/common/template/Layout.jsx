@@ -5,6 +5,7 @@ import { isMobile } from "react-device-detect";
 import MobileNavBar from "@/components/common/nav-bar/moblie/MobileNavBar.jsx";
 import PCNavBar from "@/components/common/nav-bar/pc/PCNavBar.jsx";
 import useIsInListPages from "@/hooks/useIsInListPages.js";
+import { Toaster } from "react-hot-toast";
 
 const Styled = {
   Body: styled.div`
@@ -45,6 +46,7 @@ function Layout() {
 
   return (
     <Styled.Body>
+      <Toaster />
       {isMobile ? <MobileNavBar /> : <PCNavBar />}
       <Styled.Container style={{ paddingTop: calPadding() }}>
         <Outlet />

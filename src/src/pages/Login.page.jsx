@@ -64,7 +64,7 @@ function LoginPage() {
             color: "#000000",
             fontWeight: "bold",
           }}
-          isHoverStyle={false}
+          useHoverStyle={false}
         >
           카카오 간편 로그인
         </Button>

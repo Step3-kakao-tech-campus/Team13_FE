@@ -48,8 +48,6 @@ const Styled = {
 
 /**
  * 모바일 탭 버튼 바 컴포넌트 (메인, 펀딩, 셀럽 페이지)
- * @returns {JSX.Element}
- * @constructor
  */
 function MobileTabList() {
   const navigate = useNavigate();
