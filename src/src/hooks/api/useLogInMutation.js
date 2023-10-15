@@ -25,7 +25,7 @@ function useLogInMutation() {
         setAccessToken(accessToken);
         setRefreshToken(refreshToken);
         toast.success("로그인에 성공했습니다");
-        navigate(routes.home);
+        navigate(routes.home, { replace: true });
       },
       onError: () => {
         toast.error("로그인에 실패했습니다");
