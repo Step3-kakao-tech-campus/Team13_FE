@@ -38,9 +38,10 @@ instance.interceptors.response.use(
 
     switch (err.response.status) {
       case 401: {
-        localStorage.removeItem(TOKEN.ACCESS);
         const originalRequest = err.config;
         const refreshToken = localStorage.getItem(TOKEN.REFRESH);
+        localStorage.removeItem(TOKEN.ACCESS);
+        localStorage.removeItem(TOKEN.REFRESH);
 
         if (!refreshToken) return Promise.reject(err);
 
