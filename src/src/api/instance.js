@@ -3,7 +3,7 @@ import TOKEN from "@/constants/TOKEN.js";
 import authAPI from "@/api/authAPI.js";
 
 const baseUrl = import.meta.env.VITE_USE_MOCK_API
-  ? `${import.meta.env.BASE_URL}/api`
+  ? "http://localhost:5173/api"
   : import.meta.env.VITE_FUNDERING_API;
 
 const instance = axios.create({
