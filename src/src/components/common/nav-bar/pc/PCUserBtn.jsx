@@ -6,6 +6,8 @@ import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
 import routes from "@/constants/routes.js";
 import useOutsideClick from "@/hooks/useOutsideClick.js";
 import PAGE_LIST from "@/constants/PAGE_LIST.js";
+import { useAtomValue } from "jotai";
+import accessTokenAtom from "@/storage/accessToken.atom.js";
 
 const Styled = {
   UserBtn: styled.button`
@@ -59,7 +61,9 @@ function PCUserBtn() {
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
   useOutsideClick(userBtnRef, () => setIsMenuModalOpen(false));
 
-  const isLoggedIn = true;
+  const accessToken = useAtomValue(accessTokenAtom);
+  const isLoggedIn = accessToken && accessToken !== "";
+
   const userInfo = {
     profileUrl:
       "https://velog.velcdn.com/images/j8won/profile/55917697-2140-40be-ad07-d2d02137f38e/image.jpeg",
@@ -85,7 +89,7 @@ function PCUserBtn() {
 
       {isMenuModalOpen && (
         <Styled.Modal>
-          {PAGE_LIST.USER_MENU.map((page) => (
+          {PAGE_LIST.USER_MENU.map(page => (
             <Styled.Menu
               key={page.title}
               onClick={() => {
