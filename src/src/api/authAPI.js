@@ -1,8 +1,8 @@
 import instance from "@/api/instance.js";
 import API from "@/constants/API.js";
 
-const signIn = async ({ email, password }) => {
-  await instance({
+const postLogin = async ({ email, password }) => {
+  return await instance({
     url: API.AUTH.LOGIN,
     method: "POST",
     data: { email: email, password: password },
@@ -14,4 +14,4 @@ const refreshToken = ({ baseUrl, refreshToken }) => {
   return "refreshedAccessToken";
 };
 
-export default { signIn, refreshToken };
+export default { postLogin, refreshToken };
