@@ -8,6 +8,11 @@ import FORM_DEFAULT from "@/constants/FORM_DEFAULT.js";
 import FORM_INFO from "@/constants/FORM_INFO.js";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import { FormTemplate } from "@/styles/CommonStyle.js";
+import { useSetAtom } from "jotai";
+import accessTokenAtom from "@/storage/accessToken.atom.js";
+import refreshTokenAtom from "@/storage/refreshToken.atom.js";
+import { useNavigate } from "react-router-dom";
+import routes from "@/constants/routes.js";
 
 const Styled = {
   Title: styled.h2`
@@ -18,6 +23,9 @@ const Styled = {
 
 function MyAccountPage() {
   const [profileImageFile, setProfileImageFile] = useState(null);
+  const navigate = useNavigate();
+  const setAccessToken = useSetAtom(accessTokenAtom);
+  const setRefreshToken = useSetAtom(refreshTokenAtom);
 
   const loadedProfileUrl =
     "https://velog.velcdn.com/images/j8won/profile/55917697-2140-40be-ad07-d2d02137f38e/image.jpeg";
@@ -48,8 +56,8 @@ function MyAccountPage() {
         setImageFile={setProfileImageFile}
       />
       <Form
-        onSubmit={(data) => console.log(data)}
-        onError={(err) => console.log(err)}
+        onSubmit={data => console.log(data)}
+        onError={err => console.log(err)}
         inputInformations={FORM_INFO.MY_ACCOUNT}
         defaultValues={loadedDefaultValues}
       >
@@ -69,7 +77,9 @@ function MyAccountPage() {
       <Button
         styleType={BUTTON_TYPE.SECONDARY}
         onClick={() => {
-          // accessToken, refreshToken 삭제
+          setAccessToken("");
+          setRefreshToken("");
+          navigate(routes.home);
         }}
         style={{
           width: "100%",
