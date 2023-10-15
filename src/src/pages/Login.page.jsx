@@ -9,6 +9,7 @@ import FORM_INFO from "@/constants/FORM_INFO.js";
 import FORM_DEFAULT from "@/constants/FORM_DEFAULT.js";
 import { FormTemplate, Title } from "@/styles/CommonStyle.js";
 import PageTitle from "@/components/common/PageTitle.jsx";
+import useLogInMutation from "@/hooks/api/useLogInMutation.js";
 
 const Styled = {
   LoginTitle: styled(Title)`
@@ -33,13 +34,17 @@ const Styled = {
 function LoginPage() {
   const navigate = useNavigate();
 
+  const { mutate: loginMutate } = useLogInMutation();
+
   return (
     <>
       <PageTitle title="로그인" />
       <FormTemplate>
         <Styled.LoginTitle>로그인</Styled.LoginTitle>
         <Form
-          onSubmit={data => console.log(data)}
+          onSubmit={({ email, password }) => {
+            loginMutate({ email, password });
+          }}
           onError={err => console.log(err)}
           inputInformations={FORM_INFO.SIGN_IN}
           defaultValues={FORM_DEFAULT.SIGN_IN}
