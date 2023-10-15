@@ -7,6 +7,7 @@ import {
   QueryCache,
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Provider as JotaiProvider } from "jotai";
 
 import router from "@/router.jsx";
 import theme from "@/styles/theme.js";
@@ -16,7 +17,8 @@ function App() {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        retry: 0,
+        retry: 1,
+        staleTime: 1 * 60 * 1000,
       },
     },
     queryCache: new QueryCache({
@@ -27,15 +29,17 @@ function App() {
   });
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <HelmetProvider>
-        <StyledThemeProvider theme={theme}>
-          <GlobalStyle />
-          <RouterProvider router={router} />
-        </StyledThemeProvider>
-      </HelmetProvider>
-    </QueryClientProvider>
+    <JotaiProvider>
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <HelmetProvider>
+          <StyledThemeProvider theme={theme}>
+            <GlobalStyle />
+            <RouterProvider router={router} />
+          </StyledThemeProvider>
+        </HelmetProvider>
+      </QueryClientProvider>
+    </JotaiProvider>
   );
 }
 
