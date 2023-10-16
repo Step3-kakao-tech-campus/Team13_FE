@@ -89,7 +89,6 @@ function CelebrityPage() {
               followerNum={info.followerNum}
               isFollowing={info.isFollowing}
               totalFundMoney={info.totalFundMoney}
-              // rank={info.rank}
               rank={index + 1}
             />
           ))}
