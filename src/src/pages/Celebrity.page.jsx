@@ -1,16 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import CelebInfoGridCard from "@/components/celebrity/CelebInfoGridCard.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
 import FloatButton from "@/components/common/button/FloatButton.jsx";
 import SortButtons from "@/components/common/button/SortButtons.jsx";
+import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
+import PageTitle from "@/components/common/PageTitle.jsx";
 import routes from "@/constants/routes.js";
 import MainLayout from "@/components/common/template/MainLayout.jsx";
-import { GridTemplate } from "@/styles/CommonStyle";
-import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
+import { GridTemplate } from "@/styles/CommonStyle.js";
 
 function CelebrityPage() {
+  const [searchParams] = useSearchParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [keyword, setKeyword] = useState(searchParams.get("keyword"));
+
+  useEffect(() => {
+    setKeyword(searchParams.get("keyword"));
+  }, [searchParams]);
 
   const sonnyCelebInfo = {
     celebId: 1,
@@ -25,12 +34,19 @@ function CelebrityPage() {
 
   return (
     <>
+      <PageTitle
+        title={
+          searchParams?.get("keyword")
+            ? `${searchParams?.get("keyword")} 셀럽`
+            : "셀럽"
+        }
+      />
       <MainLayout>
         <h1>셀럽</h1>
         <SearchBar uri={routes.celebrity} />
 
         <div>
-          <h1>순위</h1>
+          <h1> {keyword ? `${keyword} 검색 결과` : "순위"}</h1>
           <SortButtons
             sortTypeArray={[
               { key: "펀딩총액순", func: () => {} },
