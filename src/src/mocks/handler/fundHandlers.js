@@ -2,7 +2,7 @@ import API from "@/constants/API.js";
 import { rest } from "msw";
 
 export const fundHandlers = [
-  rest.get("/api" + API.FUNDS.GET_LIST, (req, res, ctx) => {
+  rest.get("/api" + API.FUND.GET_LIST, (req, res, ctx) => {
     const keyword = req.url.searchParams.get("keyword");
     const pageIndex = req.url.searchParams.get("pageIndex");
     const accessToken = req.headers.get("accessToken");

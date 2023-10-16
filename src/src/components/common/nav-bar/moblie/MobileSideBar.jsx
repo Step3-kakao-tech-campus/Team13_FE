@@ -10,6 +10,8 @@ import routes from "@/constants/routes.js";
 import useBodyStyleFixed from "@/hooks/useBodyStyleFixed.js";
 import useOutsideClick from "@/hooks/useOutsideClick.js";
 import PAGE_LIST from "@/constants/PAGE_LIST.js";
+import { useAtomValue } from "jotai";
+import accessTokenAtom from "@/storage/accessToken.atom.js";
 
 const Keyframes = {
   appear: keyframes`
@@ -84,7 +86,8 @@ function MobileSideBar({ setIsSideBarOpen }) {
   useOutsideClick(sideBarRef, () => setIsSideBarOpen(false));
   useBodyStyleFixed();
 
-  const isLoggedIn = true;
+  const accessToken = useAtomValue(accessTokenAtom);
+  const isLoggedIn = accessToken && accessToken !== "";
 
   const userInfo = {
     profileUrl:
@@ -119,7 +122,7 @@ function MobileSideBar({ setIsSideBarOpen }) {
 
           {isLoggedIn && (
             <ul>
-              {PAGE_LIST.USER_MENU.map((page) => (
+              {PAGE_LIST.USER_MENU.map(page => (
                 <Styled.Menu
                   key={page.title}
                   onClick={() => {

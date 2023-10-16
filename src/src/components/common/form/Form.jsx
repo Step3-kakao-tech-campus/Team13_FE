@@ -30,7 +30,7 @@ function Form({
         onSubmit={handleSubmit(onSubmit, onError)}
         style={{ width: "100%", maxWidth: "22rem" }}
       >
-        {inputInformations.map((input) => (
+        {inputInformations.map(input => (
           <LabeledInput
             key={input.id}
             id={input.id}
@@ -58,13 +58,7 @@ Form.propTypes = {
       id: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
       placeholder: PropTypes.string.isRequired,
-      validation: PropTypes.shape({
-        required: PropTypes.string,
-        pattern: PropTypes.shape({
-          value: PropTypes.any,
-          message: PropTypes.string,
-        }),
-      }),
+      validation: PropTypes.object,
       requireMsg: PropTypes.string,
     }),
   ),
@@ -73,12 +67,6 @@ Form.propTypes = {
 };
 
 Form.defaultProps = {
-  onSubmit: (data) => {
-    console.log(data);
-  },
-  onError: (err) => {
-    console.log(err);
-  },
   defaultValues: { userId: "" },
   inputInformations: [
     {
