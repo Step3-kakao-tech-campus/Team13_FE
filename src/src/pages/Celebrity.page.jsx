@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import styled from "styled-components";
 
 import CelebInfoGridCard from "@/components/celebrity/CelebInfoGridCard.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
@@ -9,7 +10,23 @@ import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
 import PageTitle from "@/components/common/PageTitle.jsx";
 import routes from "@/constants/routes.js";
 import MainLayout from "@/components/common/template/MainLayout.jsx";
-import { GridTemplate } from "@/styles/CommonStyle.js";
+import { GridTemplate, Title } from "@/styles/CommonStyle.js";
+
+const Styled = {
+  Title: styled(Title)`
+    width: fit-content;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  `,
+  TitleBar: styled.div`
+    padding-bottom: 1.75rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  `,
+};
 
 function CelebrityPage() {
   const [searchParams] = useSearchParams();
@@ -42,18 +59,23 @@ function CelebrityPage() {
         }
       />
       <MainLayout>
-        <h1>셀럽</h1>
-        <SearchBar uri={routes.celebrity} />
+        <Styled.Title>셀럽</Styled.Title>
+        <SearchBar
+          uri={routes.celebrity}
+          style={{ margin: "1.25rem 0 2rem" }}
+        />
 
-        <div>
-          <h1> {keyword ? `${keyword} 검색 결과` : "순위"}</h1>
+        <Styled.TitleBar>
+          <Styled.Title>
+            {keyword ? `${keyword} 검색 결과` : "순위"}
+          </Styled.Title>
           <SortButtons
             sortTypeArray={[
               { key: "펀딩총액순", func: () => {} },
               { key: "팔로워순", func: () => {} },
             ]}
           />
-        </div>
+        </Styled.TitleBar>
 
         <GridTemplate>
           {new Array(6).fill(sonnyCelebInfo).map((info, index) => (
