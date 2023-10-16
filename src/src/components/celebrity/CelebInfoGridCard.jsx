@@ -9,6 +9,9 @@ import routes from "@/constants/routes.js";
 import InProgressIcon from "@/assets/icon/InProgressIcon.jsx";
 import MoneyIcon from "@/assets/icon/MoneyIcon.jsx";
 import UserIcon from "@/assets/icon/UserIcon.jsx";
+import FirstRibbonIcon from "@/assets/icon/FirstRibbonIcon.jsx";
+import SecondRibbonIcon from "@/assets/icon/SecondRibbonIcon.jsx";
+import ThirdRibbonIcon from "@/assets/icon/ThirdRibbonIcon.jsx";
 import { PropTypes } from "prop-types";
 
 const Styled = {
@@ -17,7 +20,8 @@ const Styled = {
     
     padding: 1rem;
     height: 9.25rem;
-    
+
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -36,10 +40,17 @@ const Styled = {
       `}
   }
   `,
+
   ProfileImage: styled.img`
     width: 100px;
     height: 100px;
     border-radius: 9999px;
+  `,
+
+  BadgeContainer: styled.div`
+    position: absolute;
+    left: 0.7rem;
+    top: 1rem;
   `,
 
   TextContainer: styled.div`
@@ -92,6 +103,7 @@ function CelebInfoGridCard({
   totalFundMoney,
   followerNum,
   isFollowing,
+  rank,
 }) {
   const navigate = useNavigate();
 
@@ -110,6 +122,11 @@ function CelebInfoGridCard({
       ) : (
         <TestAccountIcon size={"100"} />
       )}
+      <Styled.BadgeContainer>
+        {rank === 1 && <FirstRibbonIcon />}
+        {rank === 2 && <SecondRibbonIcon />}
+        {rank === 3 && <ThirdRibbonIcon />}
+      </Styled.BadgeContainer>
 
       <Styled.TextContainer>
         <Styled.Text className="name">
@@ -148,6 +165,7 @@ CelebInfoGridCard.propTypes = {
   totalFundMoney: PropTypes.number,
   followerNum: PropTypes.number,
   isFollowing: PropTypes.bool,
+  rank: PropTypes.number,
 };
 
 export default CelebInfoGridCard;

@@ -47,6 +47,7 @@ function CelebrityPage() {
     totalFundMoney: 35000000,
     followerNum: 10000,
     isFollowing: false,
+    rank: 1,
   };
 
   return (
@@ -88,6 +89,8 @@ function CelebrityPage() {
               followerNum={info.followerNum}
               isFollowing={info.isFollowing}
               totalFundMoney={info.totalFundMoney}
+              // rank={info.rank}
+              rank={index + 1}
             />
           ))}
         </GridTemplate>
