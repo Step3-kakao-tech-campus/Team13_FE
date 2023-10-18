@@ -9,7 +9,7 @@ import MyAccountPage from "@/pages/MyAccount.page.jsx";
 import CreateFundPage from "@/pages/CreateFund.page.jsx";
 import FundDetailPage from "@/pages/FundDetail.page.jsx";
 import SignUpPage from "./pages/SignUp.page";
-import CelebrityPage from "./pages/Celebrity.page.jsx";
+import CelebrityListPage from "./pages/CelebrityList.page.jsx";
 import CelebrityDetailPage from "./pages/CelebrityDetail.page";
 
 const router = createBrowserRouter([
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
       },
       {
         path: routes.celebrity,
-        element: <CelebrityPage />,
+        element: <CelebrityListPage />,
       },
       {
         path: `${routes.celebrity}/:celebrityId`,

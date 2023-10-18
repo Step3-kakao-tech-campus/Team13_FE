@@ -28,7 +28,7 @@ const Styled = {
   `,
 };
 
-function CelebrityPage() {
+function CelebrityListPage() {
   const [searchParams] = useSearchParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -106,4 +106,4 @@ function CelebrityPage() {
   );
 }
 
-export default CelebrityPage;
+export default CelebrityListPage;
