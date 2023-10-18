@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import TestAccountIcon from "@/assets/icon/TestAccountIcon";
+import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
 import { useNavigate } from "react-router-dom";
 import routes from "@/constants/routes.js";
 import { PropTypes } from "prop-types";
