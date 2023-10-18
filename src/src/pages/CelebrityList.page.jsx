@@ -6,11 +6,11 @@ import CelebInfoGridCard from "@/components/celebrity/CelebInfoGridCard.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
 import FloatButton from "@/components/common/button/FloatButton.jsx";
 import SortButtons from "@/components/common/button/SortButtons.jsx";
-import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
 import PageTitle from "@/components/common/PageTitle.jsx";
 import routes from "@/constants/routes.js";
 import MainLayout from "@/components/common/template/MainLayout.jsx";
 import { GridTemplate, Title } from "@/styles/CommonStyle.js";
+import CelebApplyModal from "@/components/celebrity/CelebApplyModal.jsx";
 
 const Styled = {
   Title: styled(Title)`
@@ -96,11 +96,7 @@ function CelebrityListPage() {
         <FloatButton onClick={() => setIsModalOpen(true)}>
           셀럽 신청
         </FloatButton>
-        {isModalOpen && (
-          <BackdropModal setOpen={setIsModalOpen}>
-            <h1>신청서를 담아올게요 커밍순!</h1>
-          </BackdropModal>
-        )}
+        {isModalOpen && <CelebApplyModal setOpen={setIsModalOpen} />}
       </MainLayout>
     </>
   );
