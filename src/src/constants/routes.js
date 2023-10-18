@@ -8,6 +8,7 @@ const routes = {
   signIn: "/sign-in",
   signUp: "/sign-up",
   user: "/user",
+  editIntroduction: "/edit-introduction",
 };
 
 Object.freeze(routes);

@@ -10,7 +10,6 @@ import CreateFundPage from "@/pages/CreateFund.page.jsx";
 import FundDetailPage from "@/pages/FundDetail.page.jsx";
 import SignUpPage from "./pages/SignUp.page";
 
-
 const router = createBrowserRouter([
   {
     path: "",
@@ -33,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: routes.createFund,
         element: <CreateFundPage />,
+      },
+      {
+        path: `${routes.fund}/:fundId${routes.editIntroduction}`,
+        element: <Test />,
       },
       {
         path: routes.celebrity,
