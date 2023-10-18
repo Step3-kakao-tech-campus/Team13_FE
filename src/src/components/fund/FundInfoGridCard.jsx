@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { isMobile } from "react-device-detect";
 
-import CountdownBadge from "@/components/common/fund/CountdownBadge.jsx";
-import HeartButton from "@/components/common/fund/HeartButton.jsx";
+import CountdownBadge from "@/components/fund/CountdownBadge.jsx";
+import HeartButton from "@/components/fund/HeartButton.jsx";
 import routes from "@/constants/routes.js";
 import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
 

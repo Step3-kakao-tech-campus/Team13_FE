@@ -20,12 +20,12 @@ const Styled = {
 /**
  * true일 때 빨강색, false일 때 빈 하트
  * @param {boolean} isActive 클릭된 여부
- * @param props 기타
+ * @param {html.Attributes} htmlDivProps 기타
  */
 
-function HeartButton({ isActive, ...props }) {
+function HeartButton({ isActive, ...htmlDivProps }) {
   return (
-    <Styled.Container {...props}>
+    <Styled.Container {...htmlDivProps}>
       {isActive ? <FilledHeartIcon /> : <EmptyHeartIcon />}
     </Styled.Container>
   );

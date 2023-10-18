@@ -4,16 +4,19 @@ import { GridTemplate } from "@/styles/CommonStyle.js";
 import Button from "@/components/common/button/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import CheckBox from "@/components/common/button/CheckBox.jsx";
-import Tabs from "@/components/common/button/Tabs.jsx";
+import Tabs from "@/components/common/button/TabButtons.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
 import routes from "@/constants/routes.js";
 import Carousel from "@/components/common/Carousel.jsx";
 import FloatButton from "@/components/common/button/FloatButton.jsx";
 import SortButtons from "@/components/common/button/SortButtons.jsx";
-import CountdownBadge from "@/components/common/fund/CountdownBadge.jsx";
-import HeartButton from "@/components/common/fund/HeartButton.jsx";
+import CelebInfoGridCard from "@/components/celebrity/CelebInfoGridCard.jsx";
+import CountdownBadge from "@/components/fund/CountdownBadge.jsx";
+import HeartButton from "@/components/fund/HeartButton.jsx";
 import { useState } from "react";
 import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
+import FollowButton from "@/components/celebrity/FollowButton.jsx";
+import RecCelebCard from "@/components/celebrity/RecCelebCard.jsx";
 
 const Styled = {
   GridExample: styled.article`
@@ -79,9 +82,11 @@ function Test() {
         onClick={() => setIsHeartClicked((prev) => !prev)}
       />
 
-      <CountdownBadge target={"2023-10-04 23:16:00"} />
-      <CountdownBadge target={"2023-10-05 00:16:00"} />
-      <CountdownBadge target={"2023-10-05 23:16:00"} />
+      <CountdownBadge target={"2023-10-08 17:53:00"} />
+      <CountdownBadge target={"2023-10-08 18:00:00"} />
+      <CountdownBadge target={"2023-10-08 18:30:00"} />
+      <CountdownBadge target={"2023-10-09 00:16:00"} />
+      <CountdownBadge target={"2023-11-09 23:16:00"} />
       <CountdownBadge target={"2024-11-05 23:16:00"} />
 
       <SortButtons sortTypeArray={sortTypeArray} />
@@ -101,19 +106,78 @@ function Test() {
 
       <Tabs tabInfoArray={tabInfoArray} />
       <Button style={{ margin: "1rem" }}>PRIMARY</Button>
-      <Button isHoverStyle={false}>PRIMARY</Button>
+      <Button useHoverStyle={false}>PRIMARY</Button>
 
       <Button styleType={BUTTON_TYPE.SECONDARY}>SECONDARY</Button>
-      <Button isHoverStyle={false} styleType={BUTTON_TYPE.SECONDARY}>
+      <Button useHoverStyle={false} styleType={BUTTON_TYPE.SECONDARY}>
         SECONDARY
       </Button>
 
       <Button styleType={BUTTON_TYPE.TERTIARY}>TERITARY</Button>
-      <Button isHoverStyle={false} styleType={BUTTON_TYPE.TERTIARY}>
+      <Button useHoverStyle={false} styleType={BUTTON_TYPE.TERTIARY}>
         TERITARY
       </Button>
 
+      <FollowButton celebId={1} isFollowing={false} />
+
+      <FollowButton celebId={2} isFollowing={true} />
+
       <GridTemplate>
+        <CelebInfoGridCard
+          celebId="sonny"
+          celebName="손흥민"
+          profileUrl={
+            "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg"
+          }
+          fundInProgressNum={30}
+          followerNum={1000}
+          isFollowing={false}
+          totalFundMoney={35000000}
+        />
+
+        <CelebInfoGridCard
+          celebId="joowon"
+          celebName="경주원"
+          fundInProgressNum={100}
+          followerNum={820200}
+          isFollowing={true}
+          totalFundMoney={1000000}
+        />
+
+        <RecCelebCard
+          celebId="sonny"
+          celebName="손흥민"
+          followerNum={1000}
+          isFollowing={false}
+        />
+        <RecCelebCard
+          profileUrl={
+            "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg"
+          }
+          celebId="sonny"
+          celebName="손흥민"
+          followerNum={1000}
+          isFollowing={false}
+        />
+        <RecCelebCard
+          profileUrl={
+            "https://i.namu.wiki/i/sfvk_xnvWlwCiFo3X6cdfzf621AlwLjGRZ88bIcrIt99EwxqOQVGGp7gMEH6gllADZl1kLJdIeJD3Ooq4LOYOg.webp"
+          }
+          celebId="kingin"
+          celebName="이강인"
+          followerNum={900}
+          isFollowing={false}
+        />
+        <RecCelebCard
+          profileUrl={
+            "https://i.namu.wiki/i/Ji8IqBWQ5rblmmB1u6C9gUytAe1cx8r4jtooUCyqjdHUdO5hg3SEHoNfl5z8euRheGdgcHh2wdwHUj9N0PG-Jw.webp"
+          }
+          celebId="woo"
+          celebName="정우영"
+          followerNum={500}
+          isFollowing={false}
+        />
+
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
