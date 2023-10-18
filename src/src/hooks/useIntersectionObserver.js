@@ -1,21 +1,25 @@
-import { useRef } from "react";
+import { useEffect } from "react";
 
-function useIntersectionObserver(callback) {
-  const observer = useRef(
-    new IntersectionObserver(
+function useIntersectionObserver(callback, loaderRef) {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
         callback?.();
       },
       { threshold: 0 },
-    ),
-  );
+    );
 
-  const observe = element => {
-    observer.current.observe(element);
-    return () => observer.current.unobserve(element);
-  };
-  return { observe };
+    const observe = element => {
+      observer.observe(element);
+      return () => observer.unobserve(element);
+    };
+
+    const unobserve = observe(loaderRef.current);
+    return () => {
+      observer && unobserve();
+    };
+  }, [loaderRef, callback]);
 }
 
 export default useIntersectionObserver;

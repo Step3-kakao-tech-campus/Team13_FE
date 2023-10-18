@@ -61,16 +61,9 @@ function FundListPage() {
       sortType,
     });
 
-  const observer = useIntersectionObserver(async () => {
+  useIntersectionObserver(async () => {
     await fetchNextPage();
-  });
-
-  useEffect(() => {
-    const unobserve = observer.observe(loaderRef.current);
-    return () => {
-      observer && unobserve();
-    };
-  }, [loaderRef, observer]);
+  }, loaderRef);
 
   return (
     <>
