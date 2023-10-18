@@ -9,7 +9,8 @@ import MyAccountPage from "@/pages/MyAccount.page.jsx";
 import CreateFundPage from "@/pages/CreateFund.page.jsx";
 import FundDetailPage from "@/pages/FundDetail.page.jsx";
 import SignUpPage from "./pages/SignUp.page";
-
+import CelebrityListPage from "./pages/CelebrityList.page.jsx";
+import CelebrityDetailPage from "./pages/CelebrityDetail.page";
 
 const router = createBrowserRouter([
   {
@@ -36,11 +37,11 @@ const router = createBrowserRouter([
       },
       {
         path: routes.celebrity,
-        element: <Test />,
+        element: <CelebrityListPage />,
       },
       {
         path: `${routes.celebrity}/:celebrityId`,
-        element: <Test />,
+        element: <CelebrityDetailPage />,
       },
       {
         path: routes.myFund,
