@@ -1,4 +1,6 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
+
 import styled from "styled-components";
 
 import BackdropModal from "../common/modal/BackdropModal.jsx";
@@ -30,6 +32,7 @@ const Styled = {
 
 function CelebApplyModal({ setOpen }) {
   const [thumbnailFile, setThumbnailFile] = useState(null);
+  const [name, setName] = useState("");
 
   const genderOptions = [
     { label: "남자", value: "male" },
@@ -52,6 +55,13 @@ function CelebApplyModal({ setOpen }) {
     console.log(`선택된 분류: ${selectedValue}`);
   };
 
+  const handleApplyCelebSubmit = () => {
+    if (!thumbnailFile) return toast.error("셀럽 이미지를 추가해 주세요");
+    if (!name || name === "") return toast.error("셀럽 이름을 입력해 주세요");
+
+    toast.success("성공적으로 셀럽 신청이 완료되었습니다!");
+  };
+
   return (
     <BackdropModal
       setOpen={setOpen}
@@ -69,6 +79,8 @@ function CelebApplyModal({ setOpen }) {
         <Styled.Input
           type="text"
           placeholder="이름을 입력해주세요"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         ></Styled.Input>
         <SelectForm
           options={genderOptions}
@@ -85,6 +97,7 @@ function CelebApplyModal({ setOpen }) {
       </Styled.FormContainer>
 
       <Button
+        onClick={handleApplyCelebSubmit}
         style={{
           padding: "0.75rem",
           width: "100%",
