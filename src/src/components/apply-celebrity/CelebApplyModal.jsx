@@ -7,6 +7,7 @@ import BackdropModal from "../common/modal/BackdropModal.jsx";
 import ThumbnailBox from "../create-fund/ThumbnailBox.jsx";
 import Button from "../common/button/Button.jsx";
 import SelectForm from "./SelectForm.jsx";
+import SELECTFORM_INFO from "@/constants/SELECTFORM_INFO.js";
 
 const Styled = {
   Title: styled.div`
@@ -33,19 +34,6 @@ const Styled = {
 function CelebApplyModal({ setOpen }) {
   const [thumbnailFile, setThumbnailFile] = useState(null);
   const [name, setName] = useState("");
-
-  const genderOptions = [
-    { label: "남자", value: "male" },
-    { label: "여자", value: "female" },
-  ];
-
-  const categoryOptions = [
-    { label: "가수", value: "singer" },
-    { label: "배우", value: "actor" },
-    { label: "코미디언", value: "comedian" },
-    { label: "스포츠", value: "sports" },
-    { label: "인플루언서", value: "influencer" },
-  ];
 
   const handleGenderChange = (selectedValue) => {
     console.log(`선택된 성별: ${selectedValue}`);
@@ -83,12 +71,12 @@ function CelebApplyModal({ setOpen }) {
           onChange={(e) => setName(e.target.value)}
         ></Styled.Input>
         <SelectForm
-          options={genderOptions}
+          options={SELECTFORM_INFO.GENDER}
           label="성별"
           onChange={handleGenderChange}
         />
         <SelectForm
-          options={categoryOptions}
+          options={SELECTFORM_INFO.CATEGORY}
           label="분류"
           onChange={handleCategoryChange}
         />
