@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import styled from "styled-components";
 
 import BackdropModal from "../common/modal/BackdropModal.jsx";
-import ThumbnailBox from "../create-fund/ThumbnailBox.jsx";
+import ThumbnailBox from "../common/images/ThumbnailBox.jsx";
 import Button from "../common/button/Button.jsx";
 import SelectForm from "./SelectForm.jsx";
 import SELECTFORM_INFO from "@/constants/SELECTFORM_INFO.js";

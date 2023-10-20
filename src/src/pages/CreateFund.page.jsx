@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 import { Title } from "@/styles/CommonStyle";
-import ThumbnailBox from "@/components/create-fund/ThumbnailBox.jsx";
+import ThumbnailBox from "@/components/common/images/ThumbnailBox.jsx";
 import SettingForm from "@/components/create-fund/SettingForm.jsx";
 import formatDateToYYYYMMDD from "@/utils/formateDateToYYYYMMDD.js";
 import TextEditor from "@/components/common/TextEditor.jsx";
@@ -109,7 +109,7 @@ function CreateFundPage() {
         <Styled.TitleInput
           placeholder="펀딩 제목을 입력하세요"
           value={title}
-          onChange={e => setTitle(e.target.value)}
+          onChange={(e) => setTitle(e.target.value)}
         />
       </Styled.InputContainer>
 
