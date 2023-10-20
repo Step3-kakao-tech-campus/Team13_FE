@@ -67,7 +67,7 @@ function CelebApplyModal({ setOpen }) {
           placeholder="이름을 입력해주세요"
           value={name}
           onChange={(e) => setName(e.target.value)}
-        ></Styled.Input>
+        />
         <SelectForm
           options={SELECTFORM_INFO.GENDER}
           label="성별"
@@ -79,7 +79,7 @@ function CelebApplyModal({ setOpen }) {
           onChange={handleCategoryChange}
         />
         <Styled.Label>소속그룹</Styled.Label>
-        <Styled.Input type="text" placeholder="선택사항"></Styled.Input>
+        <Styled.Input type="text" placeholder="선택사항" />
       </Styled.FormContainer>
 
       <Button
