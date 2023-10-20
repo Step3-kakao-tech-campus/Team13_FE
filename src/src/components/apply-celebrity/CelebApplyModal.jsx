@@ -94,7 +94,6 @@ function CelebApplyModal({ setOpen }) {
       >
         신청하기
       </Button>
-      <></>
     </BackdropModal>
   );
 }
