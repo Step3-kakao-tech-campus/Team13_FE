@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { PropTypes } from "prop-types";
 
-import useSetImageFileToUrl from "@/hooks/useSetImageFileToUrl.js";
 import ImageFileAddIcon from "@/assets/icon/ImageFileAddIcon.jsx";
 import CloseIcon from "@/assets/icon/CloseIcon.jsx";
 
@@ -58,15 +57,12 @@ const Styled = {
 
 /**
  * 펀딩 주최 페이지의 썸네일 컴포넌트
- * @param {Blob} file 이미지 파일
- * @param {React.Dispatch.SetStateAction} setFile set 이미지 파일
+ * @param {string} imageUrl 이미지 url
+ * @param {function} handleFileChange 파일 변경 이벤트 핸들러
+ * @param {function} handleFileDelete 파일 삭제 이벤트 핸들러
  */
 
-function ThumbnailBox({ file, setFile }) {
-  const { imageUrl, handleFileChange, handleFileDelete } = useSetImageFileToUrl(
-    { file, setFile },
-  );
-
+function ThumbnailBox({ imageUrl, handleFileDelete, handleFileChange }) {
   return (
     <Styled.Container>
       <Styled.ImageLabel htmlFor="file-input">
@@ -97,8 +93,9 @@ function ThumbnailBox({ file, setFile }) {
 }
 
 ThumbnailBox.propTypes = {
-  file: PropTypes.any,
-  setFile: PropTypes.func.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  handleFileDelete: PropTypes.func.isRequired,
+  handleFileChange: PropTypes.func.isRequired,
 };
 
 export default ThumbnailBox;
