@@ -62,13 +62,13 @@ const Styled = {
  * @param {React.Dispatch.SetStateAction} setFile set 이미지 파일
  */
 
-function ThumbnailBox({ file, setFile }) {
+function ThumbnailBox({ file, setFile, style }) {
   const { imageUrl, handleFileChange, handleFileDelete } = useSetImageFileToUrl(
     { file, setFile },
   );
 
   return (
-    <Styled.Container>
+    <Styled.Container style={style}>
       <Styled.ImageLabel htmlFor="file-input">
         {imageUrl ? (
           <>
@@ -99,6 +99,7 @@ function ThumbnailBox({ file, setFile }) {
 ThumbnailBox.propTypes = {
   file: PropTypes.any,
   setFile: PropTypes.func.isRequired,
+  style: PropTypes.object,
 };
 
 export default ThumbnailBox;
