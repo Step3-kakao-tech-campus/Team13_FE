@@ -11,7 +11,7 @@ function useSetImageFileToUrl({ file, setFile }) {
   const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
-    if (!file || file === "") {
+    if (!file) {
       return;
     }
 
