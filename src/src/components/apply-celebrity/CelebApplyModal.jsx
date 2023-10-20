@@ -54,9 +54,7 @@ function CelebApplyModal({ setOpen }) {
     <BackdropModal
       setOpen={setOpen}
       modalStyle={{
-        width: "22.4rem",
-        height: "43.5rem",
-        padding: "2.5rem 3.4rem",
+        padding: "2.8rem 3.3rem",
       }}
     >
       <Styled.Title>셀럽 신청</Styled.Title>
