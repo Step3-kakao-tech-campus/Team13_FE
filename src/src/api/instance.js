@@ -1,5 +1,4 @@
 import axios from "axios";
-import TOKEN from "@/constants/TOKEN.js";
 import authAPI from "@/api/authAPI.js";
 
 const baseUrl = import.meta.env.VITE_USE_MOCK_API
@@ -15,11 +14,12 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   function (config) {
-    const accessToken = localStorage.getItem(TOKEN.ACCESS);
+    const accessToken = localStorage.getItem("accessToken").replace(/"/gi, "");
+    console.log(accessToken);
 
     if (!accessToken) return config;
 
-    config.headers.Authorization = `Bearer accessToken`;
+    config.headers.Authorization = `Bearer ${accessToken}`;
     return config;
   },
   function (err) {
@@ -39,14 +39,17 @@ instance.interceptors.response.use(
     switch (err.response.status) {
       case 401: {
         const originalRequest = err.config;
-        const refreshToken = localStorage.getItem(TOKEN.REFRESH);
-        localStorage.removeItem(TOKEN.ACCESS);
-        localStorage.removeItem(TOKEN.REFRESH);
+        const refreshToken = localStorage
+          .getItem("refreshToken")
+          .replace(/"/gi, "");
+
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
 
         if (!refreshToken) return Promise.reject(err);
 
         const newAccessToken = authAPI.refreshToken({ baseUrl, refreshToken });
-        localStorage.setItem(TOKEN.ACCESS, newAccessToken);
+        localStorage.setItem("accessToken", newAccessToken);
 
         originalRequest.headers.authorization = `Bearer ${newAccessToken}`;
         return axios(originalRequest);
