@@ -177,9 +177,9 @@ function FundInfoGridCard({
           right: "0.75rem",
         }}
         isActive={isHeartClicked}
-        onClick={e => {
+        onClick={(e) => {
           e.stopPropagation();
-          setIsHeartClicked(prev => !prev);
+          setIsHeartClicked((prev) => !prev);
         }}
       />
       <Styled.ThumbnailImg src={thumbnailUrl} />
@@ -200,11 +200,10 @@ function FundInfoGridCard({
         <div className="fund-title">{fundTitle}</div>
       </Styled.TextFundInfoBox>
 
-      <Styled.CelebUserInfoBox>
+      <Styled.CelebUserInfoBox onClick={(e) => e.stopPropagation()}>
         <div
           className="celebrity"
-          onClick={e => {
-            e.stopPropagation();
+          onClick={() => {
             navigate(`${routes.celebrity}/${celebrityId}`);
           }}
         >
@@ -223,8 +222,7 @@ function FundInfoGridCard({
 
         <div
           className="organizer-name"
-          onClick={e => {
-            e.stopPropagation();
+          onClick={() => {
             navigate(`${routes.user}/${organizerId}`);
           }}
         >
