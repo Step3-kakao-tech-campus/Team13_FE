@@ -28,6 +28,10 @@ const Styled = {
     width: 100%;
     height: 3rem;
     font-size: 1rem;
+
+    &::placeholder {
+      color: ${({ theme }) => theme.color.inactive};
+    }
   `,
 };
 
