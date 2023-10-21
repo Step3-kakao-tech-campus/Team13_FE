@@ -94,6 +94,7 @@ function CreateFundPage() {
 
       <Styled.Subtitle>펀딩 소개</Styled.Subtitle>
       <TextEditor
+        text={introductionText}
         setText={setIntroductionText}
         style={{ height: "calc(100vh - 20rem)" }}
       />
