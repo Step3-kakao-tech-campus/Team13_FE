@@ -25,6 +25,7 @@ const Styled = {
     align-items: center;
     border-radius: 0.25rem;
     cursor: pointer;
+    border: ${({ theme }) => theme.border.main};
 
     ${({ $isMobile }) =>
       $isMobile ||
@@ -41,6 +42,7 @@ const Styled = {
     width: 50px;
     height: 50px;
     border-radius: 9999px;
+    object-fit: cover;
   `,
 
   TextContainer: styled.div`

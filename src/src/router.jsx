@@ -36,6 +36,10 @@ const router = createBrowserRouter([
         element: <CreateFundPage />,
       },
       {
+        path: `${routes.fund}/:fundId${routes.editIntroduction}`,
+        element: <Test />,
+      },
+      {
         path: routes.celebrity,
         element: <CelebrityListPage />,
       },
