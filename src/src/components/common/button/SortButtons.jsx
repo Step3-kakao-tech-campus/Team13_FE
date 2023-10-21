@@ -14,6 +14,7 @@ const Styled = {
     margin: 0 0.5rem;
     background-color: transparent;
     color: ${({ theme }) => theme.color.addition};
+    white-space: nowrap;
 
     &:first-child {
       content: none;
@@ -64,7 +65,7 @@ function SortButtons({ sortTypeArray }) {
           <Styled.Button
             key={sortItem.key}
             value={sortItem.key}
-            onClick={(event) => {
+            onClick={event => {
               if (selectedSort === event.target.value) return;
               setSelectedSort(event.target.value);
               sortItem.func();
