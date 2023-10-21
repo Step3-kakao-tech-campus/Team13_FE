@@ -42,27 +42,17 @@ function CelebApplyModal({ setOpen }) {
     category: "",
   });
 
-  const handleNameChange = (e) => {
+  const handleOnChange = (fieldName, value) => {
     setTextCelebInfo({
       ...textCelebInfo,
-      name: e.target.value,
+      [fieldName]: value,
     });
-  };
 
-  const handleGenderChange = (selectedValue) => {
-    setTextCelebInfo({
-      ...textCelebInfo,
-      gender: selectedValue,
-    });
-    console.log(`선택된 성별: ${selectedValue}`);
-  };
-
-  const handleCategoryChange = (selectedValue) => {
-    setTextCelebInfo({
-      ...textCelebInfo,
-      category: selectedValue,
-    });
-    console.log(`선택된 분류: ${selectedValue}`);
+    if (fieldName === "gender") {
+      console.log(`선택된 성별: ${value}`);
+    } else if (fieldName === "category") {
+      console.log(`선택된 분류: ${value}`);
+    }
   };
 
   const handleApplyCelebSubmit = () => {
@@ -90,17 +80,19 @@ function CelebApplyModal({ setOpen }) {
         <Styled.Input
           type="text"
           placeholder="이름을 입력해주세요"
-          onChange={handleNameChange}
+          onChange={(e) => handleOnChange("name", e.target.value)}
         />
         <SelectInput
           options={SELECTFORM_INFO.GENDER}
           label="성별"
-          onChange={handleGenderChange}
+          onChange={(selectedValue) => handleOnChange("gender", selectedValue)}
         />
         <SelectInput
           options={SELECTFORM_INFO.CATEGORY}
           label="분류"
-          onChange={handleCategoryChange}
+          onChange={(selectedValue) =>
+            handleOnChange("category", selectedValue)
+          }
         />
         <Styled.Label>소속그룹</Styled.Label>
         <Styled.Input type="text" placeholder="선택사항" />
