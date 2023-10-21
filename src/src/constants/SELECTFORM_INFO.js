@@ -1,15 +1,15 @@
 const GENDER = [
-  { label: "남자", value: "male" },
-  { label: "여자", value: "female" },
+  { label: "남자", value: "MALE" },
+  { label: "여자", value: "FEMALE" },
 ];
 
 const CATEGORY = [
-  { label: "가수", value: "singer" },
-  { label: "배우", value: "actor" },
-  { label: "코미디언", value: "comedian" },
-  { label: "스포츠", value: "sports" },
-  { label: "인플루언서", value: "influencer" },
-  { label: "기타", value: "etc" },
+  { label: "가수", value: "SINGER" },
+  { label: "배우", value: "ACTOR" },
+  { label: "코미디언", value: "COMEDIAN" },
+  { label: "스포츠", value: "SPORTS" },
+  { label: "인플루언서", value: "INFLUENCER" },
+  { label: "기타", value: "ETC" },
 ];
 
 Object.freeze(GENDER);
