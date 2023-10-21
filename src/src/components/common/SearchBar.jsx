@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, memo } from "react";
 import styled from "styled-components";
 import { PropTypes } from "prop-types";
 import { useNavigate } from "react-router-dom";
@@ -45,7 +45,7 @@ function SearchBar({ placeholder, uri, ...htmlDivProps }) {
   const inputRef = useRef();
   const navigate = useNavigate();
 
-  const navigateToKeyword = (input) => {
+  const navigateToKeyword = input => {
     const keyword = input?.replace(/(\s*)/g, "");
     if (keyword === "") return;
 
@@ -55,7 +55,7 @@ function SearchBar({ placeholder, uri, ...htmlDivProps }) {
     });
   };
 
-  const handleEnterKeyPress = (event) => {
+  const handleEnterKeyPress = event => {
     if (event.key !== "Enter") return;
 
     navigateToKeyword(inputRef.current.value);
@@ -92,4 +92,4 @@ SearchBar.defaultProps = {
   uri: routes.fund,
 };
 
-export default SearchBar;
+export default memo(SearchBar);
