@@ -19,7 +19,7 @@ const Styled = {
   `,
 };
 
-function SelectForm({ options, label, onChange }) {
+function SelectInput({ options, label, onChange }) {
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleSelectChange = (e) => {
@@ -47,4 +47,4 @@ function SelectForm({ options, label, onChange }) {
   );
 }
 
-export default SelectForm;
+export default SelectInput;

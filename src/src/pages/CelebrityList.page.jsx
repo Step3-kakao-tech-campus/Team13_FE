@@ -10,7 +10,7 @@ import PageTitle from "@/components/common/PageTitle.jsx";
 import routes from "@/constants/routes.js";
 import MainLayout from "@/components/common/template/MainLayout.jsx";
 import { GridTemplate, Title } from "@/styles/CommonStyle.js";
-import CelebApplyModal from "@/components/apply-celebrity/CelebApplyModal.jsx";
+import CelebApplyModal from "@/components/celebrity-list/CelebApplyModal.jsx";
 
 const Styled = {
   Title: styled(Title)`

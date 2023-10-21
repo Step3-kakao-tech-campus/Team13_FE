@@ -3,10 +3,10 @@ import toast from "react-hot-toast";
 
 import styled from "styled-components";
 
-import BackdropModal from "../common/modal/BackdropModal.jsx";
-import ThumbnailBox from "../common/images/ThumbnailBox.jsx";
-import Button from "../common/button/Button.jsx";
-import SelectForm from "./SelectForm.jsx";
+import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
+import ThumbnailBox from "@/components/common/images/ThumbnailBox.jsx";
+import Button from "@/components/common/button/Button.jsx";
+import SelectInput from "@/components/celebrity-list/SelectInput.jsx";
 import SELECTFORM_INFO from "@/constants/SELECTFORM_INFO.js";
 
 const Styled = {
@@ -68,12 +68,12 @@ function CelebApplyModal({ setOpen }) {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <SelectForm
+        <SelectInput
           options={SELECTFORM_INFO.GENDER}
           label="성별"
           onChange={handleGenderChange}
         />
-        <SelectForm
+        <SelectInput
           options={SELECTFORM_INFO.CATEGORY}
           label="분류"
           onChange={handleCategoryChange}
