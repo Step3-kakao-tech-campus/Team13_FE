@@ -1,6 +1,5 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-
 import styled from "styled-components";
 
 import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
@@ -37,19 +36,41 @@ const Styled = {
 
 function CelebApplyModal({ setOpen }) {
   const [thumbnailFile, setThumbnailFile] = useState(null);
-  const [name, setName] = useState("");
+  const [textCelebInfo, setTextCelebInfo] = useState({
+    name: "",
+    gender: "",
+    category: "",
+  });
+
+  const handleNameChange = (e) => {
+    setTextCelebInfo({
+      ...textCelebInfo,
+      name: e.target.value,
+    });
+  };
 
   const handleGenderChange = (selectedValue) => {
+    setTextCelebInfo({
+      ...textCelebInfo,
+      gender: selectedValue,
+    });
     console.log(`선택된 성별: ${selectedValue}`);
   };
 
   const handleCategoryChange = (selectedValue) => {
+    setTextCelebInfo({
+      ...textCelebInfo,
+      category: selectedValue,
+    });
     console.log(`선택된 분류: ${selectedValue}`);
   };
 
   const handleApplyCelebSubmit = () => {
     if (!thumbnailFile) return toast.error("셀럽 이미지를 추가해 주세요");
-    if (!name || name === "") return toast.error("셀럽 이름을 입력해 주세요");
+    if (!textCelebInfo.name || textCelebInfo.name === "")
+      return toast.error("셀럽 이름을 입력해 주세요");
+    if (!textCelebInfo.gender) return toast.error("성별을 선택해 주세요");
+    if (!textCelebInfo.category) return toast.error("분류를 선택해 주세요");
 
     toast.success("성공적으로 셀럽 신청이 완료되었습니다!");
   };
@@ -69,8 +90,7 @@ function CelebApplyModal({ setOpen }) {
         <Styled.Input
           type="text"
           placeholder="이름을 입력해주세요"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={handleNameChange}
         />
         <SelectInput
           options={SELECTFORM_INFO.GENDER}
