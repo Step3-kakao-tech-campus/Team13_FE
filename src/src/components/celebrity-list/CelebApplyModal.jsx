@@ -63,6 +63,7 @@ function CelebApplyModal({ setOpen }) {
     if (!textCelebInfo.category) return toast.error("분류를 선택해 주세요");
 
     toast.success("성공적으로 셀럽 신청이 완료되었습니다!");
+    setOpen(false);
   };
 
   return (
