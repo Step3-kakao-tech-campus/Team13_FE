@@ -24,4 +24,9 @@ export const authHandlers = [
       }),
     );
   }),
+
+  // 회원 탈퇴
+  rest.post("api" + API.AUTH.DELETE_ACCOUNT, (req, res, ctx) => {
+    return res(ctx.status(200));
+  }),
 ];

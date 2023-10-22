@@ -1,7 +1,7 @@
 const AUTH = {
   LOGIN: "/login",
   SIGN_UP: "/signup",
-  USER_SETTING: "/user/setting",
+  DELETE_ACCOUNT: "/delete-account",
 };
 
 const FUND = {
