@@ -15,4 +15,17 @@ const getUserSettingByToken = async () => {
   return new UserSettingDto(data);
 };
 
-export default { getUserSettingByToken };
+/**
+ * 회원정보 수정 api
+ * @param {Promise<UserSettingDto>}data
+ * @returns {Promise<axios.AxiosResponse<any>>}
+ */
+const postUserSettingByToken = async (data) => {
+  return await instance({
+    url: API.USER.SETTING,
+    method: "POST",
+    data,
+  });
+};
+
+export default { getUserSettingByToken, postUserSettingByToken };

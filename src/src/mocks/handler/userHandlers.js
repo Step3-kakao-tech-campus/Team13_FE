@@ -17,9 +17,9 @@ export const userHandlers = [
 
   // 회원정보 수정
   rest.post("/api" + API.USER.SETTING, (req, res, ctx) => {
-    const { password, newPassword, profileImg } = req.body;
+    const { password, newPassword, profileImageFile } = req.body;
 
-    if (!password && !newPassword && !profileImg) {
+    if (!password && !newPassword && !profileImageFile) {
       return res(
         ctx.status(400),
         ctx.json({ message: "변경을 요청한 값이 없습니다." }),
