@@ -21,6 +21,14 @@ const Styled = {
   `,
 };
 
+/**
+ * 셀럽 신청 모달에 사용되는 셀렉트(드롭다운) 컴포넌트
+ * @param {Object<label: string, value: string>} options 셀렉트 옵션 목록
+ * @param {string} label 셀렉트 필드의 레이블
+ * @param {function} onChange 옵션 선택이 변경될 때 호출되는 함수
+ * @param {string} selectedValue 현재 선택된 옵션의 값
+ */
+
 function SelectInput({ options, label, onChange, selectedValue }) {
   const handleSelectChange = (e) => {
     const newValue = e.target.value;

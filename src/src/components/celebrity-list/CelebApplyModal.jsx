@@ -1,13 +1,18 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import styled from "styled-components";
+import { PropTypes } from "prop-types";
 
 import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
 import ThumbnailBox from "@/components/common/images/ThumbnailBox.jsx";
 import Button from "@/components/common/button/Button.jsx";
 import SelectInput from "@/components/celebrity-list/SelectInput.jsx";
 import SELECTFORM_INFO from "@/constants/SELECTFORM_INFO.js";
-import { PropTypes } from "prop-types";
+
+/**
+ * 셀럽 신청 모달 컴포넌트
+ * @param {function(boolean)} setOpen 모달 상태 업데이트 함수
+ */
 
 const Styled = {
   Title: styled.div`
