@@ -1,6 +1,6 @@
 import styled from "styled-components";
+import { Suspense } from "react";
 
-import useUserSettingQuery from "@/hooks/api/useUserSettingQuery.js";
 import useDeleteAccountMutation from "@/hooks/api/useDeleteAccountMutation.js";
 import useDeleteUserInfoInLocalStorage from "@/hooks/useDeleteUserInfoInLocalStorage.js";
 
@@ -28,34 +28,31 @@ function MyAccountPage() {
   const deleteUserInfoInLocalStorage = useDeleteUserInfoInLocalStorage();
   const { mutate: deleteAccountMutate } = useDeleteAccountMutation();
 
-  const { data: userSettingData, isLoading } = useUserSettingQuery();
-
-  if (isLoading) return <MyAccountLoader />;
-
   return (
-    <FormTemplate>
-      <Styled.Title>회원정보 수정하기</Styled.Title>
+    <Suspense fallback={<MyAccountLoader />}>
+      <FormTemplate>
+        <Styled.Title>회원정보 수정하기</Styled.Title>
+        <UserSettingForm />
 
-      <UserSettingForm data={userSettingData} />
+        <Styled.Title>로그아웃하기</Styled.Title>
+        <Button
+          styleType={BUTTON_TYPE.SECONDARY}
+          onClick={deleteUserInfoInLocalStorage}
+          style={buttonStyle}
+        >
+          로그아웃
+        </Button>
 
-      <Styled.Title>로그아웃하기</Styled.Title>
-      <Button
-        styleType={BUTTON_TYPE.SECONDARY}
-        onClick={deleteUserInfoInLocalStorage}
-        style={buttonStyle}
-      >
-        로그아웃
-      </Button>
-
-      <Styled.Title>회원 탈퇴하기</Styled.Title>
-      <Button
-        styleType={BUTTON_TYPE.PRIMARY}
-        onClick={deleteAccountMutate}
-        style={buttonStyle}
-      >
-        회원 탈퇴
-      </Button>
-    </FormTemplate>
+        <Styled.Title>회원 탈퇴하기</Styled.Title>
+        <Button
+          styleType={BUTTON_TYPE.PRIMARY}
+          onClick={deleteAccountMutate}
+          style={buttonStyle}
+        >
+          회원 탈퇴
+        </Button>
+      </FormTemplate>
+    </Suspense>
   );
 }
 

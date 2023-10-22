@@ -4,21 +4,22 @@ import { PropTypes } from "prop-types";
 import FORM_INFO from "@/constants/FORM_INFO.js";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 
+import useUserSettingQuery from "@/hooks/api/useUserSettingQuery.js";
+import useChangeUserSettingMutation from "@/hooks/api/useChangeUserSettingMutation.js";
+import { UserSettingDto } from "@/api/dto/user.dto.js";
 import ChangeProfileBox from "@/components/my-account/ChangeProfileBox.jsx";
 import Form from "@/components/common/form/Form.jsx";
 import Button from "@/components/common/button/Button.jsx";
-import useChangeUserSettingMutation from "@/hooks/api/useChangeUserSettingMutation.js";
-import { UserSettingDto } from "@/api/dto/user.dto.js";
 
-/**
- *
- * @param {Promise<UserSettingDto>} data
+/** 내 계정 회원 정보 변경 폼 컴포넌트
  * @returns {JSX.Element}
  * @constructor
  */
-function UserSettingForm({ data }) {
+
+function UserSettingForm() {
   const [profileImageFile, setProfileImageFile] = useState(null);
   const { mutate } = useChangeUserSettingMutation();
+  const { data } = useUserSettingQuery();
 
   const handleUserSettingSubmit = (data) => {
     const requestBody = new UserSettingDto({

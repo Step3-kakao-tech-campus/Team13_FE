@@ -10,6 +10,7 @@ function useUserSettingQuery() {
       return await userAPI.getUserSettingByToken();
     },
     {
+      suspense: true,
       onError: (err) => {
         toast.error(err.message);
       },
