@@ -1,18 +1,18 @@
 import styled from "styled-components";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+
+import { Title } from "@/styles/CommonStyle.js";
+import routes from "@/constants/routes.js";
+import SORT_ORDER from "@/constants/SORT_ORDER.js";
 
 import MainLayout from "@/components/common/template/MainLayout.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
 import SortButtons from "@/components/common/button/SortButtons.jsx";
-import FundInfoGridCard from "@/components/fund/FundInfoGridCard.jsx";
-import { GridTemplate, Title } from "@/styles/CommonStyle.js";
-import routes from "@/constants/routes.js";
 import PageTitle from "@/components/common/PageTitle.jsx";
 import FloatButton from "@/components/common/button/FloatButton.jsx";
-import useIntersectionObserver from "@/hooks/useIntersectionObserver.js";
-import useInfiniteFundInfoQuery from "@/hooks/api/useInfiniteFundInfoQuery.js";
-import SORT_ORDER from "@/constants/SORT_ORDER.js";
+import InfiniteFundInfo from "@/components/fund-list/InfiniteFundInfo.jsx";
+import InfiniteFundInfoLoader from "@/components/fund-list/InfiniteFundInfo.loader.jsx";
 
 const Styled = {
   Title: styled(Title)`
@@ -54,17 +54,6 @@ function FundListPage() {
     };
   });
 
-  const loaderRef = useRef();
-  const { data: infiniteFundInfoData, fetchNextPage } =
-    useInfiniteFundInfoQuery({
-      keyword,
-      sortType,
-    });
-
-  useIntersectionObserver(async () => {
-    await fetchNextPage();
-  }, loaderRef);
-
   return (
     <>
       <PageTitle
@@ -86,28 +75,9 @@ function FundListPage() {
           <SortButtons sortTypeArray={fundListSortTypeArray} />
         </Styled.TopBar>
 
-        <GridTemplate>
-          {infiniteFundInfoData?.pages.map((page) =>
-            page?.data?.fundList.map((info, index) => (
-              <FundInfoGridCard
-                key={index}
-                fundId={info.fundId}
-                fundTitle={info.fundTitle}
-                thumbnailUrl={info.thumbnailUrl}
-                targetDate={info.targetDate}
-                targetMoney={info.targetMoney}
-                currentMoney={info.currentMoney}
-                celebrityId={info.celebrityId}
-                celebrityProfileUrl={info.celebrityProfileUrl}
-                celebrityName={info.celebrityName}
-                organizerId={info.organizerId}
-                organizerName={info.organizerName}
-                isInUserWishList={info.isInUserWishList}
-              />
-            )),
-          )}
-          <div ref={loaderRef}>loader</div>
-        </GridTemplate>
+        <Suspense fallback={<InfiniteFundInfoLoader />}>
+          <InfiniteFundInfo keyword={keyword} sortType={sortType} />
+        </Suspense>
 
         <FloatButton
           onClick={() => {

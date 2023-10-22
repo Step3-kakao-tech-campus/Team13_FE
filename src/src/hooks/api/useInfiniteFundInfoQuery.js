@@ -13,6 +13,7 @@ function useInfiniteFundInfoQuery({ keyword, sortType }) {
       });
     },
     {
+      suspense: true,
       getNextPageParam: (lastPage) => {
         return lastPage.config.params.pageIndex + 1;
       },
