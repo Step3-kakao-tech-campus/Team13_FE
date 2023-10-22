@@ -7,6 +7,7 @@ import ThumbnailBox from "@/components/common/images/ThumbnailBox.jsx";
 import Button from "@/components/common/button/Button.jsx";
 import SelectInput from "@/components/celebrity-list/SelectInput.jsx";
 import SELECTFORM_INFO from "@/constants/SELECTFORM_INFO.js";
+import { PropTypes } from "prop-types";
 
 const Styled = {
   Title: styled.div`
@@ -114,5 +115,9 @@ function CelebApplyModal({ setOpen }) {
     </BackdropModal>
   );
 }
+
+CelebApplyModal.propTypes = {
+  setOpen: PropTypes.func.isRequired,
+};
 
 export default CelebApplyModal;

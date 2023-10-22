@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { PropTypes } from "prop-types";
 
 const Styled = {
   SelectContainer: styled.div`
@@ -44,5 +45,17 @@ function SelectInput({ options, label, onChange, selectedValue }) {
     </Styled.SelectContainer>
   );
 }
+
+SelectInput.propTypes = {
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  label: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  selectedValue: PropTypes.string.isRequired,
+};
 
 export default SelectInput;
