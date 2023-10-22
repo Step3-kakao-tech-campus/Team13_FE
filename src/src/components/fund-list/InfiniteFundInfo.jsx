@@ -5,6 +5,7 @@ import FundInfoGridCard from "@/components/fund/FundInfoGridCard.jsx";
 import useInfiniteFundInfoQuery from "@/hooks/api/useInfiniteFundInfoQuery.js";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver.js";
 import InfiniteFundInfoLoader from "@/components/fund-list/InfiniteFundInfo.loader.jsx";
+import { FundInfoDto } from "@/api/dto/fund.dto.js";
 
 /**
  * 펀딩 무한 목록 컴포넌트
@@ -25,26 +26,16 @@ function InfiniteFundInfo({ keyword, sortType }) {
     await fetchNextPage();
   }, loaderRef);
 
+  const mapInfoToFundInfoDto = (info) => {
+    return new FundInfoDto({ ...info });
+  };
+
   return (
     <>
       <GridTemplate>
         {infiniteFundInfoData?.pages.map((page) =>
           page?.data?.fundList.map((info, index) => (
-            <FundInfoGridCard
-              key={index}
-              fundId={info.fundId}
-              fundTitle={info.fundTitle}
-              thumbnailUrl={info.thumbnailUrl}
-              targetDate={info.targetDate}
-              targetMoney={info.targetMoney}
-              currentMoney={info.currentMoney}
-              celebrityId={info.celebrityId}
-              celebrityProfileUrl={info.celebrityProfileUrl}
-              celebrityName={info.celebrityName}
-              organizerId={info.organizerId}
-              organizerName={info.organizerName}
-              isInUserWishList={info.isInUserWishList}
-            />
+            <FundInfoGridCard key={index} {...mapInfoToFundInfoDto(info)} />
           )),
         )}
       </GridTemplate>

@@ -1,0 +1,31 @@
+class FundInfoDto {
+  constructor({
+    fundId,
+    fundTitle,
+    thumbnailUrl,
+    targetDate,
+    targetMoney,
+    currentMoney,
+    celebrityId,
+    celebrityName,
+    celebrityProfileUrl,
+    organizerId,
+    organizerName,
+    isInUserWishList,
+  }) {
+    this.fundId = fundId;
+    this.fundTitle = fundTitle;
+    this.thumbnailUrl = thumbnailUrl;
+    this.targetDate = targetDate;
+    this.targetMoney = targetMoney;
+    this.currentMoney = currentMoney;
+    this.celebrityId = celebrityId;
+    this.celebrityName = celebrityName;
+    this.celebrityProfileUrl = celebrityProfileUrl;
+    this.organizerId = organizerId;
+    this.organizerName = organizerName;
+    this.isInUserWishList = isInUserWishList;
+  }
+}
+
+export { FundInfoDto };
