@@ -35,4 +35,15 @@ const refreshToken = ({ baseUrl, refreshToken }) => {
   return "refreshedAccessToken";
 };
 
-export default { postLogin, refreshToken };
+/**
+ * 회원 탈퇴 api
+ * @returns {*}
+ */
+const deleteAccountByToken = () => {
+  return instance({
+    url: API.AUTH.DELETE_ACCOUNT,
+    method: "POST",
+  });
+};
+
+export default { postLogin, refreshToken, deleteAccountByToken };
