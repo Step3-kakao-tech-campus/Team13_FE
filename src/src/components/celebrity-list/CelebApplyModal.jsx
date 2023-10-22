@@ -43,10 +43,10 @@ function CelebApplyModal({ setOpen }) {
   });
 
   const handleOnChange = (fieldName, value) => {
-    setTextCelebInfo({
-      ...textCelebInfo,
+    setTextCelebInfo((prev) => ({
+      ...prev,
       [fieldName]: value,
-    });
+    }));
 
     if (fieldName === "gender") {
       console.log(`선택된 성별: ${value}`);
@@ -87,6 +87,7 @@ function CelebApplyModal({ setOpen }) {
           options={SELECTFORM_INFO.GENDER}
           label="성별"
           onChange={(selectedValue) => handleOnChange("gender", selectedValue)}
+          selectedValue={textCelebInfo.gender}
         />
         <SelectInput
           options={SELECTFORM_INFO.CATEGORY}
@@ -94,6 +95,7 @@ function CelebApplyModal({ setOpen }) {
           onChange={(selectedValue) =>
             handleOnChange("category", selectedValue)
           }
+          selectedValue={textCelebInfo.category}
         />
         <Styled.Label>소속그룹</Styled.Label>
         <Styled.Input type="text" placeholder="선택사항" />
@@ -104,7 +106,7 @@ function CelebApplyModal({ setOpen }) {
         style={{
           padding: "0.75rem",
           width: "100%",
-          maringTop: "0.5rem",
+          marginTop: "0.5rem",
         }}
       >
         신청하기

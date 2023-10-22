@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 const Styled = {
@@ -19,12 +18,9 @@ const Styled = {
   `,
 };
 
-function SelectInput({ options, label, onChange }) {
-  const [selectedOption, setSelectedOption] = useState("");
-
+function SelectInput({ options, label, onChange, selectedValue }) {
   const handleSelectChange = (e) => {
     const selectedValue = e.target.value;
-    setSelectedOption(selectedValue);
     onChange(selectedValue);
   };
 
@@ -33,7 +29,7 @@ function SelectInput({ options, label, onChange }) {
       <Styled.Label htmlFor="select">{label}</Styled.Label>
       <Styled.Select
         id="select"
-        value={selectedOption}
+        value={selectedValue}
         onChange={handleSelectChange}
       >
         <option value="">선택하세요</option>
