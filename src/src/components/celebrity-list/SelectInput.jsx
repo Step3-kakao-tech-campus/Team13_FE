@@ -15,13 +15,15 @@ const Styled = {
     width: 100%;
     height: 3rem;
     font-size: 1rem;
+    color: ${({ selectedValue }) =>
+      selectedValue === "" ? "#aaaaaa" : "#000000"};
   `,
 };
 
 function SelectInput({ options, label, onChange, selectedValue }) {
   const handleSelectChange = (e) => {
-    const selectedValue = e.target.value;
-    onChange(selectedValue);
+    const newValue = e.target.value;
+    onChange(newValue);
   };
 
   return (
