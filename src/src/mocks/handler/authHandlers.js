@@ -19,6 +19,8 @@ export const authHandlers = [
         refreshToken: "refreshToken",
         profileUrl:
           "https://velog.velcdn.com/images/j8won/profile/55917697-2140-40be-ad07-d2d02137f38e/image.jpeg",
+        nickname: "축구도사",
+        isAdmin: true,
       }),
     );
   }),

@@ -1,17 +1,26 @@
 import instance from "@/api/instance.js";
 import API from "@/constants/API.js";
+import { SignInDto } from "@/api/dto/auth.dto.js";
 
 /**
  * 로그인 요청 api
  * @param {string} email
  * @param {string} password
- * @returns {Promise<axios.AxiosResponse<any>>}
+ * @returns {Promise<SignInDto>}
  */
 const postLogin = async ({ email, password }) => {
-  return await instance({
+  const { data } = await instance({
     url: API.AUTH.LOGIN,
     method: "POST",
     data: { email: email, password: password },
+  });
+
+  return new SignInDto({
+    accessToken: data.accessToken,
+    refreshToken: data.refreshToken,
+    profileImageUrl: data.profileUrl,
+    isAdmin: data.isAdmin,
+    nickname: data.nickname,
   });
 };
 
