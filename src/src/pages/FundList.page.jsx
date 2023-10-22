@@ -11,7 +11,7 @@ import routes from "@/constants/routes.js";
 import PageTitle from "@/components/common/PageTitle.jsx";
 import FloatButton from "@/components/common/button/FloatButton.jsx";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver.js";
-import useGetInfiniteFundInfoQuery from "@/hooks/api/useGetInfiniteFundInfoQuery.js";
+import useInfiniteFundInfoQuery from "@/hooks/api/useInfiniteFundInfoQuery.js";
 import SORT_ORDER from "@/constants/SORT_ORDER.js";
 
 const Styled = {
@@ -45,7 +45,7 @@ function FundListPage() {
   const fundListSortTypeArray = [
     SORT_ORDER.FUND.CLOSER_DEADLINE,
     SORT_ORDER.FUND.RECENT_ENROLLMENT,
-  ].map(type => {
+  ].map((type) => {
     return {
       key: SORT_ORDER.KOREAN[type],
       func: () => {
@@ -56,7 +56,7 @@ function FundListPage() {
 
   const loaderRef = useRef();
   const { data: infiniteFundInfoData, fetchNextPage } =
-    useGetInfiniteFundInfoQuery({
+    useInfiniteFundInfoQuery({
       keyword,
       sortType,
     });
@@ -87,7 +87,7 @@ function FundListPage() {
         </Styled.TopBar>
 
         <GridTemplate>
-          {infiniteFundInfoData?.pages.map(page =>
+          {infiniteFundInfoData?.pages.map((page) =>
             page?.data?.fundList.map((info, index) => (
               <FundInfoGridCard
                 key={index}
