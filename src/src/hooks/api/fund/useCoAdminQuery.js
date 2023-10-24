@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 function useCoAdminQuery({ fundId }) {
   return useQuery(
-    [API.FUND.CO_ADMIN, fundId],
+    [API.FUND.CO_ADMIN(fundId)],
     async () => {
       return await FundAPI.getCoAdminByFundId(fundId);
     },

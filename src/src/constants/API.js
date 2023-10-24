@@ -6,8 +6,10 @@ const AUTH = {
 
 const FUND = {
   GET_LIST: "/posts",
-  LIKE: "/like",
-  CO_ADMIN: "/co-admin",
+  LIKE: "/posts/like",
+  CO_ADMIN: (fundId) => {
+    return `/posts/${fundId}/co-admin`;
+  },
   INTRODUCTION: (fundId) => {
     return `/posts/${fundId}/introduction`;
   },

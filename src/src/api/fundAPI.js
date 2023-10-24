@@ -52,7 +52,7 @@ const deleteFundLike = async (fundId) => {
  */
 const getCoAdminByFundId = async (fundId) => {
   const { data } = await instance({
-    url: `${API.FUND.CO_ADMIN}/${fundId}`,
+    url: API.FUND.CO_ADMIN(fundId),
     method: "GET",
   });
 

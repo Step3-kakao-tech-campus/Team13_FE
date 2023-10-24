@@ -94,7 +94,7 @@ export const fundHandlers = [
   }),
 
   // 공동관리자 조회
-  rest.get("/api" + API.FUND.CO_ADMIN + "/:fundId", (req, res, ctx) => {
+  rest.get("/api" + API.FUND.CO_ADMIN(":fundId"), (req, res, ctx) => {
     const { fundId } = req.params;
 
     if (!fundId) {
