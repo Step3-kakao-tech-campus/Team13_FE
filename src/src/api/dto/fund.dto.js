@@ -36,4 +36,10 @@ class CoAdminUserDto {
   }
 }
 
-export { FundInfoDto, CoAdminUserDto };
+class FundIntroDto {
+  constructor({ introduction }) {
+    this.introduction = introduction;
+  }
+}
+
+export { FundInfoDto, CoAdminUserDto, FundIntroDto };

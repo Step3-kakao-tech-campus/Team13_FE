@@ -1,6 +1,6 @@
 import instance from "@/api/instance.js";
 import API from "@/constants/API.js";
-import { CoAdminUserDto } from "@/api/dto/fund.dto.js";
+import { CoAdminUserDto, FundIntroDto } from "@/api/dto/fund.dto.js";
 
 /**
  * 펀딩 목록 조회 api
@@ -59,9 +59,24 @@ const getCoAdminByFundId = async (fundId) => {
   return data.coAdminList.map((user) => new CoAdminUserDto(user));
 };
 
+/**
+ * 펀딩 소개글 조회
+ * @param {string || number} fundId 펀딩 아이디
+ * @returns {Promise<FundIntroDto>}
+ */
+const getFundIntroductionByFundId = async (fundId) => {
+  const { data } = await instance({
+    url: API.FUND.INTRODUCTION(fundId),
+    method: "GET",
+  });
+
+  return new FundIntroDto({ introduction: data.introduction });
+};
+
 export default {
   getFundInfoList,
   postFundLike,
   deleteFundLike,
   getCoAdminByFundId,
+  getFundIntroductionByFundId,
 };
