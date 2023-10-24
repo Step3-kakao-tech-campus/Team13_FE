@@ -92,4 +92,40 @@ export const fundHandlers = [
       ctx.json({ message: "성공적으로 찜 목록에서 제거했습니다" }),
     );
   }),
+
+  // 공동관리자 조회
+  rest.get("/api" + API.FUND.CO_ADMIN + "/:fundId", (req, res, ctx) => {
+    const { fundId } = req.params;
+
+    if (!fundId) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "존재하지 않는 펀딩입니다" }),
+      );
+    }
+
+    return res(
+      ctx.status(200),
+      ctx.json({
+        coAdminList: [
+          {
+            userId: "j8won",
+            profileUrl: "https://avatars.githubusercontent.com/u/75734220?v=4",
+            nickname: "경주원",
+          },
+          {
+            userId: "sihyonn",
+            profileUrl:
+              "https://avatars.githubusercontent.com/u/124874266?s=80&v=4",
+            nickname: "김시현",
+          },
+          {
+            userId: "Klomachenko",
+            profileUrl: "https://avatars.githubusercontent.com/u/102893954?v=4",
+            nickname: "이규민",
+          },
+        ],
+      }),
+    );
+  }),
 ];
