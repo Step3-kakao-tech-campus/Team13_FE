@@ -28,4 +28,12 @@ class FundInfoDto {
   }
 }
 
-export { FundInfoDto };
+class CoAdminUserDto {
+  constructor({ userId, profileUrl, nickname }) {
+    this.userId = userId;
+    this.profileUrl = profileUrl;
+    this.nickname = nickname;
+  }
+}
+
+export { FundInfoDto, CoAdminUserDto };

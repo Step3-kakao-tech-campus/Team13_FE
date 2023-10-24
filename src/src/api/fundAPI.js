@@ -1,5 +1,6 @@
 import instance from "@/api/instance.js";
 import API from "@/constants/API.js";
+import { CoAdminUserDto } from "@/api/dto/fund.dto.js";
 
 /**
  * 펀딩 목록 조회 api
@@ -44,4 +45,23 @@ const deleteFundLike = async (fundId) => {
   });
 };
 
-export default { getFundInfoList, postFundLike, deleteFundLike };
+/**
+ * 펀딩 공동관리자 조회
+ * @param {string || number} fundId 펀딩 아이디
+ * @returns {Promise<CoAdminUserDto[]>}
+ */
+const getCoAdminByFundId = async (fundId) => {
+  const { data } = await instance({
+    url: `${API.FUND.CO_ADMIN}/${fundId}`,
+    method: "GET",
+  });
+
+  return data.coAdminList.map((user) => new CoAdminUserDto(user));
+};
+
+export default {
+  getFundInfoList,
+  postFundLike,
+  deleteFundLike,
+  getCoAdminByFundId,
+};
