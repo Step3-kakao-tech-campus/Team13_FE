@@ -42,7 +42,7 @@ const Styled = {
 function FundDetailPage() {
   const [selectedTab, setSelectedTab] = useState(TABS.FUND_DETAIL.INTRO);
 
-  const tabInfoArray = Object.keys(TABS.FUND_DETAIL).map(key => {
+  const tabInfoArray = Object.keys(TABS.FUND_DETAIL).map((key) => {
     return {
       title: TABS.KOREAN[key],
       func: () => {
@@ -50,6 +50,8 @@ function FundDetailPage() {
       },
     };
   });
+
+  const isOrganizer = true;
 
   return (
     <Styled.Container>
@@ -64,7 +66,7 @@ function FundDetailPage() {
 
       <Styled.DetailWrap>
         <Tabs tabInfoArray={tabInfoArray} style={{ paddingBottom: "1rem" }} />
-        <DynamicDetailRender type={selectedTab} />
+        <DynamicDetailRender type={selectedTab} isOrganizer={isOrganizer} />
       </Styled.DetailWrap>
     </Styled.Container>
   );
