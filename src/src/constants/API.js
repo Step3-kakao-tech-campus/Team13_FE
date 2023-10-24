@@ -7,6 +7,7 @@ const AUTH = {
 const FUND = {
   GET_LIST: "/posts",
   LIKE: "/like",
+  CO_ADMIN: "/co-admin",
 };
 
 const USER = {
