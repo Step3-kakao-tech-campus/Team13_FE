@@ -6,6 +6,7 @@ const AUTH = {
 
 const FUND = {
   GET_LIST: "/posts",
+  LIKE: "/like",
 };
 
 const USER = {

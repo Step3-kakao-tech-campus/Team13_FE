@@ -17,4 +17,31 @@ const getFundInfoList = async ({ pageIndex, keyword, sortType }) => {
   });
 };
 
-export default { getFundInfoList };
+/**
+ * 펀딩 좋아요
+ * @param {string || number} fundId 펀딩 아이디
+ * @returns {Promise<axios.AxiosResponse<any>>}
+ */
+
+const postFundLike = async (fundId) => {
+  return await instance({
+    url: API.FUND.LIKE,
+    method: "POST",
+    data: { fundId },
+  });
+};
+
+/**
+ * 펀딩 좋아요 취소
+ * @param {string || number} fundId 펀딩 아이디
+ * @returns {Promise<axios.AxiosResponse<any>>}
+ */
+const deleteFundLike = async (fundId) => {
+  return await instance({
+    url: API.FUND.LIKE,
+    method: "DELETE",
+    data: { fundId },
+  });
+};
+
+export default { getFundInfoList, postFundLike, deleteFundLike };
