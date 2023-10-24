@@ -14,6 +14,7 @@ import formatDateToYYYYMMDD from "@/utils/formateDateToYYYYMMDD.js";
 import TextEditor from "@/components/common/TextEditor.jsx";
 import Button from "@/components/common/button/Button.jsx";
 import routes from "@/constants/routes.js";
+import useSetImageFileToUrl from "@/hooks/useSetImageFileToUrl.js";
 
 const Styled = {
   Container: styled.section`
@@ -36,7 +37,12 @@ const Styled = {
 function CreateFundPage() {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
-  const [thumbnailFile, setThumbnailFile] = useState(null);
+  const {
+    file: thumbnailFile,
+    imageUrl: thumbnailImageUrl,
+    handleFileChange: handleThumbnailChange,
+    handleFileDelete: handleThumbnailDelete,
+  } = useSetImageFileToUrl();
 
   const date = new Date();
   date.setDate(date.getDate() + 30);
@@ -85,7 +91,11 @@ function CreateFundPage() {
       <div id="thumbnail-note" style={{ fontSize: "0.75rem" }}>
         16:10 비율이 가장 적절합니다
       </div>
-      <ThumbnailBox file={thumbnailFile} setFile={setThumbnailFile} />
+      <ThumbnailBox
+        imageUrl={thumbnailImageUrl}
+        handleFileDelete={handleThumbnailDelete}
+        handleFileChange={handleThumbnailChange}
+      />
 
       <Styled.Subtitle>펀딩 설정</Styled.Subtitle>
       <WhiteInputContainer>
