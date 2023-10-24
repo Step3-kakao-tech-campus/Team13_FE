@@ -58,4 +58,38 @@ export const fundHandlers = [
       }),
     );
   }),
+
+  // 펀딩 좋아요
+  rest.post("/api" + API.FUND.LIKE, (req, res, ctx) => {
+    const { fundId } = req.body;
+
+    if (!fundId) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "존재하지 않는 펀딩입니다" }),
+      );
+    }
+
+    return res(
+      ctx.status(200),
+      ctx.json({ message: "성공적으로 찜 목록에 추가했습니다" }),
+    );
+  }),
+
+  // 펀딩 좋아요 취소
+  rest.delete("/api" + API.FUND.LIKE, (req, res, ctx) => {
+    const { fundId } = req.body;
+
+    if (!fundId) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "존재하지 않는 펀딩입니다" }),
+      );
+    }
+
+    return res(
+      ctx.status(200),
+      ctx.json({ message: "성공적으로 찜 목록에서 제거했습니다" }),
+    );
+  }),
 ];
