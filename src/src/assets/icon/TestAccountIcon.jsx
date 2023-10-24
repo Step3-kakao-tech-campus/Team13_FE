@@ -28,7 +28,7 @@ function TestAccountIcon({ size, ...props }) {
 }
 
 TestAccountIcon.propTypes = {
-  size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 TestAccountIcon.defaultProps = {
