@@ -27,7 +27,7 @@ function DynamicDetailRender({ type }) {
 }
 
 DynamicDetailRender.propTypes = {
-  type: PropTypes.oneOf([...Object.keys(TABS.FUND_DETAIL)]),
+  type: PropTypes.string.isRequired,
 };
 
 export default DynamicDetailRender;
