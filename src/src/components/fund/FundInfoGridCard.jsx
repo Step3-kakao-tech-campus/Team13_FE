@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { useState, memo } from "react";
+import { useState, memo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { isMobile } from "react-device-detect";
@@ -8,6 +8,8 @@ import CountdownBadge from "@/components/fund/CountdownBadge.jsx";
 import HeartButton from "@/components/fund/HeartButton.jsx";
 import routes from "@/constants/routes.js";
 import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
+import usePostFundLikeMutation from "@/hooks/api/fund/usePostFundLikeMutation.js";
+import useDeleteFundLikeMutation from "@/hooks/api/fund/useDeleteFundLikeMutation.js";
 
 const Styled = {
   Container: styled.article`
@@ -159,6 +161,23 @@ function FundInfoGridCard({
   const [isHeartClicked, setIsHeartClicked] = useState(isInUserWishList);
   const navigate = useNavigate();
 
+  const { mutate: postLikeMutate } = usePostFundLikeMutation(() =>
+    setIsHeartClicked(true),
+  );
+
+  const { mutate: deleteLikeMutate } = useDeleteFundLikeMutation(() =>
+    setIsHeartClicked(false),
+  );
+
+  const handleHeartClick = useCallback(
+    (e) => {
+      e.stopPropagation();
+      if (isHeartClicked) return deleteLikeMutate({ fundId });
+      return postLikeMutate({ fundId });
+    },
+    [fundId, isHeartClicked],
+  );
+
   const calculateCurrentPercentage = (currentMoney, targetMoney) => {
     return (currentMoney / targetMoney) * 100;
   };
@@ -177,10 +196,7 @@ function FundInfoGridCard({
           right: "0.75rem",
         }}
         isActive={isHeartClicked}
-        onClick={e => {
-          e.stopPropagation();
-          setIsHeartClicked(prev => !prev);
-        }}
+        onClick={handleHeartClick}
       />
       <Styled.ThumbnailImg src={thumbnailUrl} />
 
@@ -203,7 +219,7 @@ function FundInfoGridCard({
       <Styled.CelebUserInfoBox>
         <div
           className="celebrity"
-          onClick={e => {
+          onClick={(e) => {
             e.stopPropagation();
             navigate(`${routes.celebrity}/${celebrityId}`);
           }}
@@ -223,7 +239,7 @@ function FundInfoGridCard({
 
         <div
           className="organizer-name"
-          onClick={e => {
+          onClick={(e) => {
             e.stopPropagation();
             navigate(`${routes.user}/${organizerId}`);
           }}
