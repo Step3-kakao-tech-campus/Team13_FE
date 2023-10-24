@@ -9,6 +9,7 @@ import routes from "@/constants/routes.js";
 import CoAdmins from "@/components/fund-detail/introduction/CoAdmins.jsx";
 import CoAdminsLoader from "@/components/fund-detail/introduction/CoAdmins.loader.jsx";
 import useFundIntroQuery from "@/hooks/api/fund/useFundIntroQuery.js";
+import EDIT_TYPE from "@/constants/EDIT_TYPE.js";
 
 const Styled = {
   Container: styled.div``,
@@ -49,7 +50,9 @@ function Index({ isOrganizer }) {
         {isOrganizer && (
           <Button
             onClick={() => {
-              navigate(`${routes.fund}/${fundId}${routes.editIntroduction}`);
+              navigate(
+                `${routes.edit}?type=${EDIT_TYPE.FUND_INTRODUCTION}&fundId=${fundId}`,
+              );
             }}
           >
             수정하기

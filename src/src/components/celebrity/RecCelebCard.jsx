@@ -28,7 +28,7 @@ const Styled = {
     border: ${({ theme }) => theme.border.main};
 
     ${({ $isMobile }) =>
-      $isMobile ||
+      !$isMobile &&
       css`
         &:hover {
           transform: ${({ theme }) => theme.transform.gridCard};

@@ -216,11 +216,10 @@ function FundInfoGridCard({
         <div className="fund-title">{fundTitle}</div>
       </Styled.TextFundInfoBox>
 
-      <Styled.CelebUserInfoBox>
+      <Styled.CelebUserInfoBox onClick={(e) => e.stopPropagation()}>
         <div
           className="celebrity"
-          onClick={(e) => {
-            e.stopPropagation();
+          onClick={() => {
             navigate(`${routes.celebrity}/${celebrityId}`);
           }}
         >
@@ -239,8 +238,7 @@ function FundInfoGridCard({
 
         <div
           className="organizer-name"
-          onClick={(e) => {
-            e.stopPropagation();
+          onClick={() => {
             navigate(`${routes.user}/${organizerId}`);
           }}
         >

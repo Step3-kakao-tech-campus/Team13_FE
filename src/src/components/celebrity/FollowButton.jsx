@@ -30,33 +30,19 @@ function FollowButton({
     setIsFollowingButton(true);
   };
 
-  if (isFollowingButton) {
-    return (
-      <Button
-        styleType={BUTTON_TYPE.PRIMARY}
-        onClick={e => {
-          e.stopPropagation();
-          handleFollowClick();
-        }}
-        useHoverStyle={useHoverStyle}
-        {...htmlButtonProps}
-      >
-        팔로우
-      </Button>
-    );
-  }
-
   return (
     <Button
-      styleType={BUTTON_TYPE.SECONDARY}
-      onClick={e => {
+      styleType={
+        isFollowingButton ? BUTTON_TYPE.PRIMARY : BUTTON_TYPE.SECONDARY
+      }
+      onClick={(e) => {
         e.stopPropagation();
-        handleUnFollowClick();
+        isFollowingButton ? handleFollowClick() : handleUnFollowClick();
       }}
       useHoverStyle={useHoverStyle}
       {...htmlButtonProps}
     >
-      팔로잉
+      {isFollowingButton ? "팔로우" : "팔로잉"}
     </Button>
   );
 }

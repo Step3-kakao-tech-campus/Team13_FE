@@ -1,18 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { isMobile } from "react-device-detect";
+import { PropTypes } from "prop-types";
 
 import FollowButton from "@/components/celebrity/FollowButton.jsx";
-import TestAccountIcon from "@/assets/icon/TestAccountIcon";
 import routes from "@/constants/routes.js";
 
+import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
 import InProgressIcon from "@/assets/icon/InProgressIcon.jsx";
 import MoneyIcon from "@/assets/icon/MoneyIcon.jsx";
 import UserIcon from "@/assets/icon/UserIcon.jsx";
 import FirstRibbonIcon from "@/assets/icon/FirstRibbonIcon.jsx";
 import SecondRibbonIcon from "@/assets/icon/SecondRibbonIcon.jsx";
 import ThirdRibbonIcon from "@/assets/icon/ThirdRibbonIcon.jsx";
-import { PropTypes } from "prop-types";
 
 const Styled = {
   Container: styled.div`
@@ -30,7 +30,7 @@ const Styled = {
     cursor: pointer;
 
     ${({ $isMobile }) =>
-      $isMobile ||
+      !$isMobile &&
       css`
         &:hover {
           transform: ${({ theme }) => theme.transform.gridCard};
@@ -93,6 +93,7 @@ const Styled = {
  * @param {number} totalFundMoney 셀럽 관련 총 펀딩 금액
  * @param {number} followerNum 셀럽 팔로워 수
  * @param {boolean} isFollowing 셀럽 팔로잉 여부
+ * @param {number} rank 셀럽 랭킹
  */
 
 function CelebInfoGridCard({
