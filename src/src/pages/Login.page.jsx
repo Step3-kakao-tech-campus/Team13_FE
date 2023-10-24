@@ -9,7 +9,7 @@ import FORM_INFO from "@/constants/FORM_INFO.js";
 import FORM_DEFAULT from "@/constants/FORM_DEFAULT.js";
 import { FormTemplate, Title } from "@/styles/CommonStyle.js";
 import PageTitle from "@/components/common/PageTitle.jsx";
-import useLogInMutation from "@/hooks/api/useLogInMutation.js";
+import useLogInMutation from "@/hooks/api/auth/useLogInMutation.js";
 
 const Styled = {
   LoginTitle: styled(Title)`

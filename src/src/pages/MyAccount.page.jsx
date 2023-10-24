@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Suspense } from "react";
 
-import useDeleteAccountMutation from "@/hooks/api/useDeleteAccountMutation.js";
+import useDeleteAccountMutation from "@/hooks/api/auth/useDeleteAccountMutation.js";
 import useDeleteUserInfoInLocalStorage from "@/hooks/useDeleteUserInfoInLocalStorage.js";
 
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";

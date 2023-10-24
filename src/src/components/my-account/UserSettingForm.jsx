@@ -4,8 +4,8 @@ import { PropTypes } from "prop-types";
 import FORM_INFO from "@/constants/FORM_INFO.js";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 
-import useUserSettingQuery from "@/hooks/api/useUserSettingQuery.js";
-import useChangeUserSettingMutation from "@/hooks/api/useChangeUserSettingMutation.js";
+import useUserSettingQuery from "@/hooks/api/user/useUserSettingQuery.js";
+import useChangeUserSettingMutation from "@/hooks/api/user/useChangeUserSettingMutation.js";
 import { UserSettingDto } from "@/api/dto/user.dto.js";
 import ChangeProfileBox from "@/components/my-account/ChangeProfileBox.jsx";
 import Form from "@/components/common/form/Form.jsx";

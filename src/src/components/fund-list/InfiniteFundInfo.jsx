@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { PropTypes } from "prop-types";
 import { GridTemplate } from "@/styles/CommonStyle.js";
 import FundInfoGridCard from "@/components/fund/FundInfoGridCard.jsx";
-import useInfiniteFundInfoQuery from "@/hooks/api/useInfiniteFundInfoQuery.js";
+import useInfiniteFundInfoQuery from "@/hooks/api/fund/useInfiniteFundInfoQuery.js";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver.js";
 import InfiniteFundInfoLoader from "@/components/fund-list/InfiniteFundInfo.loader.jsx";
 import { FundInfoDto } from "@/api/dto/fund.dto.js";
