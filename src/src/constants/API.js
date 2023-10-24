@@ -8,6 +8,9 @@ const FUND = {
   GET_LIST: "/posts",
   LIKE: "/like",
   CO_ADMIN: "/co-admin",
+  INTRODUCTION: (fundId) => {
+    return `/posts/${fundId}/introduction`;
+  },
 };
 
 const USER = {
