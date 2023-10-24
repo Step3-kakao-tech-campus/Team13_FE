@@ -5,6 +5,7 @@ import CoAdministrator from "@/components/fund-detail/introduction/CoAdministrat
 import QuillStrToHtml from "@/components/common/QuillStrToHtml.jsx";
 import Button from "@/components/common/button/Button.jsx";
 import routes from "@/constants/routes.js";
+import EDIT_TYPE from "@/constants/EDIT_TYPE.js";
 
 const Styled = {
   Container: styled.div``,
@@ -55,7 +56,9 @@ function Index() {
         {isOrganizer && (
           <Button
             onClick={() => {
-              navigate(`${routes.fund}/${fundId}${routes.editIntroduction}`);
+              navigate(
+                `${routes.edit}?type=${EDIT_TYPE.FUND_INTRODUCTION}&fundId=${fundId}`,
+              );
             }}
           >
             수정하기
