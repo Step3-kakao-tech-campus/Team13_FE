@@ -1,6 +1,10 @@
 import instance from "@/api/instance.js";
 import API from "@/constants/API.js";
-import { CoAdminUserDto, FundIntroDto } from "@/api/dto/fund.dto.js";
+import {
+  CoAdminUserDto,
+  FundDetailInfoDto,
+  FundIntroDto,
+} from "@/api/dto/fund.dto.js";
 
 /**
  * 펀딩 목록 조회 api
@@ -45,6 +49,15 @@ const deleteFundLike = async (fundId) => {
   });
 };
 
+const getDetailInfoByFundId = async (fundId) => {
+  const { data } = await instance({
+    url: API.FUND.DETAIL(fundId),
+    method: "GET",
+  });
+
+  return new FundDetailInfoDto(data);
+};
+
 /**
  * 펀딩 공동관리자 조회
  * @param {string || number} fundId 펀딩 아이디
@@ -79,4 +92,5 @@ export default {
   deleteFundLike,
   getCoAdminByFundId,
   getFundIntroductionByFundId,
+  getDetailInfoByFundId,
 };

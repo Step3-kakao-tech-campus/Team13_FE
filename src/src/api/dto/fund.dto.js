@@ -28,6 +28,48 @@ class FundInfoDto {
   }
 }
 
+class FundDetailInfoDto {
+  constructor({
+    fundId,
+    fundTitle,
+    thumbnailUrl,
+    createdAt,
+    targetDate,
+    targetMoney,
+    currentMoney,
+    participantNumber,
+    celebrityId,
+    celebrityName,
+    celebrityProfileUrl,
+    celebrityFollowerNum,
+    organizerId,
+    organizerProfileUrl,
+    organizerName,
+    likeCount,
+    isInUserWishList,
+    isOrganizer,
+  }) {
+    this.fundId = fundId;
+    this.fundTitle = fundTitle;
+    this.thumbnailUrl = thumbnailUrl;
+    this.createdAt = createdAt;
+    this.targetDate = targetDate;
+    this.targetMoney = targetMoney;
+    this.currentMoney = currentMoney;
+    this.participantNumber = participantNumber;
+    this.celebrityId = celebrityId;
+    this.celebrityName = celebrityName;
+    this.celebrityProfileUrl = celebrityProfileUrl;
+    this.celebrityFollowerNum = celebrityFollowerNum;
+    this.organizerId = organizerId;
+    this.organizerProfileUrl = organizerProfileUrl;
+    this.organizerName = organizerName;
+    this.likeCount = likeCount;
+    this.isInUserWishList = isInUserWishList;
+    this.isOrganizer = isOrganizer;
+  }
+}
+
 class CoAdminUserDto {
   constructor({ userId, profileUrl, nickname }) {
     this.userId = userId;
@@ -42,4 +84,4 @@ class FundIntroDto {
   }
 }
 
-export { FundInfoDto, CoAdminUserDto, FundIntroDto };
+export { FundInfoDto, CoAdminUserDto, FundIntroDto, FundDetailInfoDto };
