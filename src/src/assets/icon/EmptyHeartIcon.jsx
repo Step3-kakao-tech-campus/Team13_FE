@@ -1,9 +1,16 @@
-function EmptyHeartIcon() {
+import { PropTypes } from "prop-types";
+
+/**
+ * 빈 하트 아이콘
+ * @param {number} size
+ */
+
+function EmptyHeartIcon({ size = 24 }) {
   return (
     <>
       <img
-        width="24"
-        height="24"
+        width={size}
+        height={size}
         src="https://img.icons8.com/ios/100/ADADAD/like--v1.png"
         alt="like--v1"
       />
@@ -14,5 +21,9 @@ function EmptyHeartIcon() {
     </>
   );
 }
+
+EmptyHeartIcon.propTypes = {
+  size: PropTypes.number,
+};
 
 export default EmptyHeartIcon;
