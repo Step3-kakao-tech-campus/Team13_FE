@@ -42,6 +42,7 @@ class FundDetailInfoDto {
     celebrityName,
     celebrityProfileUrl,
     celebrityFollowerNum,
+    isFollowing,
     organizerId,
     organizerProfileUrl,
     organizerName,
@@ -53,13 +54,14 @@ class FundDetailInfoDto {
     this.fundTitle = fundTitle;
     this.thumbnailUrl = thumbnailUrl;
     this.createdAt = createdAt;
-    this.targetDate = targetDate;
+    this.endDate = targetDate;
     this.targetMoney = targetMoney;
     this.currentMoney = currentMoney;
     this.participantNumber = participantNumber;
     this.celebrityId = celebrityId;
     this.celebrityName = celebrityName;
     this.celebrityProfileUrl = celebrityProfileUrl;
+    this.isFollowing = isFollowing;
     this.celebrityFollowerNum = celebrityFollowerNum;
     this.organizerId = organizerId;
     this.organizerProfileUrl = organizerProfileUrl;
