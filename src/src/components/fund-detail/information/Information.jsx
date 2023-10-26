@@ -85,16 +85,11 @@ function Information() {
           onClick={() => navigate(`${routes.user}/${data?.organizerId}`)}
         />
 
-        <FundMoneyCountdown
-          targetDate={data?.targetDate}
-          targetMoney={data?.targetMoney}
-          currentMoney={data?.currentMoney}
-          style={{ padding: "1rem 0 0.5rem 0" }}
-        />
-
-        <MoneyBar
-          currentMoney={data?.currentMoney}
-          targetMoney={data?.targetMoney}
+        <MoneyDate
+          createdDate={data?.createdAt}
+          endDate={data?.endDate}
+          targetMoney={Number(data?.targetMoney)}
+          currentMoney={Number(data?.currentMoney)}
         />
       </Styled.Container>
     </Styled.InfoWrap>
