@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import Information from "@/components/fund-detail/information/Information.jsx";
 import DynamicDetailRender from "@/components/fund-detail/DynamicDetailRender.jsx";
 import TABS from "@/constants/TABS.js";
 import Tabs from "@/components/common/button/TabButtons.jsx";
+import InformationSkeleton from "@/components/fund-detail/information/Information.skeleton.jsx";
 
 const Styled = {
   Container: styled.section`
@@ -55,8 +56,9 @@ function FundDetailPage() {
 
   return (
     <Styled.Container>
-      <Information />
-
+      <Suspense fallback={<InformationSkeleton />}>
+        <Information />
+      </Suspense>
       <Styled.DetailWrap>
         <Tabs tabInfoArray={tabInfoArray} style={{ paddingBottom: "1rem" }} />
         <DynamicDetailRender type={selectedTab} isOrganizer={isOrganizer} />

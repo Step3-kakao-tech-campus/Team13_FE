@@ -8,7 +8,9 @@ function useFundDetailInfoQuery({ fundId }) {
     async () => {
       return await FundAPI.getDetailInfoByFundId(fundId);
     },
-    {},
+    {
+      suspense: true,
+    },
   );
 }
 

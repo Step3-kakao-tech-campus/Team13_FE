@@ -56,7 +56,7 @@ function FundDetailInfoHeartButton({
 }
 
 FundDetailInfoHeartButton.propTypes = {
-  isInUserWishList: PropTypes.boolean,
+  isInUserWishList: PropTypes.bool,
   likeCount: PropTypes.number,
 };
 

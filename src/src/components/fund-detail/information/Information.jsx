@@ -108,11 +108,7 @@ const Styled = {
 function Information() {
   const navigate = useNavigate();
   const { fundId } = useParams();
-  const { data, isLoading } = useFundDetailInfoQuery({ fundId: fundId });
-
-  if (isLoading) {
-    return <div>loading</div>;
-  }
+  const { data } = useFundDetailInfoQuery({ fundId: fundId });
 
   const handleSponsorshipButtonClick = () => {
     navigate(`${routes.sponsorship}/${fundId}`);
