@@ -25,6 +25,13 @@ const Styled = {
   `,
 };
 
+/**
+ * 셀럽텍스트정보 컴포넌트 - 진행중인 펀딩개수, 총 펀딩 금액, 팔로워 수를 각각 아이콘과 함께 명시
+ * @param {number} props.fundInProgressNum - 진행 중인 펀딩 수
+ * @param {number} props.totalFundMoney - 총 펀딩 금액
+ * @param {number} props.followerNum - 팔로워 수
+ */
+
 function CelebTextInfo({ fundInProgressNum, totalFundMoney, followerNum }) {
   return (
     <Styled.TextContainer>
