@@ -5,7 +5,7 @@ import ProfileImageName from "@/components/common/ProfileImageName.jsx";
 import routes from "@/constants/routes.js";
 import useFundDetailInfoQuery from "@/hooks/api/fund/useFundDetailInfoQuery.js";
 import FundMoneyCountdown from "@/components/fund/FundMoneyCountdown.jsx";
-import calculatePercentage from "@/utils/calculatePercentage.js";
+import MoneyBar from "@/components/fund-detail/information/MoneyBar.jsx";
 
 const Styled = {
   InfoWrap: styled.article`
@@ -84,6 +84,7 @@ function Information() {
           imageUrl={data?.organizerProfileUrl}
           onClick={() => navigate(`${routes.user}/${data?.organizerId}`)}
         />
+
         <FundMoneyCountdown
           targetDate={data?.targetDate}
           targetMoney={data?.targetMoney}
@@ -91,14 +92,10 @@ function Information() {
           style={{ padding: "1rem 0 0.5rem 0" }}
         />
 
-        <Styled.MoneyBar
-          $width={`${calculatePercentage(
-            data?.currentMoney,
-            data?.targetMoney,
-          )}%`}
-        >
-          <div className="current-money-bar" />
-        </Styled.MoneyBar>
+        <MoneyBar
+          currentMoney={data?.currentMoney}
+          targetMoney={data?.targetMoney}
+        />
       </Styled.Container>
     </Styled.InfoWrap>
   );
