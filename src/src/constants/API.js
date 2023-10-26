@@ -13,6 +13,9 @@ const FUND = {
   INTRODUCTION: (fundId) => {
     return `/posts/${fundId}/introduction`;
   },
+  DETAIL: (fundId) => {
+    return `/posts/${fundId}`;
+  },
 };
 
 const USER = {
