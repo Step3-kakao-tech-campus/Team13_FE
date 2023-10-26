@@ -16,8 +16,7 @@ const Styled = {
     width: 100%;
     height: 3rem;
     font-size: 1rem;
-    color: ${({ selectedValue }) =>
-      selectedValue === "" ? "#aaaaaa" : "#000000"};
+    color: ${({ value }) => (value === "" ? "#aaaaaa" : "#000000")};
   `,
 };
 
