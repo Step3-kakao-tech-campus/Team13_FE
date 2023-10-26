@@ -121,7 +121,7 @@ function CelebInfoGridCard({
           alt={`${celebName} 프로필 사진`}
         />
       ) : (
-        <TestAccountIcon size={"100"} />
+        <TestAccountIcon size={100} />
       )}
       <Styled.BadgeContainer>
         {rank === 1 && <FirstRibbonIcon />}
