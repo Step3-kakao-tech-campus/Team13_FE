@@ -106,11 +106,7 @@ function SimpleCelebCard({
           {followerNum || 0}명이 팔로우 중
         </Styled.Text>
       </Styled.TextContainer>
-      <FollowButton
-        celebId={celebId}
-        isFollowing={isFollowing}
-        style={{ padding: "6px 8px", fontSize: "14px", marginLeft: "auto" }}
-      />
+      <FollowButton celebId={celebId} isFollowing={isFollowing} />
     </Styled.Container>
   );
 }
