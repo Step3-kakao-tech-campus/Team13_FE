@@ -38,7 +38,7 @@ const sonnyFundInfo1 = {
 
 export const fundHandlers = [
   // 펀딩 목록 조회
-  rest.get("/api" + API.FUND.GET_LIST, (req, res, ctx) => {
+  rest.get("/api" + API.FUND.LIST, (req, res, ctx) => {
     const keyword = req.url.searchParams.get("keyword");
     const pageIndex = req.url.searchParams.get("pageIndex");
     const sortType = req.url.searchParams.get("sortType");

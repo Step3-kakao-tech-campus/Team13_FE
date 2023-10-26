@@ -5,7 +5,7 @@ const AUTH = {
 };
 
 const FUND = {
-  GET_LIST: "/posts",
+  LIST: "/posts",
   LIKE: "/posts/like",
   CO_ADMIN: (fundId) => {
     return `/posts/${fundId}/co-admin`;

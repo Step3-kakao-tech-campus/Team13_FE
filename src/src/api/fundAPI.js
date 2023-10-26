@@ -12,7 +12,7 @@ import { CoAdminUserDto, FundIntroDto } from "@/api/dto/fund.dto.js";
 
 const getFundInfoList = async ({ pageIndex, keyword, sortType }) => {
   return await instance({
-    url: API.FUND.GET_LIST,
+    url: API.FUND.LIST,
     method: "GET",
     params: { pageIndex: pageIndex, keyword: keyword, sortType: sortType },
   });

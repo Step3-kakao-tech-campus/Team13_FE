@@ -4,7 +4,7 @@ import fundAPI from "@/api/fundAPI.js";
 
 function useInfiniteFundInfoQuery({ keyword, sortType }) {
   return useInfiniteQuery(
-    [API.FUND.GET_LIST, keyword, sortType],
+    [API.FUND.LIST, keyword, sortType],
     async ({ pageParam = 0 }) => {
       return fundAPI.getFundInfoList({
         pageIndex: pageParam,
