@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { useState, memo, useCallback } from "react";
+import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { isMobile } from "react-device-detect";
@@ -7,9 +7,8 @@ import { isMobile } from "react-device-detect";
 import HeartButton from "@/components/fund/HeartButton.jsx";
 import ProfileImageName from "@/components/common/ProfileImageName.jsx";
 import routes from "@/constants/routes.js";
-import usePostFundLikeMutation from "@/hooks/api/fund/usePostFundLikeMutation.js";
-import useDeleteFundLikeMutation from "@/hooks/api/fund/useDeleteFundLikeMutation.js";
 import FundMoneyCountdown from "@/components/fund/FundMoneyCountdown.jsx";
+import useHeartButtonClick from "@/hooks/useHeartButtonClick.js";
 
 const Styled = {
   Container: styled.article`
@@ -109,25 +108,12 @@ function FundInfoGridCard({
   organizerName,
   isInUserWishList,
 }) {
-  const [isHeartClicked, setIsHeartClicked] = useState(isInUserWishList);
   const navigate = useNavigate();
 
-  const { mutate: postLikeMutate } = usePostFundLikeMutation(() =>
-    setIsHeartClicked(true),
-  );
-
-  const { mutate: deleteLikeMutate } = useDeleteFundLikeMutation(() =>
-    setIsHeartClicked(false),
-  );
-
-  const handleHeartClick = useCallback(
-    (e) => {
-      e.stopPropagation();
-      if (isHeartClicked) return deleteLikeMutate({ fundId });
-      return postLikeMutate({ fundId });
-    },
-    [fundId, isHeartClicked],
-  );
+  const { isHeartClicked, handleHeartClick } = useHeartButtonClick({
+    fundId,
+    isInUserWishList,
+  });
 
   return (
     <Styled.Container
