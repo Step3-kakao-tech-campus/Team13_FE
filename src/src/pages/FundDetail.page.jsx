@@ -55,14 +55,7 @@ function FundDetailPage() {
 
   return (
     <Styled.Container>
-      <Styled.InfoWrap>
-        <Styled.Thumbnail
-          src="https://ichef.bbci.co.uk/news/640/cpsprodpb/4118/production/_119546661_gettyimages-1294130887.jpg"
-          alt="펀딩 대표 사진"
-        />
-
-        <InfoContainer />
-      </Styled.InfoWrap>
+      <InfoContainer />
 
       <Styled.DetailWrap>
         <Tabs tabInfoArray={tabInfoArray} style={{ paddingBottom: "1rem" }} />
