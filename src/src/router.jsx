@@ -33,6 +33,10 @@ const router = createBrowserRouter([
         element: <FundDetailPage />,
       },
       {
+        path: `${routes.sponsorship}/:fundId`,
+        element: <div>후원하기</div>,
+      },
+      {
         path: routes.createFund,
         element: <CreateFundPage />,
       },

@@ -114,6 +114,10 @@ function Information() {
     return <div>loading</div>;
   }
 
+  const handleSponsorshipButtonClick = () => {
+    navigate(`${routes.sponsorship}/${fundId}`);
+  };
+
   return (
     <Styled.InfoWrap>
       <Styled.Thumbnail
@@ -157,7 +161,12 @@ function Information() {
             isInUserWishList={data?.isInUserWishList}
             likeCount={data?.likeCount}
           />
-          <Button style={{ fontWeight: "500" }}>후원하기</Button>
+          <Button
+            style={{ fontWeight: "500" }}
+            onClick={handleSponsorshipButtonClick}
+          >
+            후원하기
+          </Button>
         </Styled.ButtonBox>
 
         <Styled.AdditionalDetailInstruction>
