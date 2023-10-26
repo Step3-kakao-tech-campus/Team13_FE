@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { isMobile } from "react-device-detect";
 
-import CountdownBadge from "@/components/fund/CountdownBadge.jsx";
 import HeartButton from "@/components/fund/HeartButton.jsx";
 import ProfileImageName from "@/components/common/ProfileImageName.jsx";
 import routes from "@/constants/routes.js";
 import usePostFundLikeMutation from "@/hooks/api/fund/usePostFundLikeMutation.js";
 import useDeleteFundLikeMutation from "@/hooks/api/fund/useDeleteFundLikeMutation.js";
+import FundMoneyCountdown from "@/components/fund/FundMoneyCountdown.jsx";
 
 const Styled = {
   Container: styled.article`
@@ -52,34 +52,6 @@ const Styled = {
       line-height: 1rem;
       overflow: hidden;
       text-overflow: ellipsis;
-    }
-  `,
-  MoneyCountdownBox: styled.div`
-    padding-bottom: 0.75rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    .money {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-    }
-
-    .money-percentage {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: ${({ theme }) => theme.color.mainRed};
-    }
-
-    .current-money {
-      padding: 0 0.25rem;
-      font-size: 0.75px;
-      color: ${({ theme }) => theme.color.inactive};
     }
   `,
   CelebUserInfoBox: styled.div`
@@ -157,10 +129,6 @@ function FundInfoGridCard({
     [fundId, isHeartClicked],
   );
 
-  const calculateCurrentPercentage = (currentMoney, targetMoney) => {
-    return (currentMoney / targetMoney) * 100;
-  };
-
   return (
     <Styled.Container
       $isMobile={isMobile}
@@ -180,17 +148,11 @@ function FundInfoGridCard({
       <Styled.ThumbnailImg src={thumbnailUrl} />
 
       <Styled.TextFundInfoBox>
-        <Styled.MoneyCountdownBox>
-          <div className="money">
-            <div className="money-percentage">
-              {calculateCurrentPercentage(currentMoney, targetMoney)}% 달성
-            </div>
-            <div className="current-money">
-              {Number(currentMoney).toLocaleString("ko-KR")}원
-            </div>
-          </div>
-          <CountdownBadge target={targetDate} />
-        </Styled.MoneyCountdownBox>
+        <FundMoneyCountdown
+          targetDate={targetDate}
+          targetMoney={targetMoney}
+          currentMoney={currentMoney}
+        />
 
         <div className="fund-title">{fundTitle}</div>
       </Styled.TextFundInfoBox>
