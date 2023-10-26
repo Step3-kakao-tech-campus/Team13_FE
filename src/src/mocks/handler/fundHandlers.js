@@ -34,6 +34,7 @@ const sonnyFundDetailInfo1 = {
   celebrityName: "손흥민",
   celebrityProfileUrl:
     "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
+  isFollowing: true,
   celebrityFollowerNum: 3450,
   organizerId: "soccer123",
   organizerName: "축구도사",
@@ -56,6 +57,7 @@ const sonnyFundInfo2 = {
   celebrityName: "손흥민",
   celebrityProfileUrl:
     "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
+  isFollowing: false,
   organizerId: "soccer234",
   organizerName: "싸커이삼사",
   isInUserWishList: false,
