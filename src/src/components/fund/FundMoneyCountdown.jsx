@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { PropTypes } from "prop-types";
 import CountdownBadge from "@/components/fund/CountdownBadge.jsx";
+import calculatePercentage from "@/utils/calculatePercentage.js";
 
 const Styled = {
   Container: styled.div`
@@ -38,17 +39,20 @@ const Styled = {
  * @param {string | number} currentMoney 현재 모금된 금액
  * @param {string | number} targetMoney 목표 금액
  * @param {string} targetDate 마감 날짜
+ * @param {React.htmlAttributes} containerHtmlProps
  */
 
-function FundMoneyCountdown({ currentMoney, targetMoney, targetDate }) {
-  const calculateCurrentPercentage = (currentMoney, targetMoney) => {
-    return (currentMoney / targetMoney) * 100;
-  };
+function FundMoneyCountdown({
+  currentMoney,
+  targetMoney,
+  targetDate,
+  ...containerHtmlProps
+}) {
   return (
-    <Styled.Container>
+    <Styled.Container {...containerHtmlProps}>
       <Styled.MoneyBox>
         <div className="money-percentage">
-          {calculateCurrentPercentage(currentMoney, targetMoney)}% 달성
+          {calculatePercentage(currentMoney, targetMoney)}% 달성
         </div>
         <div className="current-money">
           {Number(currentMoney).toLocaleString("ko-KR")}원
