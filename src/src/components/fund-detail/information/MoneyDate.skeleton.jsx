@@ -13,7 +13,7 @@ const Styled = {
     border-radius: 0.25rem;
   `,
   TextWrapper: styled.div`
-    margin: 1rem 0;
+    padding: 1rem 0;
     border-top: ${({ theme }) => theme.border.strong};
     border-bottom: ${({ theme }) => theme.border.strong};
   `,
