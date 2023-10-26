@@ -6,8 +6,8 @@ import { isMobile } from "react-device-detect";
 
 import CountdownBadge from "@/components/fund/CountdownBadge.jsx";
 import HeartButton from "@/components/fund/HeartButton.jsx";
+import ProfileImageName from "@/components/common/ProfileImageName.jsx";
 import routes from "@/constants/routes.js";
-import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
 import usePostFundLikeMutation from "@/hooks/api/fund/usePostFundLikeMutation.js";
 import useDeleteFundLikeMutation from "@/hooks/api/fund/useDeleteFundLikeMutation.js";
 
@@ -97,27 +97,6 @@ const Styled = {
     border-top: ${({ theme }) => theme.border.main};
 
     cursor: default;
-
-    .celebrity {
-      width: fit-content;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      cursor: pointer;
-    }
-
-    .celebrity-profile {
-      width: 1.5rem;
-      height: 1.5rem;
-      border-radius: 9999px;
-      object-fit: cover;
-    }
-
-    .celebrity-name {
-      padding-left: 0.25rem;
-      font-size: 0.75rem;
-      color: ${({ theme }) => theme.color.addition};
-    }
 
     .organizer-name {
       font-size: 0.75rem;
@@ -217,24 +196,11 @@ function FundInfoGridCard({
       </Styled.TextFundInfoBox>
 
       <Styled.CelebUserInfoBox onClick={(e) => e.stopPropagation()}>
-        <div
-          className="celebrity"
-          onClick={() => {
-            navigate(`${routes.celebrity}/${celebrityId}`);
-          }}
-        >
-          {celebrityProfileUrl ? (
-            <img
-              className="celebrity-profile"
-              src={celebrityProfileUrl}
-              alt={`${celebrityName}의 프로필 사진`}
-            />
-          ) : (
-            <TestAccountIcon size={24} />
-          )}
-
-          <a className="celebrity-name">{celebrityName}</a>
-        </div>
+        <ProfileImageName
+          imageUrl={celebrityProfileUrl}
+          name={celebrityName}
+          onClick={() => navigate(`${routes.celebrity}/${celebrityId}`)}
+        />
 
         <div
           className="organizer-name"
