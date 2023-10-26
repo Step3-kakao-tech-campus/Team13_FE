@@ -5,6 +5,7 @@ export const fundHandlers = [
   rest.get("/api" + API.FUND.GET_LIST, (req, res, ctx) => {
     const keyword = req.url.searchParams.get("keyword");
     const pageIndex = req.url.searchParams.get("pageIndex");
+    const sortType = req.url.searchParams.get("sortType");
     const accessToken = req.headers.get("accessToken");
 
     const sonnyFundInfo = {
@@ -31,9 +32,10 @@ export const fundHandlers = [
       ctx.status(200),
       ctx.json({
         isLastPage: false,
-        currentPage: pageIndex + 1,
-        fundList: [Array(10).fill(sonnyFundInfo)],
+        currentPage: pageIndex,
+        fundList: Array(12).fill(sonnyFundInfo),
         keyword: keyword,
+        sortType: sortType,
       }),
     );
   }),

@@ -11,6 +11,7 @@ import FundDetailPage from "@/pages/FundDetail.page.jsx";
 import SignUpPage from "./pages/SignUp.page";
 import CelebrityListPage from "./pages/CelebrityList.page.jsx";
 import CelebrityDetailPage from "./pages/CelebrityDetail.page";
+import FundTextEditPage from "@/pages/FundTextEdit.page.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: routes.createFund,
         element: <CreateFundPage />,
+      },
+      {
+        path: routes.edit,
+        element: <FundTextEditPage />,
       },
       {
         path: routes.celebrity,

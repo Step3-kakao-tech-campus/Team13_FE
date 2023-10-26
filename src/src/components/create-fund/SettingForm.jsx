@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import AutoCelebSearch from "@/components/create-fund/AutoCelebSearch.jsx";
 import { PropTypes } from "prop-types";
+import AutoCelebSearch from "@/components/create-fund/AutoCelebSearch.jsx";
 
 const Styled = {
   Target: styled.div`
@@ -67,6 +67,22 @@ function SettingForm({ input, setInput }) {
   const getNumber = (str) => {
     return str.replace(/\D/g, "");
   };
+
+  const getValue = {
+    targetMoney: (e) => {
+      return +getNumber(e.target.value);
+    },
+    dueDate: (e) => {
+      return e.target.value;
+    },
+  };
+
+  const handleInputChange = (event, key) => {
+    setInput((prev) => {
+      return { ...prev, [key]: getValue[key](event) };
+    });
+  };
+
   return (
     <>
       <Styled.Target>
@@ -76,14 +92,7 @@ function SettingForm({ input, setInput }) {
             type="text"
             className="target-money"
             value={input.targetMoney.toLocaleString()}
-            onInput={(e) => {
-              setInput((prev) => {
-                return {
-                  ...prev,
-                  targetMoney: +getNumber(e.target.value),
-                };
-              });
-            }}
+            onInput={(e) => handleInputChange(e, "targetMoney")}
           />
           <div className="krw">원</div>
         </Styled.InputBox>
@@ -93,14 +102,7 @@ function SettingForm({ input, setInput }) {
           <Styled.Input
             type="date"
             value={input.dueDate}
-            onInput={(e) => {
-              setInput((prev) => {
-                return {
-                  ...prev,
-                  dueDate: e.target.value,
-                };
-              });
-            }}
+            onInput={(e) => handleInputChange(e, "dueDate")}
           />
         </Styled.InputBox>
       </Styled.Target>

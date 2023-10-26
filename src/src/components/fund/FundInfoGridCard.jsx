@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { useState } from "react";
+import { useState, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { isMobile } from "react-device-detect";
@@ -200,11 +200,10 @@ function FundInfoGridCard({
         <div className="fund-title">{fundTitle}</div>
       </Styled.TextFundInfoBox>
 
-      <Styled.CelebUserInfoBox>
+      <Styled.CelebUserInfoBox onClick={(e) => e.stopPropagation()}>
         <div
           className="celebrity"
-          onClick={(e) => {
-            e.stopPropagation();
+          onClick={() => {
             navigate(`${routes.celebrity}/${celebrityId}`);
           }}
         >
@@ -223,8 +222,7 @@ function FundInfoGridCard({
 
         <div
           className="organizer-name"
-          onClick={(e) => {
-            e.stopPropagation();
+          onClick={() => {
             navigate(`${routes.user}/${organizerId}`);
           }}
         >
@@ -258,4 +256,4 @@ FundInfoGridCard.defaultProps = {
   celebrityProfileUrl: undefined,
 };
 
-export default FundInfoGridCard;
+export default memo(FundInfoGridCard);
