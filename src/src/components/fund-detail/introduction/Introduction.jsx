@@ -38,7 +38,7 @@ const Styled = {
   `,
 };
 
-function Index({ isOrganizer }) {
+function Introduction({ isOrganizer }) {
   const navigate = useNavigate();
   const { fundId } = useParams();
   const { data } = useFundIntroQuery({ fundId });
@@ -75,8 +75,8 @@ function Index({ isOrganizer }) {
   );
 }
 
-Index.propTypes = {
+Introduction.propTypes = {
   isOrganizer: PropTypes.bool.isRequired,
 };
 
-export default Index;
+export default Introduction;

@@ -4,6 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import ProfileImageName from "@/components/common/ProfileImageName.jsx";
 import routes from "@/constants/routes.js";
 import useFundDetailInfoQuery from "@/hooks/api/fund/useFundDetailInfoQuery.js";
+import FundMoneyCountdown from "@/components/fund/FundMoneyCountdown.jsx";
+import calculatePercentage from "@/utils/calculatePercentage.js";
 
 const Styled = {
   InfoWrap: styled.article`
@@ -39,18 +41,31 @@ const Styled = {
       width: 100%;
     }
   `,
-
   Title: styled.div`
     padding-bottom: 0.5rem;
     font-size: 1.25rem;
     font-weight: 500;
     line-height: 130%;
   `,
+  MoneyBar: styled.div`
+    position: relative;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    height: 10px;
+    background-color: #d0d0d0;
+    border-radius: 0.25rem;
+    overflow: hidden;
 
-  Organizer: styled.div``,
+    .current-money-bar {
+      width: ${({ $width }) => $width ?? "50%"};
+      height: 100%;
+      position: absolute;
+      background-color: ${({ theme }) => theme.color.mainRed};
+    }
+  `,
 };
 
-function InfoContainer() {
+function Information() {
   const navigate = useNavigate();
   const { fundId } = useParams();
   const { data } = useFundDetailInfoQuery({ fundId: fundId });
@@ -69,9 +84,24 @@ function InfoContainer() {
           imageUrl={data?.organizerProfileUrl}
           onClick={() => navigate(`${routes.user}/${data?.organizerId}`)}
         />
+        <FundMoneyCountdown
+          targetDate={data?.targetDate}
+          targetMoney={data?.targetMoney}
+          currentMoney={data?.currentMoney}
+          style={{ padding: "1rem 0 0.5rem 0" }}
+        />
+
+        <Styled.MoneyBar
+          $width={`${calculatePercentage(
+            data?.currentMoney,
+            data?.targetMoney,
+          )}%`}
+        >
+          <div className="current-money-bar" />
+        </Styled.MoneyBar>
       </Styled.Container>
     </Styled.InfoWrap>
   );
 }
 
-export default InfoContainer;
+export default Information;

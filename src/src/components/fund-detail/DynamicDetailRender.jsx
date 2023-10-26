@@ -1,7 +1,7 @@
 import { PropTypes } from "prop-types";
 
 import TABS from "@/constants/TABS.js";
-import Introduction from "@/components/fund-detail/introduction/index.jsx";
+import Introduction from "@/components/fund-detail/introduction/Introduction.jsx";
 import Update from "@/components/fund-detail/update/index.jsx";
 import Comment from "@/components/fund-detail/comment/index.jsx";
 import Index from "@/components/fund-detail/withdraw/index.jsx";

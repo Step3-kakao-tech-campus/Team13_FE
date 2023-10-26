@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import InfoContainer from "@/components/fund-detail/InfoContainer.jsx";
+import Information from "@/components/fund-detail/information/Information.jsx";
 import DynamicDetailRender from "@/components/fund-detail/DynamicDetailRender.jsx";
 import TABS from "@/constants/TABS.js";
 import Tabs from "@/components/common/button/TabButtons.jsx";
@@ -55,7 +55,7 @@ function FundDetailPage() {
 
   return (
     <Styled.Container>
-      <InfoContainer />
+      <Information />
 
       <Styled.DetailWrap>
         <Tabs tabInfoArray={tabInfoArray} style={{ paddingBottom: "1rem" }} />
