@@ -14,6 +14,7 @@ const Styled = {
   `,
   TextWrapper: styled.div`
     padding: 1rem 0;
+    margin: 1rem 0;
     border-top: ${({ theme }) => theme.border.strong};
     border-bottom: ${({ theme }) => theme.border.strong};
   `,
