@@ -1,11 +1,14 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 
 import ProfileImageName from "@/components/common/ProfileImageName.jsx";
 import routes from "@/constants/routes.js";
 import useFundDetailInfoQuery from "@/hooks/api/fund/useFundDetailInfoQuery.js";
-import FundMoneyCountdown from "@/components/fund/FundMoneyCountdown.jsx";
-import MoneyBar from "@/components/fund-detail/information/MoneyBar.jsx";
+import MoneyDate from "@/components/fund-detail/information/MoneyDate.jsx";
+import Button from "@/components/common/button/Button.jsx";
+import FundDetailInfoHeartButton from "@/components/fund-detail/information/FundDetailInfoHeartButton.jsx";
+import AlertIcon from "@/assets/icon/AlertIcon.jsx";
+import SimpleCelebCard from "@/components/celebrity/SimpleCelebCard.jsx";
 
 const Styled = {
   InfoWrap: styled.article`
@@ -47,20 +50,57 @@ const Styled = {
     font-weight: 500;
     line-height: 130%;
   `,
-  MoneyBar: styled.div`
-    position: relative;
-    margin-bottom: 1.5rem;
-    width: 100%;
-    height: 10px;
-    background-color: #d0d0d0;
-    border-radius: 0.25rem;
-    overflow: hidden;
+  ParticipantRow: styled.div`
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: ${({ theme }) => theme.border.strong};
+  `,
+  ParticipantBox: styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
 
-    .current-money-bar {
-      width: ${({ $width }) => $width ?? "50%"};
-      height: 100%;
-      position: absolute;
-      background-color: ${({ theme }) => theme.color.mainRed};
+    ${({ $isRed, theme }) =>
+      $isRed &&
+      css`
+        color: ${theme.color.mainRed};
+      `}
+
+    .number {
+      padding-right: 0.25rem;
+      font-size: 1.25rem;
+      font-family: ${({ theme }) => theme.fontFamily.doHyeon};
+    }
+
+    .text {
+      padding-bottom: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+  `,
+  ButtonBox: styled.div`
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    grid-gap: 0.5rem;
+  `,
+
+  AdditionalDetailInstruction: styled.div`
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #ededed;
+    border-radius: 0.25rem;
+
+    .text {
+      padding-left: 0.25rem;
+      color: #4a5056;
+      font-size: 10px;
     }
   `,
 };
@@ -68,7 +108,11 @@ const Styled = {
 function Information() {
   const navigate = useNavigate();
   const { fundId } = useParams();
-  const { data } = useFundDetailInfoQuery({ fundId: fundId });
+  const { data, isLoading } = useFundDetailInfoQuery({ fundId: fundId });
+
+  if (isLoading) {
+    return <div>loading</div>;
+  }
 
   return (
     <Styled.InfoWrap>
@@ -90,6 +134,46 @@ function Information() {
           endDate={data?.endDate}
           targetMoney={Number(data?.targetMoney)}
           currentMoney={Number(data?.currentMoney)}
+        />
+
+        <Styled.ParticipantRow>
+          <Styled.ParticipantBox>
+            <div className="number">{data?.participantNumber}</div>
+            <div className="text">명 참여</div>
+          </Styled.ParticipantBox>
+
+          <Styled.ParticipantBox $isRed={true}>
+            <div className="number">
+              {Number(data?.targetMoney - data?.currentMoney).toLocaleString(
+                "ko-KR",
+              )}
+            </div>
+            <div className="text">원 남음</div>
+          </Styled.ParticipantBox>
+        </Styled.ParticipantRow>
+
+        <Styled.ButtonBox>
+          <FundDetailInfoHeartButton
+            isInUserWishList={data?.isInUserWishList}
+            likeCount={data?.likeCount}
+          />
+          <Button style={{ fontWeight: "500" }}>후원하기</Button>
+        </Styled.ButtonBox>
+
+        <Styled.AdditionalDetailInstruction>
+          <AlertIcon />
+          <div className="text">
+            전체 프로젝트에 대한 안내사항은 하단 내용을 참고해주세요 !
+          </div>
+        </Styled.AdditionalDetailInstruction>
+
+        <SimpleCelebCard
+          celebName={data?.celebrityName}
+          celebId={data?.celebrityId}
+          profileUrl={data?.celebrityProfileUrl}
+          followerNum={data?.celebrityFollowerNum}
+          isFollowing={data?.isFollowing}
+          useHoverAnimation={false}
         />
       </Styled.Container>
     </Styled.InfoWrap>
