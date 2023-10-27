@@ -2,7 +2,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import API from "@/constants/API.js";
 import fundAPI from "@/api/fundAPI.js";
 
-function useGetInfiniteFundInfoQuery({ keyword, sortType }) {
+function useInfiniteFundInfoQuery({ keyword, sortType }) {
   return useInfiniteQuery(
     [API.FUND.GET_LIST, keyword, sortType],
     async ({ pageParam = 0 }) => {
@@ -13,11 +13,12 @@ function useGetInfiniteFundInfoQuery({ keyword, sortType }) {
       });
     },
     {
-      getNextPageParam: lastPage => {
+      suspense: true,
+      getNextPageParam: (lastPage) => {
         return lastPage.config.params.pageIndex + 1;
       },
     },
   );
 }
 
-export default useGetInfiniteFundInfoQuery;
+export default useInfiniteFundInfoQuery;

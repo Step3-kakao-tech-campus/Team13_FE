@@ -12,6 +12,8 @@ import useOutsideClick from "@/hooks/useOutsideClick.js";
 import PAGE_LIST from "@/constants/PAGE_LIST.js";
 import { useAtomValue } from "jotai";
 import accessTokenAtom from "@/storage/accessToken.atom.js";
+import userProfileImageUrlAtom from "@/storage/userProfileImageUrl.atom.js";
+import userNicknameAtom from "@/storage/userNickname.atom.js";
 
 const Keyframes = {
   appear: keyframes`
@@ -87,13 +89,9 @@ function MobileSideBar({ setIsSideBarOpen }) {
   useBodyStyleFixed();
 
   const accessToken = useAtomValue(accessTokenAtom);
+  const profileImageUrl = useAtomValue(userProfileImageUrlAtom);
+  const nickname = useAtomValue(userNicknameAtom);
   const isLoggedIn = accessToken && accessToken !== "";
-
-  const userInfo = {
-    profileUrl:
-      "https://velog.velcdn.com/images/j8won/profile/55917697-2140-40be-ad07-d2d02137f38e/image.jpeg",
-    name: "경주원",
-  };
 
   return (
     <Portal>
@@ -103,7 +101,7 @@ function MobileSideBar({ setIsSideBarOpen }) {
             {isLoggedIn ? (
               <img
                 className="profileImg"
-                src={userInfo.profileUrl}
+                src={profileImageUrl}
                 alt="프로필 사진"
               />
             ) : (
@@ -116,13 +114,13 @@ function MobileSideBar({ setIsSideBarOpen }) {
                 isLoggedIn || navigate(routes.signIn);
               }}
             >
-              {isLoggedIn ? userInfo.name : "로그인"}
+              {isLoggedIn ? nickname : "로그인"}
             </div>
           </Styled.Profile>
 
           {isLoggedIn && (
             <ul>
-              {PAGE_LIST.USER_MENU.map(page => (
+              {PAGE_LIST.USER_MENU.map((page) => (
                 <Styled.Menu
                   key={page.title}
                   onClick={() => {

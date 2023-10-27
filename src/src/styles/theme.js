@@ -17,6 +17,8 @@ const theme = {
     subBlack: "#4A4A4A",
     subBlackHover: "#282828",
 
+    skeleton: "#e4e4e4",
+
     alertBlue: "#0F8CFF",
     kakaoYellow: "#FFEB02",
   },

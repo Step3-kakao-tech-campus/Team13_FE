@@ -7,10 +7,10 @@ function useIntersectionObserver(callback, loaderRef) {
         if (!entry.isIntersecting) return;
         callback?.();
       },
-      { threshold: 0 },
+      { threshold: 0.7 },
     );
 
-    const observe = element => {
+    const observe = (element) => {
       observer.observe(element);
       return () => observer.unobserve(element);
     };

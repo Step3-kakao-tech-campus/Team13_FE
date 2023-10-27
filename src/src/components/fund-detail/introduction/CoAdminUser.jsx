@@ -26,9 +26,10 @@ const Styled = {
     border-radius: 9999px;
   `,
   Nickname: styled.div`
-    padding-left: 0.5rem;
+    padding-left: 1rem;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 500;
   `,
 };
 
@@ -39,7 +40,7 @@ const Styled = {
  * @param {string} nickname
  */
 
-function CoAdministrator({ userId, profileUrl, nickname }) {
+function CoAdminUser({ userId, profileUrl, nickname }) {
   const navigate = useNavigate();
   return (
     <Styled.Container
@@ -57,10 +58,10 @@ function CoAdministrator({ userId, profileUrl, nickname }) {
   );
 }
 
-CoAdministrator.propTypes = {
+CoAdminUser.propTypes = {
   userId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   profileUrl: PropTypes.string,
   nickname: PropTypes.string.isRequired,
 };
 
-export default CoAdministrator;
+export default CoAdminUser;
