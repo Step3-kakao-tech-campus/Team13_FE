@@ -26,7 +26,7 @@ const Styled = {
   `,
 
   Img: styled.img`
-    width: 9rem;
+    width: 9.5rem;
     border-radius: 0.25rem;
   `,
 };

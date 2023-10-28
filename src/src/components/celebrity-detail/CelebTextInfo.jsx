@@ -7,7 +7,6 @@ import UserIcon from "@/assets/icon/UserIcon.jsx";
 
 const Styled = {
   TextContainer: styled.div`
-    width: calc(100% - 100px - 1rem);
     display: flex;
     flex-direction: column;
   `,

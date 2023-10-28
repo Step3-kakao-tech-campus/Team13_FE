@@ -7,7 +7,10 @@ import CelebProfile from "@/components/celebrity-detail/CelebProfile.jsx";
 import CelebRank from "@/components/celebrity-detail/CelebRank.jsx";
 
 const Styled = {
-  TextInfoContainer: styled.div``,
+  TextInfoContainer: styled.div`
+    display: flex;
+    flex-direction: column;
+  `,
 };
 
 function CelebrityDetailPage() {
@@ -35,7 +38,8 @@ function CelebrityDetailPage() {
         className="셀럽정보"
         style={{
           display: "flex",
-          margin: "6.8rem 11rem 6.5rem",
+          alignItems: "center",
+          padding: "6rem 11rem 6.5rem",
           justifyContent: "space-between",
         }}
       >
@@ -56,7 +60,10 @@ function CelebrityDetailPage() {
           <FollowButton
             celebId={celebInfo.celebId}
             isFollowing={celebInfo.isFollowing}
-            style={{ padding: "10px 14px", fontSize: "1rem" }}
+            style={{
+              padding: "0.8rem 3.25rem",
+              fontSize: "1rem",
+            }}
           />
           <CelebTextInfo
             fundInProgressNum={celebInfo.fundInProgressNum}
