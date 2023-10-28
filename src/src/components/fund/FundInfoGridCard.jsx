@@ -1,15 +1,14 @@
 import styled, { css } from "styled-components";
-import { useState, memo, useCallback } from "react";
+import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { isMobile } from "react-device-detect";
 
-import CountdownBadge from "@/components/fund/CountdownBadge.jsx";
 import HeartButton from "@/components/fund/HeartButton.jsx";
+import ProfileImageName from "@/components/common/ProfileImageName.jsx";
 import routes from "@/constants/routes.js";
-import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
-import usePostFundLikeMutation from "@/hooks/api/fund/usePostFundLikeMutation.js";
-import useDeleteFundLikeMutation from "@/hooks/api/fund/useDeleteFundLikeMutation.js";
+import FundMoneyCountdown from "@/components/fund/FundMoneyCountdown.jsx";
+import useHeartButtonClick from "@/hooks/useHeartButtonClick.js";
 
 const Styled = {
   Container: styled.article`
@@ -54,34 +53,6 @@ const Styled = {
       text-overflow: ellipsis;
     }
   `,
-  MoneyCountdownBox: styled.div`
-    padding-bottom: 0.75rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    .money {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-    }
-
-    .money-percentage {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: ${({ theme }) => theme.color.mainRed};
-    }
-
-    .current-money {
-      padding: 0 0.25rem;
-      font-size: 0.75px;
-      color: ${({ theme }) => theme.color.inactive};
-    }
-  `,
   CelebUserInfoBox: styled.div`
     position: absolute;
     bottom: 0;
@@ -97,27 +68,6 @@ const Styled = {
     border-top: ${({ theme }) => theme.border.main};
 
     cursor: default;
-
-    .celebrity {
-      width: fit-content;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      cursor: pointer;
-    }
-
-    .celebrity-profile {
-      width: 1.5rem;
-      height: 1.5rem;
-      border-radius: 9999px;
-      object-fit: cover;
-    }
-
-    .celebrity-name {
-      padding-left: 0.25rem;
-      font-size: 0.75rem;
-      color: ${({ theme }) => theme.color.addition};
-    }
 
     .organizer-name {
       font-size: 0.75rem;
@@ -158,29 +108,12 @@ function FundInfoGridCard({
   organizerName,
   isInUserWishList,
 }) {
-  const [isHeartClicked, setIsHeartClicked] = useState(isInUserWishList);
   const navigate = useNavigate();
 
-  const { mutate: postLikeMutate } = usePostFundLikeMutation(() =>
-    setIsHeartClicked(true),
-  );
-
-  const { mutate: deleteLikeMutate } = useDeleteFundLikeMutation(() =>
-    setIsHeartClicked(false),
-  );
-
-  const handleHeartClick = useCallback(
-    (e) => {
-      e.stopPropagation();
-      if (isHeartClicked) return deleteLikeMutate({ fundId });
-      return postLikeMutate({ fundId });
-    },
-    [fundId, isHeartClicked],
-  );
-
-  const calculateCurrentPercentage = (currentMoney, targetMoney) => {
-    return (currentMoney / targetMoney) * 100;
-  };
+  const { isHeartClicked, handleHeartClick } = useHeartButtonClick({
+    fundId,
+    isInUserWishList,
+  });
 
   return (
     <Styled.Container
@@ -201,40 +134,21 @@ function FundInfoGridCard({
       <Styled.ThumbnailImg src={thumbnailUrl} />
 
       <Styled.TextFundInfoBox>
-        <Styled.MoneyCountdownBox>
-          <div className="money">
-            <div className="money-percentage">
-              {calculateCurrentPercentage(currentMoney, targetMoney)}% 달성
-            </div>
-            <div className="current-money">
-              {Number(currentMoney).toLocaleString("ko-KR")}원
-            </div>
-          </div>
-          <CountdownBadge target={targetDate} />
-        </Styled.MoneyCountdownBox>
+        <FundMoneyCountdown
+          targetDate={targetDate}
+          targetMoney={targetMoney}
+          currentMoney={currentMoney}
+        />
 
         <div className="fund-title">{fundTitle}</div>
       </Styled.TextFundInfoBox>
 
       <Styled.CelebUserInfoBox onClick={(e) => e.stopPropagation()}>
-        <div
-          className="celebrity"
-          onClick={() => {
-            navigate(`${routes.celebrity}/${celebrityId}`);
-          }}
-        >
-          {celebrityProfileUrl ? (
-            <img
-              className="celebrity-profile"
-              src={celebrityProfileUrl}
-              alt={`${celebrityName}의 프로필 사진`}
-            />
-          ) : (
-            <TestAccountIcon size={24} />
-          )}
-
-          <a className="celebrity-name">{celebrityName}</a>
-        </div>
+        <ProfileImageName
+          imageUrl={celebrityProfileUrl}
+          name={celebrityName}
+          onClick={() => navigate(`${routes.celebrity}/${celebrityId}`)}
+        />
 
         <div
           className="organizer-name"

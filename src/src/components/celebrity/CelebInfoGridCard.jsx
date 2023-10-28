@@ -121,7 +121,7 @@ function CelebInfoGridCard({
           alt={`${celebName} 프로필 사진`}
         />
       ) : (
-        <TestAccountIcon size={"100"} />
+        <TestAccountIcon size={100} />
       )}
       <Styled.BadgeContainer>
         {rank === 1 && <FirstRibbonIcon />}
@@ -132,11 +132,7 @@ function CelebInfoGridCard({
       <Styled.TextContainer>
         <Styled.Text className="name">
           <span>{celebName}</span>
-          <FollowButton
-            celebId={celebId}
-            isFollowing={isFollowing}
-            style={{ padding: "6px 8px", fontSize: "14px" }}
-          />
+          <FollowButton celebId={celebId} isFollowing={isFollowing} />
         </Styled.Text>
 
         <Styled.Text>

@@ -1,6 +1,10 @@
 import instance from "@/api/instance.js";
 import API from "@/constants/API.js";
-import { CoAdminUserDto, FundIntroDto } from "@/api/dto/fund.dto.js";
+import {
+  CoAdminUserDto,
+  FundDetailInfoDto,
+  FundIntroDto,
+} from "@/api/dto/fund.dto.js";
 
 /**
  * 펀딩 목록 조회 api
@@ -12,7 +16,7 @@ import { CoAdminUserDto, FundIntroDto } from "@/api/dto/fund.dto.js";
 
 const getFundInfoList = async ({ pageIndex, keyword, sortType }) => {
   return await instance({
-    url: API.FUND.GET_LIST,
+    url: API.FUND.LIST,
     method: "GET",
     params: { pageIndex: pageIndex, keyword: keyword, sortType: sortType },
   });
@@ -43,6 +47,15 @@ const deleteFundLike = async (fundId) => {
     method: "DELETE",
     data: { fundId },
   });
+};
+
+const getDetailInfoByFundId = async (fundId) => {
+  const { data } = await instance({
+    url: API.FUND.DETAIL(fundId),
+    method: "GET",
+  });
+
+  return new FundDetailInfoDto(data);
 };
 
 /**
@@ -79,4 +92,5 @@ export default {
   deleteFundLike,
   getCoAdminByFundId,
   getFundIntroductionByFundId,
+  getDetailInfoByFundId,
 };

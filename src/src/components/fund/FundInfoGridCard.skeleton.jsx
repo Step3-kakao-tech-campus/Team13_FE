@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Shimmer } from "@/styles/CommonStyle";
+import FundMoneyCountdownSkeleton from "@/components/fund/FundMoneyCountdown.skeleton.jsx";
 
 const Styled = {
   Container: styled.article`
@@ -64,14 +65,6 @@ const Styled = {
       border-radius: 0.25rem;
       overflow: hidden;
     }
-
-    .countdown {
-      width: 4rem;
-      height: 1.5rem;
-      background-color: ${({ theme }) => theme.color.skeleton};
-      border-radius: 0.25rem;
-      overflow: hidden;
-    }
   `,
   CelebUserInfoBox: styled.div`
     position: absolute;
@@ -131,17 +124,7 @@ function FundInfoGridCardSkeleton() {
       </Styled.ThumbnailImg>
 
       <Styled.TextFundInfoBox>
-        <Styled.MoneyCountdownBox>
-          <div className="money">
-            <div className="money-percentage">
-              <Shimmer />
-            </div>
-            <div className="current-money">
-              <Shimmer />
-            </div>
-          </div>
-          <div className="countdown" />
-        </Styled.MoneyCountdownBox>
+        <FundMoneyCountdownSkeleton />
 
         <div className="fund-title">
           <Shimmer />

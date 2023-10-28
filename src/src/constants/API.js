@@ -5,13 +5,16 @@ const AUTH = {
 };
 
 const FUND = {
-  GET_LIST: "/posts",
+  LIST: "/posts",
   LIKE: "/posts/like",
   CO_ADMIN: (fundId) => {
     return `/posts/${fundId}/co-admin`;
   },
   INTRODUCTION: (fundId) => {
     return `/posts/${fundId}/introduction`;
+  },
+  DETAIL: (fundId) => {
+    return `/posts/${fundId}`;
   },
 };
 
