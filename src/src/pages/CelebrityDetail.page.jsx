@@ -63,6 +63,8 @@ function CelebrityDetailPage() {
             style={{
               padding: "0.8rem 3.25rem",
               fontSize: "1rem",
+              position: "absolute",
+              top: "10rem",
             }}
           />
           <CelebTextInfo
