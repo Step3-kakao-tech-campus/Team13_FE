@@ -4,6 +4,7 @@ import CelebTextInfo from "@/components/celebrity-detail/celebTextInfo.jsx";
 import FollowButton from "@/components/celebrity/FollowButton.jsx";
 import { GridTemplate } from "@/styles/CommonStyle";
 import CelebProfile from "@/components/celebrity-detail/CelebProfile.jsx";
+import CelebRank from "@/components/celebrity-detail/CelebRank.jsx";
 
 const Styled = {
   TextInfoContainer: styled.div``,
@@ -22,12 +23,22 @@ function CelebrityDetailPage() {
     totalFundMoney: 35000000,
     followerNum: 10000,
     isFollowing: false,
-    rank: 1,
+    rank: {
+      follower: 1,
+      fundMoney: 3,
+    },
   };
 
   return (
     <>
-      <div className="셀럽정보">
+      <div
+        className="셀럽정보"
+        style={{
+          display: "flex",
+          margin: "6.8rem 11rem 6.5rem",
+          justifyContent: "space-between",
+        }}
+      >
         <CelebProfile
           celebName={celebInfo.celebName}
           affiliation={celebInfo.affiliation}
@@ -36,16 +47,10 @@ function CelebrityDetailPage() {
           profileUrl={celebInfo.profileUrl}
         />
 
-        <div className="순위">
-          <>
-            <div>뱃지아이콘</div>
-            <div>팔로워</div>
-          </>
-          <>
-            <div>뱃지아이콘</div>
-            <div>펀딩금액</div>
-          </>
-        </div>
+        <CelebRank
+          followerRank={celebInfo.rank.follower}
+          fundingRank={celebInfo.rank.fundMoney}
+        />
 
         <Styled.TextInfoContainer>
           <FollowButton
