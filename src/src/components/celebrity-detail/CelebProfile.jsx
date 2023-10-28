@@ -63,7 +63,7 @@ function CelebProfile({
 
 export default CelebProfile;
 
-CelebProfile.PropTypes = {
+CelebProfile.propTypes = {
   celebName: PropTypes.string.isRequired,
   affiliation: PropTypes.string,
   celebCategory: PropTypes.string.isRequired,
