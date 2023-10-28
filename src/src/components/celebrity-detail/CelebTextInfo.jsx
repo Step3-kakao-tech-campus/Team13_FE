@@ -14,12 +14,16 @@ const Styled = {
   Text: styled.div`
     display: flex;
     align-items: center;
-    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
     font-size: 1rem;
     color: ${({ theme }) => theme.color.addition};
 
     & span {
-      margin-left: 0.5rem;
+      margin-left: 0.4rem;
+    }
+    & strong {
+      font-weight: 500;
+      color: ${({ theme }) => theme.color.body};
     }
   `,
 };
@@ -35,18 +39,26 @@ function CelebTextInfo({ fundInProgressNum, totalFundMoney, followerNum }) {
   return (
     <Styled.TextContainer>
       <Styled.Text>
-        <InProgressIcon />
-        <span>{fundInProgressNum || 0}개의 펀딩 진행 중</span>
+        <UserIcon />
+        <span>
+          <strong>{followerNum || 0}</strong>
+          명이 팔로우 중
+        </span>
       </Styled.Text>
 
       <Styled.Text>
         <MoneyIcon />
-        <span>총 {totalFundMoney.toLocaleString("ko-KR") || 0}원</span>
+        <span>
+          총 <strong>{totalFundMoney.toLocaleString("ko-KR") || 0}</strong>원
+        </span>
       </Styled.Text>
 
       <Styled.Text>
-        <UserIcon />
-        <span>팔로워 {followerNum || 0}명</span>
+        <InProgressIcon />
+        <span>
+          <strong>{fundInProgressNum || 0}</strong>
+          개의 펀딩 진행 중
+        </span>
       </Styled.Text>
     </Styled.TextContainer>
   );
