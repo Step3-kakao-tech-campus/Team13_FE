@@ -31,6 +31,15 @@ const Styled = {
   `,
 };
 
+/**
+ * 셀럽 프로필 컴포넌트 - 셀럽신청에 명시했던 정보와 프로필이미지를 보여줌
+ * @param {string} props.celebName - 셀럽의 이름
+ * @param {string} props.affiliation - 셀럽의 소속
+ * @param {string} props.celebCategory - 셀럽의 분류
+ * @param {string} props.celebGender - 셀럽의 성별
+ * @param {string} props.profileUrl - 셀럽의 프로필 사진 URL
+ */
+
 function CelebProfile({
   celebName,
   affiliation,
