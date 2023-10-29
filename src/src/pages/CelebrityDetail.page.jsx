@@ -22,7 +22,7 @@ function CelebrityDetailPage() {
   const celebInfo = {
     celebId: 1,
     celebName: "손흥민",
-    affiliation: "토트넘",
+    celebGroup: "토트넘",
     celebGender: "남",
     celebCategory: "스포츠",
     profileUrl:
@@ -78,7 +78,7 @@ function CelebrityDetailPage() {
       >
         <CelebProfile
           celebName={celebInfo.celebName}
-          affiliation={celebInfo.affiliation}
+          celebGroup={celebInfo.celebGroup}
           celebCategory={celebInfo.celebCategory}
           celebGender={celebInfo.celebGender}
           profileUrl={celebInfo.profileUrl}

@@ -7,7 +7,7 @@ const Styled = {
     flex-direction: column;
   `,
 
-  NameAndAffiliation: styled.div`
+  NameAndGroup: styled.div`
     font-size: 1.5rem;
     font-weight: 600;
 
@@ -34,7 +34,7 @@ const Styled = {
 /**
  * 셀럽 프로필 컴포넌트 - 셀럽신청에 명시했던 정보와 프로필이미지를 보여줌
  * @param {string} props.celebName - 셀럽의 이름
- * @param {string} props.affiliation - 셀럽의 소속
+ * @param {string} props.celebGroup - 셀럽의 소속
  * @param {string} props.celebCategory - 셀럽의 분류
  * @param {string} props.celebGender - 셀럽의 성별
  * @param {string} props.profileUrl - 셀럽의 프로필 사진 URL
@@ -42,17 +42,17 @@ const Styled = {
 
 function CelebProfile({
   celebName,
-  affiliation,
+  celebGroup,
   celebCategory,
   celebGender,
   profileUrl,
 }) {
   return (
     <Styled.ProfileContainer>
-      <Styled.NameAndAffiliation>
+      <Styled.NameAndGroup>
         {celebName}
-        {affiliation && <span>{affiliation}</span>}
-      </Styled.NameAndAffiliation>
+        {celebGroup && <span>{celebGroup}</span>}
+      </Styled.NameAndGroup>
 
       <Styled.CategoryAndGender>{`${celebCategory} • ${celebGender}`}</Styled.CategoryAndGender>
 
@@ -65,7 +65,7 @@ export default CelebProfile;
 
 CelebProfile.propTypes = {
   celebName: PropTypes.string.isRequired,
-  affiliation: PropTypes.string,
+  celebGroup: PropTypes.string,
   celebCategory: PropTypes.string.isRequired,
   celebGender: PropTypes.string.isRequired,
   profileUrl: PropTypes.string,
