@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { PropTypes } from "prop-types";
 
 import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
-import ThumbnailBox from "@/components/common/images/ThumbnailBox.jsx";
+import ThumbnailBox from "@/components/common/ThumbnailBox.jsx";
 import Button from "@/components/common/button/Button.jsx";
 import SelectInput from "@/components/celebrity-list/SelectInput.jsx";
 import SELECTFORM_INFO from "@/constants/SELECTFORM_INFO.js";
