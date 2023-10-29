@@ -1,9 +1,11 @@
-function ThirdRibbonIcon() {
+import { PropTypes } from "prop-types";
+
+function ThirdRibbonIcon({ size = 48 }) {
   return (
     <>
       <img
-        width="48"
-        height="48"
+        width={size}
+        height={size}
         src="https://img.icons8.com/color/48/third-place-ribbon.png"
         alt="third-place-ribbon"
       />
@@ -17,4 +19,7 @@ function ThirdRibbonIcon() {
   );
 }
 
+ThirdRibbonIcon.propTypes = {
+  size: PropTypes.number,
+};
 export default ThirdRibbonIcon;
