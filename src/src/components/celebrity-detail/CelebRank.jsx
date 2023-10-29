@@ -23,6 +23,7 @@ const Styled = {
 
     & span {
       color: ${({ theme }) => theme.color.addition};
+      white-space: nowrap;
     }
   `,
 };
@@ -44,7 +45,11 @@ function CelebRank({ followerRank, fundingRank }) {
       icons[rank]
     ) : (
       <div
-        style={{ marginTop: "0.85rem", marginBottom: "0.84rem" }}
+        style={{
+          marginTop: "0.85rem",
+          marginBottom: "0.84rem",
+          whiteSpace: "nowrap",
+        }}
       >{`${rank}등`}</div>
     );
   };

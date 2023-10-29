@@ -28,6 +28,7 @@ const Styled = {
   Img: styled.img`
     width: 9.5rem;
     border-radius: 0.25rem;
+    margin-bottom: 1rem;
   `,
 };
 

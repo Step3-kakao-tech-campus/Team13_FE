@@ -21,6 +21,7 @@ const Styled = {
 
     & span {
       margin-left: 0.4rem;
+      white-space: nowrap;
     }
     & strong {
       font-weight: 500;
