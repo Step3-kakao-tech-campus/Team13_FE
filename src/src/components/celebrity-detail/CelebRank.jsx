@@ -10,7 +10,7 @@ const Styled = {
     display: flex;
   `,
   Rank: styled.div`
-    margin: 0 0.7rem;
+    margin: 0 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,7 +40,13 @@ function CelebRank({ followerRank, fundingRank }) {
       2: <SecondRibbonIcon />,
       3: <ThirdRibbonIcon />,
     };
-    return icons[rank] ? icons[rank] : `${rank}등`;
+    return icons[rank] ? (
+      icons[rank]
+    ) : (
+      <div
+        style={{ marginTop: "0.85rem", marginBottom: "0.84rem" }}
+      >{`${rank}등`}</div>
+    );
   };
 
   return (

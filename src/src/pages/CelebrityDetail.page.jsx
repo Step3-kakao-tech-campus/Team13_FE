@@ -33,7 +33,7 @@ function CelebrityDetailPage() {
     isFollowing: false,
     rank: {
       follower: 1,
-      fundMoney: 3,
+      fundMoney: 4,
     },
   };
 
