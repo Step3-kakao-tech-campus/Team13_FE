@@ -8,7 +8,7 @@ import {
   FundTitleInput,
   WhiteInputContainer,
 } from "@/styles/CommonStyle";
-import ThumbnailBox from "@/components/common/images/ThumbnailBox.jsx";
+import ThumbnailBox from "@/components/common/ThumbnailBox.jsx";
 import SettingForm from "@/components/create-fund/SettingForm.jsx";
 import formatDateToYYYYMMDD from "@/utils/formateDateToYYYYMMDD.js";
 import TextEditor from "@/components/common/TextEditor.jsx";
