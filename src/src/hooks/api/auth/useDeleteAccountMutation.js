@@ -18,7 +18,7 @@ function useDeleteAccountMutation() {
         toast.success("계정을 성공적으로 탈퇴했습니다.");
       },
       onError: (err) => {
-        toast.error(err.message);
+        toast.error(err.response.data.message);
       },
     },
   );
