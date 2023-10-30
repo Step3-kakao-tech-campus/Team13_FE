@@ -24,7 +24,7 @@ function UserSettingForm() {
     imageUrl: profileImageUrl,
     handleFileChange: handleProfileImageChange,
     handleFileDelete: handleProfileImageDelete,
-  } = useSetImageFileToUrl({ initialImage: data.profileImageUrl });
+  } = useSetImageFileToUrl(data.profileImageUrl);
 
   const handleUserSettingSubmit = (data) => {
     const requestBody = {
