@@ -25,9 +25,10 @@ const Styled = {
     align-items: center;
     border-radius: 0.25rem;
     cursor: pointer;
+    border: ${({ theme }) => theme.border.main};
 
-    ${({ $isMobile }) =>
-      $isMobile ||
+    ${({ $useHoverAnimation }) =>
+      $useHoverAnimation &&
       css`
         &:hover {
           transform: ${({ theme }) => theme.transform.gridCard};
@@ -41,6 +42,7 @@ const Styled = {
     width: 50px;
     height: 50px;
     border-radius: 9999px;
+    object-fit: cover;
   `,
 
   TextContainer: styled.div`
@@ -63,18 +65,29 @@ const Styled = {
   `,
 };
 
-function RecCelebCard({
+/**
+ * 셀럽의 간단한 정보를 보여주는 컴포넌트
+ * @param {string | number} celebId
+ * @param {string} celebName
+ * @param {string} profileUrl
+ * @param {string | number} followerNum
+ * @param {boolean} isFollowing
+ * @param {boolean} useHoverAnimation
+ */
+
+function SimpleCelebCard({
   celebId,
   celebName,
   profileUrl,
   followerNum,
   isFollowing,
+  useHoverAnimation = true,
 }) {
   const navigate = useNavigate();
 
   return (
     <Styled.Container
-      $isMobile={isMobile}
+      $useHoverAnimation={!isMobile && useHoverAnimation}
       onClick={() => {
         navigate(`${routes.celebrity}/${celebId}`);
       }}
@@ -93,21 +106,18 @@ function RecCelebCard({
           {followerNum || 0}명이 팔로우 중
         </Styled.Text>
       </Styled.TextContainer>
-      <FollowButton
-        celebId={celebId}
-        isFollowing={isFollowing}
-        style={{ padding: "6px 8px", fontSize: "14px", marginLeft: "auto" }}
-      />
+      <FollowButton celebId={celebId} isFollowing={isFollowing} />
     </Styled.Container>
   );
 }
 
-RecCelebCard.propTypes = {
+SimpleCelebCard.propTypes = {
   celebId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   celebName: PropTypes.string,
   profileUrl: PropTypes.string,
   followerNum: PropTypes.number,
   isFollowing: PropTypes.bool,
+  useHoverAnimation: PropTypes.bool,
 };
 
-export default RecCelebCard;
+export default SimpleCelebCard;

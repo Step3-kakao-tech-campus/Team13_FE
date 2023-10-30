@@ -1,13 +1,15 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { Suspense } from "react";
 
-import ChangeProfileBox from "@/components/my-account/ChangeProfileBox.jsx";
-import Form from "@/components/common/form/Form.jsx";
-import Button from "@/components/common/button/Button.jsx";
-import FORM_DEFAULT from "@/constants/FORM_DEFAULT.js";
-import FORM_INFO from "@/constants/FORM_INFO.js";
+import useDeleteAccountMutation from "@/hooks/api/auth/useDeleteAccountMutation.js";
+import useDeleteUserInfoInLocalStorage from "@/hooks/useDeleteUserInfoInLocalStorage.js";
+
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import { FormTemplate } from "@/styles/CommonStyle.js";
+
+import Button from "@/components/common/button/Button.jsx";
+import MyAccountLoader from "@/components/my-account/MyAccount.Loader.jsx";
+import UserSettingForm from "@/components/my-account/UserSettingForm.jsx";
 
 const Styled = {
   Title: styled.h2`
@@ -16,80 +18,41 @@ const Styled = {
   `,
 };
 
+const buttonStyle = {
+  width: "100%",
+  padding: "1rem",
+  margin: "1.25rem 0 2rem 0",
+};
+
 function MyAccountPage() {
-  const [profileImageFile, setProfileImageFile] = useState(null);
-
-  const loadedProfileUrl =
-    "https://velog.velcdn.com/images/j8won/profile/55917697-2140-40be-ad07-d2d02137f38e/image.jpeg";
-
-  const loadedDefaultValues = async () => {
-    try {
-      // api 통신 후 기존 회원정보 가지고 오기
-      // return FORM_DEFAULT.MY_ACCOUNT;
-      return {
-        nickname: "경주원",
-        phoneNumber: "010-1234-1234",
-        currentPassword: FORM_DEFAULT.MY_ACCOUNT.currentPassword,
-        changedPassword: FORM_DEFAULT.MY_ACCOUNT.changedPassword,
-      };
-    } catch (e) {
-      // 추후 react-hot-toast 에러 메시지 추가
-      alert(e.message);
-      return FORM_DEFAULT.MY_ACCOUNT;
-    }
-  };
+  const deleteUserInfoInLocalStorage = useDeleteUserInfoInLocalStorage();
+  const { mutate: deleteAccountMutate } = useDeleteAccountMutation();
 
   return (
-    <FormTemplate>
-      <Styled.Title>회원정보 수정하기</Styled.Title>
-      <ChangeProfileBox
-        loadedUrl={loadedProfileUrl}
-        imageFile={profileImageFile}
-        setImageFile={setProfileImageFile}
-      />
-      <Form
-        onSubmit={(data) => console.log(data)}
-        onError={(err) => console.log(err)}
-        inputInformations={FORM_INFO.MY_ACCOUNT}
-        defaultValues={loadedDefaultValues}
-      >
+    <Suspense fallback={<MyAccountLoader />}>
+      <FormTemplate>
+        <Styled.Title>회원정보 수정하기</Styled.Title>
+        <UserSettingForm />
+
+        <Styled.Title>로그아웃하기</Styled.Title>
+        <Button
+          styleType={BUTTON_TYPE.SECONDARY}
+          onClick={deleteUserInfoInLocalStorage}
+          style={buttonStyle}
+        >
+          로그아웃
+        </Button>
+
+        <Styled.Title>회원 탈퇴하기</Styled.Title>
         <Button
           styleType={BUTTON_TYPE.PRIMARY}
-          type="submit"
-          style={{
-            width: "100%",
-            padding: "1rem",
-            margin: "0.75rem 0 2rem 0",
-          }}
+          onClick={deleteAccountMutate}
+          style={buttonStyle}
         >
-          저장하기
+          회원 탈퇴
         </Button>
-      </Form>
-      <Styled.Title>로그아웃하기</Styled.Title>
-      <Button
-        styleType={BUTTON_TYPE.SECONDARY}
-        onClick={() => {
-          // accessToken, refreshToken 삭제
-        }}
-        style={{
-          width: "100%",
-          padding: "1rem",
-          margin: "1.25rem 0 2rem 0",
-        }}
-      >
-        로그아웃
-      </Button>
-      <Styled.Title>회원 탈퇴하기</Styled.Title>
-      <Button
-        styleType={BUTTON_TYPE.PRIMARY}
-        onClick={() => {
-          // 회원 탈퇴 api 통신
-        }}
-        style={{ width: "100%", padding: "1rem", margin: "1.25rem 0 0" }}
-      >
-        회원 탈퇴
-      </Button>
-    </FormTemplate>
+      </FormTemplate>
+    </Suspense>
   );
 }
 

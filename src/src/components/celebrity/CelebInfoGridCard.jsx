@@ -1,15 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { isMobile } from "react-device-detect";
+import { PropTypes } from "prop-types";
 
 import FollowButton from "@/components/celebrity/FollowButton.jsx";
-import TestAccountIcon from "@/assets/icon/TestAccountIcon";
 import routes from "@/constants/routes.js";
 
+import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
 import InProgressIcon from "@/assets/icon/InProgressIcon.jsx";
 import MoneyIcon from "@/assets/icon/MoneyIcon.jsx";
 import UserIcon from "@/assets/icon/UserIcon.jsx";
-import { PropTypes } from "prop-types";
+import FirstRibbonIcon from "@/assets/icon/FirstRibbonIcon.jsx";
+import SecondRibbonIcon from "@/assets/icon/SecondRibbonIcon.jsx";
+import ThirdRibbonIcon from "@/assets/icon/ThirdRibbonIcon.jsx";
 
 const Styled = {
   Container: styled.div`
@@ -17,7 +20,8 @@ const Styled = {
     
     padding: 1rem;
     height: 9.25rem;
-    
+
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -26,7 +30,7 @@ const Styled = {
     cursor: pointer;
 
     ${({ $isMobile }) =>
-      $isMobile ||
+      !$isMobile &&
       css`
         &:hover {
           transform: ${({ theme }) => theme.transform.gridCard};
@@ -36,10 +40,17 @@ const Styled = {
       `}
   }
   `,
+
   ProfileImage: styled.img`
     width: 100px;
     height: 100px;
     border-radius: 9999px;
+  `,
+
+  BadgeContainer: styled.div`
+    position: absolute;
+    left: 0.7rem;
+    top: 1rem;
   `,
 
   TextContainer: styled.div`
@@ -82,6 +93,7 @@ const Styled = {
  * @param {number} totalFundMoney 셀럽 관련 총 펀딩 금액
  * @param {number} followerNum 셀럽 팔로워 수
  * @param {boolean} isFollowing 셀럽 팔로잉 여부
+ * @param {number} rank 셀럽 랭킹
  */
 
 function CelebInfoGridCard({
@@ -92,6 +104,7 @@ function CelebInfoGridCard({
   totalFundMoney,
   followerNum,
   isFollowing,
+  rank,
 }) {
   const navigate = useNavigate();
 
@@ -108,17 +121,18 @@ function CelebInfoGridCard({
           alt={`${celebName} 프로필 사진`}
         />
       ) : (
-        <TestAccountIcon size={"100"} />
+        <TestAccountIcon size={100} />
       )}
+      <Styled.BadgeContainer>
+        {rank === 1 && <FirstRibbonIcon />}
+        {rank === 2 && <SecondRibbonIcon />}
+        {rank === 3 && <ThirdRibbonIcon />}
+      </Styled.BadgeContainer>
 
       <Styled.TextContainer>
         <Styled.Text className="name">
           <span>{celebName}</span>
-          <FollowButton
-            celebId={celebId}
-            isFollowing={isFollowing}
-            style={{ padding: "6px 8px", fontSize: "14px" }}
-          />
+          <FollowButton celebId={celebId} isFollowing={isFollowing} />
         </Styled.Text>
 
         <Styled.Text>
@@ -148,6 +162,7 @@ CelebInfoGridCard.propTypes = {
   totalFundMoney: PropTypes.number,
   followerNum: PropTypes.number,
   isFollowing: PropTypes.bool,
+  rank: PropTypes.number,
 };
 
 export default CelebInfoGridCard;

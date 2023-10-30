@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import styled from "styled-components";
 import { isMobile } from "react-device-detect";
 
@@ -49,6 +49,7 @@ function Layout() {
       <Toaster />
       {isMobile ? <MobileNavBar /> : <PCNavBar />}
       <Styled.Container style={{ paddingTop: calPadding() }}>
+        <ScrollRestoration />
         <Outlet />
       </Styled.Container>
     </Styled.Body>
