@@ -1,9 +1,11 @@
-function MoneyIcon() {
+import { PropTypes } from "prop-types";
+
+function MoneyIcon({ size = 16 }) {
   return (
     <>
       <img
-        width="16"
-        height="16"
+        width={size}
+        height={size}
         src="https://img.icons8.com/material-rounded/192/aaaaaa/money-bag.png"
         alt="money-bag"
       />
@@ -14,5 +16,9 @@ function MoneyIcon() {
     </>
   );
 }
+
+MoneyIcon.propTypes = {
+  size: PropTypes.number,
+};
 
 export default MoneyIcon;
