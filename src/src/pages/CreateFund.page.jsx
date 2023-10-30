@@ -8,7 +8,7 @@ import {
   FundTitleInput,
   WhiteInputContainer,
 } from "@/styles/CommonStyle";
-import ThumbnailBox from "@/components/common/ThumbnailBox.jsx";
+import ImagePreviewButton from "@/components/common/button/ImagePreviewButton.jsx";
 import SettingForm from "@/components/create-fund/SettingForm.jsx";
 import formatDateToYYYYMMDD from "@/utils/formateDateToYYYYMMDD.js";
 import TextEditor from "@/components/common/TextEditor.jsx";
@@ -91,7 +91,7 @@ function CreateFundPage() {
       <div id="thumbnail-note" style={{ fontSize: "0.75rem" }}>
         16:10 비율이 가장 적절합니다
       </div>
-      <ThumbnailBox
+      <ImagePreviewButton
         imageUrl={thumbnailImageUrl}
         handleFileDelete={handleThumbnailDelete}
         handleFileChange={handleThumbnailChange}

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { PropTypes } from "prop-types";
 
-import useSetImageFileToUrl from "@/hooks/useSetImageFileToUrl.js";
 import ImageFileAddIcon from "@/assets/icon/ImageFileAddIcon.jsx";
 import CloseIcon from "@/assets/icon/CloseIcon.jsx";
 
@@ -13,7 +12,7 @@ const Styled = {
   ImageLabel: styled.label`
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: ${({ $imageAspectRatio }) => $imageAspectRatio};
 
     display: flex;
     justify-content: center;
@@ -57,19 +56,27 @@ const Styled = {
 };
 
 /**
- * 펀딩 주최 페이지의 썸네일 컴포넌트
- * @param {Blob} file 이미지 파일
- * @param {React.Dispatch.SetStateAction} setFile set 이미지 파일
+ * 미리보기 이미지 파일 input
+ * @param {string} imageUrl 이미지 url
+ * @param {func} handleFileChange 이미지 파일 변경 핸들러
+ * @param {func} handleFileDelete 이미지 파일 삭제 핸들러
+ * @param {object} containerStyle
+ * @param {string} imageAspectRatio
  */
 
-function ThumbnailBox({ file, setFile, style }) {
-  const { imageUrl, handleFileChange, handleFileDelete } = useSetImageFileToUrl(
-    { file, setFile },
-  );
-
+function ImagePreviewButton({
+  imageUrl,
+  handleFileDelete,
+  handleFileChange,
+  containerStyle,
+  imageAspectRatio = "16/10",
+}) {
   return (
-    <Styled.Container style={style}>
-      <Styled.ImageLabel htmlFor="file-input">
+    <Styled.Container style={containerStyle}>
+      <Styled.ImageLabel
+        htmlFor="file-input"
+        $imageAspectRatio={imageAspectRatio}
+      >
         {imageUrl ? (
           <>
             <Styled.Image src={imageUrl} alt="썸네일 이미지" />
@@ -96,10 +103,12 @@ function ThumbnailBox({ file, setFile, style }) {
   );
 }
 
-ThumbnailBox.propTypes = {
-  file: PropTypes.any,
-  setFile: PropTypes.func.isRequired,
-  style: PropTypes.object,
+ImagePreviewButton.propTypes = {
+  imageUrl: PropTypes.string,
+  handleFileChange: PropTypes.func,
+  handleFileDelete: PropTypes.func,
+  containerStyle: PropTypes.object,
+  imageAspectRatio: PropTypes.string,
 };
 
-export default ThumbnailBox;
+export default ImagePreviewButton;
