@@ -18,6 +18,9 @@ const Styled = {
 
     @media (max-width: 912px) {
       flex-direction: column;
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
     }
   `,
 
