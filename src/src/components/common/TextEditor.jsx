@@ -28,11 +28,12 @@ const Styled = {
 
 /**
  * 텍스트 에디터 컴포넌트
- * @param {React.Dispatch.SetStateAction} setText set text 상태
+ * @param {string} text 에디터에 작성한 문자열 state
+ * @param {React.Dispatch.SetStateAction} setText 에디터에 작성한 문자열 setState
  * @param props 기타
  */
 
-function TextEditor({ setText, ...props }) {
+function TextEditor({ text, setText, ...props }) {
   const quillRef = useRef();
 
   const modules = {
@@ -58,7 +59,8 @@ function TextEditor({ setText, ...props }) {
         ref={quillRef}
         theme={"snow"}
         modules={modules}
-        onChange={setText}
+        value={text}
+        onChange={(content) => setText(content)}
         {...props}
       />
     </Styled.Container>
@@ -66,6 +68,7 @@ function TextEditor({ setText, ...props }) {
 }
 
 TextEditor.propTypes = {
+  text: PropTypes.string.isRequired,
   setText: PropTypes.func.isRequired,
 };
 

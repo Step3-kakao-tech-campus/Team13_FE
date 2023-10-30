@@ -17,6 +17,8 @@ const theme = {
     subBlack: "#4A4A4A",
     subBlackHover: "#282828",
 
+    skeleton: "#e4e4e4",
+
     alertBlue: "#0F8CFF",
     kakaoYellow: "#FFEB02",
   },
@@ -24,6 +26,7 @@ const theme = {
   fontFamily: {
     main: '"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif',
     logo: "'Teko', sans-serif",
+    doHyeon: "'Do Hyeon', sans-serif",
   },
 
   border: {

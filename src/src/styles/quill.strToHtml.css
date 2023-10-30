@@ -1,0 +1,257 @@
+/* 기본 폰트 스타일 */
+.to-html {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-size: 16px;
+    line-height: 140%;
+}
+
+/* 텍스트 스타일 */
+
+.to-html strong {
+    font-weight: 600;
+}
+
+.to-html em {
+    font-style: italic;
+}
+
+.to-html u {
+    text-decoration: underline;
+}
+
+.to-html s {
+    text-decoration: line-through;
+}
+
+/* text align */
+.to-html .ql-align-center {
+    text-align: center;
+}
+
+.to-html .ql-align-justify {
+    text-align: justify;
+}
+
+.to-html .ql-align-right {
+    text-align: right;
+}
+
+/* ol, li  */
+.to-html .ql-direction-rtl {
+    direction: rtl;
+    text-align: inherit;
+}
+
+.to-html ol, .to-html ul {
+    padding-left: 1.5rem;
+    list-style: none;
+}
+
+.to-html ol li:not(.ql-direction-rtl), .to-html ul li:not(.ql-direction-rtl) {
+    padding-left: 1.5rem;
+}
+
+.to-html p, .to-html ol, .to-html ul, .to-html pre, .to-html blockquote, .to-html h1, .to-html h2, .to-html h3, .to-html h4, .to-html h5, .to-html h6 {
+    margin: 0;
+    padding: 0;
+    counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+}
+
+
+/* li */
+
+.to-html li::before {
+    display: inline-block;
+    white-space: nowrap;
+    width: 1.2em;
+}
+
+.to-html li::before {
+    display: inline-block;
+    white-space: nowrap;
+    width: 1.2em;
+}
+
+.to-html li:not(.ql-direction-rtl)::before {
+    margin-left: -1.5rem;
+    margin-right: 0.3rem;
+    text-align: right;
+}
+
+/* ul li before */
+
+.to-html ul > li::before{
+    content: '•';
+}
+
+/* ol li */
+
+.to-html ol li {
+    counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+    counter-increment: list-0;
+}
+
+/* ol li before */
+
+.to-html ol li:not(.ql-direction-rtl)::before {
+    content: counter(list-0, decimal) '. ';
+}
+
+.to-html ol li.ql-indent-1 {
+    counter-reset: list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+    counter-increment: list-1;
+ }
+
+.to-html ol li.ql-indent-1:before {
+    content: counter(list-1, lower-alpha) '. ';
+}
+
+.to-html ol li.ql-indent-2 {
+    counter-reset: list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+    counter-increment: list-2;
+}
+
+.to-html ol li.ql-indent-2:before {
+    content: counter(list-2, lower-roman) '. ';
+}
+
+.to-html ol li.ql-indent-3 {
+    counter-reset: list-4 list-5 list-6 list-7 list-8 list-9;
+    counter-increment: list-3;
+}
+
+.to-html ol li.ql-indent-3:before {
+    content: counter(list-3, decimal) '. ';
+}
+
+.to-html ol li.ql-indent-4 {
+    counter-reset: list-5 list-6 list-7 list-8 list-9;
+    counter-increment: list-4;
+}
+
+.to-html ol li.ql-indent-4:before {
+    content: counter(list-4, lower-alpha) '. ';
+}
+
+.to-html ol li.ql-indent-5 {
+    counter-reset: list-6 list-7 list-8 list-9;
+    counter-increment: list-5;
+}
+
+.to-html ol li.ql-indent-5:before {
+    content: counter(list-5, lower-roman) '. ';
+}
+
+.to-html ol li.ql-indent-6 {
+    counter-reset: list-7 list-8 list-9;
+    counter-increment: list-6;
+}
+
+.to-html ol li.ql-indent-6:before {
+    content: counter(list-6, lower-alpha) '. ';
+}
+
+.to-html ol li.ql-indent-7 {
+    counter-reset: list-8 list-9;
+    counter-increment: list-7;
+}
+
+.to-html ol li.ql-indent-7:before {
+    content: counter(list-7, decimal) '. ';
+}
+
+.to-html ol li.ql-indent-8 {
+    counter-reset: list-9;
+    counter-increment: list-8;
+}
+
+.to-html ol li.ql-indent-8:before {
+    content: counter(list-8, lower-alpha) '. ';
+}
+
+
+/* tab indent 관련 스타일링 */
+.to-html .ql-indent-1:not(.ql-direction-rtl) {
+    padding-left: 4.5rem;
+}
+
+.to-html .ql-indent-2:not(.ql-direction-rtl) {
+    padding-left: 7.5rem;
+}
+
+.to-html .ql-indent-3:not(.ql-direction-rtl) {
+    padding-left: 10.5rem;
+}
+
+.to-html .ql-indent-4:not(.ql-direction-rtl) {
+    padding-left: 13.5rem;
+}
+
+.to-html .ql-indent-5:not(.ql-direction-rtl) {
+    padding-left: 18.5rem;
+}
+
+.to-html .ql-indent-6:not(.ql-direction-rtl) {
+    padding-left: 21.5rem;
+}
+
+.to-html .ql-indent-7:not(.ql-direction-rtl) {
+    padding-left: 24.5rem;
+}
+
+.to-html .ql-indent-8:not(.ql-direction-rtl) {
+    padding-left: 27.5rem;
+}
+
+/* 폰트 크기 */
+
+.to-html h1, .to-html h2, .to-html h3, .to-html h4, .to-html h5, .to-html h6 {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    word-break: break-all;
+}
+.to-html h1 {
+    font-size: 2rem;
+    line-height: 140%;
+}
+
+.to-html h2 {
+    font-size: 1.5rem;
+    line-height: 140%;
+}
+
+.to-html h3 {
+    font-size: 1.15rem;
+    line-height: 140%;
+}
+
+.to-html h4 {
+    font-size: 1rem;
+    line-height: 140%;
+}
+
+.to-html h5 {
+    font-size: 75%;
+    line-height: 140%;
+}
+
+.to-html h6 {
+    font-size: 55%;
+    line-height: 140%;
+}
+
+/* blockquote */
+
+.to-html blockquote {
+    border-left: 4px solid #ff6c6c;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding-left: 16px;
+}
+
+/* link */
+.to-html a {
+    text-decoration: underline;
+    color: #06c;
+ }

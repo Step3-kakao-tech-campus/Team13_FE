@@ -20,19 +20,25 @@ const Styled = {
 /**
  * true일 때 빨강색, false일 때 빈 하트
  * @param {boolean} isActive 클릭된 여부
+ * @param {number} size 하트 크기 (px)
  * @param {html.Attributes} htmlDivProps 기타
  */
 
-function HeartButton({ isActive, ...htmlDivProps }) {
+function HeartButton({ isActive, size, ...htmlDivProps }) {
   return (
     <Styled.Container {...htmlDivProps}>
-      {isActive ? <FilledHeartIcon /> : <EmptyHeartIcon />}
+      {isActive ? (
+        <FilledHeartIcon size={size} />
+      ) : (
+        <EmptyHeartIcon size={size} />
+      )}
     </Styled.Container>
   );
 }
 
 HeartButton.propTypes = {
   isActive: PropTypes.bool.isRequired,
+  size: PropTypes.number,
 };
 
 export default HeartButton;
