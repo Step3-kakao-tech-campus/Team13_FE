@@ -38,6 +38,8 @@ const Styled = {
     min-width: 10rem;
     min-height: 8rem;
 
+    overflow-y: auto;
+
     border-radius: 0.25rem;
     background-color: ${({ theme }) => theme.color.white};
     box-shadow: rgba(0, 0, 0, 0.1) 0 0 24px 4px;
@@ -49,6 +51,10 @@ const Styled = {
       width: 100vw;
       height: 100vh;
       border-radius: 0;
+    }
+
+    @media screen and (min-width: 769px) {
+      max-height: 96vh;
     }
   `,
   CloseButton: styled.button`
