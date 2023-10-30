@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
-
-import CelebInfoGridCard from "@/components/celebrity/CelebInfoGridCard.jsx";
-import FloatButton from "@/components/common/button/FloatButton.jsx";
-import SortButtons from "@/components/common/button/SortButtons.jsx";
-import PageTitle from "@/components/common/PageTitle.jsx";
 import routes from "@/constants/routes.js";
 import MainLayout from "@/components/common/template/MainLayout.jsx";
 import { GridTemplate, Title } from "@/styles/CommonStyle.js";
@@ -75,7 +70,7 @@ function MainPage() {
           <Styled.Title>추천 셀럽</Styled.Title>
         </Styled.TitleBar>
 
-        <GridTemplate style={{ margin: "1.25rem 0 2rem" }}>
+        <GridTemplate style={{ marginBottom: "1.75rem" }}>
           {new Array(3).fill(sonnyCelebInfo).map((info, index) => (
             <SimpleCelebCard
               key={index}

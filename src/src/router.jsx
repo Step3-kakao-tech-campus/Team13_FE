@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: routes.fund,
-        element: <Test />,
+        element: <FundListPage />,
       },
       {
         path: `${routes.fund}/:fundId`,
