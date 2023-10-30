@@ -30,7 +30,7 @@
     "react-textarea-autosize": "^8.5.3",
     "slick-carousel": "^1.8.1",
     "styled-components": "^6.0.8",
-    "styled-reset": "^4.4.1"
+    "styled-reset": "4.4.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
