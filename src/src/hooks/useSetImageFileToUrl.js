@@ -5,9 +5,35 @@ import { useEffect, useState } from "react";
  * @returns {{ file: blob, imageUrl: string, handleFileChange: function, handleFileDelete: function}}
  */
 
-function useSetImageFileToUrl() {
+function useSetImageFileToUrl({ initialImage }) {
   const [file, setFile] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
+
+  useEffect(() => {
+    const convertURLtoFile = async (url) => {
+      try {
+        const response = await fetch(url);
+        const data = await response.blob();
+        const ext = url.split(".").pop();
+        const filename = url.split("/").pop();
+        const metadata = { type: `image/${ext}` };
+        return new File([data], filename, metadata);
+      } catch (error) {
+        console.error("Error converting URL to File:", error);
+        return null;
+      }
+    };
+
+    async function fetchData() {
+      setImageUrl(initialImage);
+      const newFile = await convertURLtoFile(initialImage);
+      if (newFile) {
+        setFile(newFile);
+      }
+    }
+
+    fetchData();
+  }, [initialImage]);
 
   useEffect(() => {
     if (!file) {

@@ -30,7 +30,7 @@ function Form({
         onSubmit={handleSubmit(onSubmit, onError)}
         style={{ width: "100%", maxWidth: "22rem" }}
       >
-        {inputInformations.map(input => (
+        {inputInformations.map((input) => (
           <LabeledInput
             key={input.id}
             id={input.id}
@@ -55,9 +55,9 @@ Form.propTypes = {
     .isRequired,
   inputInformations: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-      placeholder: PropTypes.string.isRequired,
+      id: PropTypes.string,
+      type: PropTypes.string,
+      placeholder: PropTypes.string,
       validation: PropTypes.object,
       requireMsg: PropTypes.string,
     }),
