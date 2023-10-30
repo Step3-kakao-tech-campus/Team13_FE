@@ -4,10 +4,11 @@ import styled from "styled-components";
 import { PropTypes } from "prop-types";
 
 import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
-import ThumbnailBox from "@/components/common/ThumbnailBox.jsx";
+import ImagePreviewButton from "@/components/common/button/ImagePreviewButton.jsx";
 import Button from "@/components/common/button/Button.jsx";
 import SelectInput from "@/components/celebrity-list/SelectInput.jsx";
-import SELECTFORM_INFO from "@/constants/SELECTFORM_INFO.js";
+import SELECT_INFO from "@/constants/SELECT_INFO.js";
+import useSetImageFileToUrl from "@/hooks/useSetImageFileToUrl.js";
 
 /**
  * 셀럽 신청 모달 컴포넌트
@@ -15,6 +16,11 @@ import SELECTFORM_INFO from "@/constants/SELECTFORM_INFO.js";
  */
 
 const Styled = {
+  Container: styled.div`
+    @media screen and (min-width: 769px) {
+      width: 20rem;
+    }
+  `,
   Title: styled.div`
     font-size: 1.5rem;
     font-weight: 600;
@@ -33,6 +39,7 @@ const Styled = {
     width: 100%;
     height: 3rem;
     font-size: 1rem;
+    border: ${({ theme }) => theme.border.input};
 
     &::placeholder {
       color: ${({ theme }) => theme.color.inactive};
@@ -41,7 +48,13 @@ const Styled = {
 };
 
 function CelebApplyModal({ setOpen }) {
-  const [thumbnailFile, setThumbnailFile] = useState(null);
+  const {
+    file: profileFile,
+    imageUrl: profileImageUrl,
+    handleFileDelete,
+    handleFileChange,
+  } = useSetImageFileToUrl();
+
   const [textCelebInfo, setTextCelebInfo] = useState({
     name: "",
     gender: "",
@@ -53,16 +66,10 @@ function CelebApplyModal({ setOpen }) {
       ...prev,
       [fieldName]: value,
     }));
-
-    if (fieldName === "gender") {
-      console.log(`선택된 성별: ${value}`);
-    } else if (fieldName === "category") {
-      console.log(`선택된 분류: ${value}`);
-    }
   };
 
   const handleApplyCelebSubmit = () => {
-    if (!thumbnailFile) return toast.error("셀럽 이미지를 추가해 주세요");
+    if (!profileFile) return toast.error("셀럽 이미지를 추가해 주세요");
     if (!textCelebInfo.name || textCelebInfo.name === "")
       return toast.error("셀럽 이름을 입력해 주세요");
     if (!textCelebInfo.gender) return toast.error("성별을 선택해 주세요");
@@ -73,50 +80,56 @@ function CelebApplyModal({ setOpen }) {
   };
 
   return (
-    <BackdropModal
-      setOpen={setOpen}
-      modalStyle={{
-        padding: "2.8rem 3.3rem",
-      }}
-    >
-      <Styled.Title>셀럽 신청</Styled.Title>
-      <ThumbnailBox file={thumbnailFile} setFile={setThumbnailFile} />
+    <BackdropModal setOpen={setOpen} modalStyle={{ padding: "3rem" }}>
+      <Styled.Container>
+        <Styled.Title>셀럽 신청</Styled.Title>
 
-      <Styled.FormContainer>
-        <Styled.Label>이름</Styled.Label>
-        <Styled.Input
-          type="text"
-          placeholder="이름을 입력해주세요"
-          onChange={(e) => handleOnChange("name", e.target.value)}
+        <ImagePreviewButton
+          imageUrl={profileImageUrl}
+          handleFileChange={handleFileChange}
+          handleFileDelete={handleFileDelete}
+          containerStyle={{ width: "60%", margin: "1rem auto" }}
+          imageAspectRatio="1/1"
         />
-        <SelectInput
-          options={SELECTFORM_INFO.GENDER}
-          label="성별"
-          onChange={(selectedValue) => handleOnChange("gender", selectedValue)}
-          selectedValue={textCelebInfo.gender}
-        />
-        <SelectInput
-          options={SELECTFORM_INFO.CATEGORY}
-          label="분류"
-          onChange={(selectedValue) =>
-            handleOnChange("category", selectedValue)
-          }
-          selectedValue={textCelebInfo.category}
-        />
-        <Styled.Label>소속그룹</Styled.Label>
-        <Styled.Input type="text" placeholder="선택사항" />
-      </Styled.FormContainer>
 
-      <Button
-        onClick={handleApplyCelebSubmit}
-        style={{
-          padding: "0.75rem",
-          width: "100%",
-          marginTop: "0.5rem",
-        }}
-      >
-        신청하기
-      </Button>
+        <Styled.FormContainer>
+          <Styled.Label>이름</Styled.Label>
+          <Styled.Input
+            type="text"
+            placeholder="이름을 입력해주세요"
+            onChange={(e) => handleOnChange("name", e.target.value)}
+          />
+          <SelectInput
+            options={SELECT_INFO.GENDER}
+            label="성별"
+            onChange={(selectedValue) =>
+              handleOnChange("gender", selectedValue)
+            }
+            selectedValue={textCelebInfo.gender}
+          />
+          <SelectInput
+            options={SELECT_INFO.CATEGORY}
+            label="분류"
+            onChange={(selectedValue) =>
+              handleOnChange("category", selectedValue)
+            }
+            selectedValue={textCelebInfo.category}
+          />
+          <Styled.Label>소속그룹</Styled.Label>
+          <Styled.Input type="text" placeholder="선택사항" />
+        </Styled.FormContainer>
+
+        <Button
+          onClick={handleApplyCelebSubmit}
+          style={{
+            padding: "0.75rem",
+            width: "100%",
+            marginTop: "0.5rem",
+          }}
+        >
+          신청하기
+        </Button>
+      </Styled.Container>
     </BackdropModal>
   );
 }
