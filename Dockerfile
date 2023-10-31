@@ -1,5 +1,5 @@
 # Build stage
-FROM krmp-d2hub-idock.9rum.cc/goorm/node:18 AS base
+FROM krmp-d2hub-idock.9rum.cc/goorm/node:18 AS build
 WORKDIR /usr/src/app
 COPY src/package*.json ./
 RUN yarn install
