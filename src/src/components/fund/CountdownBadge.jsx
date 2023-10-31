@@ -11,7 +11,7 @@ const Styled = {
     justify-content: center;
     align-items: center;
 
-    font-size: 0.75px;
+    font-size: 10px;
     color: ${({ theme }) => theme.color.mainRed};
     background-color: #ffe3e3;
 
@@ -43,7 +43,7 @@ function CountdownBadge({ target }) {
     if (countdown / 1000 <= 0) return () => clearInterval(interval);
 
     return () => clearInterval(interval);
-  }, [targetDateTime]);
+  }, [targetDateTime, countdown]);
 
   const getReturnValues = (time) => {
     const days = Math.floor(time / (1000 * 60 * 60 * 24));
