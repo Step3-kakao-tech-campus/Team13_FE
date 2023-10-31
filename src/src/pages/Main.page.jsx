@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
-import routes from "@/constants/routes.js";
 import MainLayout from "@/components/common/template/MainLayout.jsx";
 import { GridTemplate, Title } from "@/styles/CommonStyle.js";
-import CelebApplyModal from "@/components/celebrity-list/CelebApplyModal.jsx";
 import SimpleCelebCard from "@/components/celebrity/SimpleCelebCard";
 import FundInfoGridCard from "@/components/fund/FundInfoGridCard";
 
@@ -26,7 +24,6 @@ const Styled = {
 
 function MainPage() {
   const [searchParams] = useSearchParams();
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const fundInfo = {
     fundId: 1,
@@ -108,7 +105,6 @@ function MainPage() {
             />
           ))}
         </GridTemplate>
-        {isModalOpen && <CelebApplyModal setOpen={setIsModalOpen} />}
       </MainLayout>
     </>
   );
