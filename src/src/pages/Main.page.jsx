@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import MainLayout from "@/components/common/template/MainLayout.jsx";
 import { GridTemplate, Title } from "@/styles/CommonStyle.js";
@@ -23,8 +21,6 @@ const Styled = {
 };
 
 function MainPage() {
-  const [searchParams] = useSearchParams();
-
   const fundInfo = {
     fundId: 1,
     fundTitle:
@@ -40,13 +36,8 @@ function MainPage() {
       "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
     organizerId: "soccer123",
     organizerName: "축구도사",
+    isInUserWishList: true,
   };
-
-  const [keyword, setKeyword] = useState(searchParams.get("keyword"));
-
-  useEffect(() => {
-    setKeyword(searchParams.get("keyword"));
-  }, [searchParams]);
 
   const sonnyCelebInfo = {
     celebId: 1,
@@ -102,6 +93,7 @@ function MainPage() {
               celebrityName={fundInfo.celebrityName}
               organizerId={fundInfo.organizerId}
               organizerName={fundInfo.organizerName}
+              isInUserWishList={fundInfo.isInUserWishList}
             />
           ))}
         </GridTemplate>

@@ -18,7 +18,7 @@ const Styled = {
     border-radius: 0.25rem;
     border: ${({ theme }) => theme.border.main};
     cursor: pointer;
-    
+
     ${({ $isMobile }) =>
       $isMobile ||
       css`
@@ -28,7 +28,6 @@ const Styled = {
           transition: ${({ theme }) => theme.transition.gridCard};
         }
       `}
-    }
   `,
   ThumbnailImg: styled.img`
     width: 100%;
