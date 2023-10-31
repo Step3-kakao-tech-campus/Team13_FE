@@ -12,7 +12,7 @@ function useCoAdminQuery({ fundId }) {
     {
       suspense: true,
       onError: (err) => {
-        toast.error(err);
+        toast.error(err.response.data.message);
       },
     },
   );

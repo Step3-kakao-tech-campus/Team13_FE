@@ -32,6 +32,7 @@ const theme = {
   border: {
     main: "1px solid #F1F3F5",
     strong: "1px solid #EAECEF",
+    input: "1px solid #aaaaaa",
   },
 
   boxShadow: {

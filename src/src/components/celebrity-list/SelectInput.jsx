@@ -16,7 +16,17 @@ const Styled = {
     width: 100%;
     height: 3rem;
     font-size: 1rem;
-    color: ${({ value }) => (value === "" ? "#aaaaaa" : "#000000")};
+    color: ${({ value, theme }) =>
+      value === "" ? theme.color.inactive : theme.color.body};
+
+    border: ${({ theme }) => theme.border.input};
+    outline: none;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url("https://img.icons8.com/material/24/aaaaaa/expand-arrow--v1.png")
+      no-repeat center right 5px;
   `,
 };
 
@@ -42,7 +52,9 @@ function SelectInput({ options, label, onChange, selectedValue }) {
         value={selectedValue}
         onChange={handleSelectChange}
       >
-        <option value="">선택하세요</option>
+        <option value="" disabled={true}>
+          선택하세요
+        </option>
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
