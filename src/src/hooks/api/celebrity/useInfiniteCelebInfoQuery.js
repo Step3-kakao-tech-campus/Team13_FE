@@ -4,7 +4,7 @@ import celebrityAPI from "@/api/celebrityAPI.js";
 
 function useInfiniteCelebInfoQuery({ keyword, sortType }) {
   return useInfiniteQuery(
-    [API.FUND.LIST, keyword, sortType],
+    [API.CELEBRITY.LIST, keyword, sortType],
     async ({ pageParam = 0 }) => {
       return celebrityAPI.getCelebInfoList({
         pageIndex: pageParam,
