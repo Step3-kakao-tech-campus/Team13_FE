@@ -1,16 +1,17 @@
+import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import styled from "styled-components";
 
-import CelebInfoGridCard from "@/components/celebrity/CelebInfoGridCard.jsx";
+import { Title } from "@/styles/CommonStyle.js";
+import routes from "@/constants/routes.js";
+
+import MainLayout from "@/components/common/template/MainLayout.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
-import FloatButton from "@/components/common/button/FloatButton.jsx";
 import SortButtons from "@/components/common/button/SortButtons.jsx";
 import PageTitle from "@/components/common/PageTitle.jsx";
-import routes from "@/constants/routes.js";
-import MainLayout from "@/components/common/template/MainLayout.jsx";
-import { GridTemplate, Title } from "@/styles/CommonStyle.js";
+import FloatButton from "@/components/common/button/FloatButton.jsx";
 import CelebApplyModal from "@/components/celebrity-list/CelebApplyModal.jsx";
+import InfiniteCelebInfo from "@/components/celebrity-list/InfiniteCelebInfo";
 
 const Styled = {
   Title: styled(Title)`
@@ -55,18 +56,6 @@ function CelebrityListPage() {
     },
   ];
 
-  const sonnyCelebInfo = {
-    celebId: 1,
-    celebName: "손흥민",
-    profileUrl:
-      "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
-    fundInProgressNum: 30,
-    totalFundMoney: 35000000,
-    followerNum: 10000,
-    isFollowing: false,
-    rank: 1,
-  };
-
   return (
     <>
       <PageTitle
@@ -90,21 +79,8 @@ function CelebrityListPage() {
           <SortButtons sortTypeArray={celebListSortTypeArray} />
         </Styled.TitleBar>
 
-        <GridTemplate>
-          {new Array(6).fill(sonnyCelebInfo).map((info, index) => (
-            <CelebInfoGridCard
-              key={index}
-              celebId={info.celebId}
-              celebName={info.celebName}
-              profileUrl={info.profileUrl}
-              fundInProgressNum={info.fundInProgressNum}
-              followerNum={info.followerNum}
-              isFollowing={info.isFollowing}
-              totalFundMoney={info.totalFundMoney}
-              rank={index + 1}
-            />
-          ))}
-        </GridTemplate>
+        <InfiniteCelebInfo keyword={keyword} sortType={sortType} />
+
         <FloatButton onClick={() => setIsModalOpen(true)}>
           셀럽 신청
         </FloatButton>
