@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { Title } from "@/styles/CommonStyle.js";
@@ -12,6 +12,7 @@ import PageTitle from "@/components/common/PageTitle.jsx";
 import FloatButton from "@/components/common/button/FloatButton.jsx";
 import CelebApplyModal from "@/components/celebrity-list/CelebApplyModal.jsx";
 import InfiniteCelebInfo from "@/components/celebrity-list/InfiniteCelebInfo";
+import InfiniteCelebInfoLoader from "@/components/celebrity-list/InfiniteCelebInfo.loader";
 
 const Styled = {
   Title: styled(Title)`
@@ -79,7 +80,9 @@ function CelebrityListPage() {
           <SortButtons sortTypeArray={celebListSortTypeArray} />
         </Styled.TitleBar>
 
-        <InfiniteCelebInfo keyword={keyword} sortType={sortType} />
+        <Suspense fallback={<InfiniteCelebInfoLoader />}>
+          <InfiniteCelebInfo keyword={keyword} sortType={sortType} />
+        </Suspense>
 
         <FloatButton onClick={() => setIsModalOpen(true)}>
           셀럽 신청

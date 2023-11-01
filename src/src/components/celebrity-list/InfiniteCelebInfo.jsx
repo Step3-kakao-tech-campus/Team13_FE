@@ -6,6 +6,7 @@ import { CelebInfoDto } from "@/api/dto/celebrity.dto";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver.js";
 import useInfiniteCelebInfoQuery from "@/hooks/api/celebrity/useInfiniteCelebInfoQuery";
 import CelebInfoGridCard from "@/components/celebrity/CelebInfoGridCard.jsx";
+import InfiniteCelebInfoLoader from "./InfiniteCelebInfo.loader.jsx";
 
 /**
  * 셀럽 무한 목록 컴포넌트
@@ -39,7 +40,7 @@ function InfiniteCelebInfo({ keyword, sortType }) {
           )),
         )}
       </GridTemplate>
-      {/* 로더 자리 */}
+      <InfiniteCelebInfoLoader loaderRef={loaderRef} />
     </>
   );
 }
