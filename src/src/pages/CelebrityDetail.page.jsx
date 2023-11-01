@@ -6,8 +6,8 @@ import FollowButton from "@/components/celebrity/FollowButton.jsx";
 import CelebProfile from "@/components/celebrity-detail/CelebProfile.jsx";
 import CelebRank from "@/components/celebrity-detail/CelebRank.jsx";
 import Tabs from "@/components/common/button/TabButtons.jsx";
-import FundInfoGridCard from "@/components/fund/FundInfoGridCard";
-import { GridTemplate } from "@/styles/CommonStyle";
+import FundInfoGridCard from "@/components/fund/FundInfoGridCard.jsx";
+import { GridTemplate } from "@/styles/CommonStyle.js";
 
 const Styled = {
   CelebInfoContainer: styled.div`
