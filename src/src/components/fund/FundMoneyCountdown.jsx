@@ -28,7 +28,7 @@ const Styled = {
 
     .current-money {
       padding: 0 0.25rem;
-      font-size: 0.75px;
+      font-size: 0.75rem;
       color: ${({ theme }) => theme.color.inactive};
     }
   `,

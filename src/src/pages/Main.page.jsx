@@ -6,17 +6,11 @@ import FundInfoGridCard from "@/components/fund/FundInfoGridCard";
 
 const Styled = {
   Title: styled(Title)`
-    width: fit-content;
+    width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  `,
-  TitleBar: styled.div`
     padding-bottom: 1.75rem;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   `,
 };
 
@@ -54,9 +48,7 @@ function MainPage() {
   return (
     <>
       <MainLayout>
-        <Styled.TitleBar>
-          <Styled.Title>추천 셀럽</Styled.Title>
-        </Styled.TitleBar>
+        <Styled.Title>추천 셀럽</Styled.Title>
 
         <GridTemplate style={{ marginBottom: "1.75rem" }}>
           {new Array(3).fill(sonnyCelebInfo).map((info, index) => (
@@ -74,9 +66,7 @@ function MainPage() {
           ))}
         </GridTemplate>
 
-        <Styled.TitleBar>
-          <Styled.Title>마감 임박한 펀딩</Styled.Title>
-        </Styled.TitleBar>
+        <Styled.Title>마감 임박한 펀딩</Styled.Title>
 
         <GridTemplate>
           {new Array(6).fill(sonnyCelebInfo).map((info, index) => (
