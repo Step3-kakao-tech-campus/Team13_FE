@@ -38,6 +38,23 @@ function CelebrityListPage() {
     setKeyword(searchParams.get("keyword"));
   }, [searchParams]);
 
+  const [sortType, setSortType] = useState("펀딩총액순");
+
+  const celebListSortTypeArray = [
+    {
+      key: "펀딩총액순",
+      func: () => {
+        setSortType("펀딩총액순");
+      },
+    },
+    {
+      key: "팔로워순",
+      func: () => {
+        setSortType("팔로워순");
+      },
+    },
+  ];
+
   const sonnyCelebInfo = {
     celebId: 1,
     celebName: "손흥민",
@@ -70,12 +87,7 @@ function CelebrityListPage() {
           <Styled.Title>
             {keyword ? `${keyword} 검색 결과` : "순위"}
           </Styled.Title>
-          <SortButtons
-            sortTypeArray={[
-              { key: "펀딩총액순", func: () => {} },
-              { key: "팔로워순", func: () => {} },
-            ]}
-          />
+          <SortButtons sortTypeArray={celebListSortTypeArray} />
         </Styled.TitleBar>
 
         <GridTemplate>
