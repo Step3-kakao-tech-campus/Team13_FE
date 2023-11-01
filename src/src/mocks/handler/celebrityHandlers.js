@@ -17,7 +17,7 @@ const kinginCelebInfo = {
   celebId: 2,
   celebName: "이강인",
   profileUrl:
-    "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
+    "https://i.namu.wiki/i/sfvk_xnvWlwCiFo3X6cdfzf621AlwLjGRZ88bIcrIt99EwxqOQVGGp7gMEH6gllADZl1kLJdIeJD3Ooq4LOYOg.webp",
   fundInProgressNum: 32,
   totalFundMoney: 38000000,
   followerNum: 9000,
@@ -29,7 +29,7 @@ const wooCelebInfo = {
   celebId: 3,
   celebName: "설영우",
   profileUrl:
-    "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
+    "https://i.namu.wiki/i/mFwo5sbcGmtVmDcBxMi36FF5-nPXUs5mfoN2pB3YsbAmJe6h4wX35IT2jQZxNOdqE2BtMgbji8Yp-jvCLs4nsQ.webp",
   fundInProgressNum: 26,
   totalFundMoney: 35000000,
   followerNum: 8000,
@@ -40,8 +40,7 @@ const wooCelebInfo = {
 const youngCelebInfo = {
   celebId: 4,
   celebName: "이재용",
-  profileUrl:
-    "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
+  profileUrl: "https://cdn.thelec.kr/news/photo/202210/18518_16299_646.jpg",
   fundInProgressNum: 25,
   totalFundMoney: 7500,
   followerNum: 10000,
