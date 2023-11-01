@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import CelebTextInfo from "@/components/celebrity-detail/celebTextInfo.jsx";
+import CelebTextInfo from "@/components/celebrity-detail/CelebTextInfo.jsx";
 import FollowButton from "@/components/celebrity/FollowButton.jsx";
 import CelebProfile from "@/components/celebrity-detail/CelebProfile.jsx";
 import CelebRank from "@/components/celebrity-detail/CelebRank.jsx";
