@@ -1,10 +1,17 @@
 import { useRef } from "react";
+import { PropTypes } from "prop-types";
 import { GridTemplate } from "@/styles/CommonStyle.js";
 import { CelebInfoDto } from "@/api/dto/celebrity.dto";
 
 import useIntersectionObserver from "@/hooks/useIntersectionObserver.js";
 import useInfiniteCelebInfoQuery from "@/hooks/api/celebrity/useInfiniteCelebInfoQuery";
 import CelebInfoGridCard from "@/components/celebrity/CelebInfoGridCard.jsx";
+
+/**
+ * 셀럽 무한 목록 컴포넌트
+ * @param {string} keyword 검색 키워드
+ * @param {string} sortType 순서
+ */
 
 function InfiniteCelebInfo({ keyword, sortType }) {
   const loaderRef = useRef();
@@ -36,4 +43,10 @@ function InfiniteCelebInfo({ keyword, sortType }) {
     </>
   );
 }
+
+InfiniteCelebInfo.propTypes = {
+  keyword: PropTypes.string,
+  sortType: PropTypes.string,
+};
+
 export default InfiniteCelebInfo;
