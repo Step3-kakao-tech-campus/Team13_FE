@@ -10,6 +10,7 @@ const routes = {
   user: "/user",
   edit: "/edit",
   sponsorship: "/sponsorship",
+  admin: "/admin",
 };
 
 Object.freeze(routes);
