@@ -111,7 +111,7 @@ function Information() {
   const { data } = useFundDetailInfoQuery({ fundId: fundId });
 
   const handleSponsorshipButtonClick = () => {
-    navigate(`${routes.sponsorship}/${fundId}`);
+    navigate(`${routes.support}/${fundId}`);
   };
 
   return (
