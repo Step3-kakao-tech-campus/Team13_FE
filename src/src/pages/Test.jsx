@@ -17,6 +17,7 @@ import { useState } from "react";
 import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
 import FollowButton from "@/components/celebrity/FollowButton.jsx";
 import SimpleCelebCard from "@/components/celebrity/SimpleCelebCard.jsx";
+import CelebInfoGridCardSkeleton from "@/components/celebrity/CelebInfoGridCardSkeleton.jsx";
 
 const Styled = {
   GridExample: styled.article`
@@ -187,6 +188,9 @@ function Test() {
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
         <Styled.GridExample>d</Styled.GridExample>
+        <CelebInfoGridCardSkeleton />
+        <CelebInfoGridCardSkeleton />
+        <CelebInfoGridCardSkeleton />
       </GridTemplate>
     </>
   );
