@@ -2,7 +2,6 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import CelebTextInfo from "@/components/celebrity-detail/CelebTextInfo.jsx";
-import FollowButton from "@/components/celebrity/FollowButton.jsx";
 import CelebProfile from "@/components/celebrity-detail/CelebProfile.jsx";
 import CelebRank from "@/components/celebrity-detail/CelebRank.jsx";
 import Tabs from "@/components/common/button/TabButtons.jsx";
@@ -11,24 +10,23 @@ import { GridTemplate } from "@/styles/CommonStyle.js";
 
 const Styled = {
   CelebInfoContainer: styled.div`
-    display: flex;
-    align-items: center;
-    padding: 6rem 11rem 6.5rem;
-    justify-content: space-between;
-
-    @media (max-width: 912px) {
-      flex-direction: column;
-      padding-left: 0;
-      padding-right: 0;
-      width: 100%;
-    }
+    padding: 2rem calc((100% - 60rem) / 2);
   `,
 
-  FollowButton: styled.div`
-    @media (max-width: 912px) {
-      position: absolute;
-      top: 30rem;
-    }
+  CelebInfoBottomBox: styled.div`
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  `,
+
+  ProfileImage: styled.img`
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 0.25rem;
   `,
 
   TextInfoContainer: styled.div`
@@ -94,57 +92,49 @@ function CelebrityDetailPage() {
           celebGroup={celebInfo.celebGroup}
           celebCategory={celebInfo.celebCategory}
           celebGender={celebInfo.celebGender}
-          profileUrl={celebInfo.profileUrl}
+          celebId={celebInfo?.celebId}
+          isFollowing={celebInfo?.isFollowing}
         />
 
-        <CelebRank
-          followerRank={celebInfo.rank.follower}
-          fundingRank={celebInfo.rank.fundMoney}
-        />
+        <Styled.CelebInfoBottomBox>
+          <Styled.ProfileImage
+            src={celebInfo?.profileUrl}
+            alt={`${celebInfo?.celebName}의 프로필 사진`}
+          />
 
-        <Styled.TextInfoContainer>
-          <Styled.FollowButton>
-            <FollowButton
-              celebId={celebInfo.celebId}
-              isFollowing={celebInfo.isFollowing}
-              style={{
-                padding: "0.8rem 3.8rem",
-                fontSize: "1rem",
-                position: "absolute",
-                top: "10rem",
-              }}
-            />
-          </Styled.FollowButton>
+          <CelebRank
+            followerRank={celebInfo.rank.follower}
+            fundingRank={celebInfo.rank.fundMoney}
+          />
+
           <CelebTextInfo
             fundInProgressNum={celebInfo.fundInProgressNum}
             followerNum={celebInfo.followerNum}
             isFollowing={celebInfo.isFollowing}
             totalFundMoney={celebInfo.totalFundMoney}
           />
-        </Styled.TextInfoContainer>
+        </Styled.CelebInfoBottomBox>
       </Styled.CelebInfoContainer>
 
-      <div className="셀럽관련펀딩정보">
-        <Tabs tabInfoArray={tabInfoArray} style={{ paddingBottom: "1rem" }} />
-        <GridTemplate>
-          {new Array(6).fill(fundInfo).map((info, index) => (
-            <FundInfoGridCard
-              key={index}
-              fundId={fundInfo.fundId}
-              fundTitle={fundInfo.fundTitle}
-              thumbnailUrl={fundInfo.thumbnailUrl}
-              targetDate={fundInfo.targetDate}
-              targetMoney={fundInfo.targetMoney}
-              currentMoney={fundInfo.currentMoney}
-              celebrityId={fundInfo.celebrityId}
-              celebrityProfileUrl={fundInfo.celebrityProfileUrl}
-              celebrityName={fundInfo.celebrityName}
-              organizerId={fundInfo.organizerId}
-              organizerName={fundInfo.organizerName}
-            />
-          ))}
-        </GridTemplate>
-      </div>
+      <Tabs tabInfoArray={tabInfoArray} style={{ paddingBottom: "1rem" }} />
+      <GridTemplate>
+        {new Array(6).fill(fundInfo).map((info, index) => (
+          <FundInfoGridCard
+            key={index}
+            fundId={fundInfo.fundId}
+            fundTitle={fundInfo.fundTitle}
+            thumbnailUrl={fundInfo.thumbnailUrl}
+            targetDate={fundInfo.targetDate}
+            targetMoney={fundInfo.targetMoney}
+            currentMoney={fundInfo.currentMoney}
+            celebrityId={fundInfo.celebrityId}
+            celebrityProfileUrl={fundInfo.celebrityProfileUrl}
+            celebrityName={fundInfo.celebrityName}
+            organizerId={fundInfo.organizerId}
+            organizerName={fundInfo.organizerName}
+          />
+        ))}
+      </GridTemplate>
     </>
   );
 }
