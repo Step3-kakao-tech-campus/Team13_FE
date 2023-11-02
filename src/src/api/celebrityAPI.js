@@ -2,7 +2,7 @@ import instance from "@/api/instance.js";
 import API from "@/constants/API.js";
 
 /**
- * 펀딩 목록 조회 api
+ * 셀럽 목록 조회 api
  * @param {number | string} pageIndex
  * @param {string=} keyword
  * @param {string=} sortType
