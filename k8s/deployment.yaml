@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fundering
+spec:
+  selector:
+    matchLabels:
+      app: fundering
+  template:
+    metadata:
+      labels:
+        app: fundering
+    spec:
+      containers:
+        - name: fundering
+          image: krmp-d2hub-idock.9rum.cc/dev-test/repo_81a57d948708

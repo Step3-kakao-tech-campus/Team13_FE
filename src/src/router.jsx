@@ -12,6 +12,7 @@ import SignUpPage from "./pages/SignUp.page";
 import CelebrityListPage from "./pages/CelebrityList.page.jsx";
 import CelebrityDetailPage from "./pages/CelebrityDetail.page";
 import FundTextEditPage from "@/pages/FundTextEdit.page.jsx";
+import MainPage from "@/pages/Main.page.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: routes.home,
-        element: <Test />,
+        element: <MainPage />,
       },
       {
         path: routes.fund,
