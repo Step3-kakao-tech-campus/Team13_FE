@@ -13,6 +13,7 @@ import CelebrityListPage from "./pages/CelebrityList.page.jsx";
 import CelebrityDetailPage from "./pages/CelebrityDetail.page";
 import FundTextEditPage from "@/pages/FundTextEdit.page.jsx";
 import MainPage from "@/pages/Main.page.jsx";
+import FundSupportPage from "@/pages/FundSupport.page.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,8 +35,8 @@ const router = createBrowserRouter([
         element: <FundDetailPage />,
       },
       {
-        path: `${routes.sponsorship}/:fundId`,
-        element: <div>후원하기</div>,
+        path: `${routes.support}/:fundId`,
+        element: <FundSupportPage />,
       },
       {
         path: routes.createFund,
