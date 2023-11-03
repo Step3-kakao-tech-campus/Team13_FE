@@ -63,6 +63,7 @@ const Styled = {
   Agreement: styled.div`
     padding: 1rem 1.5rem;
     font-size: 0.85rem;
+    line-height: 130%;
 
     &.title {
       padding: 1.5rem;
