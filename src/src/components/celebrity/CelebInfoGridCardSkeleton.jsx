@@ -72,20 +72,30 @@ function CelebInfoGridCardSkeleton() {
 
       <Styled.TextContainer>
         <Styled.Text className="top">
-          <div className="celebName"></div>
-          <div className="followBtn"></div>
+          <div className="celebName">
+            <Shimmer />
+          </div>
+          <div className="followBtn">
+            <Shimmer />
+          </div>
         </Styled.Text>
 
         <Styled.Text className="a">
-          <div className="text"></div>
+          <div className="text">
+            <Shimmer />
+          </div>
         </Styled.Text>
 
         <Styled.Text className="a">
-          <div className="text"></div>
+          <div className="text">
+            <Shimmer />
+          </div>
         </Styled.Text>
 
         <Styled.Text className="a">
-          <div className="text"></div>
+          <div className="text">
+            <Shimmer />
+          </div>
         </Styled.Text>
       </Styled.TextContainer>
     </Styled.Container>
