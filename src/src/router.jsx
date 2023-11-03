@@ -14,6 +14,7 @@ import CelebrityDetailPage from "./pages/CelebrityDetail.page";
 import FundTextEditPage from "@/pages/FundTextEdit.page.jsx";
 import MainPage from "@/pages/Main.page.jsx";
 import FundSupportPage from "@/pages/FundSupport.page.jsx";
+import MobilePaymentPage from "@/pages/MobilePayment.page.jsx";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
         element: <Test />,
       },
     ],
+  },
+  {
+    path: routes.mobilePayment,
+    element: <MobilePaymentPage />,
   },
 ]);
 
