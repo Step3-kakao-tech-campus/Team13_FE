@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { PropTypes } from "prop-types";
+
 import useFundDetailInfoQuery from "@/hooks/api/fund/useFundDetailInfoQuery.js";
 import ProfileImageName from "@/components/common/ProfileImageName.jsx";
 import routes from "@/constants/routes.js";
@@ -14,6 +17,7 @@ const Styled = {
 
     display: grid;
     grid-template-columns: 2fr 3fr;
+    border: ${({ theme }) => theme.border.main};
 
     @media screen and (max-width: 767px) {
       display: flex;
@@ -62,10 +66,19 @@ const Styled = {
   `,
 };
 
-function FundSupportInfo() {
+/**
+ * 후원하는 펀딩 정보
+ * @param {func} setFundTitle fundTitle setState
+ */
+
+function FundSupportInfo({ setFundTitle }) {
   const { fundId } = useParams();
   const navigate = useNavigate();
   const { data } = useFundDetailInfoQuery({ fundId: fundId });
+
+  useEffect(() => {
+    setFundTitle(data.fundTitle);
+  }, [data]);
 
   return (
     <Styled.Container>
@@ -110,5 +123,9 @@ function FundSupportInfo() {
     </Styled.Container>
   );
 }
+
+FundSupportInfo.propTypes = {
+  setFundTitle: PropTypes.func,
+};
 
 export default FundSupportInfo;
