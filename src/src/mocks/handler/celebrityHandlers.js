@@ -78,4 +78,38 @@ export const celebrityHandlers = [
       }),
     );
   }),
+
+  // 셀럽 팔로우
+  rest.post("/api" + API.CELEBRITY.FOLLOW, (req, res, ctx) => {
+    const { celebId } = req.body;
+
+    if (!celebId) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "존재하지 않는 셀럽입니다" }),
+      );
+    }
+
+    return res(
+      ctx.status(200),
+      ctx.json({ message: "성공적으로 셀럽을 팔로우했습니다!" }),
+    );
+  }),
+
+  // 셀럽 언팔로우
+  rest.post("/api" + API.CELEBRITY.UNFOLLOW, (req, res, ctx) => {
+    const { fundId } = req.body;
+
+    if (!fundId) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "존재하지 않는 셀럽입니다" }),
+      );
+    }
+
+    return res(
+      ctx.status(200),
+      ctx.json({ message: "성공적으로 팔로우가 취소되었습니다." }),
+    );
+  }),
 ];
