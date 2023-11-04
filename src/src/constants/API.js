@@ -25,6 +25,12 @@ const USER = {
 const CELEBRITY = {
   LIST: "/celebs",
   REGISTER: "/celebs/register",
+  FOLLOW: (celebId) => {
+    return `/celebs/${celebId}/follow`;
+  },
+  UNFOLLOW: (celebId) => {
+    return `/celebs/${celebId}/unfollow`;
+  },
   DETAIL: (celebId) => {
     return `/celebs/${celebId}`;
   },
