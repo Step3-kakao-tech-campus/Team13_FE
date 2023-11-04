@@ -1,7 +1,8 @@
+import { PropTypes } from "prop-types";
+import useFollowButtonClick from "@/hooks/useFollowButtonClick.js";
+
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import Button from "../common/button/Button.jsx";
-import { useState } from "react";
-import { PropTypes } from "prop-types";
 
 /**
  * 팔로우 버튼 컴포넌트
@@ -19,28 +20,17 @@ function FollowButton({
   style: buttonStyle,
   ...htmlButtonProps
 }) {
-  const [isFollowingButton, setIsFollowingButton] = useState(!isFollowing);
-
-  const handleFollowClick = () => {
-    // 팔로우 버튼 클릭 시 로직
-    console.log(celebId + " 셀럽을 팔로우합니다!");
-    setIsFollowingButton(false);
-  };
-  const handleUnFollowClick = () => {
-    // 팔로우 버튼 클릭 시 로직
-    console.log(celebId + " 셀럽을 언팔합니다!");
-    setIsFollowingButton(true);
-  };
+  const { isFollowingButton, handleFollowClick } = useFollowButtonClick({
+    celebId,
+    isFollowing,
+  });
 
   return (
     <Button
       styleType={
         isFollowingButton ? BUTTON_TYPE.PRIMARY : BUTTON_TYPE.SECONDARY
       }
-      onClick={(e) => {
-        e.stopPropagation();
-        isFollowingButton ? handleFollowClick() : handleUnFollowClick();
-      }}
+      onClick={handleFollowClick}
       useHoverStyle={useHoverStyle}
       style={{
         fontSize: "12px",
