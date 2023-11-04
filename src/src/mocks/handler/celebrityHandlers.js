@@ -80,7 +80,7 @@ export const celebrityHandlers = [
   }),
 
   // 셀럽 팔로우
-  rest.post("/api" + API.CELEBRITY.FOLLOW, (req, res, ctx) => {
+  rest.post("/api" + API.CELEBRITY.FOLLOW(":celebId"), (req, res, ctx) => {
     const { celebId } = req.body;
 
     if (!celebId) {
@@ -97,7 +97,7 @@ export const celebrityHandlers = [
   }),
 
   // 셀럽 언팔로우
-  rest.post("/api" + API.CELEBRITY.UNFOLLOW, (req, res, ctx) => {
+  rest.post("/api" + API.CELEBRITY.UNFOLLOW(":celebId"), (req, res, ctx) => {
     const { celebId } = req.body;
 
     if (!celebId) {
