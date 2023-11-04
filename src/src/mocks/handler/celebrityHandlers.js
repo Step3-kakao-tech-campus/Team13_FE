@@ -98,9 +98,9 @@ export const celebrityHandlers = [
 
   // 셀럽 언팔로우
   rest.post("/api" + API.CELEBRITY.UNFOLLOW, (req, res, ctx) => {
-    const { fundId } = req.body;
+    const { celebId } = req.body;
 
-    if (!fundId) {
+    if (!celebId) {
       return res(
         ctx.status(400),
         ctx.json({ message: "존재하지 않는 셀럽입니다" }),

@@ -32,7 +32,7 @@ const postCelebFollow = async (celebId) => {
  */
 const postCelebUnfollow = async (celebId) => {
   return await instance({
-    url: API.CELEBRITY.UNFOLLOWFOLLOW,
+    url: API.CELEBRITY.UNFOLLOW,
     method: "POST",
     data: { celebId },
   });

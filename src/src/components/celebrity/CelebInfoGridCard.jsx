@@ -17,7 +17,7 @@ import ThirdRibbonIcon from "@/assets/icon/ThirdRibbonIcon.jsx";
 const Styled = {
   Container: styled.div`
     background: ${({ theme }) => theme.color.white};
-    
+
     padding: 1rem;
     height: 9.25rem;
 
@@ -38,7 +38,6 @@ const Styled = {
           transition: ${({ theme }) => theme.transition.gridCard};
         }
       `}
-  }
   `,
 
   ProfileImage: styled.img`
