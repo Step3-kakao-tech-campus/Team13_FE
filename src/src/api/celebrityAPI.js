@@ -16,4 +16,26 @@ const getCelebInfoList = async ({ pageIndex, keyword, sortType }) => {
   });
 };
 
-export default { getCelebInfoList };
+/**
+ * 셀럽 팔로우 api
+ */
+const postCelebFollow = async (celebId) => {
+  return await instance({
+    url: API.CELEBRITY.FOLLOW,
+    method: "POST",
+    data: { celebId },
+  });
+};
+
+/**
+ * 셀럽 언팔로우 api
+ */
+const postCelebUnfollow = async (celebId) => {
+  return await instance({
+    url: API.CELEBRITY.UNFOLLOWFOLLOW,
+    method: "POST",
+    data: { celebId },
+  });
+};
+
+export default { getCelebInfoList, postCelebFollow, postCelebUnfollow };
