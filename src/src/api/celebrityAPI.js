@@ -21,7 +21,7 @@ const getCelebInfoList = async ({ pageIndex, keyword, sortType }) => {
  */
 const postCelebFollow = async (celebId) => {
   return await instance({
-    url: API.CELEBRITY.FOLLOW,
+    url: API.CELEBRITY.FOLLOW(celebId),
     method: "POST",
     data: { celebId },
   });
@@ -32,7 +32,7 @@ const postCelebFollow = async (celebId) => {
  */
 const postCelebUnfollow = async (celebId) => {
   return await instance({
-    url: API.CELEBRITY.UNFOLLOW,
+    url: API.CELEBRITY.UNFOLLOW(celebId),
     method: "POST",
     data: { celebId },
   });
