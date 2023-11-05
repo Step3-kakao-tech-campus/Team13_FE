@@ -44,6 +44,7 @@ const Styled = {
     width: 100px;
     height: 100px;
     border-radius: 9999px;
+    object-fit: cover;
   `,
 
   BadgeContainer: styled.div`
