@@ -1,5 +1,6 @@
 import instance from "@/api/instance.js";
 import API from "@/constants/API.js";
+import { CelebDetailInfoDto } from "./dto/celebrity.dto.js";
 
 /**
  * 셀럽 목록 조회 api
@@ -55,9 +56,22 @@ const postCelebApply = async ({
   });
 };
 
+/**
+ * 셀럽 상세정보 조회 api
+ */
+const getCelebDetailInfo = async (celebId) => {
+  const { data } = await instance({
+    url: API.CELEBRITY.DETAIL(celebId),
+    method: "GET",
+  });
+
+  return new CelebDetailInfoDto(data);
+};
+
 export default {
   getCelebInfoList,
   postCelebFollow,
   postCelebUnfollow,
   postCelebApply,
+  getCelebDetailInfo,
 };
