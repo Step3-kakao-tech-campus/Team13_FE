@@ -87,7 +87,7 @@ function CelebApplyModal({ setOpen }) {
       celebGender: textCelebInfo.gender,
       celebCategory: textCelebInfo.category,
       celebGroup: textCelebInfo.group,
-      profileImage: profileFile,
+      profileImage: profileFile.name,
     });
   };
 
