@@ -7,8 +7,10 @@ import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
 import ImagePreviewButton from "@/components/common/button/ImagePreviewButton.jsx";
 import Button from "@/components/common/button/Button.jsx";
 import SelectInput from "@/components/celebrity-list/SelectInput.jsx";
+
 import SELECT_INFO from "@/constants/SELECT_INFO.js";
 import useSetImageFileToUrl from "@/hooks/useSetImageFileToUrl.js";
+import usePostCelebApplyMutation from "@/hooks/api/celebrity/usePostCelebApplyMutation.js";
 
 /**
  * 셀럽 신청 모달 컴포넌트
@@ -59,6 +61,7 @@ function CelebApplyModal({ setOpen }) {
     name: "",
     gender: "",
     category: "",
+    group: "",
   });
 
   const handleOnChange = (fieldName, value) => {
@@ -68,6 +71,10 @@ function CelebApplyModal({ setOpen }) {
     }));
   };
 
+  const { mutate: postApplyMutate } = usePostCelebApplyMutation(() =>
+    setOpen(false),
+  );
+
   const handleApplyCelebSubmit = () => {
     if (!profileFile) return toast.error("셀럽 이미지를 추가해 주세요");
     if (!textCelebInfo.name || textCelebInfo.name === "")
@@ -75,8 +82,13 @@ function CelebApplyModal({ setOpen }) {
     if (!textCelebInfo.gender) return toast.error("성별을 선택해 주세요");
     if (!textCelebInfo.category) return toast.error("분류를 선택해 주세요");
 
-    toast.success("성공적으로 셀럽 신청이 완료되었습니다!");
-    setOpen(false);
+    postApplyMutate({
+      celebName: textCelebInfo.name,
+      celebGender: textCelebInfo.gender,
+      celebCategory: textCelebInfo.category,
+      celebGroup: textCelebInfo.group,
+      profileImage: profileFile,
+    });
   };
 
   return (
