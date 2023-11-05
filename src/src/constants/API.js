@@ -24,7 +24,7 @@ const USER = {
 
 const CELEBRITY = {
   LIST: "/celebs",
-  REGISTER: "/celebs/register",
+  REGISTER: "/celebs",
   FOLLOW: (celebId) => {
     return `/celebs/${celebId}/follow`;
   },
