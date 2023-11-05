@@ -10,6 +10,8 @@ import { FormTemplate } from "@/styles/CommonStyle.js";
 import Button from "@/components/common/button/Button.jsx";
 import MyAccountLoader from "@/components/my-account/MyAccount.Loader.jsx";
 import UserSettingForm from "@/components/my-account/UserSettingForm.jsx";
+import { useNavigate } from "react-router-dom";
+import routes from "@/constants/routes.js";
 
 const Styled = {
   Title: styled.h2`
@@ -27,6 +29,7 @@ const buttonStyle = {
 function MyAccountPage() {
   const deleteUserInfoInLocalStorage = useDeleteUserInfoInLocalStorage();
   const { mutate: deleteAccountMutate } = useDeleteAccountMutation();
+  const navigate = useNavigate();
 
   return (
     <Suspense fallback={<MyAccountLoader />}>
@@ -37,7 +40,10 @@ function MyAccountPage() {
         <Styled.Title>로그아웃하기</Styled.Title>
         <Button
           styleType={BUTTON_TYPE.SECONDARY}
-          onClick={deleteUserInfoInLocalStorage}
+          onClick={() => {
+            deleteUserInfoInLocalStorage();
+            navigate(routes.home);
+          }}
           style={buttonStyle}
         >
           로그아웃
