@@ -21,7 +21,7 @@ function DynamicDetailRender({ type, isOrganizer }) {
     case TABS.FUND_DETAIL.COMMENT:
       return <Comment />;
     case TABS.FUND_DETAIL.WITHDRAW:
-      return <Withdraw />;
+      return <Withdraw isOrganizer={isOrganizer} />;
     default:
       return <div>잘못 선택되었습니다 다시 선택해 주세요</div>;
   }
