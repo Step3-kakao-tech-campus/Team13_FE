@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Button from "@/components/common/button/Button.jsx";
+import WithdrawInfoBar from "@/components/fund-detail/withdraw/WithdrawInfoBar.jsx";
 
 const Styled = {
   Container: styled.div``,
@@ -53,6 +54,11 @@ function Withdraw({ isOrganizer }) {
         <div className="description">남은 금액</div>
         <div className="left-money">{leftMoney.toLocaleString("ko-KR")}원</div>
       </Styled.TotalMoneyBar>
+
+      <WithdrawInfoBar />
+      {/*<WithdrawInfoBar />*/}
+      {/*<WithdrawInfoBar />*/}
+      {/*<WithdrawInfoBar />*/}
     </Styled.Container>
   );
 }
