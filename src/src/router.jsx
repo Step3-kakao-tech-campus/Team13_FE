@@ -25,10 +25,9 @@ const privateChildren = [
     element: <CreateFundPage />,
   },
   {
-    // 펀딩 후원하기
-    path: `${routes.sponsorship}/:fundId`,
-    element: <div>후원하기</div>,
-    errorElement: <div>존재하지 않는 펀딩입니다</div>,
+    // 펀딩 후원하기 페이지
+    path: `${routes.support}/:fundId`,
+    element: <FundSupportPage />,
   },
   {
     // 소개글 및 업데이트 작성
@@ -36,6 +35,12 @@ const privateChildren = [
     element: <FundTextEditPage />,
   },
   {
+    // 모바일 결제 진행
+    path: routes.mobilePayment,
+    element: <MobilePaymentPage />,
+  },
+  {
+    // 관리자 페이지
     path: routes.admin,
     element: <AdminPage />,
   },
@@ -59,17 +64,10 @@ const router = createBrowserRouter([
         element: <FundListPage />,
       },
       {
+        // 펀딩 상세
         path: `${routes.fund}/:fundId`,
         element: <FundDetailPage />,
         errorElement: <div>존재하지 않는 펀딩입니다</div>,
-      },
-      {
-        path: `${routes.support}/:fundId`,
-        element: <FundSupportPage />,
-      },
-      {
-        path: routes.createFund,
-        element: <CreateFundPage />,
       },
       {
         // 셀럽 목록
@@ -120,10 +118,6 @@ const router = createBrowserRouter([
         children: [...privateChildren],
       },
     ],
-  },
-  {
-    path: routes.mobilePayment,
-    element: <MobilePaymentPage />,
   },
 ]);
 

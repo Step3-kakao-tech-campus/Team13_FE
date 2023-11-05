@@ -9,7 +9,6 @@ const routes = {
   signUp: "/sign-up",
   user: "/user",
   edit: "/edit",
-  sponsorship: "/sponsorship",
   admin: "/admin",
   support: "/support",
   mobilePayment: "/mobile-payment",

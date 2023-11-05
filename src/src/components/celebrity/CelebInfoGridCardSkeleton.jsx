@@ -11,6 +11,7 @@ const Styled = {
     align-items: center;
     justify-content: flex-start;
     border-radius: 0.25rem;
+    overflow: hidden;
   `,
 
   ProfileImage: styled.div`
@@ -18,6 +19,7 @@ const Styled = {
     height: 100px;
     border-radius: 9999px;
     background-color: ${({ theme }) => theme.color.skeleton};
+    overflow: hidden;
   `,
 
   TextContainer: styled.div`
@@ -43,6 +45,7 @@ const Styled = {
         background-color: ${({ theme }) => theme.color.skeleton};
         border-radius: 0.25rem;
         margin-bottom: 0.5rem;
+        overflow: hidden;
       }
 
       .followBtn {
@@ -51,6 +54,7 @@ const Styled = {
         background-color: ${({ theme }) => theme.color.skeleton};
         border-radius: 0.25rem;
         margin-bottom: 0.5rem;
+        overflow: hidden;
       }
     }
 
@@ -61,6 +65,7 @@ const Styled = {
         background-color: ${({ theme }) => theme.color.skeleton};
         border-radius: 0.25rem;
         margin-top: 0.6rem;
+        overflow: hidden;
       }
     }
   `,
