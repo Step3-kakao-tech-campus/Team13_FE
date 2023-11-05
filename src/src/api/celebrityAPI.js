@@ -41,17 +41,17 @@ const postCelebUnfollow = async (celebId) => {
 /**
  * 셀럽 신청 api
  */
-const postCelebRegister = async (
+const postCelebApply = async ({
   celebName,
   celebGender,
-  celebType,
+  celebCategory,
   celebGroup,
   profileImage,
-) => {
+}) => {
   return await instance({
     url: API.CELEBRITY.REGISTER,
     method: "POST",
-    data: { celebName, celebGender, celebType, celebGroup, profileImage },
+    data: { celebName, celebGender, celebCategory, celebGroup, profileImage },
   });
 };
 
@@ -59,5 +59,5 @@ export default {
   getCelebInfoList,
   postCelebFollow,
   postCelebUnfollow,
-  postCelebRegister,
+  postCelebApply,
 };

@@ -115,10 +115,10 @@ export const celebrityHandlers = [
 
   // 셀럽 신청
   rest.post("/api" + API.CELEBRITY.REGISTER, (req, res, ctx) => {
-    const { celebName, celebGender, celebType, celebGroup, profileImage } =
+    const { celebName, celebGender, celebCategory, celebGroup, profileImage } =
       req.body;
 
-    if (!celebName || !celebGender || !celebType || !profileImage) {
+    if (!celebName || !celebGender || !celebCategory || !profileImage) {
       return res(
         ctx.status(400),
         ctx.json({ message: "필수 정보가 누락되었습니다" }),
