@@ -128,7 +128,11 @@ function CelebApplyModal({ setOpen }) {
             selectedValue={textCelebInfo.category}
           />
           <Styled.Label>소속그룹</Styled.Label>
-          <Styled.Input type="text" placeholder="선택사항" />
+          <Styled.Input
+            type="text"
+            placeholder="선택사항"
+            onChange={(e) => handleOnChange("group", e.target.value)}
+          />
         </Styled.FormContainer>
 
         <Button
