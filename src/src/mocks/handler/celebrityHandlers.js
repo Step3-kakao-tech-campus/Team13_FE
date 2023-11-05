@@ -1,6 +1,7 @@
 import { rest } from "msw";
 import API from "@/constants/API.js";
 
+// 셀럽 목록조회 데이터
 const sonnyCelebInfo = {
   celebId: 1,
   celebName: "손흥민",
@@ -46,6 +47,78 @@ const youngCelebInfo = {
   followerNum: 10000,
   isFollowing: false,
   rank: 4,
+};
+
+// 셀럽상세정보 데이터
+const sonnyCelebDetailInfo = {
+  celebId: 1,
+  celebName: "손흥민",
+  celebGroup: "토트넘",
+  celebGender: "남",
+  celebCategory: "스포츠",
+  profileUrl:
+    "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
+  fundInProgressNum: 30,
+  totalFundMoney: 35000000,
+  followerNum: 10000,
+  isFollowing: false,
+  rank: {
+    follower: 1,
+    fundMoney: 2,
+  },
+};
+
+const kinginCelebDetailInfo = {
+  celebId: 2,
+  celebName: "이강인",
+  celebGroup: "PSG",
+  celebGender: "남",
+  celebCategory: "스포츠",
+  profileUrl:
+    "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
+  fundInProgressNum: 32,
+  totalFundMoney: 38000000,
+  followerNum: 9000,
+  isFollowing: false,
+  rank: {
+    follower: 2,
+    fundMoney: 1,
+  },
+};
+
+const wooCelebDetailInfo = {
+  celebId: 3,
+  celebName: "설영우",
+  celebGender: "남",
+  celebCategory: "스포츠",
+  profileUrl:
+    "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
+  fundInProgressNum: 26,
+  totalFundMoney: 35000000,
+  followerNum: 8000,
+  isFollowing: false,
+  rank: {
+    follower: 3,
+    fundMoney: 3,
+  },
+};
+
+const youngCelebDetailInfo = {
+  celebId: 4,
+  celebName: "이재용",
+  celebGroup: "삼성",
+  celebGender: "남",
+  celebCategory: "기타",
+  profileUrl:
+    "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
+  fundInProgressNum: 25,
+  totalFundMoney: 7500,
+  followerNum: 10000,
+  isFollowing: false,
+  rank: {
+    follower: 4,
+    fundMoney: 4,
+  },
 };
 
 export const celebrityHandlers = [
@@ -129,5 +202,28 @@ export const celebrityHandlers = [
       ctx.status(200),
       ctx.json({ message: "성공적으로 셀럽신청이 완료되었습니다." }),
     );
+  }),
+
+  // 셀럽 상세정보 조회
+  rest.get("/api" + API.CELEBRITY.DETAIL(":celebId"), (req, res, ctx) => {
+    const { celebId } = req.params;
+
+    const celebDetailData = {
+      1: sonnyCelebDetailInfo,
+      2: kinginCelebDetailInfo,
+      3: wooCelebDetailInfo,
+      4: youngCelebDetailInfo,
+    };
+
+    const celebDetailInfo = celebDetailData[celebId];
+
+    if (celebDetailInfo) {
+      return res(ctx.status(200), ctx.json(celebDetailInfo));
+    } else {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "존재하지 않는 셀럽입니다" }),
+      );
+    }
   }),
 ];
