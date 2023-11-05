@@ -16,4 +16,48 @@ const getCelebInfoList = async ({ pageIndex, keyword, sortType }) => {
   });
 };
 
-export default { getCelebInfoList };
+/**
+ * 셀럽 팔로우 api
+ */
+const postCelebFollow = async (celebId) => {
+  return await instance({
+    url: API.CELEBRITY.FOLLOW(celebId),
+    method: "POST",
+    data: { celebId },
+  });
+};
+
+/**
+ * 셀럽 언팔로우 api
+ */
+const postCelebUnfollow = async (celebId) => {
+  return await instance({
+    url: API.CELEBRITY.UNFOLLOW(celebId),
+    method: "POST",
+    data: { celebId },
+  });
+};
+
+/**
+ * 셀럽 신청 api
+ */
+const postCelebApply = async ({
+  celebName,
+  celebGender,
+  celebCategory,
+  celebGroup,
+  profileImage,
+}) => {
+  return await instance({
+    url: API.CELEBRITY.REGISTER,
+    method: "POST",
+    data: { celebName, celebGender, celebCategory, celebGroup, profileImage },
+  });
+};
+
+export default {
+  getCelebInfoList,
+  postCelebFollow,
+  postCelebUnfollow,
+  postCelebApply,
+};

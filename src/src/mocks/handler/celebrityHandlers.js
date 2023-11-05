@@ -78,4 +78,56 @@ export const celebrityHandlers = [
       }),
     );
   }),
+
+  // 셀럽 팔로우
+  rest.post("/api" + API.CELEBRITY.FOLLOW(":celebId"), (req, res, ctx) => {
+    const { celebId } = req.body;
+
+    if (!celebId) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "존재하지 않는 셀럽입니다" }),
+      );
+    }
+
+    return res(
+      ctx.status(200),
+      ctx.json({ message: "성공적으로 셀럽을 팔로우했습니다!" }),
+    );
+  }),
+
+  // 셀럽 언팔로우
+  rest.post("/api" + API.CELEBRITY.UNFOLLOW(":celebId"), (req, res, ctx) => {
+    const { celebId } = req.body;
+
+    if (!celebId) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "존재하지 않는 셀럽입니다" }),
+      );
+    }
+
+    return res(
+      ctx.status(200),
+      ctx.json({ message: "성공적으로 팔로우가 취소되었습니다." }),
+    );
+  }),
+
+  // 셀럽 신청
+  rest.post("/api" + API.CELEBRITY.REGISTER, (req, res, ctx) => {
+    const { celebName, celebGender, celebCategory, celebGroup, profileImage } =
+      req.body;
+
+    if (!celebName || !celebGender || !celebCategory || !profileImage) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "필수 정보가 누락되었습니다" }),
+      );
+    }
+
+    return res(
+      ctx.status(200),
+      ctx.json({ message: "성공적으로 셀럽신청이 완료되었습니다." }),
+    );
+  }),
 ];
