@@ -11,6 +11,8 @@ const routes = {
   edit: "/edit",
   sponsorship: "/sponsorship",
   admin: "/admin",
+  support: "/support",
+  mobilePayment: "/mobile-payment",
 };
 
 Object.freeze(routes);

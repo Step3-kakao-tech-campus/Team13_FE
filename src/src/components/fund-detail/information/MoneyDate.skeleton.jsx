@@ -1,20 +1,12 @@
 import styled from "styled-components";
 import { Shimmer } from "@/styles/CommonStyle";
 import FundMoneyCountdownSkeleton from "@/components/fund/FundMoneyCountdown.skeleton.jsx";
+import MoneyBarGraphSkeleton from "@/components/fund/MoneyBarGraph.skeleton.jsx";
 
 const Styled = {
-  TargetBar: styled.div`
-    position: relative;
-    margin-bottom: 1.5rem;
-    width: 100%;
-    height: 10px;
-    background-color: ${({ theme }) => theme.color.skeleton};
-    overflow: hidden;
-    border-radius: 0.25rem;
-  `,
   TextWrapper: styled.div`
     padding: 1rem 0;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
     border-top: ${({ theme }) => theme.border.strong};
     border-bottom: ${({ theme }) => theme.border.strong};
   `,
@@ -47,9 +39,7 @@ function MoneyDateSkeleton() {
   return (
     <>
       <FundMoneyCountdownSkeleton style={{ padding: "1rem 0 0.5rem 0" }} />
-      <Styled.TargetBar>
-        <Shimmer />
-      </Styled.TargetBar>
+      <MoneyBarGraphSkeleton />
 
       <Styled.TextWrapper>
         <Styled.TextRow>

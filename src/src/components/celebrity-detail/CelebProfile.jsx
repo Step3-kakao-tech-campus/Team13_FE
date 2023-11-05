@@ -1,10 +1,16 @@
 import styled from "styled-components";
 import { PropTypes } from "prop-types";
+import FollowButton from "@/components/celebrity/FollowButton.jsx";
 
 const Styled = {
   ProfileContainer: styled.div`
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  `,
+
+  Text: styled.div`
+    width: 100%;
   `,
 
   NameAndGroup: styled.div`
@@ -24,21 +30,16 @@ const Styled = {
     font-size: 1rem;
     color: ${({ theme }) => theme.color.addition};
   `,
-
-  Img: styled.img`
-    width: 9.5rem;
-    border-radius: 0.25rem;
-    margin-bottom: 1rem;
-  `,
 };
 
 /**
  * 셀럽 프로필 컴포넌트 - 셀럽신청에 명시했던 정보와 프로필이미지를 보여줌
- * @param {string} props.celebName - 셀럽의 이름
- * @param {string} props.celebGroup - 셀럽의 소속
- * @param {string} props.celebCategory - 셀럽의 분류
- * @param {string} props.celebGender - 셀럽의 성별
- * @param {string} props.profileUrl - 셀럽의 프로필 사진 URL
+ * @param {string} celebName - 셀럽의 이름
+ * @param {string} celebGroup - 셀럽의 소속
+ * @param {string} celebCategory - 셀럽의 분류
+ * @param {string} celebGender - 셀럽의 성별
+ * @param {string || number} celebId - 셀럽의 아이디
+ * @param {boolean} isFollowing - 팔로잉 여부
  */
 
 function CelebProfile({
@@ -46,18 +47,28 @@ function CelebProfile({
   celebGroup,
   celebCategory,
   celebGender,
-  profileUrl,
+  celebId,
+  isFollowing = false,
 }) {
   return (
     <Styled.ProfileContainer>
-      <Styled.NameAndGroup>
-        {celebName}
-        {celebGroup && <span>{celebGroup}</span>}
-      </Styled.NameAndGroup>
+      <Styled.Text>
+        <Styled.NameAndGroup>
+          {celebName}
+          {celebGroup && <span>{celebGroup}</span>}
+        </Styled.NameAndGroup>
 
-      <Styled.CategoryAndGender>{`${celebCategory} • ${celebGender}`}</Styled.CategoryAndGender>
+        <Styled.CategoryAndGender>{`${celebCategory} • ${celebGender}`}</Styled.CategoryAndGender>
+      </Styled.Text>
 
-      <Styled.Img src={profileUrl} alt="셀럽프로필사진" />
+      <FollowButton
+        celebId={celebId}
+        isFollowing={isFollowing}
+        style={{
+          padding: "0.5rem 1rem",
+          fontSize: "1rem",
+        }}
+      />
     </Styled.ProfileContainer>
   );
 }
@@ -70,4 +81,6 @@ CelebProfile.propTypes = {
   celebCategory: PropTypes.string.isRequired,
   celebGender: PropTypes.string.isRequired,
   profileUrl: PropTypes.string,
+  celebId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  isFollowing: PropTypes.bool,
 };

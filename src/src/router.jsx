@@ -14,6 +14,8 @@ import CelebrityListPage from "./pages/CelebrityList.page.jsx";
 import CelebrityDetailPage from "./pages/CelebrityDetail.page";
 import FundTextEditPage from "@/pages/FundTextEdit.page.jsx";
 import MainPage from "@/pages/Main.page.jsx";
+import FundSupportPage from "@/pages/FundSupport.page.jsx";
+import MobilePaymentPage from "@/pages/MobilePayment.page.jsx";
 import AdminPage from "@/pages/Admin.page.jsx";
 
 const privateChildren = [
@@ -60,6 +62,14 @@ const router = createBrowserRouter([
         path: `${routes.fund}/:fundId`,
         element: <FundDetailPage />,
         errorElement: <div>존재하지 않는 펀딩입니다</div>,
+      },
+      {
+        path: `${routes.support}/:fundId`,
+        element: <FundSupportPage />,
+      },
+      {
+        path: routes.createFund,
+        element: <CreateFundPage />,
       },
       {
         // 셀럽 목록
@@ -110,6 +120,10 @@ const router = createBrowserRouter([
         children: [...privateChildren],
       },
     ],
+  },
+  {
+    path: routes.mobilePayment,
+    element: <MobilePaymentPage />,
   },
 ]);
 

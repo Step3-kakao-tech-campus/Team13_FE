@@ -6,11 +6,7 @@ import MoneyIcon from "@/assets/icon/MoneyIcon.jsx";
 import UserIcon from "@/assets/icon/UserIcon.jsx";
 
 const Styled = {
-  TextContainer: styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-top: 1.2rem;
-  `,
+  TextContainer: styled.div``,
 
   Text: styled.div`
     display: flex;
@@ -18,6 +14,10 @@ const Styled = {
     margin-top: 1rem;
     font-size: 1rem;
     color: ${({ theme }) => theme.color.addition};
+
+    &:first-child {
+      margin-top: 0;
+    }
 
     & span {
       margin-left: 0.4rem;
@@ -32,9 +32,9 @@ const Styled = {
 
 /**
  * 셀럽텍스트정보 컴포넌트 - 진행중인 펀딩개수, 총 펀딩 금액, 팔로워 수를 각각 아이콘과 함께 명시
- * @param {number | string} fundInProgressNum - 진행 중인 펀딩 수
- * @param {number | string} totalFundMoney - 총 펀딩 금액
- * @param {number | string} followerNum - 팔로워 수
+ * @param {number} fundInProgressNum - 진행 중인 펀딩 수
+ * @param {number} totalFundMoney - 총 펀딩 금액
+ * @param {number} followerNum - 팔로워 수
  */
 
 function CelebTextInfo({ fundInProgressNum, totalFundMoney, followerNum }) {
