@@ -9,7 +9,8 @@ const routes = {
   signUp: "/sign-up",
   user: "/user",
   edit: "/edit",
-  sponsorship: "/sponsorship",
+  support: "/support",
+  mobilePayment: "/mobile-payment",
 };
 
 Object.freeze(routes);

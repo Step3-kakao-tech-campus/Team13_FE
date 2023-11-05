@@ -1,7 +1,7 @@
 import FundMoneyCountdown from "@/components/fund/FundMoneyCountdown.jsx";
 import styled from "styled-components";
-import calculatePercentage from "@/utils/calculatePercentage.js";
 import { PropTypes } from "prop-types";
+import MoneyBarGraph from "@/components/fund/MoneyBarGraph.jsx";
 
 const Styled = {
   TargetBar: styled.div`
@@ -20,6 +20,7 @@ const Styled = {
     background-color: ${({ theme }) => theme.color.mainRed};
   `,
   TextWrapper: styled.div`
+    margin-top: 1.5rem;
     padding: 1rem 0;
     border-top: ${({ theme }) => theme.border.strong};
     border-bottom: ${({ theme }) => theme.border.strong};
@@ -76,11 +77,7 @@ function MoneyDate({ currentMoney, targetMoney, createdDate, endDate }) {
         style={{ padding: "1rem 0 0.5rem 0" }}
       />
 
-      <Styled.TargetBar>
-        <Styled.CurrentBar
-          $width={`${calculatePercentage(+currentMoney, +targetMoney)}%`}
-        />
-      </Styled.TargetBar>
+      <MoneyBarGraph targetMoney={targetMoney} currentMoney={currentMoney} />
 
       <Styled.TextWrapper>
         <Styled.TextRow>
