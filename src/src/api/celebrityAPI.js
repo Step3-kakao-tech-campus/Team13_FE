@@ -38,4 +38,26 @@ const postCelebUnfollow = async (celebId) => {
   });
 };
 
-export default { getCelebInfoList, postCelebFollow, postCelebUnfollow };
+/**
+ * 셀럽 신청 api
+ */
+const postCelebRegister = async (
+  celebName,
+  celebGender,
+  celebType,
+  celebGroup,
+  profileImage,
+) => {
+  return await instance({
+    url: API.CELEBRITY.REGISTER,
+    method: "POST",
+    data: { celebName, celebGender, celebType, celebGroup, profileImage },
+  });
+};
+
+export default {
+  getCelebInfoList,
+  postCelebFollow,
+  postCelebUnfollow,
+  postCelebRegister,
+};
