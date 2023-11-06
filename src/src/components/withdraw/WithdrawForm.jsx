@@ -2,6 +2,9 @@ import styled from "styled-components";
 import Button from "@/components/common/button/Button.jsx";
 import { useState } from "react";
 import { NumericFormat, PatternFormat } from "react-number-format";
+import useFundWithdrawMutation from "@/hooks/api/fund/useFundWithdrawMutation.js";
+import { useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Styled = {
   InputWrapper: styled.div`
@@ -15,6 +18,10 @@ const Styled = {
     background-color: ${({ theme }) => theme.color.white};
     border-radius: 0.25rem;
     border: ${({ theme }) => theme.border.main};
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
   `,
   LabeledInput: styled.div`
     padding: 1rem;
@@ -58,11 +65,44 @@ const Styled = {
 
 function WithdrawForm() {
   const balance = 1000000;
+  const { fundId } = useParams();
   const [formInfo, setFormInfo] = useState({
     account: "",
     usage: "",
     money: 0,
   });
+
+  const { mutate } = useFundWithdrawMutation({ fundId });
+
+  const handleSubmit = () => {
+    if (formInfo.account.length !== 15) {
+      return toast.error("계좌번호를 정확히 입력해주세요");
+    }
+
+    if (!formInfo.usage) {
+      return toast.error("사용처를 입력해주세요");
+    }
+
+    if (!formInfo.money) {
+      return toast.error("출금 금액을 입력해주세요");
+    }
+
+    if (parseInt(formInfo.money?.replace(/,/g, ""), 10) > balance) {
+      return toast.error("신청한 출금 금액이 남은 금액보다 큽니다");
+    }
+
+    console.log({
+      usage: formInfo?.usage,
+      depositAccount: formInfo.account?.replace(/\s/g, "-"),
+      amount: parseInt(formInfo.money?.replace(/,/g, "")),
+    });
+
+    mutate({
+      usage: formInfo.usage,
+      depositAccount: formInfo.account?.replace(/\s/g, "-"),
+      amount: parseInt(formInfo.money?.replace(/,/g, "")),
+    });
+  };
 
   return (
     <>
@@ -98,7 +138,7 @@ function WithdrawForm() {
           <Styled.InputBox>
             <input
               className="usage"
-              placeholder="출금 사유를 입력해주세요"
+              placeholder="강남역 스크린도어"
               value={formInfo.usage}
               onChange={(e) => {
                 setFormInfo((prev) => {
@@ -114,7 +154,7 @@ function WithdrawForm() {
           <Styled.InputBox>
             <NumericFormat
               thousandSeparator=","
-              placeholder="출금할 금액을 입력해주세요"
+              placeholder="2,000,000"
               className="money"
               value={formInfo.money || null}
               onChange={(e) => {
@@ -131,6 +171,7 @@ function WithdrawForm() {
       <Button
         onClick={() => {
           console.log(formInfo);
+          handleSubmit();
         }}
         style={{ width: "100%", padding: "0.75rem" }}
       >

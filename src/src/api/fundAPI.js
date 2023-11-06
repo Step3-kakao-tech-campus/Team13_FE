@@ -100,6 +100,27 @@ const getFundWithdrawInfo = async ({ fundId, pageIndex }) => {
   });
 };
 
+/**
+ * 출금 신청 post
+ * @param {number | string} fundId
+ * @param {string} usage
+ * @param {string} depositAccount ####-##-#######
+ * @param {number} amount
+ * @returns {Promise<*>}
+ */
+
+const postFundWithdraw = async ({ fundId, usage, depositAccount, amount }) => {
+  return await instance({
+    url: API.FUND.WITHDRAW(fundId),
+    method: "POST",
+    data: {
+      usage,
+      depositAccount,
+      amount,
+    },
+  });
+};
+
 export default {
   getFundInfoList,
   postFundLike,
@@ -108,4 +129,5 @@ export default {
   getFundIntroductionByFundId,
   getDetailInfoByFundId,
   getFundWithdrawInfo,
+  postFundWithdraw,
 };
