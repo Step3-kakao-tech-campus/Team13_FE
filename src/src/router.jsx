@@ -35,6 +35,10 @@ const privateChildren = [
     element: <FundTextEditPage />,
   },
   {
+    path: `${routes.withdraw}/:fundId`,
+    element: <div>출금하기</div>,
+  },
+  {
     // 모바일 결제 진행
     path: routes.mobilePayment,
     element: <MobilePaymentPage />,

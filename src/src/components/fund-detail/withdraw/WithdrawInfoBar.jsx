@@ -25,14 +25,19 @@ const Styled = {
     border: ${({ theme }) => theme.border.main};
     border-radius: 0.25rem;
     cursor: ${({ $pointer }) => $pointer && "pointer"};
+    overflow: clip;
   `,
   EvidenceWrapper: styled.div`
+    padding-right: 1rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     .usage-title {
       padding-left: 0.5rem;
       font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   `,
   EvidenceImg: styled.img`
@@ -44,6 +49,10 @@ const Styled = {
     .withdraw-money {
       padding-bottom: 0.25rem;
       font-weight: 600;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .total-money {
