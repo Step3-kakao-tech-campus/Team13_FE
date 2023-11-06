@@ -75,7 +75,7 @@ const kinginCelebDetailInfo = {
   celebGender: "남",
   celebCategory: "스포츠",
   profileUrl:
-    "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
+    "https://i.namu.wiki/i/sfvk_xnvWlwCiFo3X6cdfzf621AlwLjGRZ88bIcrIt99EwxqOQVGGp7gMEH6gllADZl1kLJdIeJD3Ooq4LOYOg.webp",
   fundInProgressNum: 32,
   totalFundMoney: 38000000,
   followerNum: 9000,
@@ -92,7 +92,7 @@ const wooCelebDetailInfo = {
   celebGender: "남",
   celebCategory: "스포츠",
   profileUrl:
-    "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
+    "https://i.namu.wiki/i/mFwo5sbcGmtVmDcBxMi36FF5-nPXUs5mfoN2pB3YsbAmJe6h4wX35IT2jQZxNOdqE2BtMgbji8Yp-jvCLs4nsQ.webp",
   fundInProgressNum: 26,
   totalFundMoney: 35000000,
   followerNum: 8000,
@@ -109,8 +109,7 @@ const youngCelebDetailInfo = {
   celebGroup: "삼성",
   celebGender: "남",
   celebCategory: "기타",
-  profileUrl:
-    "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
+  profileUrl: "https://cdn.thelec.kr/news/photo/202210/18518_16299_646.jpg",
   fundInProgressNum: 25,
   totalFundMoney: 7500,
   followerNum: 10000,
