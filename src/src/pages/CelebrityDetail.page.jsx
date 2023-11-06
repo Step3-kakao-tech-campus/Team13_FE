@@ -1,48 +1,14 @@
 import { Suspense, useState } from "react";
-import { useParams } from "react-router-dom";
-import styled from "styled-components";
 
-import CelebTextInfo from "@/components/celebrity-detail/CelebTextInfo.jsx";
-import CelebProfile from "@/components/celebrity-detail/CelebProfile.jsx";
-import CelebRank from "@/components/celebrity-detail/CelebRank.jsx";
+import { GridTemplate } from "@/styles/CommonStyle.js";
+
+import CelebDetailInfoSkeleton from "@/components/celebrity-detail/CelebDetailInfoSkeleton.jsx";
+import CelebDetailInfo from "@/components/celebrity-detail/CelebDetailInfo";
 import Tabs from "@/components/common/button/TabButtons.jsx";
 import FundInfoGridCard from "@/components/fund/FundInfoGridCard.jsx";
 
-import { GridTemplate } from "@/styles/CommonStyle.js";
-import useCelebDetailInfoQuery from "@/hooks/api/celebrity/useCelebDetailInfoQuery.js";
-import CelebInfoContainerSkeleton from "@/components/celebrity-detail/CelebInfoContainerSkeleton.jsx";
-
-const Styled = {
-  CelebInfoContainer: styled.div`
-    padding: 2rem calc((100% - 60rem) / 2);
-  `,
-
-  CelebInfoBottomBox: styled.div`
-    padding-top: 1rem;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-  `,
-
-  ProfileImage: styled.img`
-    width: 10rem;
-    height: 10rem;
-    object-fit: cover;
-    border-radius: 0.25rem;
-  `,
-
-  TextInfoContainer: styled.div`
-    display: flex;
-    flex-direction: column;
-  `,
-};
-
 function CelebrityDetailPage() {
   const [selectedTab, setSelectedTab] = useState(0);
-  const { celebId } = useParams();
-  const { data } = useCelebDetailInfoQuery({ celebId: celebId });
 
   const fundInfo = {
     fundId: 1,
@@ -74,36 +40,8 @@ function CelebrityDetailPage() {
 
   return (
     <>
-      <Suspense fallback={<CelebInfoContainerSkeleton />}>
-        <Styled.CelebInfoContainer>
-          <CelebProfile
-            celebName={data?.celebName}
-            celebGroup={data?.celebGroup}
-            celebCategory={data?.celebCategory}
-            celebGender={data?.celebGender}
-            celebId={data?.celebId}
-            isFollowing={data?.isFollowing}
-          />
-
-          <Styled.CelebInfoBottomBox>
-            <Styled.ProfileImage
-              src={data?.profileUrl}
-              alt={`${data?.celebName}의 프로필 사진`}
-            />
-
-            <CelebRank
-              followerRank={data?.rank.follower}
-              fundingRank={data?.rank.fundMoney}
-            />
-
-            <CelebTextInfo
-              fundInProgressNum={data?.fundInProgressNum}
-              followerNum={data?.followerNum}
-              isFollowing={data?.isFollowing}
-              totalFundMoney={data?.totalFundMoney}
-            />
-          </Styled.CelebInfoBottomBox>
-        </Styled.CelebInfoContainer>
+      <Suspense fallback={<CelebDetailInfoSkeleton />}>
+        <CelebDetailInfo />
       </Suspense>
 
       <Tabs tabInfoArray={tabInfoArray} style={{ paddingBottom: "1rem" }} />
