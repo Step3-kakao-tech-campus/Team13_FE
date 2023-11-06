@@ -42,7 +42,7 @@ function Withdraw({ isOrganizer }) {
         </Styled.Title>
         {isOrganizer && (
           <Button onClick={() => navigate(`${routes.withdraw}/${fundId}`)}>
-            출금하기
+            출금 신청
           </Button>
         )}
       </Styled.TitleBar>
