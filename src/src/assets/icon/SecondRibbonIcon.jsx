@@ -1,9 +1,11 @@
-function SecondRibbonIcon() {
+import { PropTypes } from "prop-types";
+
+function SecondRibbonIcon({ size = 48 }) {
   return (
     <>
       <img
-        width="48"
-        height="48"
+        width={size}
+        height={size}
         src="https://img.icons8.com/color/48/second-place-ribbon.png"
         alt="second-place-ribbon"
       />
@@ -16,5 +18,9 @@ function SecondRibbonIcon() {
     </>
   );
 }
+
+SecondRibbonIcon.propTypes = {
+  size: PropTypes.number,
+};
 
 export default SecondRibbonIcon;

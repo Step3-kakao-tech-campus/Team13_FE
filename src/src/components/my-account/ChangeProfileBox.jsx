@@ -1,9 +1,7 @@
 import styled from "styled-components";
-import { useEffect } from "react";
 import { PropTypes } from "prop-types";
 
 import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
-import useSetImageFileToUrl from "@/hooks/useSetImageFileToUrl.js";
 import CloseIcon from "@/assets/icon/CloseIcon.jsx";
 
 const Styled = {
@@ -66,31 +64,12 @@ const Styled = {
 
 /**
  * 프로필 이미지 변경 컴포넌트
- * @param {string} loadedUrl 기존 이미지 url
- * @param {Blob} imageFile 이미지 파일
- * @param {React.Dispatch.SetStateAction} setImageFile set 이미지 파일
+ * @param {string} imageUrl 프로필 이미지 url
+ * @param {function} handleFileChange 프로필 이미지 변경 핸들러
+ * @param {function} handleFileDelete 프로필 이미지 삭제 핸들러
  */
 
-function ChangeProfileBox({ loadedUrl, imageFile, setImageFile }) {
-  const { imageUrl, setImageUrl, handleFileChange, handleFileDelete } =
-    useSetImageFileToUrl({
-      file: imageFile,
-      setFile: setImageFile,
-    });
-
-  useEffect(() => {
-    const loadProfile = async () => {
-      const response = await fetch(loadedUrl);
-      const blob = await response.blob();
-      setImageFile(new File([blob], "image.jpg", { type: blob.type }));
-      setImageUrl(loadedUrl);
-    };
-
-    if (!loadedUrl || loadedUrl === "") return;
-
-    loadProfile();
-  }, [loadedUrl, setImageFile]);
-
+function ChangeProfileBox({ imageUrl, handleFileChange, handleFileDelete }) {
   return (
     <Styled.Container>
       {imageUrl ? (
@@ -118,13 +97,9 @@ function ChangeProfileBox({ loadedUrl, imageFile, setImageFile }) {
 }
 
 ChangeProfileBox.propTypes = {
-  loadedUrl: PropTypes.string,
-  imageFile: PropTypes.any,
-  setImageFile: PropTypes.func.isRequired,
-};
-
-ChangeProfileBox.defaultProps = {
-  imageFile: null,
+  imageUrl: PropTypes.string,
+  handleFileDelete: PropTypes.func,
+  handleFileChange: PropTypes.func,
 };
 
 export default ChangeProfileBox;

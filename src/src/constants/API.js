@@ -22,7 +22,25 @@ const USER = {
   SETTING: "/user/setting",
 };
 
+const CELEBRITY = {
+  LIST: "/celebs",
+  REGISTER: "/celebs",
+  FOLLOW: (celebId) => {
+    return `/celebs/${celebId}/follow`;
+  },
+  UNFOLLOW: (celebId) => {
+    return `/celebs/${celebId}/unfollow`;
+  },
+  DETAIL: (celebId) => {
+    return `/celebs/${celebId}`;
+  },
+  FUNDING: (celebId) => {
+    return `/celebs/${celebId}/posts`;
+  },
+};
+
 Object.freeze(AUTH);
 Object.freeze(FUND);
 Object.freeze(USER);
-export default { AUTH, FUND, USER };
+Object.freeze(CELEBRITY);
+export default { AUTH, FUND, USER, CELEBRITY };

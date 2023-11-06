@@ -1,9 +1,11 @@
-function FirstRibbonIcon() {
+import { PropTypes } from "prop-types";
+
+function FirstRibbonIcon({ size = 48 }) {
   return (
     <>
       <img
-        width="48"
-        height="48"
+        width={size}
+        height={size}
         src="https://img.icons8.com/color/48/first-place-ribbon.png"
         alt="first-place-ribbon"
       />
@@ -16,5 +18,9 @@ function FirstRibbonIcon() {
     </>
   );
 }
+
+FirstRibbonIcon.propTypes = {
+  size: PropTypes.number,
+};
 
 export default FirstRibbonIcon;

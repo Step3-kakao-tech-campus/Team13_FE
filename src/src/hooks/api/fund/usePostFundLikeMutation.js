@@ -11,7 +11,7 @@ function usePostFundLikeMutation(handleSuccess) {
     },
     {
       onError: (err) => {
-        toast.error(err.message);
+        toast.error(err.response.data.message);
       },
       onSuccess: handleSuccess,
     },

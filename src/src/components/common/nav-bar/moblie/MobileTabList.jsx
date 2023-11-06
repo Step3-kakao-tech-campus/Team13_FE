@@ -1,6 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { useEffect } from "react";
 
 import PAGE_LIST from "@/constants/PAGE_LIST.js";
 
@@ -52,10 +51,6 @@ const Styled = {
 function MobileTabList() {
   const navigate = useNavigate();
   const location = useLocation();
-
-  useEffect(() => {
-    console.log(location);
-  }, [location]);
   return (
     <Styled.TabList>
       {PAGE_LIST.NAV_BAR_TAB.map((page) => (
