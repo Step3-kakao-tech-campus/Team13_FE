@@ -71,19 +71,13 @@ const getCelebDetailInfo = async (celebId) => {
 /**
  * 셀럽관련 펀딩목록 조회 api
  */
-const getCelebRelatedFund = async ({
-  celebId,
-  pageIndex,
-  keyword,
-  sortType,
-}) => {
+const getCelebRelatedFund = async ({ celebId, pageIndex, sortType }) => {
   return await instance({
     url: API.CELEBRITY.FUNDING(celebId),
     method: "GET",
     params: {
       celebId: celebId,
       pageIndex: pageIndex,
-      keyword: keyword,
       sortType: sortType,
     },
   });

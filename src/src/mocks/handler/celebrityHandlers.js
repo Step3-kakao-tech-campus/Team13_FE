@@ -267,7 +267,6 @@ export const celebrityHandlers = [
 
   // 셀럽관련 펀딩목록 조회
   rest.get("/api" + API.CELEBRITY.FUNDING(":celebId"), (req, res, ctx) => {
-    const keyword = req.url.searchParams.get("keyword");
     const pageIndex = req.url.searchParams.get("pageIndex");
     const sortType = req.url.searchParams.get("sortType");
     const { celebId } = req.params;
@@ -283,7 +282,6 @@ export const celebrityHandlers = [
         ),
         isLastPage: false,
         currentPage: pageIndex,
-        keyword: keyword,
         sortType: sortType,
       }),
     );
