@@ -51,4 +51,36 @@ class CelebDetailInfoDto {
   }
 }
 
-export { CelebInfoDto, CelebDetailInfoDto };
+class CelebRelatedFundDto {
+  constructor({
+    celebId,
+    fundId,
+    fundTitle,
+    thumbnailUrl,
+    targetDate,
+    targetMoney,
+    currentMoney,
+    celebrityId,
+    celebrityName,
+    celebrityProfileUrl,
+    organizerId,
+    organizerName,
+    isInUserWishList,
+  }) {
+    this.celebId = celebId;
+    this.fundId = fundId;
+    this.fundTitle = fundTitle;
+    this.thumbnailUrl = thumbnailUrl;
+    this.targetDate = targetDate;
+    this.targetMoney = targetMoney;
+    this.currentMoney = currentMoney;
+    this.celebrityId = celebrityId;
+    this.celebrityName = celebrityName;
+    this.celebrityProfileUrl = celebrityProfileUrl;
+    this.organizerId = organizerId;
+    this.organizerName = organizerName;
+    this.isInUserWishList = isInUserWishList;
+  }
+}
+
+export { CelebInfoDto, CelebDetailInfoDto, CelebRelatedFundDto };
