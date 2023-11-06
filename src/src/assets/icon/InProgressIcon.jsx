@@ -1,9 +1,11 @@
-function InProgressIcon() {
+import { PropTypes } from "prop-types";
+
+function InProgressIcon({ size = 16 }) {
   return (
     <>
       <img
-        width="16"
-        height="16"
+        width={size}
+        height={size}
         src="https://img.icons8.com/material-rounded/192/aaaaaa/in-progress.png"
         alt="in-progress"
       />
@@ -14,5 +16,9 @@ function InProgressIcon() {
     </>
   );
 }
+
+InProgressIcon.propTypes = {
+  size: PropTypes.number,
+};
 
 export default InProgressIcon;

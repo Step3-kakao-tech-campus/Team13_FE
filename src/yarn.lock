@@ -1340,6 +1340,11 @@
     picocolors "^1.0.0"
     tslib "^2.6.0"
 
+"@portone/browser-sdk@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@portone/browser-sdk/-/browser-sdk-0.0.3.tgz#7b6f58d96fd0d81777147d173c8b351fd0b2c693"
+  integrity sha512-1rJFA04haprUils7/76PP5ZttJpOBy35AtetR8Fp6wCSXzwQhKTV6n9UGh6yTsyBQxT0HsiwRrhsENFLhXWBgA==
+
 "@remix-run/router@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.9.0.tgz#9033238b41c4cbe1e961eccb3f79e2c588328cf6"

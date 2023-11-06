@@ -24,7 +24,7 @@ const postUserSettingByToken = async (data) => {
   return await instance({
     url: API.USER.SETTING,
     method: "POST",
-    data,
+    data: new UserSettingDto(data),
   });
 };
 

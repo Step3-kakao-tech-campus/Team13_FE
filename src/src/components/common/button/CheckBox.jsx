@@ -18,7 +18,7 @@ const Styled = {
 
     content: "";
     background-color: ${({ theme }) => theme.color.white};
-    border: 2px solid ${({ theme }) => theme.color.border};
+    border: 1px solid ${({ theme }) => theme.color.inactive};
     border-radius: 0.25rem;
 
     cursor: pointer;
@@ -51,6 +51,10 @@ const Styled = {
 
     &:checked + label:after {
       opacity: 1;
+    }
+
+    &:checked + label {
+      border: none;
     }
   `,
 };

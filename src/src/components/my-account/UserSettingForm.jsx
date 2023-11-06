@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { PropTypes } from "prop-types";
 
 import FORM_INFO from "@/constants/FORM_INFO.js";
@@ -6,10 +5,10 @@ import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 
 import useUserSettingQuery from "@/hooks/api/user/useUserSettingQuery.js";
 import useChangeUserSettingMutation from "@/hooks/api/user/useChangeUserSettingMutation.js";
-import { UserSettingDto } from "@/api/dto/user.dto.js";
 import ChangeProfileBox from "@/components/my-account/ChangeProfileBox.jsx";
 import Form from "@/components/common/form/Form.jsx";
 import Button from "@/components/common/button/Button.jsx";
+import useSetImageFileToUrl from "@/hooks/useSetImageFileToUrl.js";
 
 /** 내 계정 회원 정보 변경 폼 컴포넌트
  * @returns {JSX.Element}
@@ -17,18 +16,22 @@ import Button from "@/components/common/button/Button.jsx";
  */
 
 function UserSettingForm() {
-  const [profileImageFile, setProfileImageFile] = useState(null);
-  const { mutate } = useChangeUserSettingMutation();
   const { data } = useUserSettingQuery();
+  const { mutate } = useChangeUserSettingMutation();
+
+  const {
+    file: profileImageFile,
+    imageUrl: profileImageUrl,
+    handleFileChange: handleProfileImageChange,
+    handleFileDelete: handleProfileImageDelete,
+  } = useSetImageFileToUrl(data.profileImageUrl);
 
   const handleUserSettingSubmit = (data) => {
-    const requestBody = new UserSettingDto({
-      nickname: data.nickname,
-      phoneNumber: data.phoneNumber,
+    const requestBody = {
       profileFile: profileImageFile,
       password: data.currentPassword,
       newPassword: data.changedPassword,
-    });
+    };
 
     mutate(requestBody);
   };
@@ -36,9 +39,9 @@ function UserSettingForm() {
   return (
     <>
       <ChangeProfileBox
-        loadedUrl={data?.profileImageUrl}
-        imageFile={profileImageFile}
-        setImageFile={setProfileImageFile}
+        imageUrl={profileImageUrl}
+        handleFileChange={handleProfileImageChange}
+        handleFileDelete={handleProfileImageDelete}
       />
       <Form
         onSubmit={handleUserSettingSubmit}

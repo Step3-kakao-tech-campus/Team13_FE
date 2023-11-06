@@ -14,7 +14,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   function (config) {
-    const accessToken = localStorage.getItem("accessToken").replace(/"/gi, "");
+    const accessToken = localStorage.getItem("accessToken")?.replace(/"/gi, "");
 
     if (!accessToken) return config;
 

@@ -101,30 +101,17 @@ const MY_ACCOUNT = [
     id: "nickname",
     label: "닉네임",
     type: "text",
-    placeholder: "홍길동",
     validation: {
-      required: "닉네임은 필수 입력입니다",
+      disabled: true,
     },
   },
   {
     id: "phoneNumber",
     label: "전화번호",
     type: "text",
-    placeholder: "010-1234-5678",
     validation: {
-      required: "전화번호는 필수 입력입니다.",
-      onChange: (e) => {
-        if (e.target.value.length > 11) {
-          e.target.value = e.target.value.substr(0, 13);
-        }
-
-        e.target.value = e.target.value
-          .replace(/[^0-9]/g, "")
-          .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
-          .replace(/(-{1,2})$/g, "");
-      },
+      disabled: true,
     },
-    requireMsg: "전화번호는 숫자로만 입력해 주세요",
   },
   {
     id: "currentPassword",
@@ -132,7 +119,6 @@ const MY_ACCOUNT = [
     type: "password",
     placeholder: "현재 비밀번호",
     validation: {
-      required: "현재 비밀번호는 필수 입력입니다",
       pattern: {
         value:
           /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+=\-{}[\]|\\:;"'<>,.?/~`])[\S]{8,20}$/,
@@ -148,7 +134,6 @@ const MY_ACCOUNT = [
     type: "password",
     placeholder: "변경할 비밀번호",
     validation: {
-      required: "변경할 비밀번호는 필수 입력입니다",
       pattern: {
         value:
           /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+=\-{}[\]|\\:;"'<>,.?/~`])[\S]{8,20}$/,
