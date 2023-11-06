@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 import CelebTextInfo from "@/components/celebrity-detail/CelebTextInfo.jsx";
@@ -6,7 +7,9 @@ import CelebProfile from "@/components/celebrity-detail/CelebProfile.jsx";
 import CelebRank from "@/components/celebrity-detail/CelebRank.jsx";
 import Tabs from "@/components/common/button/TabButtons.jsx";
 import FundInfoGridCard from "@/components/fund/FundInfoGridCard.jsx";
+
 import { GridTemplate } from "@/styles/CommonStyle.js";
+import useCelebDetailInfoQuery from "@/hooks/api/celebrity/useCelebDetailInfoQuery";
 
 const Styled = {
   CelebInfoContainer: styled.div`
@@ -37,24 +40,10 @@ const Styled = {
 
 function CelebrityDetailPage() {
   const [selectedTab, setSelectedTab] = useState(0);
-
-  const celebInfo = {
-    celebId: 1,
-    celebName: "손흥민",
-    celebGroup: "토트넘",
-    celebGender: "남",
-    celebCategory: "스포츠",
-    profileUrl:
-      "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
-    fundInProgressNum: 30,
-    totalFundMoney: 35000000,
-    followerNum: 10000,
-    isFollowing: false,
-    rank: {
-      follower: 1,
-      fundMoney: 4,
-    },
-  };
+  const { celebId } = useParams();
+  console.log("셀럽아이디", celebId);
+  const { data } = useCelebDetailInfoQuery({ celebId: celebId });
+  console.log(data);
 
   const fundInfo = {
     fundId: 1,
@@ -88,30 +77,30 @@ function CelebrityDetailPage() {
     <>
       <Styled.CelebInfoContainer>
         <CelebProfile
-          celebName={celebInfo.celebName}
-          celebGroup={celebInfo.celebGroup}
-          celebCategory={celebInfo.celebCategory}
-          celebGender={celebInfo.celebGender}
-          celebId={celebInfo?.celebId}
-          isFollowing={celebInfo?.isFollowing}
+          celebName={data?.celebName}
+          celebGroup={data?.celebGroup}
+          celebCategory={data?.celebCategory}
+          celebGender={data?.celebGender}
+          celebId={data?.celebId}
+          isFollowing={data?.isFollowing}
         />
 
         <Styled.CelebInfoBottomBox>
           <Styled.ProfileImage
-            src={celebInfo?.profileUrl}
-            alt={`${celebInfo?.celebName}의 프로필 사진`}
+            src={data?.profileUrl}
+            alt={`${data?.celebName}의 프로필 사진`}
           />
 
           <CelebRank
-            followerRank={celebInfo.rank.follower}
-            fundingRank={celebInfo.rank.fundMoney}
+            followerRank={data?.rank.follower}
+            fundingRank={data?.rank.fundMoney}
           />
 
           <CelebTextInfo
-            fundInProgressNum={celebInfo.fundInProgressNum}
-            followerNum={celebInfo.followerNum}
-            isFollowing={celebInfo.isFollowing}
-            totalFundMoney={celebInfo.totalFundMoney}
+            fundInProgressNum={data?.fundInProgressNum}
+            followerNum={data?.followerNum}
+            isFollowing={data?.isFollowing}
+            totalFundMoney={data?.totalFundMoney}
           />
         </Styled.CelebInfoBottomBox>
       </Styled.CelebInfoContainer>
