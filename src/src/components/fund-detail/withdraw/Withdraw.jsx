@@ -4,6 +4,8 @@ import { Suspense } from "react";
 import Button from "@/components/common/button/Button.jsx";
 import InfiniteWithdrawInfo from "@/components/fund-detail/withdraw/InfiniteWithdrawInfo.jsx";
 import InfiniteWithdrawInfoLoader from "@/components/fund-detail/withdraw/InfiniteWithdrawInfo.loader.jsx";
+import { useNavigate, useParams } from "react-router-dom";
+import routes from "@/constants/routes.js";
 
 const Styled = {
   Container: styled.div``,
@@ -27,6 +29,8 @@ const Styled = {
 };
 
 function Withdraw({ isOrganizer }) {
+  const navigate = useNavigate();
+  const { fundId } = useParams();
   return (
     <Styled.Container>
       <Styled.TitleBar>
@@ -36,7 +40,11 @@ function Withdraw({ isOrganizer }) {
             해당 내역을 클릭하면 자세한 사용 내역 이미지를 확인할 수 있어요
           </div>
         </Styled.Title>
-        {isOrganizer && <Button>출금하기</Button>}
+        {isOrganizer && (
+          <Button onClick={() => navigate(`${routes.withdraw}/${fundId}`)}>
+            출금하기
+          </Button>
+        )}
       </Styled.TitleBar>
 
       <Suspense fallback={<InfiniteWithdrawInfoLoader />}>
