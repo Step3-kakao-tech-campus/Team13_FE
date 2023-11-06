@@ -60,13 +60,11 @@ const postCelebApply = async ({
  * 셀럽 상세정보 조회 api
  */
 const getCelebDetailInfo = async (celebId) => {
-  console.log("이게나와야해", celebId);
   const { data } = await instance({
     url: API.CELEBRITY.DETAIL(celebId),
     method: "GET",
   });
 
-  console.log("셀럽데이터", data);
   return new CelebDetailInfoDto(data);
 };
 
