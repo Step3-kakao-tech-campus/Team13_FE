@@ -16,6 +16,9 @@ const FUND = {
   DETAIL: (fundId) => {
     return `/posts/${fundId}`;
   },
+  WITHDRAW: (fundId) => {
+    return `/posts/${fundId}/withdrawals`;
+  },
 };
 
 const USER = {

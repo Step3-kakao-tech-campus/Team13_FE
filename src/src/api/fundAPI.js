@@ -86,6 +86,20 @@ const getFundIntroductionByFundId = async (fundId) => {
   return new FundIntroDto({ introduction: data.introduction });
 };
 
+/**
+ * 펀딩 출금 내역 조회
+ * @param {string || number} fundId
+ * @param {number} pageIndex
+ * @returns {Promise<axios.AxiosResponse<any>>}
+ */
+const getFundWithdrawInfo = async ({ fundId, pageIndex }) => {
+  return await instance({
+    url: API.FUND.WITHDRAW(fundId),
+    method: "GET",
+    params: { pageIndex: pageIndex },
+  });
+};
+
 export default {
   getFundInfoList,
   postFundLike,
@@ -93,4 +107,5 @@ export default {
   getCoAdminByFundId,
   getFundIntroductionByFundId,
   getDetailInfoByFundId,
+  getFundWithdrawInfo,
 };

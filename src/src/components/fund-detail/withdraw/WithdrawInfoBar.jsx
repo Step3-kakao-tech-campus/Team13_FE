@@ -122,7 +122,7 @@ function WithdrawInfoBar({
 WithdrawInfoBar.propTypes = {
   isOrganizer: PropTypes.bool,
   id: PropTypes.number,
-  date: PropTypes.date,
+  date: PropTypes.any,
   usageTitle: PropTypes.string,
   evidenceUrl: PropTypes.string,
   withdrawMoney: PropTypes.number,
