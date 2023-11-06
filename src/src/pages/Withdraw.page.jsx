@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Suspense } from "react";
 import FundInfo from "@/components/withdraw/FundInfo.jsx";
 import FundInfoSkeleton from "@/components/withdraw/FundInfo.skeleton.jsx";
+import WithdrawForm from "@/components/withdraw/WithdrawForm.jsx";
 
 const Styled = {
   Container: styled.div`
@@ -15,6 +16,8 @@ function WithdrawPage() {
       <Suspense fallback={<FundInfoSkeleton />}>
         <FundInfo />
       </Suspense>
+
+      <WithdrawForm />
     </Styled.Container>
   );
 }
