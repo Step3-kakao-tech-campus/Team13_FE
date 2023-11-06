@@ -50,11 +50,12 @@ const deleteFundLike = async (fundId) => {
 };
 
 const getDetailInfoByFundId = async (fundId) => {
+  console.log("펀드 id", fundId);
   const { data } = await instance({
     url: API.FUND.DETAIL(fundId),
     method: "GET",
   });
-
+  console.log("펀딩데이터", data);
   return new FundDetailInfoDto(data);
 };
 

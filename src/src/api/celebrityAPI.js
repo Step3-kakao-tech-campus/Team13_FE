@@ -1,6 +1,6 @@
 import instance from "@/api/instance.js";
 import API from "@/constants/API.js";
-import { CelebDetailInfoDto } from "./dto/celebrity.dto.js";
+import { CelebDetailInfoDto } from "@/api/dto/celebrity.dto.js";
 
 /**
  * 셀럽 목록 조회 api
@@ -60,11 +60,13 @@ const postCelebApply = async ({
  * 셀럽 상세정보 조회 api
  */
 const getCelebDetailInfo = async (celebId) => {
+  console.log("이게나와야해", celebId);
   const { data } = await instance({
     url: API.CELEBRITY.DETAIL(celebId),
     method: "GET",
   });
 
+  console.log("셀럽데이터", data);
   return new CelebDetailInfoDto(data);
 };
 
