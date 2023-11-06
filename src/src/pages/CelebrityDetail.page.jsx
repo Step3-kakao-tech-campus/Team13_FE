@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
@@ -9,7 +9,8 @@ import Tabs from "@/components/common/button/TabButtons.jsx";
 import FundInfoGridCard from "@/components/fund/FundInfoGridCard.jsx";
 
 import { GridTemplate } from "@/styles/CommonStyle.js";
-import useCelebDetailInfoQuery from "@/hooks/api/celebrity/useCelebDetailInfoQuery";
+import useCelebDetailInfoQuery from "@/hooks/api/celebrity/useCelebDetailInfoQuery.js";
+import CelebInfoContainerSkeleton from "@/components/celebrity-detail/CelebInfoContainerSkeleton.jsx";
 
 const Styled = {
   CelebInfoContainer: styled.div`
@@ -41,9 +42,7 @@ const Styled = {
 function CelebrityDetailPage() {
   const [selectedTab, setSelectedTab] = useState(0);
   const { celebId } = useParams();
-  console.log("셀럽아이디", celebId);
   const { data } = useCelebDetailInfoQuery({ celebId: celebId });
-  console.log(data);
 
   const fundInfo = {
     fundId: 1,
@@ -75,35 +74,37 @@ function CelebrityDetailPage() {
 
   return (
     <>
-      <Styled.CelebInfoContainer>
-        <CelebProfile
-          celebName={data?.celebName}
-          celebGroup={data?.celebGroup}
-          celebCategory={data?.celebCategory}
-          celebGender={data?.celebGender}
-          celebId={data?.celebId}
-          isFollowing={data?.isFollowing}
-        />
-
-        <Styled.CelebInfoBottomBox>
-          <Styled.ProfileImage
-            src={data?.profileUrl}
-            alt={`${data?.celebName}의 프로필 사진`}
-          />
-
-          <CelebRank
-            followerRank={data?.rank.follower}
-            fundingRank={data?.rank.fundMoney}
-          />
-
-          <CelebTextInfo
-            fundInProgressNum={data?.fundInProgressNum}
-            followerNum={data?.followerNum}
+      <Suspense fallback={<CelebInfoContainerSkeleton />}>
+        <Styled.CelebInfoContainer>
+          <CelebProfile
+            celebName={data?.celebName}
+            celebGroup={data?.celebGroup}
+            celebCategory={data?.celebCategory}
+            celebGender={data?.celebGender}
+            celebId={data?.celebId}
             isFollowing={data?.isFollowing}
-            totalFundMoney={data?.totalFundMoney}
           />
-        </Styled.CelebInfoBottomBox>
-      </Styled.CelebInfoContainer>
+
+          <Styled.CelebInfoBottomBox>
+            <Styled.ProfileImage
+              src={data?.profileUrl}
+              alt={`${data?.celebName}의 프로필 사진`}
+            />
+
+            <CelebRank
+              followerRank={data?.rank.follower}
+              fundingRank={data?.rank.fundMoney}
+            />
+
+            <CelebTextInfo
+              fundInProgressNum={data?.fundInProgressNum}
+              followerNum={data?.followerNum}
+              isFollowing={data?.isFollowing}
+              totalFundMoney={data?.totalFundMoney}
+            />
+          </Styled.CelebInfoBottomBox>
+        </Styled.CelebInfoContainer>
+      </Suspense>
 
       <Tabs tabInfoArray={tabInfoArray} style={{ paddingBottom: "1rem" }} />
       <GridTemplate>
