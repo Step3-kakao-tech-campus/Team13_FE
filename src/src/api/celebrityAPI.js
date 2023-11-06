@@ -68,10 +68,32 @@ const getCelebDetailInfo = async (celebId) => {
   return new CelebDetailInfoDto(data);
 };
 
+/**
+ * 셀럽관련 펀딩목록 조회 api
+ */
+const getCelebRelatedFund = async ({
+  celebId,
+  pageIndex,
+  keyword,
+  sortType,
+}) => {
+  return await instance({
+    url: API.CELEBRITY.FUNDING(celebId),
+    method: "GET",
+    params: {
+      celebId: celebId,
+      pageIndex: pageIndex,
+      keyword: keyword,
+      sortType: sortType,
+    },
+  });
+};
+
 export default {
   getCelebInfoList,
   postCelebFollow,
   postCelebUnfollow,
   postCelebApply,
   getCelebDetailInfo,
+  getCelebRelatedFund,
 };
