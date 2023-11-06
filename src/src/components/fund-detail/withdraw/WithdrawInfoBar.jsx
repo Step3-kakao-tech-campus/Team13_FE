@@ -1,6 +1,9 @@
 import styled from "styled-components";
+import { useState } from "react";
 import formatDateToYYYYMMDD from "@/utils/formateDateToYYYYMMDD";
 import EvidenceIcon from "@/components/fund-detail/withdraw/EvidenceIcon.jsx";
+import EvidenceModal from "@/components/fund-detail/withdraw/EvidenceModal.jsx";
+import { PropTypes } from "prop-types";
 
 const Styled = {
   Container: styled.div`
@@ -21,7 +24,7 @@ const Styled = {
     background-color: ${({ theme }) => theme.color.white};
     border: ${({ theme }) => theme.border.main};
     border-radius: 0.25rem;
-    cursor: pointer;
+    cursor: ${({ $pointer }) => $pointer && "pointer"};
   `,
   EvidenceWrapper: styled.div`
     display: flex;
@@ -50,41 +53,80 @@ const Styled = {
     }
   `,
 };
-function WithdrawInfoBar() {
-  const date = new Date("2023-10-11");
-  const usageTitle = "사용한 곳";
-  // const evidenceUrl = "";
-  const evidenceUrl =
-    "https://media.istockphoto.com/id/1285504723/ko/%EB%B2%A1%ED%84%B0/%ED%8C%90%EB%A7%A4-%EC%98%81%EC%88%98%EC%A6%9D.jpg?s=612x612&w=0&k=20&c=xf9rUJXZ-BqwZKqnlL8QCeCCXdjGsVqfU5ZVsUjpnRs=";
-  const withdrawMoney = 100000;
-  const totalMoney = 500000;
+
+/**
+ * 출금 내역 컴포넌트
+ * @param {boolean} isOrganizer
+ * @param {number} id
+ * @param {Date} date
+ * @param {string} usageTitle
+ * @param {string=} evidenceUrl
+ * @param {number} withdrawMoney
+ * @param {number} totalMoney
+ */
+
+function WithdrawInfoBar({
+  isOrganizer,
+  id,
+  date,
+  usageTitle,
+  evidenceUrl,
+  withdrawMoney,
+  totalMoney,
+}) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <Styled.Container>
-      <Styled.Date>{formatDateToYYYYMMDD(date)}</Styled.Date>
-      <Styled.Bar>
-        <Styled.EvidenceWrapper>
-          {evidenceUrl ? (
-            <Styled.EvidenceImg
-              src={evidenceUrl}
-              alt={`${usageTitle} 증거 사진`}
-            />
-          ) : (
-            <EvidenceIcon />
-          )}
-          <div className="usage-title">{usageTitle}</div>
-        </Styled.EvidenceWrapper>
-        <Styled.MoneyWrapper>
-          <div className="withdraw-money">
-            -{withdrawMoney.toLocaleString("ko-KR")}원
-          </div>
-          <div className="total-money">
-            {totalMoney.toLocaleString("ko-KR")}원
-          </div>
-        </Styled.MoneyWrapper>
-      </Styled.Bar>
-    </Styled.Container>
+    <>
+      <Styled.Container
+        onClick={() => {
+          setIsModalOpen(true);
+        }}
+      >
+        <Styled.Date>{formatDateToYYYYMMDD(date)}</Styled.Date>
+        <Styled.Bar $pointer={evidenceUrl}>
+          <Styled.EvidenceWrapper>
+            {evidenceUrl ? (
+              <Styled.EvidenceImg
+                src={evidenceUrl}
+                alt={`${usageTitle} 증거 사진`}
+              />
+            ) : (
+              <EvidenceIcon />
+            )}
+            <div className="usage-title">{usageTitle}</div>
+          </Styled.EvidenceWrapper>
+          <Styled.MoneyWrapper>
+            <div className="withdraw-money">
+              -{withdrawMoney.toLocaleString("ko-KR")}원
+            </div>
+            <div className="total-money">
+              {totalMoney.toLocaleString("ko-KR")}원
+            </div>
+          </Styled.MoneyWrapper>
+        </Styled.Bar>
+      </Styled.Container>
+
+      {evidenceUrl && isModalOpen && (
+        <EvidenceModal
+          isOrganizer={isOrganizer}
+          title={usageTitle}
+          evidenceImgUrl={evidenceUrl}
+          setOpen={setIsModalOpen}
+        />
+      )}
+    </>
   );
 }
+
+WithdrawInfoBar.propTypes = {
+  isOrganizer: PropTypes.bool,
+  id: PropTypes.number,
+  date: PropTypes.date,
+  usageTitle: PropTypes.string,
+  evidenceUrl: PropTypes.string,
+  withdrawMoney: PropTypes.number,
+  totalMoney: PropTypes.number,
+};
 
 export default WithdrawInfoBar;
