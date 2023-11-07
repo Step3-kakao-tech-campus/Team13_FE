@@ -257,4 +257,19 @@ export const fundHandlers = [
       }),
     );
   }),
+
+  // 펀딩 출금내역 이미지 추가
+  rest.post(
+    "/api" +
+      API.FUND.WITHDRAW_IMAGE({ fundId: ":fundId", withdrawId: ":withdrawId" }),
+    (req, res, ctx) => {
+      const { fundId, withdrawId } = req.params;
+
+      if (!fundId || !withdrawId) {
+        return res(ctx.status(400));
+      }
+
+      return res(ctx.status(200));
+    },
+  ),
 ];

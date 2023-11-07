@@ -3,6 +3,8 @@ import styled from "styled-components";
 import ImagePreviewButton from "@/components/common/button/ImagePreviewButton.jsx";
 import useSetImageFileToUrl from "@/hooks/useSetImageFileToUrl.js";
 import { PropTypes } from "prop-types";
+import useFundWithdrawEvidenceImageMutation from "@/hooks/api/fund/useFundWithdrawEvidenceImageMutation.js";
+import { useParams } from "react-router-dom";
 
 const Styled = {
   Container: styled.div`
@@ -44,17 +46,30 @@ const Styled = {
 
 /**
  * 증명내역을 자세히 볼 수 있는 모달창
+ * @param {number} withdrawId
  * @param {boolean} isOrganizer
  * @param {string} title
  * @param {string} evidenceImgUrl
  * @param {function} setOpen
  */
 
-function EvidenceModal({ isOrganizer, title, evidenceImgUrl, setOpen }) {
+function EvidenceModal({
+  withdrawId,
+  isOrganizer,
+  title,
+  evidenceImgUrl,
+  setOpen,
+}) {
+  const { fundId } = useParams();
+
   const { file, imageUrl, handleFileChange, handleFileDelete } =
     useSetImageFileToUrl(evidenceImgUrl);
 
-  // TODO: 증명내역 이미지 등록하는 api 통신 추가
+  const { mutate } = useFundWithdrawEvidenceImageMutation({
+    fundId,
+    withdrawId,
+  });
+
   return (
     <BackdropModal setOpen={setOpen}>
       <Styled.Container>
@@ -70,8 +85,14 @@ function EvidenceModal({ isOrganizer, title, evidenceImgUrl, setOpen }) {
         {isOrganizer ? (
           <ImagePreviewButton
             imageUrl={imageUrl}
-            handleFileDelete={handleFileDelete}
-            handleFileChange={handleFileChange}
+            handleFileDelete={(e) => {
+              handleFileDelete(e);
+              mutate({ image: null });
+            }}
+            handleFileChange={(e) => {
+              handleFileChange(e);
+              mutate({ image: file });
+            }}
             imageAspectRatio={null}
             containerStyle={{ maxWidth: "80vw" }}
           />
@@ -84,9 +105,10 @@ function EvidenceModal({ isOrganizer, title, evidenceImgUrl, setOpen }) {
 }
 
 EvidenceModal.propTypes = {
+  withdrawId: PropTypes.number,
   isOrganizer: PropTypes.bool,
   title: PropTypes.string,
-  evidenceUrl: PropTypes.string,
+  evidenceImgUrl: PropTypes.string,
   setOpen: PropTypes.func,
 };
 

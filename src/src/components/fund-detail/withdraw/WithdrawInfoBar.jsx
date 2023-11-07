@@ -93,7 +93,7 @@ function WithdrawInfoBar({
         }}
       >
         <Styled.Date>{formatDateToYYYYMMDD(date)}</Styled.Date>
-        <Styled.Bar $pointer={evidenceUrl}>
+        <Styled.Bar $pointer={evidenceUrl || isOrganizer}>
           <Styled.EvidenceWrapper>
             {evidenceUrl ? (
               <Styled.EvidenceImg
@@ -116,8 +116,9 @@ function WithdrawInfoBar({
         </Styled.Bar>
       </Styled.Container>
 
-      {evidenceUrl && isModalOpen && (
+      {(evidenceUrl || isOrganizer) && isModalOpen && (
         <EvidenceModal
+          withdrawId={id}
           isOrganizer={isOrganizer}
           title={usageTitle}
           evidenceImgUrl={evidenceUrl}

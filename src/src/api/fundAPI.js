@@ -100,6 +100,29 @@ const getFundWithdrawInfo = async ({ fundId, pageIndex }) => {
   });
 };
 
+/**
+ * 출금 인증 이미지 저장하기
+ * @param {string || number} fundId
+ * @param {string || number} withdrawId
+ * @param {FormData} imageForm
+ * @returns {Promise<*>}
+ */
+
+const postFundWithdrawEvidenceImage = async ({
+  fundId,
+  withdrawId,
+  imageForm,
+}) => {
+  return await instance({
+    url: API.FUND.WITHDRAW_IMAGE({ fundId, withdrawId }),
+    method: "POST",
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    data: imageForm,
+  });
+};
+
 export default {
   getFundInfoList,
   postFundLike,
@@ -108,4 +131,5 @@ export default {
   getFundIntroductionByFundId,
   getDetailInfoByFundId,
   getFundWithdrawInfo,
+  postFundWithdrawEvidenceImage,
 };
