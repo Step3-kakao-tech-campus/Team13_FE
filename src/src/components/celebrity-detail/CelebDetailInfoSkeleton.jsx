@@ -34,6 +34,10 @@ const Styled = {
   `,
 };
 
+/**
+ * 셀럽 상세정보 스켈레톤 컴포넌트 - 셀럽 상세페이지 상단 전체
+ */
+
 function CelebDetailInfoSkeleton() {
   return (
     <Styled.CelebInfoContainer>

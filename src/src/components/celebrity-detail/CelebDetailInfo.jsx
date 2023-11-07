@@ -34,6 +34,11 @@ const Styled = {
   `,
 };
 
+/**
+ * 셀럽 상세정보 컴포넌트
+ * : 셀럽상세 페이지 상단 프로필, 팔로워/펀딩금액별 순위, 자세한텍스트정보
+ */
+
 function CelebDetailInfo() {
   const { celebId } = useParams();
   const { data } = useCelebDetailInfoQuery({ celebId: celebId });
