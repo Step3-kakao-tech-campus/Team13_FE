@@ -49,6 +49,12 @@ const deleteFundLike = async (fundId) => {
   });
 };
 
+/**
+ * 펀딩 상세 정보 조회
+ * @param {number | string }fundId
+ * @returns {Promise<FundDetailInfoDto>}
+ */
+
 const getDetailInfoByFundId = async (fundId) => {
   const { data } = await instance({
     url: API.FUND.DETAIL(fundId),
