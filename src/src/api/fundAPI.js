@@ -54,7 +54,6 @@ const getDetailInfoByFundId = async (fundId) => {
     url: API.FUND.DETAIL(fundId),
     method: "GET",
   });
-
   return new FundDetailInfoDto(data);
 };
 
