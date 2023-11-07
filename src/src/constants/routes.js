@@ -2,16 +2,17 @@ const routes = {
   home: "/",
   fund: "/fund",
   createFund: "/create-fund",
+  support: "/support",
+  mobilePayment: "/mobile-payment",
+  withdraw: "/withdraw",
   celebrity: "/celebrity",
+  user: "/user",
   myFund: "/my-fund",
   myAccount: "/my-account",
   signIn: "/sign-in",
   signUp: "/sign-up",
-  user: "/user",
   edit: "/edit",
   admin: "/admin",
-  support: "/support",
-  mobilePayment: "/mobile-payment",
 };
 
 Object.freeze(routes);

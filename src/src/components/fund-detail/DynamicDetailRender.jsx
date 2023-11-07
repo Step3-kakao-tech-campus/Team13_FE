@@ -2,9 +2,9 @@ import { PropTypes } from "prop-types";
 
 import TABS from "@/constants/TABS.js";
 import Introduction from "@/components/fund-detail/introduction/Introduction.jsx";
-import Update from "@/components/fund-detail/update/index.jsx";
-import Comment from "@/components/fund-detail/comment/index.jsx";
-import Index from "@/components/fund-detail/withdraw/index.jsx";
+import Update from "@/components/fund-detail/update/Update.jsx";
+import Comment from "@/components/fund-detail/comment/Comment.jsx";
+import Withdraw from "@/components/fund-detail/withdraw/Withdraw.jsx";
 
 /**
  * 펀딩 상세 페이지 탭 버튼 선택에 따른 하단 컴포넌트 변경
@@ -21,7 +21,7 @@ function DynamicDetailRender({ type, isOrganizer }) {
     case TABS.FUND_DETAIL.COMMENT:
       return <Comment />;
     case TABS.FUND_DETAIL.WITHDRAW:
-      return <Index />;
+      return <Withdraw isOrganizer={isOrganizer} />;
     default:
       return <div>잘못 선택되었습니다 다시 선택해 주세요</div>;
   }
