@@ -81,7 +81,7 @@ const router = createBrowserRouter([
       },
       {
         // 셀럽 상세
-        path: `${routes.celebrity}/:celebrityId`,
+        path: `${routes.celebrity}/:celebId`,
         element: <CelebrityDetailPage />,
         errorElement: <div>존재하지 않는 셀럽입니다</div>,
       },

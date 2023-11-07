@@ -1,5 +1,6 @@
 import instance from "@/api/instance.js";
 import API from "@/constants/API.js";
+import { CelebDetailInfoDto } from "@/api/dto/celebrity.dto.js";
 
 /**
  * 셀럽 목록 조회 api
@@ -55,9 +56,38 @@ const postCelebApply = async ({
   });
 };
 
+/**
+ * 셀럽 상세정보 조회 api
+ */
+const getCelebDetailInfo = async (celebId) => {
+  const { data } = await instance({
+    url: API.CELEBRITY.DETAIL(celebId),
+    method: "GET",
+  });
+
+  return new CelebDetailInfoDto(data);
+};
+
+/**
+ * 셀럽관련 펀딩목록 조회 api
+ */
+const getCelebRelatedFund = async ({ celebId, pageIndex, sortType }) => {
+  return await instance({
+    url: API.CELEBRITY.FUNDING(celebId),
+    method: "GET",
+    params: {
+      celebId: celebId,
+      pageIndex: pageIndex,
+      sortType: sortType,
+    },
+  });
+};
+
 export default {
   getCelebInfoList,
   postCelebFollow,
   postCelebUnfollow,
   postCelebApply,
+  getCelebDetailInfo,
+  getCelebRelatedFund,
 };
