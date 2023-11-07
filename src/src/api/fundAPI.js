@@ -101,6 +101,20 @@ const getFundWithdrawInfo = async ({ fundId, pageIndex }) => {
 };
 
 /**
+ * 출금 가능 금액 조회
+ * @param {string || number} fundId
+ * @returns {Promise<axios.AxiosResponse<any>>}
+ */
+const getFundBalance = async (fundId) => {
+  const { data } = await instance({
+    url: API.FUND.BALANCE(fundId),
+    method: "GET",
+  });
+
+  return data.balance;
+};
+
+/**
  * 출금 신청 post
  * @param {number | string} fundId
  * @param {string} usage
@@ -129,5 +143,6 @@ export default {
   getFundIntroductionByFundId,
   getDetailInfoByFundId,
   getFundWithdrawInfo,
+  getFundBalance,
   postFundWithdraw,
 };

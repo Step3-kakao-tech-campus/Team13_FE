@@ -5,6 +5,7 @@ import { NumericFormat, PatternFormat } from "react-number-format";
 import useFundWithdrawMutation from "@/hooks/api/fund/useFundWithdrawMutation.js";
 import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import UseFundBalanceQuery from "@/hooks/api/fund/useFundBalanceQuery.js";
 
 const Styled = {
   InputWrapper: styled.div`
@@ -19,7 +20,7 @@ const Styled = {
     border-radius: 0.25rem;
     border: ${({ theme }) => theme.border.main};
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 700px) {
       grid-template-columns: 1fr;
     }
   `,
@@ -64,8 +65,8 @@ const Styled = {
 };
 
 function WithdrawForm() {
-  const balance = 1000000;
   const { fundId } = useParams();
+  const { data: balanceMoney } = UseFundBalanceQuery({ fundId });
   const [formInfo, setFormInfo] = useState({
     account: "",
     usage: "",
@@ -87,15 +88,9 @@ function WithdrawForm() {
       return toast.error("출금 금액을 입력해주세요");
     }
 
-    if (parseInt(formInfo.money?.replace(/,/g, ""), 10) > balance) {
+    if (parseInt(formInfo.money?.replace(/,/g, ""), 10) > balanceMoney) {
       return toast.error("신청한 출금 금액이 남은 금액보다 큽니다");
     }
-
-    console.log({
-      usage: formInfo?.usage,
-      depositAccount: formInfo.account?.replace(/\s/g, "-"),
-      amount: parseInt(formInfo.money?.replace(/,/g, "")),
-    });
 
     mutate({
       usage: formInfo.usage,
@@ -111,7 +106,7 @@ function WithdrawForm() {
           <label>남은 금액</label>
           <Styled.InputBox>
             <div className="left-money">
-              {balance.toLocaleString("ko-KR")} 원
+              {balanceMoney?.toLocaleString("ko-KR")} 원
             </div>
           </Styled.InputBox>
         </Styled.LabeledInput>
@@ -169,10 +164,7 @@ function WithdrawForm() {
       </Styled.InputWrapper>
 
       <Button
-        onClick={() => {
-          console.log(formInfo);
-          handleSubmit();
-        }}
+        onClick={handleSubmit}
         style={{ width: "100%", padding: "0.75rem" }}
       >
         출금 신청

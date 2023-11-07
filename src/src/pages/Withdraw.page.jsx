@@ -7,6 +7,8 @@ import WithdrawForm from "@/components/withdraw/WithdrawForm.jsx";
 const Styled = {
   Container: styled.div`
     padding: 2rem 0;
+    margin: 0 auto;
+    max-width: 50rem;
   `,
 };
 

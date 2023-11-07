@@ -258,6 +258,20 @@ export const fundHandlers = [
     );
   }),
 
+  // 출금 가능 금액 조회
+  rest.get("/api" + API.FUND.BALANCE(":fundId"), (req, res, ctx) => {
+    const { fundId } = req.params;
+
+    if (!fundId) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "존재하지 않는 펀딩입니다" }),
+      );
+    }
+
+    return res(ctx.status(200), ctx.json({ balance: 5000000 }));
+  }),
+
   // 펀딩 출금 신청
   rest.post("/api" + API.FUND.WITHDRAW(":fundId"), (req, res, ctx) => {
     const { fundId } = req.params;
