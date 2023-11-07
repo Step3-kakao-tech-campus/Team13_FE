@@ -17,6 +17,7 @@ import MainPage from "@/pages/Main.page.jsx";
 import FundSupportPage from "@/pages/FundSupport.page.jsx";
 import MobilePaymentPage from "@/pages/MobilePayment.page.jsx";
 import AdminPage from "@/pages/Admin.page.jsx";
+import WithdrawPage from "@/pages/Withdraw.page.jsx";
 
 const privateChildren = [
   {
@@ -36,7 +37,7 @@ const privateChildren = [
   },
   {
     path: `${routes.withdraw}/:fundId`,
-    element: <div>출금하기</div>,
+    element: <WithdrawPage />,
   },
   {
     // 모바일 결제 진행

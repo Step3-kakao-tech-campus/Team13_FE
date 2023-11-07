@@ -258,6 +258,56 @@ export const fundHandlers = [
     );
   }),
 
+  // 출금 가능 금액 조회
+  rest.get("/api" + API.FUND.BALANCE(":fundId"), (req, res, ctx) => {
+    const { fundId } = req.params;
+
+    if (!fundId) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "존재하지 않는 펀딩입니다" }),
+      );
+    }
+
+    return res(ctx.status(200), ctx.json({ balance: 5000000 }));
+  }),
+
+  // 펀딩 출금 신청
+  rest.post("/api" + API.FUND.WITHDRAW(":fundId"), (req, res, ctx) => {
+    const { fundId } = req.params;
+    const { usage, depositAccount, amount } = req.body;
+
+    if (!fundId) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "펀딩 아이디를 입력해주세요" }),
+      );
+    }
+
+    if (!usage) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "사용처를 입력해주세요" }),
+      );
+    }
+
+    if (!depositAccount) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "출금 계좌를 입력해주세요" }),
+      );
+    }
+
+    if (!amount) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "출금 금액을 입력해주세요" }),
+      );
+    }
+
+    return res(ctx.status(200));
+  }),
+
   // 펀딩 출금내역 이미지 추가
   rest.post(
     "/api" +

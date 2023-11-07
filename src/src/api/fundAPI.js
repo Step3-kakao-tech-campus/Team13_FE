@@ -106,6 +106,41 @@ const getFundWithdrawInfo = async ({ fundId, pageIndex }) => {
 };
 
 /**
+ * 출금 가능 금액 조회
+ * @param {string || number} fundId
+ * @returns {Promise<axios.AxiosResponse<any>>}
+ */
+const getFundBalance = async (fundId) => {
+  const { data } = await instance({
+    url: API.FUND.BALANCE(fundId),
+    method: "GET",
+  });
+
+  return data.balance;
+};
+
+/**
+ * 출금 신청 post
+ * @param {number | string} fundId
+ * @param {string} usage
+ * @param {string} depositAccount ####-##-#######
+ * @param {number} amount
+ * @returns {Promise<*>}
+ */
+
+const postFundWithdraw = async ({ fundId, usage, depositAccount, amount }) => {
+  return await instance({
+    url: API.FUND.WITHDRAW(fundId),
+    method: "POST",
+    data: {
+      usage,
+      depositAccount,
+      amount,
+    },
+  });
+};
+
+/**
  * 출금 인증 이미지 저장하기
  * @param {string || number} fundId
  * @param {string || number} withdrawId
@@ -136,5 +171,7 @@ export default {
   getFundIntroductionByFundId,
   getDetailInfoByFundId,
   getFundWithdrawInfo,
+  getFundBalance,
+  postFundWithdraw,
   postFundWithdrawEvidenceImage,
 };

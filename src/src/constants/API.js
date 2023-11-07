@@ -19,6 +19,9 @@ const FUND = {
   WITHDRAW: (fundId) => {
     return `/posts/${fundId}/withdrawals`;
   },
+  BALANCE: (fundId) => {
+    return `/posts/${fundId}/balance`;
+  },
   WITHDRAW_IMAGE: ({ fundId, withdrawId }) => {
     return `/posts/${fundId}/withdrawals/${withdrawId}`;
   },
