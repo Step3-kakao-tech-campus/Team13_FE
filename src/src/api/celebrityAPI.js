@@ -9,12 +9,13 @@ import { CelebDetailInfoDto } from "@/api/dto/celebrity.dto.js";
  * @param {string=} sortType
  */
 
-const getCelebInfoList = async ({ pageIndex, keyword, sortType }) => {
+const getCelebInfoList = async ({ cursorId, keyword, sortType }) => {
   return await instance({
-    url: API.CELEBRITY.LIST,
+    url: API.CELEBRITY.LIST + `?celebId=${cursorId}&keyword=${keyword || ""}`,
     method: "GET",
-    params: { pageIndex: pageIndex, keyword: keyword, sortType: sortType },
+    // params: { celebId: cursorId, keyword: keyword, sortType: sortType },
   });
+  //TODO: 백엔드 서버 수정 후 추후 params 수정
 };
 
 /**
