@@ -1,10 +1,10 @@
 import { PropTypes } from "prop-types";
 
 import TABS from "@/constants/TABS.js";
-import MyFollowingList from "./MyFollowingList.jsx";
-import MyHeartList from "./MyHeartList.jsx";
-import MyFundingList from "./MyFundingList.jsx";
-import MyHostingFundList from "./MyHostingFundList.jsx";
+import MyFollowingList from "@/components/my-fund/MyFollowingList.jsx";
+import MyHeartList from "@/components/my-fund/MyHeartList.jsx";
+import MyFundingList from "@/components/my-fund/MyFundingList.jsx";
+import MyHostingFundList from "@/components/my-fund/MyHostingFundList.jsx";
 
 /**
  * My펀딩페이지 탭 버튼 선택에 따른 하단 컴포넌트 변경
