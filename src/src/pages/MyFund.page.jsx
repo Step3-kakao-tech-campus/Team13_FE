@@ -2,43 +2,26 @@ import { useState } from "react";
 import styled from "styled-components";
 import Tabs from "@/components/common/button/TabButtons.jsx";
 import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
+import TABS from "@/constants/TABS.js";
 
-const Styled = {
-  ProfileImage: styled.img`
-    width: 50px;
-    height: 50px;
-    border-radius: 9999px;
-    object-fit: cover;
-  `,
-};
+const Styled = {};
 
 function MyFundPage() {
-  const [sortType, setSortType] = useState(0);
+  const [sortType, setSortType] = useState(TABS.MY_FUND.FOLLOWING);
 
-  const tabInfoArray = [
-    {
-      title: "팔로잉",
-      func: () => setSortType(0),
-    },
-    {
-      title: "찜한목록",
-      func: () => setSortType(1),
-    },
-    {
-      title: "펀딩내역",
-      func: () => setSortType(2),
-    },
-    {
-      title: "주최한 펀딩",
-      func: () => setSortType(3),
-    },
-  ];
+  const tabInfoArray = Object.keys(TABS.MY_FUND).map((key) => {
+    return {
+      title: TABS.MY_FUND[key],
+      func: () => {
+        setSortType(key);
+      },
+    };
+  });
 
   return (
     <>
       <div className="userInfo">
-        <TestAccountIcon size={"50"} />
-
+        <TestAccountIcon size={"100"} />
         <div className="userName">000님</div>
       </div>
 
