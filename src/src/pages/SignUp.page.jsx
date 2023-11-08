@@ -1,14 +1,12 @@
-import { useNavigate } from "react-router-dom";
-import routes from "@/constants/routes.js";
 import styled from "styled-components";
 
 import Form from "@/components/common/form/Form.jsx";
 import Button from "@/components/common/button/Button.jsx";
 
 import FORM_INFO from "@/constants/FORM_INFO.js";
-import CheckBox from "@/components/common/button/CheckBox.jsx";
 import FORM_DEFAULT from "@/constants/FORM_DEFAULT.js";
 import { Title } from "@/styles/CommonStyle.js";
+import useSignUpMutation from "@/hooks/api/auth/useSignUpMutation.js";
 
 const Styled = {
   SignUpContainer: styled.div`
@@ -31,6 +29,7 @@ const Styled = {
     margin: 1rem 0;
     .signUp-check {
       display: flex;
+      gap: 0.5rem;
     }
     & p {
       font-size: 0.75rem;
@@ -40,11 +39,7 @@ const Styled = {
 };
 
 function SignUpPage() {
-  const navigate = useNavigate();
-
-  const onSignUpSubmit = () => {
-    navigate(routes.signIn);
-  };
+  const { mutate } = useSignUpMutation();
 
   return (
     <Styled.SignUpContainer>
@@ -66,28 +61,22 @@ function SignUpPage() {
       <Styled.SignUpTitle>이메일 간편가입</Styled.SignUpTitle>
 
       <Form
-        onSubmit={(data) => console.log(data)}
-        onError={(err) => console.log(err)}
+        onSubmit={(data) => {
+          mutate({
+            email: data.email,
+            password: data.password,
+            nickname: data.nickname,
+          });
+        }}
         inputInformations={FORM_INFO.SIGN_UP}
         defaultValues={FORM_DEFAULT.SIGN_UP}
       >
-        <Styled.SignUpAgree>
-          <div className="signUp-check">
-            <CheckBox id={"signUp-agree"} />
-          </div>
-          <p>
-            자세한약관은 준비중입니다.자세한약관은 준비중입니다.자세한약관은
-            준비중입니다.자세한약관은 준비중입니다.자세한약관은 준비중입니다.
-          </p>
-        </Styled.SignUpAgree>
-
         <Button
           type="submit"
-          onClick={onSignUpSubmit}
           style={{
             width: "100%",
             padding: "1rem",
-            margin: "0.375rem 0",
+            margin: "1rem 0",
           }}
         >
           전송

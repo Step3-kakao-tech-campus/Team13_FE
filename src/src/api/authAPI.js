@@ -46,4 +46,38 @@ const deleteAccountByToken = () => {
   });
 };
 
-export default { postLogin, refreshToken, deleteAccountByToken };
+/**
+ * 회원가입 api
+ * @param {string} email
+ * @param {string} password
+ * @param {string} nickname
+ * @return {Promise<*>}
+ */
+const postSignUp = async ({ email, password, nickname }) => {
+  return await instance({
+    url: API.AUTH.SIGN_UP,
+    method: "POST",
+    data: { email, password, nickname },
+  });
+};
+
+/**
+ * 이메일 중복 확인 api
+ * @param {string} email
+ * @returns {Promise<*>}
+ */
+const isEmailDuplicate = async ({ email }) => {
+  return await instance({
+    url: API.AUTH.EMAIL_DUPLICATE,
+    method: "POST",
+    data: { email },
+  });
+};
+
+export default {
+  postLogin,
+  refreshToken,
+  deleteAccountByToken,
+  postSignUp,
+  isEmailDuplicate,
+};
