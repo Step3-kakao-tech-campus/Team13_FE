@@ -15,10 +15,18 @@ import {
  */
 
 const getFundInfoList = async ({ pageIndex, keyword, sortType }) => {
+  if (keyword) {
+    return await instance({
+      url: API.FUND.LIST + "/search/keyword",
+      method: "GET",
+      params: { page: pageIndex, sort: sortType, size: 12, keyword },
+    });
+  }
+
   return await instance({
     url: API.FUND.LIST,
     method: "GET",
-    params: { pageIndex: pageIndex, keyword: keyword, sortType: sortType },
+    params: { page: pageIndex, sort: sortType, size: 12 },
   });
 };
 

@@ -1,9 +1,12 @@
 import axios from "axios";
 import authAPI from "@/api/authAPI.js";
 
-const baseUrl = import.meta.env.VITE_USE_MOCK_API
-  ? "http://localhost:5173/api"
-  : import.meta.env.VITE_FUNDERING_API;
+// const baseUrl = import.meta.env.VITE_USE_MOCK_API
+//   ? "http://localhost:5173/api"
+//   : import.meta.env.VITE_FUNDERING_API;
+
+const baseUrl =
+  import.meta.env.VITE_FUNDERING_API ?? "http://localhost:5173/api";
 
 const instance = axios.create({
   baseURL: baseUrl,
