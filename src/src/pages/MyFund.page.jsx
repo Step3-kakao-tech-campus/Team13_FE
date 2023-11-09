@@ -4,6 +4,7 @@ import Tabs from "@/components/common/button/TabButtons.jsx";
 import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
 import TABS from "@/constants/TABS.js";
 import DynamicRender from "@/components/my-fund/DynamicRender.jsx";
+import useMyFundUserInfoQuery from "@/hooks/api/my-fund/useMyFundUserInfoQuery.js";
 
 const Styled = {
   Container: styled.section`
@@ -19,12 +20,19 @@ const Styled = {
       font-size: 1.5rem;
       font-weight: 600;
     }
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 9999px;
+      object-fit: cover;
+    }
   `,
 };
 
 function MyFundPage() {
+  const { data } = useMyFundUserInfoQuery();
   const [selectedTab, setSeletedTab] = useState(TABS.MY_FUND.FOLLOWING);
-
+  console.log(data);
   const tabInfoArray = Object.keys(TABS.MY_FUND).map((key) => {
     return {
       title: TABS.MY_FUND[key],
@@ -37,12 +45,12 @@ function MyFundPage() {
   return (
     <Styled.Container>
       <Styled.UserInfo>
-        {/* {profileImage ? (
-          <img src="" alt="" />
-        ) : ( */}
-        <TestAccountIcon size={"100"} />
-        {/* // )} */}
-        <div className="userName">000님</div>
+        {data?.profileUrl ? (
+          <img src={data.profileUrl} alt={`프로필이미지 : ${data.nickname}`} />
+        ) : (
+          <TestAccountIcon size={"100"} />
+        )}
+        <div className="userName">{data.nickname}님</div>
       </Styled.UserInfo>
 
       <Tabs tabInfoArray={tabInfoArray} style={{ margin: "1.7rem 0 3rem" }} />
