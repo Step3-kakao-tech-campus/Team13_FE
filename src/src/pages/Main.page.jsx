@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import MainLayout from "@/components/common/template/MainLayout.jsx";
-import { GridTemplate, Title } from "@/styles/CommonStyle.js";
-import SimpleCelebCard from "@/components/celebrity/SimpleCelebCard";
-import FundInfoGridCard from "@/components/fund/FundInfoGridCard";
+import { Title } from "@/styles/CommonStyle.js";
 import SORT_ORDER from "@/constants/SORT_ORDER";
 import { Suspense } from "react";
 import InfiniteFundInfoLoader from "@/components/fund-list/InfiniteFundInfo.loader";
 import InfiniteFundInfo from "@/components/fund-list/InfiniteFundInfo";
+import SimpleCelebList from "@/components/celebrity-list/SimpleCelebList";
 
 const Styled = {
   Title: styled(Title)`
@@ -19,40 +18,19 @@ const Styled = {
 };
 
 function MainPage() {
-  const sonnyCelebInfo = {
-    celebId: 1,
-    celebName: "손흥민",
-    profileUrl:
-      "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
-    fundInProgressNum: 30,
-    totalFundMoney: 35000000,
-    followerNum: 10000,
-    isFollowing: false,
-    rank: 1,
-  };
-
   const sortType = SORT_ORDER.FUND.CLOSER_DEADLINE;
+
+  // 1. mock api를 먼저 mock/celebHandler에 만들고
+  // 2. 해당 api를 통신하는 handler 함수를 api/celebApi에 만들고
+  // 3. 핸들러 함수를 활용해 규민님이 이해한 것처럼 커스텀 훅을 만들고
+  // 4. 기존 심플셀럽카드(이거맞나여)에 연결하면 돼요
 
   return (
     <>
       <MainLayout>
         <Styled.Title>추천 셀럽</Styled.Title>
 
-        <GridTemplate style={{ marginBottom: "1.75rem" }}>
-          {new Array(3).fill(sonnyCelebInfo).map((info, index) => (
-            <SimpleCelebCard
-              key={index}
-              celebId={info.celebId}
-              celebName={info.celebName}
-              profileUrl={info.profileUrl}
-              fundInProgressNum={info.fundInProgressNum}
-              followerNum={info.followerNum}
-              isFollowing={info.isFollowing}
-              totalFundMoney={info.totalFundMoney}
-              rank={index + 1}
-            />
-          ))}
-        </GridTemplate>
+        <SimpleCelebList />
 
         <Styled.Title>마감 임박한 펀딩</Styled.Title>
 

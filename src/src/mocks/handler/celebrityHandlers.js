@@ -244,10 +244,10 @@ export const celebrityHandlers = [
       i === 0
         ? sonnyCelebInfo
         : i === 1
-        ? kinginCelebInfo
-        : i === 2
-        ? wooCelebInfo
-        : youngCelebInfo,
+          ? kinginCelebInfo
+          : i === 2
+            ? wooCelebInfo
+            : youngCelebInfo,
     );
 
     if (!pageIndex) return res(ctx.status(400, "pageIndex 없음"));

@@ -1,5 +1,6 @@
 import { GridTemplate } from "@/styles/CommonStyle";
 import SimpleCelebCard from "../celebrity/SimpleCelebCard.jsx";
+import useSimpleCelebInfoQuery from "@/hooks/api/celebrity/useSimpleCelebInfoQuery.js";
 
 function SimpleCelebList() {
   const sonnyCelebInfo = {
@@ -14,8 +15,10 @@ function SimpleCelebList() {
     rank: 1,
   };
 
+  useSimpleCelebInfoQuery();
+
   return (
-    <GridTemplate>
+    <GridTemplate style={{ marginBottom: "1.75rem" }}>
       {new Array(3).fill(sonnyCelebInfo).map((info, index) => (
         <SimpleCelebCard
           key={index}
