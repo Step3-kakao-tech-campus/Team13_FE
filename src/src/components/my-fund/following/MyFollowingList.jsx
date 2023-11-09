@@ -1,5 +1,5 @@
 import { GridTemplate } from "@/styles/CommonStyle";
-import SimpleCelebCard from "../celebrity/SimpleCelebCard.jsx";
+import SimpleCelebCard from "../../celebrity/SimpleCelebCard.jsx";
 import useFollowingCelebQuery from "@/hooks/api/my-fund/useFollowingCelebQuery.js";
 
 function MyFollowingList() {

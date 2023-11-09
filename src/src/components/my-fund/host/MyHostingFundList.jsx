@@ -1,13 +1,13 @@
 import { Suspense } from "react";
 import InfiniteFundInfoLoader from "@/components/fund-list/InfiniteFundInfo.loader.jsx";
-import InfiniteSupportFund from "@/components/my-fund/InfiniteSupportFund.jsx";
+import InfiniteHostFund from "@/components/my-fund/host/InfiniteHostFund.jsx";
 
-function MyFundingList() {
+function MyHostingFundList() {
   return (
     <Suspense fallback={<InfiniteFundInfoLoader />}>
-      <InfiniteSupportFund />
+      <InfiniteHostFund />
     </Suspense>
   );
 }
 
-export default MyFundingList;
+export default MyHostingFundList;
