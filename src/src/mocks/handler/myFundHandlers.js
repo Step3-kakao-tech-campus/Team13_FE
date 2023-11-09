@@ -28,14 +28,14 @@ export const myFundHandlers = [
             followerNum: 10000,
           },
           {
-            celebId: 2,
+            celebId: 3,
             celebName: "설영우",
             profileUrl:
               "https://i.namu.wiki/i/mFwo5sbcGmtVmDcBxMi36FF5-nPXUs5mfoN2pB3YsbAmJe6h4wX35IT2jQZxNOdqE2BtMgbji8Yp-jvCLs4nsQ.webp",
             followerNum: 8000,
           },
           {
-            celebId: 3,
+            celebId: 4,
             celebName: "이재용",
             profileUrl:
               "https://cdn.thelec.kr/news/photo/202210/18518_16299_646.jpg",
