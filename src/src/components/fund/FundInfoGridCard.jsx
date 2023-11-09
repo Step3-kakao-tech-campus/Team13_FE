@@ -9,7 +9,7 @@ import ProfileImageName from "@/components/common/ProfileImageName.jsx";
 import routes from "@/constants/routes.js";
 import FundMoneyCountdown from "@/components/fund/FundMoneyCountdown.jsx";
 import useHeartButtonClick from "@/hooks/useHeartButtonClick.js";
-import FundingAmountBadge from "../my-fund/FundingAmoutBadge";
+import FundingAmountBadge from "../my-fund/support/FundingAmoutBadge";
 
 const Styled = {
   Container: styled.article`
