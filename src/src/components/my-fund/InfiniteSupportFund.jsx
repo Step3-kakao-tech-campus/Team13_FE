@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { GridTemplate } from "@/styles/CommonStyle.js";
 
-import useInfiniteSupprotFundQuery from "@/hooks/api/my-fund/useInfiniteSupprotFundQuery.js";
+import useInfiniteSupportFundQuery from "@/hooks/api/my-fund/useInfiniteSupportFundQuery.js";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver.js";
 import { FundInfoDto } from "@/api/dto/fund.dto.js";
 
@@ -16,7 +16,7 @@ function InfiniteSupportFund() {
   const loaderRef = useRef();
 
   const { data: infiniteSupportFundData, fetchNextPage } =
-    useInfiniteSupprotFundQuery();
+    useInfiniteSupportFundQuery();
 
   useIntersectionObserver(async () => {
     await fetchNextPage();
