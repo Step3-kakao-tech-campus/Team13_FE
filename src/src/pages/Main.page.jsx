@@ -3,6 +3,7 @@ import MainLayout from "@/components/common/template/MainLayout.jsx";
 import { GridTemplate, Title } from "@/styles/CommonStyle.js";
 import SimpleCelebCard from "@/components/celebrity/SimpleCelebCard";
 import FundInfoGridCard from "@/components/fund/FundInfoGridCard";
+import SORT_ORDER from "@/constants/SORT_ORDER";
 
 const Styled = {
   Title: styled(Title)`
@@ -26,6 +27,8 @@ function MainPage() {
     isFollowing: false,
     rank: 1,
   };
+
+  const sortType = SORT_ORDER.FUND.CLOSER_DEADLINE;
 
   return (
     <>
