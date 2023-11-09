@@ -47,7 +47,7 @@ function FundListPage() {
       return {
         key: SORT_ORDER.KOREAN[type],
         func: () => {
-          setSortType(type);
+          setSortType(SORT_ORDER.FUND[type]);
         },
       };
     },

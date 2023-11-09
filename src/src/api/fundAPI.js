@@ -8,25 +8,25 @@ import {
 
 /**
  * 펀딩 목록 조회 api
- * @param {number | string} pageIndex
+ * @param {number | string} postId
  * @param {string=} keyword
  * @param {string=} sortType
  * @returns {Promise<axios.AxiosResponse<any>>} a
  */
 
-const getFundInfoList = async ({ pageIndex, keyword, sortType }) => {
+const getFundInfoList = async ({ postId, keyword, sortType }) => {
   if (keyword) {
     return await instance({
       url: API.FUND.LIST + "/search/keyword",
       method: "GET",
-      params: { page: pageIndex, sort: sortType, size: 12, keyword },
+      params: { postId: postId, sort: sortType, size: 12, keyword },
     });
   }
 
   return await instance({
     url: API.FUND.LIST,
     method: "GET",
-    params: { page: pageIndex, sort: sortType, size: 12 },
+    params: { postId: postId, sort: sortType, size: 12 },
   });
 };
 

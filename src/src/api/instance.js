@@ -6,7 +6,7 @@ import authAPI from "@/api/authAPI.js";
 //   : import.meta.env.VITE_FUNDERING_API;
 
 const baseUrl =
-  import.meta.env.VITE_FUNDERING_API ?? "http://localhost:5173/api";
+  import.meta.env.VITE_FUNDERING_API + "/api" ?? "http://localhost:5173/api";
 
 const instance = axios.create({
   baseURL: baseUrl,

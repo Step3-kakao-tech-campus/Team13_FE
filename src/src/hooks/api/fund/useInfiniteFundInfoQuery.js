@@ -5,9 +5,9 @@ import fundAPI from "@/api/fundAPI.js";
 function useInfiniteFundInfoQuery({ keyword, sortType }) {
   return useInfiniteQuery(
     [API.FUND.LIST, keyword, sortType],
-    async ({ pageParam = 0 }) => {
+    async ({ postId = 0 }) => {
       return fundAPI.getFundInfoList({
-        pageIndex: pageParam,
+        postId: postId,
         keyword: keyword,
         sortType: sortType,
       });
@@ -16,7 +16,7 @@ function useInfiniteFundInfoQuery({ keyword, sortType }) {
       suspense: true,
       getNextPageParam: (lastPage) => {
         if (lastPage.data.response.lastPage) return;
-        return lastPage.data.response.currentPage;
+        return lastPage.data.response.content.at(-1).postId;
       },
     },
   );
