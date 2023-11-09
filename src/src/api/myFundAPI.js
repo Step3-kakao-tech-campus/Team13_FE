@@ -24,7 +24,7 @@ const getFollowingCelebByToken = async () => {
     url: API.MY_FUND.FOLLOW,
     method: "GET",
   });
-  return new SimpleCelebInfoDto(data);
+  return data.followingCelebList.map((celeb) => new SimpleCelebInfoDto(celeb));
 };
 
 export default { getMyFundUserInfoByToken, getFollowingCelebByToken };
