@@ -18,6 +18,18 @@ const getCelebInfoList = async ({ pageIndex, keyword, sortType }) => {
 };
 
 /**
+ * 메인페이지 심플셀럽 목록 조회 api
+ */
+
+const getSimpleCelebInfoList = async ({ celebId }) => {
+  return await instance({
+    url: API.CELEBRITY.LIST,
+    method: "GET",
+    data: { celebId },
+  });
+};
+
+/**
  * 셀럽 팔로우 api
  */
 const postCelebFollow = async (celebId) => {
@@ -90,4 +102,5 @@ export default {
   postCelebApply,
   getCelebDetailInfo,
   getCelebRelatedFund,
+  getSimpleCelebInfoList,
 };
