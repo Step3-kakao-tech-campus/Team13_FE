@@ -2,7 +2,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import API from "@/constants/API.js";
 import myFundAPI from "@/api/myFundAPI.js";
 
-function useInfiniteSupprotFundQuery() {
+function useInfiniteSupportFundQuery() {
   return useInfiniteQuery(
     [API.MY_FUND.SUPPORT],
     async ({ pageParam = 0 }) => {
@@ -19,4 +19,4 @@ function useInfiniteSupprotFundQuery() {
   );
 }
 
-export default useInfiniteSupprotFundQuery;
+export default useInfiniteSupportFundQuery;
