@@ -49,8 +49,17 @@ const CELEBRITY = {
   },
 };
 
+const MY_FUND = {
+  NICKNAME: "/myfunding/nickname",
+  FOLLOW: "/myfunding/followers",
+  LIKE: "/myfunding/like",
+  SUPPORT: "/myfunding/support",
+  HOST: "/myfunding/host",
+};
+
 Object.freeze(AUTH);
 Object.freeze(FUND);
 Object.freeze(USER);
 Object.freeze(CELEBRITY);
-export default { AUTH, FUND, USER, CELEBRITY };
+Object.freeze(MY_FUND);
+export default { AUTH, FUND, USER, CELEBRITY, MY_FUND };
