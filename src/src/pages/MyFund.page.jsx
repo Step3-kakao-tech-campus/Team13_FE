@@ -32,7 +32,6 @@ const Styled = {
 function MyFundPage() {
   const { data } = useMyFundUserInfoQuery();
   const [selectedTab, setSeletedTab] = useState(TABS.MY_FUND.FOLLOWING);
-  console.log(data);
   const tabInfoArray = Object.keys(TABS.MY_FUND).map((key) => {
     return {
       title: TABS.MY_FUND[key],
@@ -50,7 +49,7 @@ function MyFundPage() {
         ) : (
           <TestAccountIcon size={"100"} />
         )}
-        <div className="userName">{data.nickname}님</div>
+        <div className="userName">{data?.nickname}님</div>
       </Styled.UserInfo>
 
       <Tabs tabInfoArray={tabInfoArray} style={{ margin: "1.7rem 0 3rem" }} />
