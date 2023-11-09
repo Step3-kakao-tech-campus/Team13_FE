@@ -39,8 +39,21 @@ const getSupportFundListByToken = async ({ pageIndex }) => {
   });
 };
 
+/**
+ * My펀딩 주최한 펀딩목록 조회 api
+ */
+
+const getHostFundListByToken = async ({ pageIndex }) => {
+  return await instance({
+    url: API.MY_FUND.HOST,
+    method: "GET",
+    params: { pageIndex: pageIndex },
+  });
+};
+
 export default {
   getMyFundUserInfoByToken,
   getFollowingCelebByToken,
   getSupportFundListByToken,
+  getHostFundListByToken,
 };
