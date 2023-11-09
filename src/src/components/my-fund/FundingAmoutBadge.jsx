@@ -30,7 +30,7 @@ function FundingAmountBadge({ paymentAmount, ...htmlDivProps }) {
   );
 }
 
-FundingAmountBadge.PropTypes = {
+FundingAmountBadge.propTypes = {
   paymentAmount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
