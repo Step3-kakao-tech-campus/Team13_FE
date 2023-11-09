@@ -27,4 +27,20 @@ const getFollowingCelebByToken = async () => {
   return data.followingCelebList.map((celeb) => new SimpleCelebInfoDto(celeb));
 };
 
-export default { getMyFundUserInfoByToken, getFollowingCelebByToken };
+/**
+ * My펀딩 후원한 펀딩목록 조회 api
+ */
+
+const getSupportFundListByToken = async ({ pageIndex }) => {
+  return await instance({
+    url: API.MY_FUND.SUPPORT,
+    method: "GET",
+    params: { pageIndex: pageIndex },
+  });
+};
+
+export default {
+  getMyFundUserInfoByToken,
+  getFollowingCelebByToken,
+  getSupportFundListByToken,
+};
