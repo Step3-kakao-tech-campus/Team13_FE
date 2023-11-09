@@ -4,6 +4,9 @@ import { GridTemplate, Title } from "@/styles/CommonStyle.js";
 import SimpleCelebCard from "@/components/celebrity/SimpleCelebCard";
 import FundInfoGridCard from "@/components/fund/FundInfoGridCard";
 import SORT_ORDER from "@/constants/SORT_ORDER";
+import { Suspense } from "react";
+import InfiniteFundInfoLoader from "@/components/fund-list/InfiniteFundInfo.loader";
+import InfiniteFundInfo from "@/components/fund-list/InfiniteFundInfo";
 
 const Styled = {
   Title: styled(Title)`
@@ -53,25 +56,9 @@ function MainPage() {
 
         <Styled.Title>마감 임박한 펀딩</Styled.Title>
 
-        <GridTemplate>
-          {new Array(6).fill(sonnyCelebInfo).map((info, index) => (
-            <FundInfoGridCard
-              key={index}
-              fundId={fundInfo.fundId}
-              fundTitle={fundInfo.fundTitle}
-              thumbnailUrl={fundInfo.thumbnailUrl}
-              targetDate={fundInfo.targetDate}
-              targetMoney={fundInfo.targetMoney}
-              currentMoney={fundInfo.currentMoney}
-              celebrityId={fundInfo.celebrityId}
-              celebrityProfileUrl={fundInfo.celebrityProfileUrl}
-              celebrityName={fundInfo.celebrityName}
-              organizerId={fundInfo.organizerId}
-              organizerName={fundInfo.organizerName}
-              isInUserWishList={fundInfo.isInUserWishList}
-            />
-          ))}
-        </GridTemplate>
+        <Suspense fallback={<InfiniteFundInfoLoader />}>
+          <InfiniteFundInfo sortType={sortType} />
+        </Suspense>
       </MainLayout>
     </>
   );
