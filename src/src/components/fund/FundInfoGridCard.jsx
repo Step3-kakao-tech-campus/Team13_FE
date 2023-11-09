@@ -124,7 +124,12 @@ function FundInfoGridCard({
         navigate(`${routes.fund}/${fundId}`);
       }}
     >
-      {paymentAmount && <FundingAmountBadge paymentAmount={paymentAmount} />}
+      {paymentAmount && (
+        <FundingAmountBadge
+          paymentAmount={paymentAmount}
+          style={{ position: "absolute", top: "0.75rem", left: "0.75rem" }}
+        />
+      )}
       <HeartButton
         style={{
           position: "absolute",

@@ -20,9 +20,9 @@ const Styled = {
  *  @param {string || number} paymentAmount 후원한 펀딩 금액
  */
 
-function FundingAmountBadge({ paymentAmount }) {
+function FundingAmountBadge({ paymentAmount, ...htmlDivProps }) {
   return (
-    <Styled.Container>
+    <Styled.Container {...htmlDivProps}>
       <Styled.Amount>
         {Number(paymentAmount).toLocaleString("ko-KR")}원
       </Styled.Amount>
