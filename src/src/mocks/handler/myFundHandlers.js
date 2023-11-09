@@ -95,7 +95,7 @@ export const myFundHandlers = [
       ctx.json({
         isLastPage: false,
         currentPage: pageIndex,
-        fundList: Array.from({ length: 12 }, (_, i) =>
+        supportFundList: Array.from({ length: 12 }, (_, i) =>
           i % 2 ? sonnyFundInfo2 : sonnyFundInfo1,
         ),
       }),
