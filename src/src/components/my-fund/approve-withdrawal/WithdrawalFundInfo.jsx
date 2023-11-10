@@ -1,11 +1,13 @@
-import ProfileImageName from "@/components/common/ProfileImageName.jsx";
-import Button from "@/components/common/button/Button.jsx";
-import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
-import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
-import routes from "@/constants/routes";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+
+import routes from "@/constants/routes";
+
+import ProfileImageName from "@/components/common/ProfileImageName.jsx";
+import Button from "@/components/common/button/Button.jsx";
+import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
+import WithdrawalModal from "@/components/my-fund/approve-withdrawal/WithdrawalModal.jsx";
 
 const Styled = {
   Container: styled.article`
@@ -158,11 +160,7 @@ function WithdrawalFundInfo() {
           >
             자세히
           </Button>
-          {isModalOpen && (
-            <BackdropModal setOpen={setIsModalOpen}>
-              <h1>출금 승인과 거절을 택하게 보여줄게요</h1>
-            </BackdropModal>
-          )}
+          {isModalOpen && <WithdrawalModal setOpen={setIsModalOpen} />}
         </Styled.BottomBox>
       </Styled.RightWrapper>
     </Styled.Container>
