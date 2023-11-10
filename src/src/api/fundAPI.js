@@ -85,6 +85,8 @@ const getDetailInfoByFundId = async (fundId) => {
     organizerProfileUrl: data?.writerImg,
     likeCount: data?.heartCount,
     isOrganizer: data?.eqWriter,
+    isInUserWishList: data?.heart,
+    isFollowing: data?.followed,
   });
 };
 
