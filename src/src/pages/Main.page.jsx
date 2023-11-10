@@ -20,11 +20,6 @@ const Styled = {
 function MainPage() {
   const sortType = SORT_ORDER.FUND.CLOSER_DEADLINE;
 
-  // 1. mock api를 먼저 mock/celebHandler에 만들고
-  // 2. 해당 api를 통신하는 handler 함수를 api/celebApi에 만들고
-  // 3. 핸들러 함수를 활용해 규민님이 이해한 것처럼 커스텀 훅을 만들고
-  // 4. 기존 심플셀럽카드(이거맞나여)에 연결하면 돼요
-
   return (
     <>
       <MainLayout>
