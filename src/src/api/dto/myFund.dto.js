@@ -14,17 +14,17 @@ class MyFundWithdrawalInfoDto {
     fundTitle,
     organizerId,
     organizerName,
-    profileUrl,
+    organizerProfileUrl,
   }) {
-    this.profileUrl = withdrawalId;
-    this.profileUrl = withdrawalAmount;
-    this.profileUrl = usage;
-    this.profileUrl = fundId;
-    this.profileUrl = thumbnailUrl;
-    this.profileUrl = fundTitle;
-    this.profileUrl = organizerId;
-    this.profileUrl = organizerName;
-    this.profileUrl = profileUrl;
+    this.withdrawalId = withdrawalId;
+    this.withdrawalAmount = withdrawalAmount;
+    this.usage = usage;
+    this.fundId = fundId;
+    this.thumbnailUrl = thumbnailUrl;
+    this.fundTitle = fundTitle;
+    this.organizerId = organizerId;
+    this.organizerName = organizerName;
+    this.organizerProfileUrl = organizerProfileUrl;
   }
 }
 export { MyFundUserInfoDto, MyFundWithdrawalInfoDto };
