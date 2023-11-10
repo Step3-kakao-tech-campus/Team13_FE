@@ -6,6 +6,7 @@ import MobileNavBar from "@/components/common/nav-bar/moblie/MobileNavBar.jsx";
 import PCNavBar from "@/components/common/nav-bar/pc/PCNavBar.jsx";
 import useIsInListPages from "@/hooks/useIsInListPages.js";
 import { Toaster } from "react-hot-toast";
+import { PropTypes } from "prop-types";
 
 const Styled = {
   Body: styled.div`
@@ -27,9 +28,10 @@ const Styled = {
 
 /**
  * 반응형 나비게이션 바를 포함한 레이아웃
+ * @param {HTMLElement} children
  */
 
-function Layout() {
+function Layout({ children }) {
   const isInListPages = useIsInListPages();
 
   const calPadding = () => {
@@ -51,9 +53,14 @@ function Layout() {
       <Styled.Container style={{ paddingTop: calPadding() }}>
         <ScrollRestoration />
         <Outlet />
+        {children}
       </Styled.Container>
     </Styled.Body>
   );
 }
+
+Layout.propTypes = {
+  children: PropTypes.node,
+};
 
 export default Layout;
