@@ -1,7 +1,7 @@
 import instance from "@/api/instance.js";
 import API from "@/constants/API.js";
 import {
-  CelebDetailInfoDto, CelebInfoDto,
+  CelebDetailInfoDto,
   CelebInfoDto,
   SimpleCelebInfoDto,
 } from "@/api/dto/celebrity.dto.js";
