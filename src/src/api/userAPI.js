@@ -12,7 +12,11 @@ const getUserSettingByToken = async () => {
     url: API.USER.SETTING,
     method: "GET",
   });
-  return new UserSettingDto(data);
+  return new UserSettingDto({
+    nickname: data?.response?.nickname,
+    phoneNumber: data?.response?.phoneNumber,
+    profileUrl: data?.response?.profileImage,
+  });
 };
 
 /**
