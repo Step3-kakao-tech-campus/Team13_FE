@@ -2,6 +2,7 @@ const AUTH = {
   LOGIN: "/login",
   SIGN_UP: "/signup",
   DELETE_ACCOUNT: "/delete-account",
+  EMAIL_DUPLICATE: "/signup/check",
 };
 
 const FUND = {
@@ -34,6 +35,7 @@ const USER = {
 const CELEBRITY = {
   LIST: "/celebs",
   REGISTER: "/celebs",
+  RECOMMEND: "/celebs/recommend",
   FOLLOW: (celebId) => {
     return `/celebs/${celebId}/follow`;
   },
@@ -48,8 +50,17 @@ const CELEBRITY = {
   },
 };
 
+const MY_FUND = {
+  NICKNAME: "/myfunding/nickname",
+  FOLLOW: "/myfunding/followers",
+  LIKE: "/myfunding/like",
+  SUPPORT: "/myfunding/support",
+  HOST: "/myfunding/host",
+};
+
 Object.freeze(AUTH);
 Object.freeze(FUND);
 Object.freeze(USER);
 Object.freeze(CELEBRITY);
-export default { AUTH, FUND, USER, CELEBRITY };
+Object.freeze(MY_FUND);
+export default { AUTH, FUND, USER, CELEBRITY, MY_FUND };

@@ -1,6 +1,10 @@
 import instance from "@/api/instance.js";
 import API from "@/constants/API.js";
-import { CelebDetailInfoDto } from "@/api/dto/celebrity.dto.js";
+import {
+  CelebDetailInfoDto, CelebInfoDto,
+  CelebInfoDto,
+  SimpleCelebInfoDto,
+} from "@/api/dto/celebrity.dto.js";
 
 /**
  * 셀럽 목록 조회 api
@@ -9,12 +13,26 @@ import { CelebDetailInfoDto } from "@/api/dto/celebrity.dto.js";
  * @param {string=} sortType
  */
 
-const getCelebInfoList = async ({ pageIndex, keyword, sortType }) => {
+const getCelebInfoList = async ({ cursorId, keyword, sortType }) => {
   return await instance({
-    url: API.CELEBRITY.LIST,
+    url: API.CELEBRITY.LIST + `?celebId=${cursorId}&keyword=${keyword || ""}`,
     method: "GET",
-    params: { pageIndex: pageIndex, keyword: keyword, sortType: sortType },
+    // params: { celebId: cursorId, keyword: keyword, sortType: sortType },
   });
+  //TODO: 백엔드 서버 수정 후 추후 params 수정
+};
+
+/**
+ * 메인페이지 심플셀럽 목록 조회 api
+ */
+
+const getSimpleCelebInfoList = async () => {
+  const { data } = await instance({
+    url: API.CELEBRITY.RECOMMEND,
+    method: "GET",
+  });
+  return data.simpleCelebList.map((data) => new SimpleCelebInfoDto(data));
+  return data.simpleCelebList.map((data) => new SimpleCelebInfoDto(data));
 };
 
 /**
@@ -90,4 +108,5 @@ export default {
   postCelebApply,
   getCelebDetailInfo,
   getCelebRelatedFund,
+  getSimpleCelebInfoList,
 };

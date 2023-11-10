@@ -92,7 +92,7 @@ function WithdrawInfoBar({
           setIsModalOpen(true);
         }}
       >
-        <Styled.Date>{formatDateToYYYYMMDD(date)}</Styled.Date>
+        <Styled.Date>{formatDateToYYYYMMDD(new Date(date))}</Styled.Date>
         <Styled.Bar $pointer={evidenceUrl || isOrganizer}>
           <Styled.EvidenceWrapper>
             {evidenceUrl ? (

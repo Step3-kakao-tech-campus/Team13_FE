@@ -16,7 +16,7 @@ const calculateComponentCount = (width) => {
  * @constructor
  */
 
-function InfiniteFundInfoLoader({ loaderRef }) {
+function InfiniteFundInfoLoader({ loaderRef, ...props }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const componentNumberRef = useRef(calculateComponentCount(window.innerWidth));
 
@@ -35,7 +35,7 @@ function InfiniteFundInfoLoader({ loaderRef }) {
   }, [windowWidth]);
 
   return (
-    <GridTemplate ref={loaderRef} style={{ margin: "3rem 0" }}>
+    <GridTemplate ref={loaderRef} style={{ margin: "3rem 0" }} {...props}>
       {Array.from({ length: componentNumberRef.current }).map((_, index) => (
         <FundInfoGridCardSkeleton key={index} />
       ))}

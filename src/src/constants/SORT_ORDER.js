@@ -4,8 +4,8 @@ const KOREAN = {
 };
 
 const FUND = {
-  CLOSER_DEADLINE: "CLOSER_DEADLINE",
-  RECENT_ENROLLMENT: "RECENT_ENROLLMENT",
+  CLOSER_DEADLINE: "deadline",
+  RECENT_ENROLLMENT: "recent",
 };
 
 Object.freeze(KOREAN);

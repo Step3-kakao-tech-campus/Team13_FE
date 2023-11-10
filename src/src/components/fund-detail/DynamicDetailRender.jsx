@@ -2,7 +2,7 @@ import { PropTypes } from "prop-types";
 
 import TABS from "@/constants/TABS.js";
 import Introduction from "@/components/fund-detail/introduction/Introduction.jsx";
-import Update from "@/components/fund-detail/update/Update.jsx";
+import UpdateWrapper from "@/components/fund-detail/update/UpdateWrapper.jsx";
 import CommentContainer from "@/components/fund-detail/comment/CommentContainer.jsx";
 import Withdraw from "@/components/fund-detail/withdraw/Withdraw.jsx";
 
@@ -17,7 +17,7 @@ function DynamicDetailRender({ type, isOrganizer }) {
     case TABS.FUND_DETAIL.INTRO:
       return <Introduction isOrganizer={isOrganizer} />;
     case TABS.FUND_DETAIL.UPDATE:
-      return <Update />;
+      return <UpdateWrapper />;
     case TABS.FUND_DETAIL.COMMENT:
       return <CommentContainer />;
     case TABS.FUND_DETAIL.WITHDRAW:

@@ -10,8 +10,8 @@ function usePostCelebUnfollowMutation(handleSuccess) {
       return celebrityAPI.postCelebUnfollow(celebId);
     },
     {
-      onError: (err) => {
-        toast.error(err.response.data.message);
+      onError: () => {
+        toast.error("언팔로잉 요청이 실패했습니다");
       },
       onSuccess: handleSuccess,
     },

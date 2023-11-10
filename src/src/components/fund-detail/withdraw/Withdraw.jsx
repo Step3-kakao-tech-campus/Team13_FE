@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import { PropTypes } from "prop-types";
 import { Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
+import { useNavigate, useParams } from "react-router-dom";
+
 import Button from "@/components/common/button/Button.jsx";
 import InfiniteWithdrawInfo from "@/components/fund-detail/withdraw/InfiniteWithdrawInfo.jsx";
 import InfiniteWithdrawInfoLoader from "@/components/fund-detail/withdraw/InfiniteWithdrawInfo.loader.jsx";
-import { useNavigate, useParams } from "react-router-dom";
 import routes from "@/constants/routes.js";
 
 const Styled = {
@@ -47,9 +49,19 @@ function Withdraw({ isOrganizer }) {
         )}
       </Styled.TitleBar>
 
-      <Suspense fallback={<InfiniteWithdrawInfoLoader />}>
-        <InfiniteWithdrawInfo isOrganizer={isOrganizer} />
-      </Suspense>
+      <ErrorBoundary
+        fallbackRender={({ error }) => {
+          return (
+            <div style={{ padding: "1rem 0" }}>
+              {error?.response?.data?.error?.message}
+            </div>
+          );
+        }}
+      >
+        <Suspense fallback={<InfiniteWithdrawInfoLoader />}>
+          <InfiniteWithdrawInfo isOrganizer={isOrganizer} />
+        </Suspense>
+      </ErrorBoundary>
     </Styled.Container>
   );
 }
