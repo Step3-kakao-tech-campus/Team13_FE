@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import routes from "@/constants/routes";
+import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
+import useInfiniteWithdrawalFundQuery from "@/hooks/api/my-fund/useInfiniteWithdrawalFundQuery.js";
+import useIntersectionObserver from "@/hooks/useIntersectionObserver.js";
+import { MyFundWithdrawalInfoDto } from "@/api/dto/myFund.dto.js";
 
 import ProfileImageName from "@/components/common/ProfileImageName.jsx";
 import Button from "@/components/common/button/Button.jsx";
-import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import WithdrawalModal from "@/components/my-fund/approve-withdrawal/WithdrawalModal.jsx";
 
 const Styled = {
@@ -94,74 +97,64 @@ const Styled = {
 function WithdrawalFundInfo() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
+  const loaderRef = useRef();
 
-  const tmp = {
-    fundId: 1,
-    fundTitle:
-      "손흥민 주장된 기념 지하철 광고 🎉🎉 축구중독자가 책임지고 펀딩합니다 ❤️‍🔥",
-    thumbnailUrl:
-      "https://ichef.bbci.co.uk/news/640/cpsprodpb/4118/production/_119546661_gettyimages-1294130887.jpg",
-    createdAt: "2023-10-24",
-    targetDate: "2023-12-17",
-    targetMoney: "3000000",
-    currentMoney: "2340000",
-    participantNumber: 43,
-    celebrityId: "sonny",
-    celebrityName: "손흥민",
-    celebrityProfileUrl:
-      "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
-    isFollowing: true,
-    celebrityFollowerNum: 3450,
-    organizerId: "soccer123",
-    organizerName: "축구도사",
-    organizerProfileUrl:
-      "https://velog.velcdn.com/images/j8won/profile/55917697-2140-40be-ad07-d2d02137f38e/image.jpeg",
-    likeCount: 218,
-    isInUserWishList: true,
-    isOrganizer: true,
-    withdrawlHistory: "강남역 스크린도어",
-    withdrawlAmount: 1000000,
+  const { data: infiniteWithdrawalFundData, fetchNextPage } =
+    useInfiniteWithdrawalFundQuery();
+
+  useIntersectionObserver(async () => {
+    await fetchNextPage();
+  }, loaderRef);
+
+  const mapInfoToWithdrawlFundDto = (info) => {
+    return new MyFundWithdrawalInfoDto({ ...info });
   };
 
   return (
-    <Styled.Container>
-      <Styled.FundImage
-        src={tmp.thumbnailUrl}
-        alt={`${tmp.fundTitle}의 대표 사진`}
-      />
-
-      <Styled.RightWrapper>
-        <Styled.TopBox>
-          <Styled.Title>{tmp.fundTitle}</Styled.Title>
-          <Styled.ProfileBox>
-            <ProfileImageName
-              name={tmp.organizerName}
-              imageUrl={tmp.organizerProfileUrl}
-              onClick={() => {
-                navigate(`${routes.user}/${tmp.organizerId}`);
-              }}
+    <>
+      {infiniteWithdrawalFundData?.pages.map((page) =>
+        page?.data?.withdrawalApplyFundList.map((info, index) => (
+          <Styled.Container key={index} {...mapInfoToWithdrawlFundDto(info)}>
+            <Styled.FundImage
+              src={info.thumbnailUrl}
+              alt={`${info.fundTitle}의 대표 사진`}
             />
-          </Styled.ProfileBox>
-        </Styled.TopBox>
 
-        <Styled.BottomBox>
-          <Styled.WithdrawalInfo>
-            <div>{tmp.withdrawlHistory}</div>
-            <div className="amount">
-              {Number(tmp.withdrawlAmount).toLocaleString("ko-KR")}원
-            </div>
-          </Styled.WithdrawalInfo>
-          <Button
-            styleType={BUTTON_TYPE.SECONDARY}
-            style={{ padding: "0.7rem 1.3rem ", fontSize: "1.25rem" }}
-            onClick={() => setIsModalOpen(true)}
-          >
-            자세히
-          </Button>
-          {isModalOpen && <WithdrawalModal setOpen={setIsModalOpen} />}
-        </Styled.BottomBox>
-      </Styled.RightWrapper>
-    </Styled.Container>
+            <Styled.RightWrapper>
+              <Styled.TopBox>
+                <Styled.Title>{info.fundTitle}</Styled.Title>
+                <Styled.ProfileBox>
+                  <ProfileImageName
+                    name={info.organizerName}
+                    imageUrl={info.organizerProfileUrl}
+                    onClick={() => {
+                      navigate(`${routes.user}/${info.organizerId}`);
+                    }}
+                  />
+                </Styled.ProfileBox>
+              </Styled.TopBox>
+
+              <Styled.BottomBox>
+                <Styled.WithdrawalInfo>
+                  <div>{info.withdrawlHistory}</div>
+                  <div className="amount">
+                    {Number(info.withdrawlAmount).toLocaleString("ko-KR")}원
+                  </div>
+                </Styled.WithdrawalInfo>
+                <Button
+                  styleType={BUTTON_TYPE.SECONDARY}
+                  style={{ padding: "0.7rem 1.3rem ", fontSize: "1.25rem" }}
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  자세히
+                </Button>
+                {isModalOpen && <WithdrawalModal setOpen={setIsModalOpen} />}
+              </Styled.BottomBox>
+            </Styled.RightWrapper>
+          </Styled.Container>
+        )),
+      )}
+    </>
   );
 }
 export default WithdrawalFundInfo;
