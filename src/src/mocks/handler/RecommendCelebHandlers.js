@@ -1,13 +1,13 @@
 import { rest } from "msw";
 import API from "@/constants/API.js";
 
-export const myFundHandlers = [
+export const recommendCelebHandlers = [
   // 팔로잉한 셀럽 조회
-  rest.get("/api" + API.CELEBRITY.LIST, (req, res, ctx) => {
+  rest.get("/api" + API.CELEBRITY.RECOMMEND, (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
-        celebList: [
+        simpleCelebList: [
           {
             celebId: 1,
             celebName: "손흥민",

@@ -34,6 +34,7 @@ const USER = {
 const CELEBRITY = {
   LIST: "/celebs",
   REGISTER: "/celebs",
+  RECOMMEND: "/celebs/recommend",
   FOLLOW: (celebId) => {
     return `/celebs/${celebId}/follow`;
   },
@@ -46,7 +47,6 @@ const CELEBRITY = {
   FUNDING: (celebId) => {
     return `/celebs/${celebId}/posts`;
   },
-  RECOMMEND: "/celebs/recommend",
 };
 
 Object.freeze(AUTH);
