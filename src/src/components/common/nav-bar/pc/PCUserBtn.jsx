@@ -78,7 +78,9 @@ function PCUserBtn() {
       ) : (
         <TestAccountIcon
           onClick={() => {
-            navigate(routes.signIn);
+            if (!isLoggedIn) {
+              navigate(routes.signIn);
+            }
           }}
         />
       )}
