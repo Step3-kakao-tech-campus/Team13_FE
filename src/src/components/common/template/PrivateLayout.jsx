@@ -9,11 +9,19 @@ function PrivateLayout() {
   const deleteUserInfoInLocalStorage = useDeleteUserInfoInLocalStorage();
 
   useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken").replace(/"/gi, "");
-
-    if (!accessToken || accessToken === "") {
+    const deleteTokenAndRedirect = () => {
       deleteUserInfoInLocalStorage();
       navigate(routes.signIn);
+    };
+
+    if (!localStorage.getItem("accessToken")) {
+      deleteTokenAndRedirect();
+    }
+
+    const accessToken = localStorage?.getItem("accessToken").replace(/"/gi, "");
+
+    if (!accessToken) {
+      deleteTokenAndRedirect();
     }
   }, []);
 
