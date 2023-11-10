@@ -95,9 +95,9 @@ const Styled = {
  */
 
 function WithdrawalFundInfo() {
+  const loaderRef = useRef();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
-  const loaderRef = useRef();
 
   const { data: infiniteWithdrawalFundData, fetchNextPage } =
     useInfiniteWithdrawalFundQuery();
@@ -136,9 +136,9 @@ function WithdrawalFundInfo() {
 
               <Styled.BottomBox>
                 <Styled.WithdrawalInfo>
-                  <div>{info.withdrawlHistory}</div>
+                  <div>{info.usage}</div>
                   <div className="amount">
-                    {Number(info.withdrawlAmount).toLocaleString("ko-KR")}원
+                    {Number(info.withdrawalAmount).toLocaleString("ko-KR")}원
                   </div>
                 </Styled.WithdrawalInfo>
                 <Button
