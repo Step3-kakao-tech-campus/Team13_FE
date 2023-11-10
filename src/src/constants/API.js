@@ -47,7 +47,6 @@ const CELEBRITY = {
   FUNDING: (celebId) => {
     return `/celebs/${celebId}/posts`;
   },
-  RECOMMEND: "/celebs/recommend",
 };
 
 const MY_FUND = {
