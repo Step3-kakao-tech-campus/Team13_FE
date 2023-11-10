@@ -79,8 +79,9 @@ function PCUserBtn() {
         <TestAccountIcon
           onClick={() => {
             if (!isLoggedIn) {
-              navigate(routes.signIn);
+              return navigate(routes.signIn);
             }
+            return setIsMenuModalOpen(true);
           }}
         />
       )}
