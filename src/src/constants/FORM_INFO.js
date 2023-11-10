@@ -51,7 +51,9 @@ const SIGN_UP = [
           try {
             await authAPI.isEmailDuplicate({ email: value });
           } catch (e) {
-            return e.response.data.error.message;
+            if (e.response.data.error.message === "이메일이 존재합니다.") {
+              return "펀더링에 가입된 이메일입니다";
+            }
           }
         },
       },

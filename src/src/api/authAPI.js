@@ -42,8 +42,8 @@ const refreshToken = ({ baseUrl, refreshToken }) => {
  */
 const deleteAccountByToken = () => {
   return instance({
-    url: API.AUTH.DELETE_ACCOUNT,
-    method: "POST",
+    url: API.USER.SETTING,
+    method: "DELETE",
   });
 };
 
