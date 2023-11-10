@@ -4,13 +4,12 @@ import { Suspense } from "react";
 import { PropTypes } from "prop-types";
 import { ErrorBoundary } from "react-error-boundary";
 
-import QuillStrToHtml from "@/components/common/QuillStrToHtml.jsx";
-import Button from "@/components/common/button/Button.jsx";
+import EDIT_TYPE from "@/constants/EDIT_TYPE.js";
 import routes from "@/constants/routes.js";
+import Button from "@/components/common/button/Button.jsx";
 import CoAdmins from "@/components/fund-detail/introduction/CoAdmins.jsx";
 import CoAdminsLoader from "@/components/fund-detail/introduction/CoAdmins.loader.jsx";
-import useFundIntroQuery from "@/hooks/api/fund/useFundIntroQuery.js";
-import EDIT_TYPE from "@/constants/EDIT_TYPE.js";
+import IntroTextView from "@/components/fund-detail/introduction/IntroTextView.jsx";
 
 const Styled = {
   Container: styled.div``,
@@ -42,7 +41,6 @@ const Styled = {
 function Introduction({ isOrganizer }) {
   const navigate = useNavigate();
   const { fundId } = useParams();
-  const { data } = useFundIntroQuery({ fundId });
 
   return (
     <Styled.Container>
@@ -76,10 +74,15 @@ function Introduction({ isOrganizer }) {
       </ErrorBoundary>
 
       <Styled.Title>프로젝트 소개</Styled.Title>
-      <QuillStrToHtml
-        htmlStr={data?.introduction}
-        style={{ paddingTop: "1rem" }}
-      />
+      <ErrorBoundary
+        fallback={
+          <div style={{ padding: "1rem 0" }}>
+            프로젝트 소개글 조회에 실패했습니다
+          </div>
+        }
+      >
+        <IntroTextView />
+      </ErrorBoundary>
     </Styled.Container>
   );
 }
