@@ -1,6 +1,10 @@
 import instance from "@/api/instance.js";
 import API from "@/constants/API.js";
-import { CelebDetailInfoDto, CelebInfoDto } from "@/api/dto/celebrity.dto.js";
+import {
+  CelebDetailInfoDto,
+  CelebInfoDto,
+  SimpleCelebInfoDto,
+} from "@/api/dto/celebrity.dto.js";
 
 /**
  * 셀럽 목록 조회 api
@@ -26,7 +30,7 @@ const getSimpleCelebInfoList = async () => {
     url: API.CELEBRITY.LIST,
     method: "GET",
   });
-  return new CelebInfoDto(data);
+  return data.simpleCelebList.map((celeb) => new SimpleCelebInfoDto(celeb));
 };
 
 /**
