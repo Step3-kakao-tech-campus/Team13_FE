@@ -42,7 +42,7 @@ function InfiniteFundInfo({ keyword, sortType }) {
       celebrityProfileUrl: info.celebImg,
       organizerId: info.writerId,
       organizerName: info.writer,
-      isInUserWishList: info.isInUserWishList,
+      isInUserWishList: info.isHeart,
     });
   };
 

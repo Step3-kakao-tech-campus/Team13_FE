@@ -6,6 +6,7 @@ import useIntersectionObserver from "@/hooks/useIntersectionObserver.js";
 import WithdrawInfoBar from "@/components/fund-detail/withdraw/WithdrawInfoBar.jsx";
 import InfiniteWithdrawInfoLoader from "@/components/fund-detail/withdraw/InfiniteWithdrawInfo.loader.jsx";
 import { PropTypes } from "prop-types";
+import { FundWithdrawDto } from "@/api/dto/fund.dto";
 
 const Styled = {
   TotalMoneyBar: styled.div`
@@ -44,28 +45,28 @@ function InfiniteWithdrawInfo({ isOrganizer }) {
       <Styled.TotalMoneyBar>
         <div className="description">남은 금액</div>
         <div className="left-money">
-          {withdrawInfoData?.pages[0]?.data?.currentBalance?.toLocaleString(
+          {withdrawInfoData?.pages?.[0]?.currentBalance?.toLocaleString(
             "ko-KR",
           )}
           원
         </div>
       </Styled.TotalMoneyBar>
       {withdrawInfoData?.pages?.map((page) =>
-        page?.data?.withdrawalDTOs.map((info, index) => (
+        page?.withdrawalDTOs.map((info, index) => (
           <WithdrawInfoBar
             key={index}
             isOrganizer={isOrganizer}
-            id={info?.withdrawId}
-            date={new Date(info?.withdrawTime)}
-            usageTitle={info?.usage}
-            evidenceUrl={info?.evidenceUrl}
-            withdrawMoney={info?.withdrawAmount}
-            totalMoney={info?.balance}
+            {...new FundWithdrawDto(info)}
           />
         )),
       )}
 
-      <InfiniteWithdrawInfoLoader loaderRef={loaderRef} />
+      <InfiniteWithdrawInfoLoader
+        loaderRef={loaderRef}
+        style={
+          withdrawInfoData?.pages?.at(-1)?.isLastPage && { display: "none" }
+        }
+      />
     </>
   );
 }

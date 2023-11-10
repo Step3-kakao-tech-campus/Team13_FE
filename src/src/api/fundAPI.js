@@ -125,11 +125,13 @@ const getFundIntroductionByFundId = async (fundId) => {
  * @returns {Promise<axios.AxiosResponse<any>>}
  */
 const getFundWithdrawInfo = async ({ fundId, pageIndex }) => {
-  return await instance({
+  const { data } = await instance({
     url: API.FUND.WITHDRAW(fundId),
     method: "GET",
     params: { pageIndex: pageIndex },
   });
+
+  return data.response;
 };
 
 /**
