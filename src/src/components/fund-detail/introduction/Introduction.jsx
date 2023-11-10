@@ -64,7 +64,7 @@ function Introduction({ isOrganizer }) {
       <ErrorBoundary
         fallback={
           <div style={{ padding: "1rem 0 2rem 0" }}>
-            해당 정보 불러오기에 실패했습니다
+            공동관리자 정보 불러오기에 실패했습니다
           </div>
         }
       >
