@@ -5,6 +5,7 @@ import DynamicDetailRender from "@/components/fund-detail/DynamicDetailRender.js
 import TABS from "@/constants/TABS.js";
 import Tabs from "@/components/common/button/TabButtons.jsx";
 import InformationSkeleton from "@/components/fund-detail/information/Information.skeleton.jsx";
+import { ErrorBoundary } from "react-error-boundary";
 
 const Styled = {
   Container: styled.section`
@@ -60,7 +61,9 @@ function FundDetailPage() {
       </Suspense>
       <Styled.DetailWrap>
         <Tabs tabInfoArray={tabInfoArray} style={{ paddingBottom: "1rem" }} />
-        <DynamicDetailRender type={selectedTab} isOrganizer={isOrganizer} />
+        <ErrorBoundary fallback={<div>해당 정보 불러오기에 실패했습니다</div>}>
+          <DynamicDetailRender type={selectedTab} isOrganizer={isOrganizer} />
+        </ErrorBoundary>
       </Styled.DetailWrap>
     </Styled.Container>
   );

@@ -64,11 +64,30 @@ const deleteFundLike = async (fundId) => {
  */
 
 const getDetailInfoByFundId = async (fundId) => {
-  const { data } = await instance({
+  const response = await instance({
     url: API.FUND.DETAIL(fundId),
     method: "GET",
   });
-  return new FundDetailInfoDto(data);
+
+  const data = response.data.response;
+  return new FundDetailInfoDto({
+    fundId: data?.postId,
+    fundTitle: data?.title,
+    thumbnailUrl: data?.thumbnail,
+    createdAt: data?.createdAt,
+    targetDate: data?.deadline,
+    targetMoney: data?.targetPrice,
+    currentMoney: data?.currentAmount,
+    participantNumber: data?.participant,
+    celebrityId: data?.celebId,
+    celebrityName: data?.celebrity,
+    celebrityProfileUrl: data?.celebImg,
+    organizerId: data?.writerId,
+    organizerName: data?.writer,
+    organizerProfileUrl: data?.writerImg,
+    likeCount: data?.heartCount,
+    isOrganizer: data?.eqWriter,
+  });
 };
 
 /**
