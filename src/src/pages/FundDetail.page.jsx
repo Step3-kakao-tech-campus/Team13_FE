@@ -42,6 +42,7 @@ const Styled = {
 
 function FundDetailPage() {
   const [selectedTab, setSelectedTab] = useState(TABS.FUND_DETAIL.INTRO);
+  const [isOrganizer, setIsOrganizer] = useState(false);
 
   const tabInfoArray = Object.keys(TABS.FUND_DETAIL).map((key) => {
     return {
@@ -52,12 +53,10 @@ function FundDetailPage() {
     };
   });
 
-  const isOrganizer = true;
-
   return (
     <Styled.Container>
       <Suspense fallback={<InformationSkeleton />}>
-        <Information />
+        <Information setIsOrganizer={setIsOrganizer} />
       </Suspense>
       <Styled.DetailWrap>
         <Tabs tabInfoArray={tabInfoArray} style={{ paddingBottom: "1rem" }} />

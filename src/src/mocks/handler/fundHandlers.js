@@ -87,6 +87,25 @@ const sonnyFundDetailInfo2 = {
   isOrganizer: false,
 };
 
+const withdrawInfo1 = {
+  withdrawId: 1,
+  usage: "강남역 스크린도어",
+  withdrawAmount: 2_000_000,
+  balance: 5_000_000,
+  evidenceUrl:
+    "https://media.istockphoto.com/id/1285504723/ko/%EB%B2%A1%ED%84%B0/%ED%8C%90%EB%A7%A4-%EC%98%81%EC%88%98%EC%A6%9D.jpg?s=612x612&w=0&k=20&c=xf9rUJXZ-BqwZKqnlL8QCeCCXdjGsVqfU5ZVsUjpnRs=",
+  withdrawTime: 1699017340,
+};
+
+const withdrawInfo2 = {
+  withdrawalId: 2,
+  usage: "신사역 스크린도어",
+  withdrawAmount: 1_000_000,
+  balance: 2_000_000,
+  evidenceUrl: null,
+  withdrawTime: 1699017340,
+};
+
 export const fundHandlers = [
   // 펀딩 목록 조회
   rest.get("/api" + API.FUND.LIST, (req, res, ctx) => {
@@ -212,4 +231,95 @@ export const fundHandlers = [
 
     return res(ctx.status(200), ctx.json({ introduction: intro }));
   }),
+
+  // 펀딩 출금내역 조회
+  rest.get("/api" + API.FUND.WITHDRAW(":fundId"), (req, res, ctx) => {
+    const { fundId } = req.params;
+
+    if (!fundId) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "존재하지 않는 펀딩입니다" }),
+      );
+    }
+
+    return res(
+      ctx.status(200),
+      ctx.json({
+        currentBalance: 5000000,
+        withdrawalDTOs: [
+          withdrawInfo1,
+          withdrawInfo2,
+          withdrawInfo1,
+          withdrawInfo2,
+        ],
+        isLastPage: false,
+      }),
+    );
+  }),
+
+  // 출금 가능 금액 조회
+  rest.get("/api" + API.FUND.BALANCE(":fundId"), (req, res, ctx) => {
+    const { fundId } = req.params;
+
+    if (!fundId) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "존재하지 않는 펀딩입니다" }),
+      );
+    }
+
+    return res(ctx.status(200), ctx.json({ balance: 5000000 }));
+  }),
+
+  // 펀딩 출금 신청
+  rest.post("/api" + API.FUND.WITHDRAW(":fundId"), (req, res, ctx) => {
+    const { fundId } = req.params;
+    const { usage, depositAccount, amount } = req.body;
+
+    if (!fundId) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "펀딩 아이디를 입력해주세요" }),
+      );
+    }
+
+    if (!usage) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "사용처를 입력해주세요" }),
+      );
+    }
+
+    if (!depositAccount) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "출금 계좌를 입력해주세요" }),
+      );
+    }
+
+    if (!amount) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "출금 금액을 입력해주세요" }),
+      );
+    }
+
+    return res(ctx.status(200));
+  }),
+
+  // 펀딩 출금내역 이미지 추가
+  rest.post(
+    "/api" +
+      API.FUND.WITHDRAW_IMAGE({ fundId: ":fundId", withdrawId: ":withdrawId" }),
+    (req, res, ctx) => {
+      const { fundId, withdrawId } = req.params;
+
+      if (!fundId || !withdrawId) {
+        return res(ctx.status(400));
+      }
+
+      return res(ctx.status(200));
+    },
+  ),
 ];

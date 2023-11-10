@@ -6,8 +6,8 @@ import toast from "react-hot-toast";
 function useDeleteFundLikeMutation(handleSuccess) {
   return useMutation(
     [API.FUND.LIKE],
-    ({ fundId }) => {
-      return FundAPI.deleteFundLike(fundId);
+    async ({ fundId }) => {
+      return await FundAPI.deleteFundLike(fundId);
     },
     {
       onError: (err) => {
