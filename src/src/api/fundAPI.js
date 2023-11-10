@@ -38,9 +38,8 @@ const getFundInfoList = async ({ postId, keyword, sortType }) => {
 
 const postFundLike = async (fundId) => {
   return await instance({
-    url: API.FUND.LIKE,
+    url: API.FUND.LIKE(fundId),
     method: "POST",
-    data: { fundId },
   });
 };
 
@@ -51,9 +50,8 @@ const postFundLike = async (fundId) => {
  */
 const deleteFundLike = async (fundId) => {
   return await instance({
-    url: API.FUND.LIKE,
+    url: API.FUND.UNLIKE(fundId),
     method: "DELETE",
-    data: { fundId },
   });
 };
 

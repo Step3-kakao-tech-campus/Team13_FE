@@ -7,7 +7,8 @@ const AUTH = {
 
 const FUND = {
   LIST: "/posts",
-  LIKE: "/posts/like",
+  LIKE: (fundId) => `/posts/${fundId}/heart`,
+  UNLIKE: (fundId) => `/posts/${fundId}/unHeart`,
   CO_ADMIN: (fundId) => {
     return `/posts/${fundId}/co-admin`;
   },
