@@ -31,7 +31,7 @@ const getSimpleCelebInfoList = async () => {
     method: "GET",
   });
   return data.simpleCelebList.map((data) => new SimpleCelebInfoDto(data));
-  return new CelebInfoDto(data);
+  return data.simpleCelebList.map((celeb) => new SimpleCelebInfoDto(celeb));
 };
 
 /**

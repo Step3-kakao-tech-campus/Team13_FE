@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 
 function useSimpleCelebInfoQuery() {
   return useQuery(
-    [API.CELEBRITY.RECOMMEND],
+    [API.CELEBRITY.LIST],
     async () => {
       return await await celebrityAPI.getSimpleCelebInfoList();
     },
