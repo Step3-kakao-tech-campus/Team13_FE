@@ -3,7 +3,7 @@ import { fundHandlers } from "@/mocks/handler/fundHandlers.js";
 import { userHandlers } from "@/mocks/handler/userHandlers.js";
 import { celebrityHandlers } from "@/mocks/handler/celebrityHandlers.js";
 import { myFundHandlers } from "./myFundHandlers.js";
-import { recommendCelebHandlers } from "@/mocks/handler/recommendCelebHandlers.js";
+import { recommendCelebHandlers } from "@/mocks/handler/RecommendCelebHandlers.js";
 
 export const handlers = [
   ...authHandlers,
