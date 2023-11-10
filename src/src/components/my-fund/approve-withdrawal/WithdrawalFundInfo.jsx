@@ -77,7 +77,7 @@ const Styled = {
 
   WithdrawalInfo: styled.div`
     font-size: 1.4rem;
-    font-weight: 500;
+    font-weight: 600;
     color: ${({ theme }) => theme.color.addition};
 
     .amount {
@@ -89,8 +89,6 @@ const Styled = {
 
 /**
  * My펀딩 - 출금승인 대기목록 카드
- * @returns
- *
  */
 
 function WithdrawalFundInfo() {
