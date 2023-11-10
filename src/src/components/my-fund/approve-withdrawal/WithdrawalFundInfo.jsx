@@ -11,6 +11,7 @@ import { MyFundWithdrawalInfoDto } from "@/api/dto/myFund.dto.js";
 import ProfileImageName from "@/components/common/ProfileImageName.jsx";
 import Button from "@/components/common/button/Button.jsx";
 import WithdrawalModal from "@/components/my-fund/approve-withdrawal/WithdrawalModal.jsx";
+import InfiniteWithdrawInfoLoader from "@/components/my-fund/approve-withdrawal/InfiniteWithdrawInfo.loader.jsx";
 
 const Styled = {
   Container: styled.article`
@@ -154,6 +155,7 @@ function WithdrawalFundInfo() {
           </Styled.Container>
         )),
       )}
+      <InfiniteWithdrawInfoLoader loaderRef={loaderRef} />
     </>
   );
 }

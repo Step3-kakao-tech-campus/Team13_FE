@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import WithdrawalFundInfo from "@/components/my-fund/approve-withdrawal/WithdrawalFundInfo.jsx";
-import WithdrawalFundInfoSkeleton from "@/components/my-fund/approve-withdrawal/WithdrawalFundInfoSkeleton.jsx";
+import InfiniteWithdrawInfoLoader from "@/components/my-fund/approve-withdrawal/InfiniteWithdrawInfo.loader.jsx";
 
 /**
  * My펀딩 출금승인 tab 해당내용
@@ -8,7 +8,7 @@ import WithdrawalFundInfoSkeleton from "@/components/my-fund/approve-withdrawal/
 
 function WithdrawalApproval() {
   return (
-    <Suspense fallback={<WithdrawalFundInfoSkeleton />}>
+    <Suspense fallback={<InfiniteWithdrawInfoLoader />}>
       <WithdrawalFundInfo />
     </Suspense>
   );
