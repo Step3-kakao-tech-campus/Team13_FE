@@ -1,5 +1,5 @@
 import { GridTemplate } from "@/styles/CommonStyle";
-import SimpleCelebCard from "@/components/celebrity-list/SimpleCelebList.js";
+import SimpleCelebCard from "@/components/celebrity-list/SimpleCelebList.jsx";
 import useSimpleCelebInfoQuery from "@/hooks/api/celebrity/useSimpleCelebInfoQuery.js";
 
 function SimpleCelebList() {
