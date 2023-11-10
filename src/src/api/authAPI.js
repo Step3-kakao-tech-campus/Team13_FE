@@ -9,18 +9,19 @@ import { SignInDto } from "@/api/dto/auth.dto.js";
  * @returns {Promise<SignInDto>}
  */
 const postLogin = async ({ email, password }) => {
-  const { data } = await instance({
+  const { headers, data } = await instance({
     url: API.AUTH.LOGIN,
     method: "POST",
     data: { email: email, password: password },
   });
 
+  // TODO: 추후 profileImageUrl, isAdmin, nickname, refreshToken도 받아야 함
   return new SignInDto({
-    accessToken: data.accessToken,
-    refreshToken: data.refreshToken,
-    profileImageUrl: data.profileUrl,
-    isAdmin: data.isAdmin,
-    nickname: data.nickname,
+    accessToken: headers?.authorization,
+    refreshToken: data?.refreshToken,
+    profileImageUrl: data?.profileUrl,
+    isAdmin: data?.isAdmin,
+    nickname: data?.nickname,
   });
 };
 
