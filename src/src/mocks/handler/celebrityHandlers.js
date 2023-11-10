@@ -371,7 +371,7 @@ export const celebrityHandlers = [
     );
   }),
 
-  // 셀럽 목록 조회
+  // 추천셀럽 목록 조회
   rest.get("/api" + API.CELEBRITY.RECOMMEND, (req, res, ctx) => {
     return res(
       ctx.status(200),

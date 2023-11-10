@@ -46,9 +46,7 @@ const CELEBRITY = {
   FUNDING: (celebId) => {
     return `/celebs/${celebId}/posts`;
   },
-  RECOMMEND: (celebId) => {
-    return `/celebs/${celebId}/recommend`;
-  },
+  RECOMMEND: "/celebs/recommend",
 };
 
 Object.freeze(AUTH);

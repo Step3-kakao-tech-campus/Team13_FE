@@ -27,7 +27,7 @@ const getCelebInfoList = async ({ pageIndex, keyword, sortType }) => {
 
 const getSimpleCelebInfoList = async () => {
   const { data } = await instance({
-    url: API.CELEBRITY.LIST,
+    url: API.CELEBRITY.RECOMMEND,
     method: "GET",
   });
   return data.simpleCelebList.map((celeb) => new SimpleCelebInfoDto(celeb));
