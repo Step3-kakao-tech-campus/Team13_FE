@@ -8,7 +8,7 @@ const calculateComponentCount = (width) => {
   return 6;
 };
 
-function InfiniteCelebInfoLoader({ loaderRef }) {
+function InfiniteCelebInfoLoader({ loaderRef, ...props }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const componentNumberRef = useRef(calculateComponentCount(window.innerWidth));
 
@@ -27,7 +27,7 @@ function InfiniteCelebInfoLoader({ loaderRef }) {
   }, [windowWidth]);
 
   return (
-    <GridTemplate ref={loaderRef} style={{ margin: "3rem 0" }}>
+    <GridTemplate ref={loaderRef} style={{ margin: "3rem 0" }} {...props}>
       {Array.from({ length: componentNumberRef.current }).map((_, index) => (
         <CelebInfoGridCardSkeleton key={index} />
       ))}

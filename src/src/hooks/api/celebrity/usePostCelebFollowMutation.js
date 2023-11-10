@@ -10,8 +10,8 @@ function usePostCelebFollowMutation(handleSuccess) {
       return celebrityAPI.postCelebFollow(celebId);
     },
     {
-      onError: (err) => {
-        toast.error(err.response.data.message);
+      onError: () => {
+        toast.error("팔로우 요청이 실패했습니다");
       },
       onSuccess: handleSuccess,
     },

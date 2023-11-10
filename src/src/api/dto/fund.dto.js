@@ -88,4 +88,28 @@ class FundIntroDto {
   }
 }
 
-export { FundInfoDto, CoAdminUserDto, FundIntroDto, FundDetailInfoDto };
+class FundWithdrawDto {
+  constructor({
+    withdrawalId,
+    withdrawalAmount,
+    withDrawalTime,
+    usage,
+    evience,
+    balance,
+  }) {
+    this.id = withdrawalId;
+    this.date = withDrawalTime;
+    this.withdrawMoney = withdrawalAmount;
+    this.usageTitle = usage;
+    this.evidenceUrl = evience;
+    this.totalMoney = balance;
+  }
+}
+
+export {
+  FundInfoDto,
+  CoAdminUserDto,
+  FundIntroDto,
+  FundDetailInfoDto,
+  FundWithdrawDto,
+};

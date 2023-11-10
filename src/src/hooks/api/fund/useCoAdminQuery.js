@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import API from "@/constants/API.js";
 import FundAPI from "@/api/fundAPI.js";
-import toast from "react-hot-toast";
 
 function useCoAdminQuery({ fundId }) {
   return useQuery(
@@ -11,9 +10,6 @@ function useCoAdminQuery({ fundId }) {
     },
     {
       suspense: true,
-      onError: (err) => {
-        toast.error(err.response.data.message);
-      },
     },
   );
 }

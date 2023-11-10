@@ -108,7 +108,7 @@ function FundInfoGridCard({
   celebrityName,
   organizerId,
   organizerName,
-  isInUserWishList,
+  isInUserWishList = false,
 }) {
   const navigate = useNavigate();
 
@@ -188,7 +188,7 @@ FundInfoGridCard.propTypes = {
   organizerId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     .isRequired,
   organizerName: PropTypes.string.isRequired,
-  isInUserWishList: PropTypes.bool.isRequired,
+  isInUserWishList: PropTypes.bool,
 };
 
 FundInfoGridCard.defaultProps = {

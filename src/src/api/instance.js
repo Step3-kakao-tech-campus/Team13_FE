@@ -1,9 +1,9 @@
 import axios from "axios";
 import authAPI from "@/api/authAPI.js";
 
-const baseUrl = import.meta.env.VITE_USE_MOCK_API
-  ? "http://localhost:5173/api"
-  : import.meta.env.VITE_FUNDERING_API;
+const baseUrl = import.meta.env.DEV
+  ? import.meta.env.VITE_FUNDERING_API
+  : "/api";
 
 const instance = axios.create({
   baseURL: baseUrl,
@@ -18,7 +18,7 @@ instance.interceptors.request.use(
 
     if (!accessToken) return config;
 
-    config.headers.Authorization = `Bearer ${accessToken}`;
+    config.headers.Authorization = accessToken;
     return config;
   },
   function (err) {
