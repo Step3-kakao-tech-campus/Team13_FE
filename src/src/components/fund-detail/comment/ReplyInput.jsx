@@ -2,14 +2,14 @@ import styled from "styled-components";
 import Button from "@/components/common/button/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import { useRef } from "react";
-import handleEnterKeyDown from "@/utils/handleEnterKeyDown.js";
 
 const Styled = {
-  Wrapper: styled.div`
-    margin-bottom: 2rem;
+  Container: styled.div`
+    margin-top: 1rem;
+    width: 100%;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-end;
   `,
   Input: styled.input`
     margin-right: 1rem;
@@ -26,12 +26,13 @@ const Styled = {
       border-bottom: 1px solid ${({ theme }) => theme.color.mainRed};
     }
   `,
+  ButtonWrapper: styled.div``,
 };
 
-function CommentInput() {
+function ReplyInput() {
   const inputRef = useRef();
 
-  const postComment = () => {
+  const postReply = () => {
     try {
       console.log(inputRef.current.value);
       inputRef.current.value = "";
@@ -39,21 +40,23 @@ function CommentInput() {
   };
 
   return (
-    <Styled.Wrapper>
-      <Styled.Input
-        ref={inputRef}
-        type="text"
-        onKeyDown={(event) => handleEnterKeyDown(event, postComment)}
-      />
-      <Button
-        onClick={postComment}
-        styleType={BUTTON_TYPE.PRIMARY}
-        style={{ right: "1rem", top: "0.5rem", borderRadius: "9999px" }}
-      >
-        댓글
-      </Button>
-    </Styled.Wrapper>
+    <Styled.Container>
+      <Styled.Input ref={inputRef} placeholder="답글 작성..." />
+      <Styled.ButtonWrapper>
+        <Button
+          onClick={postReply}
+          style={{
+            fontSize: "0.9rem",
+            padding: "0.25rem 0.5rem",
+            borderRadius: "9999px",
+          }}
+          styleType={BUTTON_TYPE.SECONDARY}
+        >
+          작성
+        </Button>
+      </Styled.ButtonWrapper>
+    </Styled.Container>
   );
 }
 
-export default CommentInput;
+export default ReplyInput;
