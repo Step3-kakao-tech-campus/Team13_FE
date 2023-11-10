@@ -57,6 +57,19 @@ const sonnyFundInfo3 = {
   isInUserWishList: false,
 };
 
+const withdrawalApplyInfo = {
+  withdrawalId: 2,
+  withdrawalAmount: 1000000,
+  usage: "강남역 스크린도어",
+  fundId: 5,
+  thumbnailUrl:
+    "https://file2.nocutnews.co.kr/newsroom/image/2021/07/12/202107121100333094_0.jpg",
+  fundTitle: "경수는 앨범 계속내라 진짜로 제발로🥹",
+  organizerId: 2,
+  organizerName: "도도독ㄷ",
+  profileUrl: "https://avatars.githubusercontent.com/u/124874266?s=80&v=4",
+};
+
 export const myFundHandlers = [
   // 사용자 정보 조회
   rest.get("/api" + API.MY_FUND.NICKNAME, (req, res, ctx) => {
@@ -132,6 +145,25 @@ export const myFundHandlers = [
         isLastPage: false,
         currentPage: pageIndex,
         hostFundList: Array.from({ length: 12 }, (_, i) => sonnyFundInfo3),
+      }),
+    );
+  }),
+
+  // 공동관리자일경우 출금신청한 펀딩목록 조회
+  rest.get("/api" + API.MY_FUND.WITHDRAWAL, (req, res, ctx) => {
+    const pageIndex = req.url.searchParams.get("pageIndex");
+
+    if (!pageIndex) return res(ctx.status(400, "pageIndex 없음"));
+
+    return res(
+      ctx.status(200),
+      ctx.json({
+        isLastPage: false,
+        currentPage: pageIndex,
+        withdrawalApplyFundList: Array.from(
+          { length: 12 },
+          (_, i) => withdrawalApplyInfo,
+        ),
       }),
     );
   }),
