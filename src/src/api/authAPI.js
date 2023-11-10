@@ -15,13 +15,12 @@ const postLogin = async ({ email, password }) => {
     data: { email: email, password: password },
   });
 
-  // TODO: 추후 profileImageUrl, isAdmin, nickname, refreshToken도 받아야 함
   return new SignInDto({
     accessToken: headers?.authorization,
-    refreshToken: data?.refreshToken,
-    profileImageUrl: data?.profileUrl,
-    isAdmin: data?.isAdmin,
-    nickname: data?.nickname,
+    refreshToken: data?.response?.refreshToken,
+    profileImageUrl: data?.response?.profileImage,
+    isAdmin: data?.response?.coAdmin,
+    nickname: data?.response?.nickname,
   });
 };
 
