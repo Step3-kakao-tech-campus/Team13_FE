@@ -12,8 +12,8 @@ WORKDIR /usr/src/app
 COPY --from=build /usr/src/app/dist ./dist
 
 # Env
-ENV VITE_USE_MOCK_API=true
-ENV VITE_FUNDERING_API=""
+ENV VITE_USE_MOCK_API=false
+ENV VITE_FUNDERING_API="https://k9c64b90a0b75a.user-app.krampoline.com"
 
 RUN yarn global add serve
 EXPOSE 3000

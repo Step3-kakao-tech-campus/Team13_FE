@@ -33,14 +33,14 @@ function InfiniteFundInfo({ keyword, sortType }) {
     return new FundInfoDto({
       fundId: info.postId,
       fundTitle: info.title,
-      thumbnailUrl: info.thumbnali,
+      thumbnailUrl: info.thumbnail,
       targetDate: info.deadline,
       targetMoney: info.targetPrice,
       currentMoney: info.currentAmount,
-      celebrityId: info.celebrity,
+      celebrityId: info.celebId,
       celebrityName: info.celebrity,
       celebrityProfileUrl: info.celebImg,
-      organizerId: info.writer,
+      organizerId: info.writerId,
       organizerName: info.writer,
       isInUserWishList: info.isInUserWishList,
     });
