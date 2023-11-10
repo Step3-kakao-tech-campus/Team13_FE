@@ -60,7 +60,7 @@ function InfiniteFundInfo({ keyword, sortType }) {
         loaderRef={loaderRef}
         style={
           isLastPage && {
-            visibility: "hidden",
+            display: "none",
           }
         }
       />
