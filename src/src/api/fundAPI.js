@@ -115,7 +115,7 @@ const getFundIntroductionByFundId = async (fundId) => {
     method: "GET",
   });
 
-  return new FundIntroDto({ introduction: data.introduction });
+  return new FundIntroDto({ introduction: data?.response });
 };
 
 /**

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import { Suspense } from "react";
 import { PropTypes } from "prop-types";
+import { ErrorBoundary } from "react-error-boundary";
 
 import QuillStrToHtml from "@/components/common/QuillStrToHtml.jsx";
 import Button from "@/components/common/button/Button.jsx";
@@ -60,11 +61,19 @@ function Introduction({ isOrganizer }) {
         )}
       </Styled.TitleBox>
 
-      <Styled.CoAdminBox>
-        <Suspense fallback={<CoAdminsLoader />}>
-          <CoAdmins />
-        </Suspense>
-      </Styled.CoAdminBox>
+      <ErrorBoundary
+        fallback={
+          <div style={{ padding: "1rem 0 2rem 0" }}>
+            해당 정보 불러오기에 실패했습니다
+          </div>
+        }
+      >
+        <Styled.CoAdminBox>
+          <Suspense fallback={<CoAdminsLoader />}>
+            <CoAdmins />
+          </Suspense>
+        </Styled.CoAdminBox>
+      </ErrorBoundary>
 
       <Styled.Title>프로젝트 소개</Styled.Title>
       <QuillStrToHtml
