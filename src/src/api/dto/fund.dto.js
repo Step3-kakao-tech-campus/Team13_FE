@@ -6,6 +6,7 @@ class FundInfoDto {
     targetDate,
     targetMoney,
     currentMoney,
+    paymentAmount,
     celebrityId,
     celebrityName,
     celebrityProfileUrl,
@@ -19,6 +20,7 @@ class FundInfoDto {
     this.targetDate = targetDate;
     this.targetMoney = targetMoney;
     this.currentMoney = currentMoney;
+    this.paymentAmount = paymentAmount;
     this.celebrityId = celebrityId;
     this.celebrityName = celebrityName;
     this.celebrityProfileUrl = celebrityProfileUrl;
