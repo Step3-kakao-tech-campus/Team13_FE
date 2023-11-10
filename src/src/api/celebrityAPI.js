@@ -1,6 +1,6 @@
 import instance from "@/api/instance.js";
 import API from "@/constants/API.js";
-import { CelebDetailInfoDto } from "@/api/dto/celebrity.dto.js";
+import { CelebDetailInfoDto, CelebInfoDto } from "@/api/dto/celebrity.dto.js";
 
 /**
  * 셀럽 목록 조회 api
@@ -21,12 +21,12 @@ const getCelebInfoList = async ({ pageIndex, keyword, sortType }) => {
  * 메인페이지 심플셀럽 목록 조회 api
  */
 
-const getSimpleCelebInfoList = async ({ celebId }) => {
-  return await instance({
+const getSimpleCelebInfoList = async () => {
+  const { data } = await instance({
     url: API.CELEBRITY.LIST,
     method: "GET",
-    data: { celebId },
   });
+  return new CelebInfoDto(data);
 };
 
 /**

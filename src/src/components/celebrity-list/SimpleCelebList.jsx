@@ -16,7 +16,7 @@ function SimpleCelebList() {
   };
 
   // 요 부분을 어떻게 처리할지가 고민입니다!
-  const { data: simpleCelebListData } = useSimpleCelebInfoQuery();
+  const { data } = useSimpleCelebInfoQuery();
 
   return (
     <GridTemplate style={{ marginBottom: "1.75rem" }}>
