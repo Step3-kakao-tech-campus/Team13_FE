@@ -7,7 +7,7 @@ function useSimpleCelebInfoQuery() {
   return useQuery(
     [API.CELEBRITY.RECOMMEND],
     async () => {
-      return await celebrityAPI.getSimpleCelebInfoList();
+      return await await celebrityAPI.getSimpleCelebInfoList();
     },
     {
       onError: (err) => {

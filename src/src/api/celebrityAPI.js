@@ -1,7 +1,7 @@
 import instance from "@/api/instance.js";
 import API from "@/constants/API.js";
 import {
-  CelebDetailInfoDto,
+  CelebDetailInfoDto, CelebInfoDto,
   CelebInfoDto,
   SimpleCelebInfoDto,
 } from "@/api/dto/celebrity.dto.js";
@@ -31,6 +31,7 @@ const getSimpleCelebInfoList = async () => {
     method: "GET",
   });
   return data.simpleCelebList.map((data) => new SimpleCelebInfoDto(data));
+  return new CelebInfoDto(data);
 };
 
 /**
