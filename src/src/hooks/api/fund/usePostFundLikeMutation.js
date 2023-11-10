@@ -10,8 +10,8 @@ function usePostFundLikeMutation(handleSuccess) {
       return fundAPI.postFundLike(fundId);
     },
     {
-      onError: (err) => {
-        toast.error(err.response.data.message);
+      onError: () => {
+        toast.error("좋아요 추가를 실패했습니다");
       },
       onSuccess: handleSuccess,
     },
