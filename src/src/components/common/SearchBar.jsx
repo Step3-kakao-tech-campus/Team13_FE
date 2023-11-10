@@ -7,6 +7,7 @@ import SearchIcon from "@/assets/icon/SearchIcon.jsx";
 import Button from "@/components/common/button/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import routes from "@/constants/routes.js";
+import handleEnterKeyDown from "@/utils/handleEnterKeyDown.js";
 
 const Styled = {
   Container: styled.div`
@@ -45,7 +46,7 @@ function SearchBar({ placeholder, uri, ...htmlDivProps }) {
   const inputRef = useRef();
   const navigate = useNavigate();
 
-  const navigateToKeyword = input => {
+  const navigateToKeyword = (input) => {
     const keyword = input?.replace(/(\s*)/g, "");
     if (keyword === "") return;
 
@@ -55,12 +56,6 @@ function SearchBar({ placeholder, uri, ...htmlDivProps }) {
     });
   };
 
-  const handleEnterKeyPress = event => {
-    if (event.key !== "Enter") return;
-
-    navigateToKeyword(inputRef.current.value);
-  };
-
   return (
     <Styled.Container {...htmlDivProps}>
       <SearchIcon />
@@ -68,7 +63,11 @@ function SearchBar({ placeholder, uri, ...htmlDivProps }) {
         ref={inputRef}
         type="text"
         placeholder={placeholder}
-        onKeyPress={handleEnterKeyPress}
+        onKeyDown={(event) =>
+          handleEnterKeyDown(event, () =>
+            navigateToKeyword(inputRef.current.value),
+          )
+        }
       />
       <Button
         useHoverStyle={false}
