@@ -83,4 +83,18 @@ class CelebRelatedFundDto {
   }
 }
 
-export { CelebInfoDto, CelebDetailInfoDto, CelebRelatedFundDto };
+class SimpleCelebInfoDto {
+  constructor({ celebId, celebName, profileUrl, followerNum }) {
+    this.celebId = celebId;
+    this.celebName = celebName;
+    this.profileUrl = profileUrl;
+    this.followerNum = followerNum;
+  }
+}
+
+export {
+  CelebInfoDto,
+  CelebDetailInfoDto,
+  CelebRelatedFundDto,
+  SimpleCelebInfoDto,
+};
