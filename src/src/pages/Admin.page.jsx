@@ -36,7 +36,6 @@ function AdminPage() {
   };
 
   useEffect(() => {
-    console.log(isAdmin);
     if (!isAdmin) {
       navigate(routes.signIn);
     }

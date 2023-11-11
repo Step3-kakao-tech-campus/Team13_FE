@@ -65,8 +65,6 @@ function FundTextEditPage() {
   };
 
   const handleSubmitFundUpdate = () => {
-    console.log(updateTitle);
-    console.log(editorText);
     updateMutate({ title: updateTitle, content: editorText });
     //TODO: api 통신
   };

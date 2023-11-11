@@ -9,8 +9,8 @@ import EDIT_TYPE from "@/constants/EDIT_TYPE.js";
 
 const Styled = {
   Container: styled.div`
-    float: right;
     padding-bottom: 1rem;
+    float: right;
   `,
 };
 

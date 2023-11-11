@@ -32,6 +32,7 @@ const FUND = {
   COMMENT_REPLY: ({ fundId, commentId }) =>
     `/posts/${fundId}/comments/${commentId}`,
   UPDATE: (fundId) => `/posts/${fundId}/updates`,
+  PAYMENT: (fundId) => `/posts/${fundId}/donate`,
 };
 
 const USER = {
@@ -59,7 +60,7 @@ const CELEBRITY = {
 const MY_FUND = {
   NICKNAME: "/myfunding/nickname",
   FOLLOW: "/myfunding/followers",
-  LIKE: "/myfunding/like",
+  LIKE: "/myfunding/heart",
   SUPPORT: "/myfunding/support",
   HOST: "/myfunding/host",
   WITHDRAWAL: "/myfunding/withdrawal",

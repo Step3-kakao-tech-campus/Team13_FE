@@ -1,18 +1,10 @@
-import { useState } from "react";
-import toast from "react-hot-toast";
 import styled from "styled-components";
 import { PropTypes } from "prop-types";
 
 import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
-import ImagePreviewButton from "@/components/common/button/ImagePreviewButton.jsx";
 import Button from "@/components/common/button/Button.jsx";
-import SelectInput from "@/components/celebrity-list/SelectInput.jsx";
 
-import SELECT_INFO from "@/constants/SELECT_INFO.js";
-import useSetImageFileToUrl from "@/hooks/useSetImageFileToUrl.js";
-import usePostCelebApplyMutation from "@/hooks/api/celebrity/usePostCelebApplyMutation.js";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE";
-import CelebRequestInfoCard from "./celebRequestInfoCard";
 
 /**
  * 셀럽 신청 모달 컴포넌트
