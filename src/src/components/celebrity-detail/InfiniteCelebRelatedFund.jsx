@@ -33,15 +33,16 @@ function InfiniteCelebRelatedFund({ sortType }) {
     return new CelebRelatedFundDto({
       celebrityId: celebId,
       celebrityName: info?.celebName,
-      celebrityProfileUrl: "",
+      celebrityProfileUrl: info?.celebImg,
       fundId: info?.postId,
       fundTitle: info?.title,
       thumbnailUrl: info?.thumbnail,
       targetMoney: info?.targetPrice,
-      targetDate: "2023-12-31",
-      currentMoney: 1000000,
-      organizerId: 123,
-      organizerName: "joo",
+      targetDate: info?.deadline,
+      currentMoney: info?.currentAmount,
+      organizerId: info?.writerId,
+      organizerName: info?.writer,
+      isInUserWishList: info?.heart,
     });
   };
 
