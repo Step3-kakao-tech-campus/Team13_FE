@@ -7,6 +7,7 @@ const AUTH = {
 
 const FUND = {
   LIST: "/posts",
+  WRITE: "/posts/write",
   LIKE: (fundId) => `/posts/${fundId}/heart`,
   UNLIKE: (fundId) => `/posts/${fundId}/unHeart`,
   CO_ADMIN: (fundId) => {
