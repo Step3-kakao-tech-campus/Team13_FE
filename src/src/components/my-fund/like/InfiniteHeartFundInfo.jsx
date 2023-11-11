@@ -36,7 +36,7 @@ function InfiniteHeartFundInfo() {
       celebrityProfileUrl: info.celebImg,
       organizerId: info.writerId,
       organizerName: info.writer,
-      isInUserWishList: info.heart,
+      isInUserWishList: true,
     });
   };
 

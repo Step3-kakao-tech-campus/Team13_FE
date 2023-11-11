@@ -1,12 +1,7 @@
 import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
 import { Suspense } from "react";
-import { PropTypes } from "prop-types";
 import { ErrorBoundary } from "react-error-boundary";
 
-import EDIT_TYPE from "@/constants/EDIT_TYPE.js";
-import routes from "@/constants/routes.js";
-import Button from "@/components/common/button/Button.jsx";
 import CoAdmins from "@/components/fund-detail/introduction/CoAdmins.jsx";
 import CoAdminsLoader from "@/components/fund-detail/introduction/CoAdmins.loader.jsx";
 import IntroTextView from "@/components/fund-detail/introduction/IntroTextView.jsx";
@@ -38,25 +33,11 @@ const Styled = {
   `,
 };
 
-function Introduction({ isOrganizer }) {
-  const navigate = useNavigate();
-  const { fundId } = useParams();
-
+function Introduction() {
   return (
     <Styled.Container>
       <Styled.TitleBox>
         <Styled.Title>공동관리자</Styled.Title>
-        {isOrganizer && (
-          <Button
-            onClick={() => {
-              navigate(
-                `${routes.edit}?type=${EDIT_TYPE.FUND_INTRODUCTION}&fundId=${fundId}`,
-              );
-            }}
-          >
-            수정하기
-          </Button>
-        )}
       </Styled.TitleBox>
 
       <ErrorBoundary
@@ -86,9 +67,5 @@ function Introduction({ isOrganizer }) {
     </Styled.Container>
   );
 }
-
-Introduction.propTypes = {
-  isOrganizer: PropTypes.bool.isRequired,
-};
 
 export default Introduction;
