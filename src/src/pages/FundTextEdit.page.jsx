@@ -13,6 +13,7 @@ import TextEditor from "@/components/common/TextEditor.jsx";
 import Button from "@/components/common/button/Button.jsx";
 import routes from "@/constants/routes.js";
 import useFundIntroQuery from "@/hooks/api/fund/useFundIntroQuery.js";
+import usePostFundUpdateMutation from "@/hooks/api/fund/usePostFundUpdateMutation.js";
 
 const Styled = {
   Container: styled.section`
@@ -32,6 +33,7 @@ function FundTextEditPage() {
   const navigate = useNavigate();
 
   const { data: fundIntroData } = useFundIntroQuery({ fundId });
+  const { mutate: updateMutate } = usePostFundUpdateMutation({ fundId });
 
   useEffect(() => {
     if (!fundId) {
@@ -65,6 +67,7 @@ function FundTextEditPage() {
   const handleSubmitFundUpdate = () => {
     console.log(updateTitle);
     console.log(editorText);
+    updateMutate({ title: updateTitle, content: editorText });
     //TODO: api 통신
   };
 

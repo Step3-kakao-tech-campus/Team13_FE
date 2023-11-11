@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import formatDateToYYYYMMDD from "@/utils/formateDateToYYYYMMDD";
+import QuillStrToHtml from "@/components/common/QuillStrToHtml";
 
 const Styled = {
   Container: styled.div`
@@ -10,12 +11,9 @@ const Styled = {
     font-weight: 600;
   `,
   Time: styled.div`
-    padding-top: 0.25rem;
+    padding: 0.25rem 0 1rem;
     font-size: 0.75rem;
     color: ${({ theme }) => theme.color.addition};
-  `,
-  Content: styled.div`
-    padding-top: 1rem;
   `,
 };
 
@@ -24,7 +22,7 @@ function Update({ title, content, createdAt }) {
     <Styled.Container>
       <Styled.Title>{title}</Styled.Title>
       <Styled.Time>{formatDateToYYYYMMDD(new Date(createdAt))}</Styled.Time>
-      <Styled.Content>{content}</Styled.Content>
+      <QuillStrToHtml htmlStr={content} />
     </Styled.Container>
   );
 }

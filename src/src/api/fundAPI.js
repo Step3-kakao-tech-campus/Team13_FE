@@ -301,11 +301,11 @@ const getUpdateByFundId = async ({ fundId, cursor }) => {
   return data.response;
 };
 
-const postUpdateByFundId = async ({ fundId, content }) => {
+const postUpdateByFundId = async ({ fundId, title, content }) => {
   return await instance({
     url: API.FUND.UPDATE(fundId),
     method: "POST",
-    data: { content },
+    data: { title, content },
   });
 };
 
