@@ -53,7 +53,6 @@ class CelebDetailInfoDto {
 
 class CelebRelatedFundDto {
   constructor({
-    celebId,
     fundId,
     fundTitle,
     thumbnailUrl,
@@ -67,7 +66,6 @@ class CelebRelatedFundDto {
     organizerName,
     isInUserWishList,
   }) {
-    this.celebId = celebId;
     this.fundId = fundId;
     this.fundTitle = fundTitle;
     this.thumbnailUrl = thumbnailUrl;
