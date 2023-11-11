@@ -17,6 +17,7 @@ const MY_FUND = {
   HEART_LIST: "찜한목록",
   FUNDING_LIST: "펀딩내역",
   HOST_FUND: "주최한 펀딩",
+  WITHDRAWAL_APPROVAL: "출금승인",
 };
 
 Object.freeze(FUND_DETAIL);

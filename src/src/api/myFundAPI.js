@@ -12,7 +12,10 @@ const getMyFundUserInfoByToken = async () => {
     url: API.MY_FUND.NICKNAME,
     method: "GET",
   });
-  return new MyFundUserInfoDto(data);
+  return new MyFundUserInfoDto({
+    nickname: data?.response?.email,
+    profileUrl: localStorage.getItem("userProfile"),
+  });
 };
 
 /**
@@ -24,7 +27,16 @@ const getFollowingCelebByToken = async () => {
     url: API.MY_FUND.FOLLOW,
     method: "GET",
   });
-  return data.followingCelebList.map((celeb) => new SimpleCelebInfoDto(celeb));
+  return data?.response?.map(
+    (celeb) =>
+      new SimpleCelebInfoDto({
+        celebId: celeb?.celebId,
+        celebName: celeb?.celebName,
+        following: true,
+        followingCount: celeb?.followerCount,
+        celebProfileImage: celeb?.profileImage,
+      }),
+  );
 };
 
 /**
@@ -51,9 +63,59 @@ const getHostFundListByToken = async ({ pageIndex }) => {
   });
 };
 
+/**
+ * My펀딩 공동관리자인 펀딩 출금신청 목록조회 api
+ */
+
+const getWithdrawlApplyList = async ({ pageIndex }) => {
+  return await instance({
+    url: API.MY_FUND.WITHDRAWAL,
+    method: "GET",
+    params: { pageIndex: pageIndex },
+  });
+};
+
+/**
+ * My펀딩 출금신청 승인 api
+ */
+
+const postWithdrawalApproval = async ({ postId, withdrawalId }) => {
+  return await instance({
+    url: API.MY_FUND.APPROVAL,
+    method: "POST",
+    data: { postId, withdrawalId },
+  });
+};
+
+/**
+ * My펀딩 출금신청 거절 api
+ */
+
+const postWithdrawalRejection = async ({ postId, withdrawalId }) => {
+  return await instance({
+    url: API.MY_FUND.REJECTION,
+    method: "POST",
+    data: { postId, withdrawalId },
+  });
+};
+
+const getLikeFund = async ({ pageIndex }) => {
+  const { data } = await instance({
+    url: API.MY_FUND.LIKE,
+    method: "GET",
+    data: { page: pageIndex },
+  });
+
+  return data.response;
+};
+
 export default {
   getMyFundUserInfoByToken,
   getFollowingCelebByToken,
   getSupportFundListByToken,
   getHostFundListByToken,
+  getWithdrawlApplyList,
+  postWithdrawalApproval,
+  postWithdrawalRejection,
+  getLikeFund,
 };

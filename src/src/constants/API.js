@@ -59,9 +59,12 @@ const CELEBRITY = {
 const MY_FUND = {
   NICKNAME: "/myfunding/nickname",
   FOLLOW: "/myfunding/followers",
-  LIKE: "/myfunding/like",
+  LIKE: "/myfunding/heart",
   SUPPORT: "/myfunding/support",
   HOST: "/myfunding/host",
+  WITHDRAWAL: "/myfunding/withdrawal",
+  APPROVAL: "/myfunding/withdrawal/approval",
+  REJECTION: "/myfunding/withdrawal/rejection",
 };
 
 Object.freeze(AUTH);

@@ -58,7 +58,7 @@ const privateChildren = [
   {
     // 마이 펀딩
     path: routes.myFund,
-    element: <Test />,
+    element: <MyFundPage />,
   },
   {
     // 내 계정
