@@ -25,8 +25,6 @@ function InfiniteWithdrawalFundInfo() {
     return new MyFundWithdrawalInfoDto({ ...info });
   };
 
-  console.log("데이터 p[0]", infiniteWithdrawalFundData.pages[0]);
-
   return (
     <>
       {infiniteWithdrawalFundData?.pages.map((page) =>
