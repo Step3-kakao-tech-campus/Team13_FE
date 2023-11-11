@@ -54,15 +54,16 @@ https://k8188ddddcf83a.user-app.krampoline.com/
 - **MSW (v1.3.2)**
     - 서비스 워커를 이용하여 가짜 서버를 구축하고 개발 중 테스트 및 모의를 수행합니다.
 
+# ERD
+
+![KakaoTalk_Photo_2023-11-11-23-33-43](https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/5257a2fe-7cdd-4e88-8f04-a33d4495503b)
+
+
 # 서비스 기획 의도
 
 - 아이돌, 스포츠 스타 등 셀럽 팬덤 문화가 더욱 확대되고 있습니다. 이러한 팬덤은 셀럽들의 기념일이나 기념 행사를 위해 캠페인(예를 들어 지하철 광고 등)을 주최하는 경우가 많습니다.
 
     ![image](https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/b874eb53-922e-4bc2-a53d-aee278ea27a6)
-
-# ERD
-
-![KakaoTalk_Photo_2023-11-11-23-33-43](https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/5257a2fe-7cdd-4e88-8f04-a33d4495503b)
 
 ### 셀럽 팬덤 (후원자)
 
