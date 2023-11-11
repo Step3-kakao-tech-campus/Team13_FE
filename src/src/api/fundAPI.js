@@ -269,12 +269,13 @@ const createFund = async ({
   const formData = new FormData();
   formData.append("thumbnail", imageFile);
 
+  console.log(deadline[0]);
   const dto = {
     celebId,
     title,
     introduction,
     targetPrice,
-    deadline,
+    deadline: deadline[0],
   };
   formData.append(
     "dto",
