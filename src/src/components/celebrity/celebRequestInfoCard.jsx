@@ -1,17 +1,18 @@
+import { useState } from "react";
 import styled, { css } from "styled-components";
 import { isMobile } from "react-device-detect";
-import { PropTypes } from "prop-types";
 
+import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
-import Button from "../common/button/Button";
-import BUTTON_TYPE from "@/constants/BUTTON_TYPE";
+import Button from "@/components/common/button/Button.jsx";
+import CelebRequestModal from "@/components/celebrity/celebRequestInfoCard.jsx";
 
 const Styled = {
   Container: styled.div`
     background: ${({ theme }) => theme.color.white};
 
     padding: 1rem;
-    height: 9.25rem;
+    height: 9.5rem;
 
     position: relative;
     display: flex;
@@ -32,90 +33,82 @@ const Styled = {
       `}
   `,
 
-  TextContainer: styled.div`
-    width: calc(100% - 100px - 1rem);
-    display: flex;
-    flex-direction: column;
+  ProfileImage: styled.img`
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+  `,
+
+  TextInfo: styled.div`
+    width: 100%;
     margin-left: 1rem;
+    display: relative;
   `,
-
-  Button: styled(Button)`
-    width: 60px;
-  `,
-
-  Text: styled.span`
+  NameAndGroup: styled.div`
     display: flex;
-    align-items: center;
-    margin-bottom: 0.5rem;
-    font-size: 0.75rem;
-    color: ${({ theme }) => theme.color.addition};
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
-    &.name {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      font-size: 1.25rem;
-      color: ${({ theme }) => theme.color.body};
+    .name {
+      font-size: 1.3rem;
+      font-weight: 600;
     }
 
-    span {
+    .group {
+      color: ${({ theme }) => theme.color.addition};
       margin-left: 0.25rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      margin-top: 0.2rem;
+      font-size: 1rem;
     }
+  `,
+  CategoryAndGender: styled.div`
+    margin: 0.25rem 0;
+    font-size: 1rem;
+    color: ${({ theme }) => theme.color.addition};
   `,
 };
 
-/**
- * 셀럽 목록 조회 시, grid 템플릿 내부 정보 카드
- * @param {string | number} celebId 셀럽 아이디
- * @param {string} celebName 셀럽 이름
- * @param {string=} profileUrl 셀럽 프로필 사진 url
- */
+function CelebRequestInfoCard() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-function CelebRequestInfoCard({ celebId, celebName, profileUrl, openModal }) {
-  const handleModalOpen = () => {
-    openModal(true);
+  const tmp = {
+    celebName: "도경수",
+    celebGender: "남",
+    celebCategory: "가수",
+    celebGroup: "엑소",
+    profileImage:
+      "https://file2.nocutnews.co.kr/newsroom/image/2021/07/12/202107121100333094_0.jpg",
   };
 
   return (
-    <Styled.Container $isMobile={isMobile}>
-      {profileUrl ? (
+    <Styled.Container>
+      {tmp.profileImage ? (
         <Styled.ProfileImage
-          src={profileUrl}
-          alt={`${celebName} 프로필 사진`}
+          src={tmp.profileImage}
+          alt={`${tmp.celebName} 프로필 사진`}
         />
       ) : (
         <TestAccountIcon size={100} />
       )}
-
-      <Styled.TextContainer>
-        <Styled.Text className="name">
-          <span>손흥민</span>
-        </Styled.Text>
-
-        <Styled.Text>
-          <span>(토트넘 핫스퍼)</span>
-        </Styled.Text>
-
-        <Styled.Text>
-          <span>스포츠 • 남자</span>
-        </Styled.Text>
-      </Styled.TextContainer>
-
-      <Button styleType={BUTTON_TYPE.SECONDARY} onClick={handleModalOpen}>
-        자세히
-      </Button>
+      <Styled.TextInfo>
+        <Styled.NameAndGroup>
+          <div className="name">{tmp.celebName}</div>
+          {tmp.celebGroup && <div className="group">{tmp.celebGroup}</div>}
+        </Styled.NameAndGroup>
+        <Styled.CategoryAndGender>{`${tmp.celebCategory} • ${tmp.celebGender}`}</Styled.CategoryAndGender>
+        <Button
+          styleType={BUTTON_TYPE.SECONDARY}
+          onClick={() => setIsModalOpen(true)}
+          style={{ position: "absolute", right: "1rem", bottom: "1.4rem" }}
+        >
+          자세히
+        </Button>
+        {isModalOpen && <CelebRequestModal setOpen={setIsModalOpen} />}
+      </Styled.TextInfo>
     </Styled.Container>
   );
 }
-
-CelebRequestInfoCard.propTypes = {
-  celebId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  celebName: PropTypes.string,
-  profileUrl: PropTypes.string,
-  openModal: PropTypes.func,
-};
 
 export default CelebRequestInfoCard;
