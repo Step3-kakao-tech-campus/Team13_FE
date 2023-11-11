@@ -1,8 +1,9 @@
-import { GridTemplate, Title } from "@/styles/CommonStyle";
+import CelebRequestInfoCard from "@/components/celebrity/CelebRequestInfoCard.jsx";
+import { GridTemplate } from "@/styles/CommonStyle";
 import styled from "styled-components";
 
 const Styled = {
-  Title: styled(Title)`
+  Title: styled.div`
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
@@ -10,7 +11,7 @@ const Styled = {
     padding-bottom: 1.75rem;
   `,
 
-  CelebRequest: styled(Title)`
+  CelebRequest: styled.div`
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
@@ -26,7 +27,9 @@ function AdminPage() {
 
       <Styled.CelebRequest>셀럽 등록 요청</Styled.CelebRequest>
 
-      <GridTemplate></GridTemplate>
+      <GridTemplate>
+        <CelebRequestInfoCard />
+      </GridTemplate>
     </>
   );
 }
