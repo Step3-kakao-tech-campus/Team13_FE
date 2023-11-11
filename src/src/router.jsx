@@ -17,7 +17,7 @@ import MainPage from "@/pages/Main.page.jsx";
 import FundSupportPage from "@/pages/FundSupport.page.jsx";
 import MobilePaymentPage from "@/pages/MobilePayment.page.jsx";
 import AdminPage from "@/pages/Admin.page.jsx";
-import MyFundPage from "./pages/MyFund.page.jsx";
+import MyFundPage from "@/pages/MyFund.page.jsx";
 import WithdrawPage from "@/pages/Withdraw.page.jsx";
 import ErrorPage from "@/pages/Error.page.jsx";
 
@@ -58,7 +58,7 @@ const privateChildren = [
   {
     // 마이 펀딩
     path: routes.myFund,
-    element: <Test />,
+    element: <MyFundPage />,
   },
   {
     // 내 계정
