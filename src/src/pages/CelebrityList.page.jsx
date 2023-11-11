@@ -7,7 +7,6 @@ import routes from "@/constants/routes.js";
 
 import MainLayout from "@/components/common/template/MainLayout.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
-import SortButtons from "@/components/common/button/SortButtons.jsx";
 import PageTitle from "@/components/common/PageTitle.jsx";
 import FloatButton from "@/components/common/button/FloatButton.jsx";
 import CelebApplyModal from "@/components/celebrity-list/CelebApplyModal.jsx";
@@ -40,23 +39,6 @@ function CelebrityListPage() {
     setKeyword(searchParams.get("keyword"));
   }, [searchParams]);
 
-  const [sortType, setSortType] = useState("펀딩총액순");
-
-  const celebListSortTypeArray = [
-    {
-      key: "펀딩총액순",
-      func: () => {
-        setSortType("펀딩총액순");
-      },
-    },
-    {
-      key: "팔로워순",
-      func: () => {
-        setSortType("팔로워순");
-      },
-    },
-  ];
-
   return (
     <>
       <PageTitle
@@ -75,13 +57,12 @@ function CelebrityListPage() {
 
         <Styled.TitleBar>
           <Styled.Title>
-            {keyword ? `${keyword} 검색 결과` : "순위"}
+            {keyword ? `${keyword} 검색 결과` : "모든 셀럽"}
           </Styled.Title>
-          <SortButtons sortTypeArray={celebListSortTypeArray} />
         </Styled.TitleBar>
 
         <Suspense fallback={<InfiniteCelebInfoLoader />}>
-          <InfiniteCelebInfo keyword={keyword} sortType={sortType} />
+          <InfiniteCelebInfo keyword={keyword} sortType={""} />
         </Suspense>
 
         <FloatButton onClick={() => setIsModalOpen(true)}>

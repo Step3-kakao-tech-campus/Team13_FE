@@ -28,6 +28,7 @@ function useLogInMutation() {
     },
     {
       onSuccess: (data) => {
+        console.log(data);
         const {
           accessToken,
           refreshToken,

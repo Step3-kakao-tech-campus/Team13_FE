@@ -1,10 +1,11 @@
 import ReactQuill, { Quill } from "react-quill";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { PropTypes } from "prop-types";
 import ImageResize from "quill-image-resize-module-react/src/ImageResize.js";
 import "react-quill/dist/quill.snow.css";
 import "@/styles/quill.custom.css";
 import styled from "styled-components";
+import ImageAPI from "@/api/ImageAPI.js";
 
 Quill.register("modules/imageResize", ImageResize);
 
@@ -36,22 +37,51 @@ const Styled = {
 function TextEditor({ text, setText, ...props }) {
   const quillRef = useRef();
 
-  const modules = {
-    toolbar: {
-      container: [
-        [{ header: [6, 5, false, 4, 3, 2, 1] }],
-        [{ align: [] }],
-        ["bold", "italic", "underline", "strike", "blockquote"],
-        [{ list: "ordered" }, { list: "bullet" }, "link"],
-        [{ color: [] }, { background: [] }],
-        ["image", "video"],
-      ],
-    },
-    imageResize: {
-      parchment: Quill.import("parchment"),
-      modules: ["Resize", "DisplaySize", "Toolbar"],
-    },
+  const imageHandler = async () => {
+    const input = document.createElement("input");
+    input.setAttribute("type", "file");
+    input.setAttribute("accept", "image/*");
+    input.click();
+    input.addEventListener("change", async () => {
+      const file = input.files?.[0];
+      const range = quillRef.current.getEditor().getSelection(true);
+
+      try {
+        const { data } = await ImageAPI.uploadImage(file);
+        const IMG_URL = data?.response;
+
+        // 받아온 url을 이미지 태그에 삽입
+        quillRef.current.getEditor().insertEmbed(range.index, "image", IMG_URL);
+
+        // 사용자 편의를 위해 커서 이미지 오른쪽으로 이동
+        quillRef.current.getEditor().setSelection(range.index + 1);
+      } catch (e) {
+        quillRef.current.getEditor().deleteText(range.index, 1);
+      }
+    });
   };
+
+  const modules = useMemo(() => {
+    return {
+      toolbar: {
+        container: [
+          [{ header: [6, 5, false, 4, 3, 2, 1] }],
+          [{ align: [] }],
+          ["bold", "italic", "underline", "strike", "blockquote"],
+          [{ list: "ordered" }, { list: "bullet" }, "link"],
+          [{ color: [] }, { background: [] }],
+          ["image", "video"],
+        ],
+        handlers: {
+          image: imageHandler,
+        },
+      },
+      imageResize: {
+        parchment: Quill.import("parchment"),
+        modules: ["Resize", "DisplaySize", "Toolbar"],
+      },
+    };
+  }, []);
 
   return (
     <Styled.Container>

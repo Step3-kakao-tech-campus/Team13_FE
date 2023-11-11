@@ -51,7 +51,7 @@ function CelebTextInfo({ fundInProgressNum, totalFundMoney, followerNum }) {
       <Styled.Text>
         <MoneyIcon size={32} />
         <span>
-          총 <strong>{totalFundMoney.toLocaleString("ko-KR") || 0}</strong>원
+          총 <strong>{totalFundMoney?.toLocaleString("ko-KR") || 0}</strong>원
         </span>
       </Styled.Text>
 

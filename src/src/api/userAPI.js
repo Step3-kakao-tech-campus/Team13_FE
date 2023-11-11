@@ -12,20 +12,30 @@ const getUserSettingByToken = async () => {
     url: API.USER.SETTING,
     method: "GET",
   });
-  return new UserSettingDto(data);
+  return new UserSettingDto({
+    nickname: data?.response?.nickname,
+    phoneNumber: data?.response?.phoneNumber,
+    profileUrl: data?.response?.profileImage,
+  });
 };
 
 /**
  * 회원정보 수정 api
- * @param {Promise<UserSettingDto>}data
+ * @param {object} data
  * @returns {Promise<axios.AxiosResponse<any>>}
  */
-const postUserSettingByToken = async (data) => {
+const changeUserSettingByToken = async (data) => {
   return await instance({
     url: API.USER.SETTING,
-    method: "POST",
-    data: new UserSettingDto(data),
+    method: "PUT",
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    data,
   });
 };
 
-export default { getUserSettingByToken, postUserSettingByToken };
+export default {
+  getUserSettingByToken,
+  changeUserSettingByToken,
+};

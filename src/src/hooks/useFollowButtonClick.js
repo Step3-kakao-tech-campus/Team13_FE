@@ -5,21 +5,25 @@ import usePostCelebUnfollowMutation from "@/hooks/api/celebrity/usePostCelebUnfo
 function useFollowButtonClick({ celebId, isFollowing }) {
   const [isFollowingButton, setIsFollowingButton] = useState(!isFollowing);
 
-  const { mutate: postFollowMutate } = usePostCelebFollowMutation(() =>
-    // 팔로우 시 팔로우 버튼은 안보임(팔로잉버튼 노출)
-    setIsFollowingButton(false),
-  );
+  const { mutate: postFollowMutate } = usePostCelebFollowMutation({
+    celebId,
+    handleSuccess: () =>
+      // 팔로우 시 팔로우 버튼은 안보임(팔로잉버튼 노출)
+      setIsFollowingButton(false),
+  });
 
-  const { mutate: postUnfollowMutate } = usePostCelebUnfollowMutation(() =>
-    // 언팔로우 시 팔로우 버튼 보임
-    setIsFollowingButton(true),
-  );
+  const { mutate: postUnfollowMutate } = usePostCelebUnfollowMutation({
+    celebId,
+    handleSuccess: () =>
+      // 언팔로우 시 팔로우 버튼 보임
+      setIsFollowingButton(true),
+  });
 
   const handleFollowClick = useCallback(
     (e) => {
       e.stopPropagation();
-      if (isFollowingButton) return postFollowMutate({ celebId });
-      return postUnfollowMutate({ celebId });
+      if (isFollowingButton) return postFollowMutate();
+      return postUnfollowMutate();
     },
     [celebId, isFollowingButton],
   );

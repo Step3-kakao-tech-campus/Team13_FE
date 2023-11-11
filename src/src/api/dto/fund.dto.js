@@ -6,6 +6,7 @@ class FundInfoDto {
     targetDate,
     targetMoney,
     currentMoney,
+    paymentAmount,
     celebrityId,
     celebrityName,
     celebrityProfileUrl,
@@ -19,6 +20,7 @@ class FundInfoDto {
     this.targetDate = targetDate;
     this.targetMoney = targetMoney;
     this.currentMoney = currentMoney;
+    this.paymentAmount = paymentAmount;
     this.celebrityId = celebrityId;
     this.celebrityName = celebrityName;
     this.celebrityProfileUrl = celebrityProfileUrl;
@@ -86,4 +88,28 @@ class FundIntroDto {
   }
 }
 
-export { FundInfoDto, CoAdminUserDto, FundIntroDto, FundDetailInfoDto };
+class FundWithdrawDto {
+  constructor({
+    withdrawalId,
+    withdrawalAmount,
+    withDrawalTime,
+    usage,
+    evience,
+    balance,
+  }) {
+    this.id = withdrawalId;
+    this.date = withDrawalTime;
+    this.withdrawMoney = withdrawalAmount;
+    this.usageTitle = usage;
+    this.evidenceUrl = evience;
+    this.totalMoney = balance;
+  }
+}
+
+export {
+  FundInfoDto,
+  CoAdminUserDto,
+  FundIntroDto,
+  FundDetailInfoDto,
+  FundWithdrawDto,
+};

@@ -58,8 +58,8 @@ const Styled = {
 /**
  * 미리보기 이미지 파일 input
  * @param {string} imageUrl 이미지 url
- * @param {func} handleFileChange 이미지 파일 변경 핸들러
- * @param {func} handleFileDelete 이미지 파일 삭제 핸들러
+ * @param {function} handleFileChange 이미지 파일 변경 핸들러
+ * @param {function} handleFileDelete 이미지 파일 삭제 핸들러
  * @param {object} containerStyle
  * @param {string} imageAspectRatio
  */

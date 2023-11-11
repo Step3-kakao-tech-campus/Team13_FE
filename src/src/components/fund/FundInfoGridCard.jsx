@@ -9,6 +9,7 @@ import ProfileImageName from "@/components/common/ProfileImageName.jsx";
 import routes from "@/constants/routes.js";
 import FundMoneyCountdown from "@/components/fund/FundMoneyCountdown.jsx";
 import useHeartButtonClick from "@/hooks/useHeartButtonClick.js";
+import FundingAmountBadge from "../my-fund/support/FundingAmoutBadge";
 
 const Styled = {
   Container: styled.article`
@@ -85,6 +86,7 @@ const Styled = {
  * @param {string} targetDate 펀딩 마감 날짜
  * @param {string || number} targetMoney 펀딩 목표 금액
  * @param {string || number} currentMoney 펀딩 현재 금액
+ * @param {string || number} paymentAmount 후원한 펀딩 금액
  * @param {string || number} celebrityId 셀럽 아이디
  * @param {string} celebrityProfileUrl 셀럽 프로필 사진 url 없다면 프로필 아이콘
  * @param {string} celebrityName 셀럽 이름
@@ -100,12 +102,13 @@ function FundInfoGridCard({
   targetDate,
   targetMoney,
   currentMoney,
+  paymentAmount,
   celebrityId,
   celebrityProfileUrl,
   celebrityName,
   organizerId,
   organizerName,
-  isInUserWishList,
+  isInUserWishList = false,
 }) {
   const navigate = useNavigate();
 
@@ -121,6 +124,12 @@ function FundInfoGridCard({
         navigate(`${routes.fund}/${fundId}`);
       }}
     >
+      {paymentAmount && (
+        <FundingAmountBadge
+          paymentAmount={paymentAmount}
+          style={{ position: "absolute", top: "0.75rem", left: "0.75rem" }}
+        />
+      )}
       <HeartButton
         style={{
           position: "absolute",
@@ -171,6 +180,7 @@ FundInfoGridCard.propTypes = {
     .isRequired,
   currentMoney: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     .isRequired,
+  paymentAmount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   celebrityId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     .isRequired,
   celebrityName: PropTypes.string.isRequired,
@@ -178,7 +188,7 @@ FundInfoGridCard.propTypes = {
   organizerId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     .isRequired,
   organizerName: PropTypes.string.isRequired,
-  isInUserWishList: PropTypes.bool.isRequired,
+  isInUserWishList: PropTypes.bool,
 };
 
 FundInfoGridCard.defaultProps = {

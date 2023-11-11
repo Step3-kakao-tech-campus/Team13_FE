@@ -8,7 +8,7 @@ function useChangeUserSettingMutation() {
   return useMutation(
     [API.USER.SETTING],
     async (data) => {
-      return await userAPI.postUserSettingByToken(data);
+      return await userAPI.changeUserSettingByToken(data);
     },
     {
       onSuccess: () => {

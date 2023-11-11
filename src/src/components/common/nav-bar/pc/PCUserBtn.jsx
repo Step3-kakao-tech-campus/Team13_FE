@@ -68,7 +68,7 @@ function PCUserBtn() {
 
   return (
     <Styled.UserBtn ref={userBtnRef}>
-      {isLoggedIn ? (
+      {isLoggedIn && profileImageUrl ? (
         <img
           onClick={() => setIsMenuModalOpen(true)}
           className="profileImg"
@@ -78,7 +78,10 @@ function PCUserBtn() {
       ) : (
         <TestAccountIcon
           onClick={() => {
-            navigate(routes.signIn);
+            if (!isLoggedIn) {
+              return navigate(routes.signIn);
+            }
+            return setIsMenuModalOpen(true);
           }}
         />
       )}

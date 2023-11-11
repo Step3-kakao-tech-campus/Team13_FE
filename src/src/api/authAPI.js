@@ -9,18 +9,18 @@ import { SignInDto } from "@/api/dto/auth.dto.js";
  * @returns {Promise<SignInDto>}
  */
 const postLogin = async ({ email, password }) => {
-  const { data } = await instance({
+  const { headers, data } = await instance({
     url: API.AUTH.LOGIN,
     method: "POST",
     data: { email: email, password: password },
   });
 
   return new SignInDto({
-    accessToken: data.accessToken,
-    refreshToken: data.refreshToken,
-    profileImageUrl: data.profileUrl,
-    isAdmin: data.isAdmin,
-    nickname: data.nickname,
+    accessToken: headers?.authorization,
+    refreshToken: data?.response?.refreshToken,
+    profileImageUrl: data?.response?.profileImage,
+    isAdmin: data?.response?.coAdmin,
+    nickname: data?.response?.nickname,
   });
 };
 
@@ -30,9 +30,17 @@ const postLogin = async ({ email, password }) => {
  * @param {string} refreshToken
  * @returns {string}
  */
-const refreshToken = ({ baseUrl, refreshToken }) => {
+const refreshToken = ({ refreshToken }) => {
   // api 통신
-  return "refreshedAccessToken";
+  const { data } = instance({
+    url: "/token/refresh",
+    method: "POST",
+    body: {
+      refreshToken,
+    },
+  });
+
+  return data.refreshToken;
 };
 
 /**
@@ -41,9 +49,43 @@ const refreshToken = ({ baseUrl, refreshToken }) => {
  */
 const deleteAccountByToken = () => {
   return instance({
-    url: API.AUTH.DELETE_ACCOUNT,
-    method: "POST",
+    url: API.USER.SETTING,
+    method: "DELETE",
   });
 };
 
-export default { postLogin, refreshToken, deleteAccountByToken };
+/**
+ * 회원가입 api
+ * @param {string} email
+ * @param {string} password
+ * @param {string} nickname
+ * @return {Promise<*>}
+ */
+const postSignUp = async ({ email, password, nickname }) => {
+  return await instance({
+    url: API.AUTH.SIGN_UP,
+    method: "POST",
+    data: { email, password, nickname },
+  });
+};
+
+/**
+ * 이메일 중복 확인 api
+ * @param {string} email
+ * @returns {Promise<*>}
+ */
+const isEmailDuplicate = async ({ email }) => {
+  return await instance({
+    url: API.AUTH.EMAIL_DUPLICATE,
+    method: "POST",
+    data: { email },
+  });
+};
+
+export default {
+  postLogin,
+  refreshToken,
+  deleteAccountByToken,
+  postSignUp,
+  isEmailDuplicate,
+};

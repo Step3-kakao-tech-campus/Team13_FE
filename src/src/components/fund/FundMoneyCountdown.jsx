@@ -52,7 +52,7 @@ function FundMoneyCountdown({
     <Styled.Container {...containerHtmlProps}>
       <Styled.MoneyBox>
         <div className="money-percentage">
-          {calculatePercentage(currentMoney, targetMoney)}% 달성
+          {calculatePercentage(currentMoney, targetMoney).toFixed(0)}% 달성
         </div>
         <div className="current-money">
           {Number(currentMoney).toLocaleString("ko-KR")}원

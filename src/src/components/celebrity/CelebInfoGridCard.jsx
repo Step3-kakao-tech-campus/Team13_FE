@@ -142,7 +142,7 @@ function CelebInfoGridCard({
 
         <Styled.Text>
           <MoneyIcon />
-          <span>총 {totalFundMoney.toLocaleString("ko-KR") || 0}원</span>
+          <span>총 {totalFundMoney?.toLocaleString("ko-KR") || 0}원</span>
         </Styled.Text>
 
         <Styled.Text>

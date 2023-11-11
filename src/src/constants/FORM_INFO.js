@@ -1,3 +1,5 @@
+import authAPI from "@/api/authAPI.js";
+
 const SIGN_IN = [
   {
     id: "email",
@@ -45,19 +47,13 @@ const SIGN_UP = [
           if (value.length <= 2) {
             return;
           }
-          // 실제 API 연동 시 수정될 부분(현재 테스트용)
-          const isEmailDuplicated = async () => {
-            await new Promise((resolve) => setTimeout(resolve, 1000));
-            return Math.random() < 0.5;
-          };
+
           try {
-            const isDuplicate = await isEmailDuplicated(value);
-            if (isDuplicate) {
-              console.log("중복된 이메일");
-              return "중복된 이메일입니다";
-            }
+            await authAPI.isEmailDuplicate({ email: value });
           } catch (e) {
-            console.error("이메일 중복 확인 중 오류발생:", e);
+            if (e.response.data.error.message === "이메일이 존재합니다.") {
+              return "펀더링에 가입된 이메일입니다";
+            }
           }
         },
       },
@@ -74,7 +70,7 @@ const SIGN_UP = [
         value: /^[ㄱ-ㅎ가-힣a-zA-Z0-9]+$/,
         message: "특수문자를 제외하고 입력해주세요",
       },
-      maxLength: { value: 6, message: "6글자 이내로 입력해주세요!" },
+      maxLength: { value: 15, message: "15글자 이내로 입력해주세요!" },
     },
   },
   {
