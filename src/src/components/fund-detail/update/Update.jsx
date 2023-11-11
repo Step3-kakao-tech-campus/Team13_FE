@@ -4,7 +4,7 @@ import QuillStrToHtml from "@/components/common/QuillStrToHtml";
 
 const Styled = {
   Container: styled.div`
-    margin: 1rem 0;
+    margin: 2rem 0;
   `,
   Title: styled.div`
     font-size: 1.5rem;
