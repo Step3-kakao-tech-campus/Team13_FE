@@ -13,7 +13,8 @@ function useInfiniteSupportFundQuery() {
     {
       suspense: true,
       getNextPageParam: (lastPage) => {
-        return lastPage.config.params.pageIndex + 1;
+        if (lastPage.data.response.lastPage) return;
+        return lastPage.data.response.currentPage;
       },
     },
   );

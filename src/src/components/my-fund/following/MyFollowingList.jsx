@@ -14,6 +14,7 @@ function MyFollowingList() {
           celebId={celeb.celebId}
           celebName={celeb.celebName}
           followerNum={celeb.followerNum}
+          isFollowing={true}
         />
       ))}
     </GridTemplate>
