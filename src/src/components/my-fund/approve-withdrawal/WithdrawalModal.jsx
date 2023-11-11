@@ -4,6 +4,8 @@ import ProfileImageName from "@/components/common/ProfileImageName.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE";
 import Button from "@/components/common/button/Button.jsx";
 import usePostWithdrawalApprovalMutation from "@/hooks/api/my-fund/usePostWithdrawalApprovalMutation.js";
+import usePostWithdrawalRejectionMutation from "@/hooks/api/my-fund/usePostWithdrawalRejectionMutation.js";
+import { PropTypes } from "prop-types";
 
 const Styled = {
   Container: styled.div`
@@ -67,8 +69,18 @@ function WithdrawalModal({
   const { mutate: postWithdrawalApprovalMutate } =
     usePostWithdrawalApprovalMutation(() => setOpen(false));
 
+  const { mutate: postWithdrawalRejectionMutate } =
+    usePostWithdrawalRejectionMutation(() => setOpen(false));
+
   const handleApprovalBtnClick = () => {
     postWithdrawalApprovalMutate({
+      postId,
+      withdrawalId,
+    });
+  };
+
+  const handleRejectionBtnClick = () => {
+    postWithdrawalRejectionMutate({
       postId,
       withdrawalId,
     });
@@ -94,6 +106,7 @@ function WithdrawalModal({
           <Button
             styleType={BUTTON_TYPE.SECONDARY}
             style={{ padding: "0.7rem ", fontWeight: 600, flex: 1 }}
+            onClick={handleRejectionBtnClick}
           >
             거절하기
           </Button>
@@ -109,5 +122,20 @@ function WithdrawalModal({
     </BackdropModal>
   );
 }
+
+WithdrawalModal.propTypes = {
+  setOpen: PropTypes.bolean,
+  withdrawalId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  withdrawalAmount: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
+  usage: PropTypes.string.isRequired,
+  postId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  thumbnailUrl: PropTypes.string,
+  fundTitle: PropTypes.string.isRequired,
+  organizerId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
+  organizerName: PropTypes.string.isRequired,
+  organizerProfileUrl: PropTypes.string,
+};
 
 export default WithdrawalModal;

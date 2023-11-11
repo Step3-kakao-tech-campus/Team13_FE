@@ -184,4 +184,21 @@ export const myFundHandlers = [
       ctx.json({ message: "성공적으로 출금승인이 완료되었습니다." }),
     );
   }),
+
+  // 공동관리자일 경우 출금신청 거절
+  rest.post("/api" + API.MY_FUND.REJECTION, (req, res, ctx) => {
+    const { postId, withdrawalId } = req.body;
+
+    if (!postId || !withdrawalId) {
+      return res(
+        ctx.status(400),
+        ctx.json({ message: "출금신청 승인에 문제가 발생했습니다." }),
+      );
+    }
+
+    return res(
+      ctx.status(200),
+      ctx.json({ message: "출금승인이 거절되었습니다." }),
+    );
+  }),
 ];
