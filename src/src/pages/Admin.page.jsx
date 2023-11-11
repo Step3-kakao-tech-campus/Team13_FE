@@ -1,5 +1,4 @@
 import { GridTemplate, Title } from "@/styles/CommonStyle";
-import CelebRequestInfoCard from "@/components/celebrity/CelebRequestInfoCard.jsx";
 import styled from "styled-components";
 
 const Styled = {
@@ -27,13 +26,7 @@ function AdminPage() {
 
       <Styled.CelebRequest>셀럽 등록 요청</Styled.CelebRequest>
 
-      <GridTemplate>
-        <CelebRequestInfoCard />
-
-        <CelebRequestInfoCard />
-
-        <CelebRequestInfoCard />
-      </GridTemplate>
+      <GridTemplate></GridTemplate>
     </>
   );
 }
