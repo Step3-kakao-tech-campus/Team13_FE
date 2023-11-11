@@ -51,7 +51,7 @@ const postFundLike = async (fundId) => {
 const deleteFundLike = async (fundId) => {
   return await instance({
     url: API.FUND.UNLIKE(fundId),
-    method: "DELETE",
+    method: "POST",
   });
 };
 
