@@ -14,7 +14,7 @@ function useCreateFundMutation() {
       introduction,
       imageFile,
     }) => {
-      return await FundAPI.createFund({
+      await FundAPI.createFund({
         celebId,
         deadline,
         title,

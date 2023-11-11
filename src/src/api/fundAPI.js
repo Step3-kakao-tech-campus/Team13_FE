@@ -5,7 +5,6 @@ import {
   FundDetailInfoDto,
   FundIntroDto,
 } from "@/api/dto/fund.dto.js";
-import formateDateToYYYYMMDD from "@/utils/formateDateToYYYYMMDD";
 
 /**
  * 펀딩 목록 조회 api
@@ -270,14 +269,12 @@ const createFund = async ({
   const formData = new FormData();
   formData.append("thumbnail", imageFile);
 
-  const createdAt = formateDateToYYYYMMDD(new Date());
   const dto = {
     celebId,
     title,
     introduction,
     targetPrice,
     deadline,
-    createdAt,
   };
   formData.append(
     "dto",
@@ -286,11 +283,28 @@ const createFund = async ({
 
   console.log(JSON.stringify(dto));
 
-  return instance({
+  return await instance({
     url: API.FUND.WRITE,
     method: "POST",
     headers: { "Content-Type": "multipart/form-data" },
     data: formData,
+  });
+};
+
+const getUpdateByFundId = async ({ fundId, cursor }) => {
+  const { data } = await instance({
+    url: API.FUND.UPDATE(fundId),
+    method: "GET",
+  });
+
+  return data.response;
+};
+
+const postUpdateByFundId = async ({ fundId, content }) => {
+  return await instance({
+    url: API.FUND.UPDATE(fundId),
+    method: "POST",
+    data: { content },
   });
 };
 
@@ -310,4 +324,6 @@ export default {
   getReplyByCommentId,
   postReplyByCommentId,
   createFund,
+  getUpdateByFundId,
+  postUpdateByFundId,
 };
