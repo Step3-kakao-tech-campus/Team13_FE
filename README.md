@@ -52,7 +52,8 @@
 
 - 아이돌, 스포츠 스타 등 셀럽 팬덤 문화가 더욱 확대되고 있습니다. 이러한 팬덤은 셀럽들의 기념일이나 기념 행사를 위해 캠페인(예를 들어 지하철 광고 등)을 주최하는 경우가 많습니다.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5001abf6-8767-4fe2-b344-6bc67f2cac7c/aec3cddf-b714-424c-b08c-6d92bb8a8a4c/Untitled.png)
+    ![image](https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/b874eb53-922e-4bc2-a53d-aee278ea27a6)
+
 
 ### 셀럽 팬덤 (후원자)
 
@@ -77,7 +78,8 @@
     - **투명하고 효율적인 관리**:
         - 해당 계좌에서 출금을 승인해야 돈을 사용할 수 있도록 설정하여, 주최자는 모든 후원자에게 개별적으로 후원금 사용 내역을 제공하는 번거로움을 덜게 됩니다.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5001abf6-8767-4fe2-b344-6bc67f2cac7c/33301aa7-9e10-44c8-9c07-241862b16f60/Untitled.png)
+    ![image](https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/70e78376-971e-48eb-a9e2-767a641823d2)
+
 
 - **후원자 측**
     - 와디즈, 인디고고 등의 펀딩 사이트처럼 ‘셀럽 캠페인’을 위한 펀딩 형식으로 후원금을 모금하고, 현재 후원금, 캠페인 주최자, 후원금 사용내역을 실시간으로 알림을 받고 확인할 수 있는 사이트가 있다면, 캠페인을 원하는 팬덤들에게 매력적인 웹 서비스가 될 수 있습니다.
@@ -86,26 +88,26 @@
 
 ## 펀더링(Fundering)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5001abf6-8767-4fe2-b344-6bc67f2cac7c/cbacce56-d81d-485a-aaf7-ad44ca811ada/Untitled.png)
+![image](https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/c1ec4dcb-6075-408e-998f-daaad27bc339)
+
 
 # 주요 개발 기능
 
 - 펀딩 사이트의 경우 ‘모바일’ 환경에서 사용하는 사람들도 많은 만큼, ‘반응형’ 디자인을 채택
     - media Query, Grid
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5001abf6-8767-4fe2-b344-6bc67f2cac7c/d8932ac1-333e-4207-8d79-328f8b5ae682/Untitled.png)
+    <img width="1840" alt="image" src="https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/f3cc46d1-87d7-486c-b3e5-6e80a6b90b0c">
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5001abf6-8767-4fe2-b344-6bc67f2cac7c/d96b975e-28a7-4abb-8806-6dd8f14f6c17/Untitled.png)
+    <img width="968" alt="image" src="https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/ccd09f39-d6c2-4e1f-8bed-da8be0b883e0">
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5001abf6-8767-4fe2-b344-6bc67f2cac7c/140cd8d8-a7fd-49c9-8e25-13868029e0bb/Untitled.png)
+    <img width="612" alt="image" src="https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/539bdb7a-3f8f-4413-9f6d-0f696bfb1314">
+
 
 - 금액 이체를 위한 ‘포트원’API 이용
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5001abf6-8767-4fe2-b344-6bc67f2cac7c/46d6bd72-65a0-4f21-9a38-93f69fc5ec39/Untitled.png)
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5001abf6-8767-4fe2-b344-6bc67f2cac7c/5b6d4854-ba57-4191-80f9-557851aa51a7/Untitled.png)
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5001abf6-8767-4fe2-b344-6bc67f2cac7c/b5ba1716-17cc-4860-89f2-2d3e8a85d9ae/Untitled.png)
+    <img width="1025" alt="image" src="https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/75734220/807b1892-272d-4798-9adc-ee10da30ace7">
+    <img width="1025" alt="image" src="https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/75734220/12b5fe38-1be0-4dae-8fdf-e6c144eb030c">
+    <img width="1025" alt="image" src="https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/75734220/eed8ba63-ef57-4a85-b8e0-300a7ede89a9">
 
 # 트러블 슈팅
 
@@ -136,11 +138,11 @@
     
     [6주차 코드리뷰 반영 by j8won · Pull Request #81 · Step3-kakao-tech-campus/Team13_FE](https://github.com/Step3-kakao-tech-campus/Team13_FE/pull/81)
     
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5001abf6-8767-4fe2-b344-6bc67f2cac7c/61b86ed1-006b-4484-bf60-44cc34ec9f09/Untitled.png)
-    
+    ![image](https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/2a8cf53f-0701-439b-9c22-8cde192dc073)
+
     [CelebInfoGridCard 셀럽 목록 페이지 Grid 컴포넌트 by Klomachenko · Pull Request #39 · Step3-kakao-tech-campus/Team13_FE](https://github.com/Step3-kakao-tech-campus/Team13_FE/pull/39)
     
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5001abf6-8767-4fe2-b344-6bc67f2cac7c/45fc986d-e1ae-4c26-affe-9389cf0d3ac1/Untitled.png)
+    ![image](https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/c85f4066-15ea-4e0f-8e41-548f3821f8bc)
     
 - **반응형 웹 디자인**:
     - Media Query와 Grid를 활용하여 여러 기기에 대응하는 반응형 컴포넌트를 설계하였습니다.
@@ -160,12 +162,12 @@
 
 - **서울시 지하철 셀럽 광고 증가세**
 
-[지하철 광고 수 1위는 뉴규~? 서울지하철 광고의 모든 것](https://m.blog.naver.com/haechiseoul/221925086194)
+    [지하철 광고 수 1위는 뉴규~? 서울지하철 광고의 모든 것](https://m.blog.naver.com/haechiseoul/221925086194)
 
 - **주최자 횡령 자료**
 
-[[스경X초점] 명품 휘두른 ‘아이돌 서포트’…소속사가 나서야 할 때](https://sports.khan.co.kr/entertainment/sk_index.html?art_id=202101141504003&sec_id=540101)
+    [[스경X초점] 명품 휘두른 ‘아이돌 서포트’…소속사가 나서야 할 때](https://sports.khan.co.kr/entertainment/sk_index.html?art_id=202101141504003&sec_id=540101)
 
 - **FUNDERING 기획 자료**
 
-[presentation](https://www.figma.com/proto/IMgAvRFUFhDzkvtTD5Rpdt/presentation?page-id=0:1&node-id=7-9&mode=design&t=IY3tYdk9eVv77aBe-1)
+    [presentation](https://www.figma.com/proto/IMgAvRFUFhDzkvtTD5Rpdt/presentation?page-id=0:1&node-id=7-9&mode=design&t=IY3tYdk9eVv77aBe-1)
