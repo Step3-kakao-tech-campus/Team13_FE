@@ -30,8 +30,16 @@ const postLogin = async ({ email, password }) => {
  * @param {string} refreshToken
  * @returns {string}
  */
-const refreshToken = ({ baseUrl, refreshToken }) => {
+const refreshToken = ({ refreshToken }) => {
   // api 통신
+  const { data } = instance({
+    url: "/token/refresh",
+    method: "POST",
+    body: {
+      refreshToken,
+    },
+  });
+
   return "refreshedAccessToken";
 };
 

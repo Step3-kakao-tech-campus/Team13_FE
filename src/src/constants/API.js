@@ -27,6 +27,9 @@ const FUND = {
   WITHDRAW_IMAGE: ({ fundId, withdrawId }) => {
     return `/posts/${fundId}/withdrawals/${withdrawId}`;
   },
+  COMMENT: (fundId) => `/posts/${fundId}/comments`,
+  COMMENT_REPLY: ({ fundId, commentId }) =>
+    `/posts/${fundId}/comments/${commentId}`,
 };
 
 const USER = {

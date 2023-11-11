@@ -2,6 +2,8 @@ import styled from "styled-components";
 import TestAccountIcon from "@/assets/icon/TestAccountIcon";
 import { useState } from "react";
 import ReplyInput from "@/components/fund-detail/comment/ReplyInput.jsx";
+import { useNavigate } from "react-router-dom";
+import formatDateToYYYYMMDD from "@/utils/formateDateToYYYYMMDD.js";
 
 const Styled = {
   CommentContainer: styled.div`
@@ -25,7 +27,25 @@ const Styled = {
     width: 100%;
   `,
 
-  TextBox: styled.div``,
+  TextBox: styled.div`
+    padding-bottom: 0.5rem;
+    .top {
+      margin-bottom: 0.25rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .date {
+      margin-left: 0.25rem;
+      font-size: 0.75rem;
+      color: ${({ theme }) => theme.color.addition};
+    }
+
+    .writer-name {
+      font-weight: 500;
+    }
+  `,
 
   ButtonBox: styled.div`
     width: 100%;
@@ -42,25 +62,41 @@ const Styled = {
   `,
 };
 
-function Comment() {
-  const profileUrl =
-    "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg";
-
+function Comment({
+  commentId,
+  writerId,
+  writerName,
+  writerProfile,
+  content,
+  replyCount,
+  createdAt,
+}) {
   const [isReplyInputOpen, setIsReplyInputOpen] = useState(false);
-
+  const navigate = useNavigate();
+  const handleUserClick = () => {
+    navigate(`routes/${writerId}`);
+  };
   return (
     <>
       <Styled.CommentContainer>
-        <Styled.UserProfileBox>
-          {profileUrl ? (
-            <img src={profileUrl} alt={`프로필 사진`} />
+        <Styled.UserProfileBox onClick={handleUserClick}>
+          {writerProfile ? (
+            <img src={writerProfile} alt={`프로필 사진`} />
           ) : (
             <TestAccountIcon />
           )}
         </Styled.UserProfileBox>
 
         <Styled.RightWrapper>
-          <Styled.TextBox>d</Styled.TextBox>
+          <Styled.TextBox>
+            <div className="top">
+              <div className="writer-name">{writerName}</div>
+              <div className="date">
+                {formatDateToYYYYMMDD(new Date(createdAt))}
+              </div>
+            </div>
+            <div className="content">{content}</div>
+          </Styled.TextBox>
           <Styled.ButtonBox>
             <button
               className="open-reply-input"
@@ -68,7 +104,7 @@ function Comment() {
                 setIsReplyInputOpen((prev) => !prev);
               }}
             >
-              답글 {isReplyInputOpen ? "닫기" : "보기"}
+              답글 {replyCount}
             </button>
           </Styled.ButtonBox>
           {isReplyInputOpen && <ReplyInput />}

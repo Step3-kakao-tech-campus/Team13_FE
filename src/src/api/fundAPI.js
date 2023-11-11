@@ -192,6 +192,19 @@ const postFundWithdrawEvidenceImage = async ({
   });
 };
 
+/**
+ * 댓글 조회
+ */
+const getCommentsByFundId = async ({ fundId, pageIndex }) => {
+  const { data } = await instance({
+    url: API.FUND.COMMENT(fundId),
+    method: "GET",
+    data: { page: pageIndex },
+  });
+
+  return data.response;
+};
+
 export default {
   getFundInfoList,
   postFundLike,
@@ -203,4 +216,5 @@ export default {
   getFundBalance,
   postFundWithdraw,
   postFundWithdrawEvidenceImage,
+  getCommentsByFundId,
 };

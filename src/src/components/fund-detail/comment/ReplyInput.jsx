@@ -5,7 +5,7 @@ import { useRef } from "react";
 
 const Styled = {
   Container: styled.div`
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     width: 100%;
     display: flex;
     justify-content: flex-start;
