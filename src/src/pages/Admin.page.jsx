@@ -1,9 +1,9 @@
-import CelebRequestInfoCard from "@/components/celebrity/CelebRequestInfoCard.jsx";
-import { GridTemplate } from "@/styles/CommonStyle";
+import { GridTemplate, Title } from "@/styles/CommonStyle";
 import styled from "styled-components";
+import CelebRequestInfoCard from "@/components/celebrity/CelebRequestInfoCard.jsx";
 
 const Styled = {
-  Title: styled.div`
+  Title: styled(Title)`
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
@@ -11,7 +11,7 @@ const Styled = {
     padding-bottom: 1.75rem;
   `,
 
-  CelebRequest: styled.div`
+  CelebRequest: styled(Title)`
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
