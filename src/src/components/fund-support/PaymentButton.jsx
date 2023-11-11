@@ -53,7 +53,10 @@ function PaymentButton({ price, fundTitle, disabled }) {
       amount: price, // 결제금액
       name: fundTitle, // 주문명
       buyer_tel: "01012341234", // 구매자 전화번호
-      m_redirect_url: directUrlBase + routes.mobilePayment, // 모바일만 redirect 됨
+      m_redirect_url:
+        directUrlBase +
+        routes.mobilePayment +
+        `?fundId=${fundId}&amount=${price}`, // 모바일만 redirect 됨
     };
 
     /* 4. 결제 창 호출하기 */
@@ -64,12 +67,11 @@ function PaymentButton({ price, fundTitle, disabled }) {
   // PC만 콜백 함수 실행됨! 모바일은 리다이렉트 후 해당 페이지에서 작업
   async function callback(response) {
     const { success, error_msg, imp_uid, paid_amount } = response;
-
     if (success) {
       try {
         await fundAPI.postPaymentByFundId({
           fundId,
-          amount: paid_amount,
+          amount: +paid_amount,
           impUid: imp_uid,
         });
       } catch (e) {
