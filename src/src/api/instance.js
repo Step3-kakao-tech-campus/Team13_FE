@@ -39,27 +39,23 @@ instance.interceptors.response.use(
       return Promise.reject(err);
     }
 
-    switch (err.response.status) {
-      case 401: {
-        const originalRequest = err.config;
-        const refreshToken = localStorage
-          .getItem("refreshToken")
-          ?.replace(/"/gi, "");
+    const originalRequest = err.config;
+    const refreshToken = localStorage
+      .getItem("refreshToken")
+      ?.replace(/"/gi, "");
 
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
+    if (!refreshToken) return Promise.reject(err);
 
-        if (!refreshToken) return Promise.reject(err);
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("isAdmin");
+    localStorage.removeItem("userProfile");
 
-        const newAccessToken = authAPI.refreshToken({ refreshToken });
-        localStorage.setItem("accessToken", newAccessToken);
+    const newAccessToken = authAPI.refreshToken({ refreshToken });
+    localStorage.setItem("accessToken", newAccessToken);
 
-        originalRequest.headers.authorization = `Bearer ${newAccessToken}`;
-        return axios(originalRequest);
-      }
-      default:
-        return Promise.reject(err);
-    }
+    originalRequest.headers.authorization = `Bearer ${newAccessToken}`;
+    return axios(originalRequest);
   },
 );
 
