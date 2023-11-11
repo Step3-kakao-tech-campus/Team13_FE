@@ -34,7 +34,10 @@ function UserSettingForm() {
 
     const formData = new FormData();
     formData.append("thumbnail", profileImageFile);
-    formData.append("requestDTO", JSON.stringify(requestDTO));
+    formData.append(
+      "requestDTO",
+      new Blob([JSON.stringify(requestDTO)], { type: "application/json" }),
+    );
 
     mutate(formData);
   };
