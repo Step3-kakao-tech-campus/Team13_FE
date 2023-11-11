@@ -39,23 +39,23 @@ instance.interceptors.response.use(
       return Promise.reject(err);
     }
 
-    const originalRequest = err.config;
-    const refreshToken = localStorage
-      .getItem("refreshToken")
-      ?.replace(/"/gi, "");
-
-    if (!refreshToken) return Promise.reject(err);
-
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
-    localStorage.removeItem("isAdmin");
-    localStorage.removeItem("userProfile");
-
-    const newAccessToken = authAPI.refreshToken({ refreshToken });
-    localStorage.setItem("accessToken", newAccessToken);
-
-    originalRequest.headers.authorization = `Bearer ${newAccessToken}`;
-    return axios(originalRequest);
+    // const originalRequest = err.config;
+    // const refreshToken = localStorage
+    //   .getItem("refreshToken")
+    //   ?.replace(/"/gi, "");
+    //
+    // if (!refreshToken) return Promise.reject(err);
+    //
+    // localStorage.removeItem("accessToken");
+    // localStorage.removeItem("refreshToken");
+    // localStorage.removeItem("isAdmin");
+    // localStorage.removeItem("userProfile");
+    //
+    // const newAccessToken = authAPI.refreshToken({ refreshToken });
+    // localStorage.setItem("accessToken", newAccessToken);
+    //
+    // originalRequest.headers.authorization = `Bearer ${newAccessToken}`;
+    // return axios(originalRequest);
   },
 );
 

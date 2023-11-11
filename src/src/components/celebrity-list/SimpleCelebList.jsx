@@ -5,8 +5,6 @@ import useSimpleCelebInfoQuery from "@/hooks/api/celebrity/useSimpleCelebInfoQue
 function SimpleCelebList() {
   const { data } = useSimpleCelebInfoQuery();
 
-  console.log(data);
-
   return (
     <GridTemplate style={{ marginBottom: "1.75rem" }}>
       {data?.map((celeb, index) => (
