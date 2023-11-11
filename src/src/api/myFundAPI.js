@@ -81,7 +81,7 @@ const postWithdrawalApproval = async ({ postId, withdrawalId }) => {
 
 const postWithdrawalRejection = async ({ postId, withdrawalId }) => {
   return await instance({
-    url: API.MY_FUND.APPROVAL,
+    url: API.MY_FUND.REJECTION,
     method: "POST",
     data: { postId, withdrawalId },
   });
