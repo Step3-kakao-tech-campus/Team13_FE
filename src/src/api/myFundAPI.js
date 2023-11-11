@@ -63,10 +63,23 @@ const getWithdrawlApplyList = async ({ pageIndex }) => {
   });
 };
 
+/**
+ * My펀딩 출금신청 승인 api
+ */
+
+const postWithdrawalApproval = async ({ postId, withdrawalId }) => {
+  return await instance({
+    url: API.MY_FUND.APPROVAL,
+    method: "POST",
+    data: { postId, withdrawalId },
+  });
+};
+
 export default {
   getMyFundUserInfoByToken,
   getFollowingCelebByToken,
   getSupportFundListByToken,
   getHostFundListByToken,
   getWithdrawlApplyList,
+  postWithdrawalApproval,
 };

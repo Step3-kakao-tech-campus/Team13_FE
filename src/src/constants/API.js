@@ -55,6 +55,7 @@ const MY_FUND = {
   SUPPORT: "/myfunding/support",
   HOST: "/myfunding/host",
   WITHDRAWAL: "/myfunding/withdrawal",
+  APPROVAL: "/myfunding/withdrawal/approval",
 };
 
 Object.freeze(AUTH);
