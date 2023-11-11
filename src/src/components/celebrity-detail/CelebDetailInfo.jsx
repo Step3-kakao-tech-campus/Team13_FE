@@ -50,7 +50,7 @@ function CelebDetailInfo() {
         celebGroup={data?.celebGroup}
         celebCategory={data?.celebCategory}
         celebGender={data?.celebGender}
-        celebId={data?.celebId}
+        celebId={celebId}
         isFollowing={data?.isFollowing}
       />
 

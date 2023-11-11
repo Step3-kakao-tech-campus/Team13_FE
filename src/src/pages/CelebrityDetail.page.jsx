@@ -5,6 +5,7 @@ import CelebDetailInfo from "@/components/celebrity-detail/CelebDetailInfo";
 import Tabs from "@/components/common/button/TabButtons.jsx";
 import InfiniteCelebRelatedFund from "@/components/celebrity-detail/InfiniteCelebRelatedFund.jsx";
 import InfiniteFundInfoLoader from "@/components/fund-list/InfiniteFundInfo.loader.jsx";
+import { ErrorBoundary } from "react-error-boundary";
 
 function CelebrityDetailPage() {
   const [sortType, setSortType] = useState(0);
@@ -28,9 +29,11 @@ function CelebrityDetailPage() {
 
       <Tabs tabInfoArray={tabInfoArray} style={{ paddingBottom: "1rem" }} />
 
-      <Suspense fallback={<InfiniteFundInfoLoader />}>
-        <InfiniteCelebRelatedFund sortType={sortType} />
-      </Suspense>
+      <ErrorBoundary fallback={<div>에러</div>}>
+        <Suspense fallback={<InfiniteFundInfoLoader />}>
+          <InfiniteCelebRelatedFund sortType={sortType} />
+        </Suspense>
+      </ErrorBoundary>
     </>
   );
 }

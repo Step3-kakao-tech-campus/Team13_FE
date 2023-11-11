@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { PropTypes } from "prop-types";
 import FollowButton from "@/components/celebrity/FollowButton.jsx";
+import CELEB_CATEGORY from "@/constants/CELEB_CATEGORY";
+import CELEB_GENDER from "@/constants/CELEB_GENDER";
 
 const Styled = {
   ProfileContainer: styled.div`
@@ -58,7 +60,7 @@ function CelebProfile({
           {celebGroup && <span>{celebGroup}</span>}
         </Styled.NameAndGroup>
 
-        <Styled.CategoryAndGender>{`${celebCategory} • ${celebGender}`}</Styled.CategoryAndGender>
+        <Styled.CategoryAndGender>{`${CELEB_CATEGORY.KOREAN[celebCategory]} • ${CELEB_GENDER.KOREAN[celebGender]}`}</Styled.CategoryAndGender>
       </Styled.Text>
 
       <FollowButton

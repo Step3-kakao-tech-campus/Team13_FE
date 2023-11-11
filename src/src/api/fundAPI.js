@@ -14,19 +14,23 @@ import {
  * @returns {Promise<axios.AxiosResponse<any>>} a
  */
 
-const getFundInfoList = async ({ postId, keyword, sortType }) => {
+const getFundInfoList = async ({ pageIndex, keyword, sortType }) => {
   if (keyword) {
     return await instance({
       url: API.FUND.LIST + "/search/keyword",
       method: "GET",
-      params: { postId: postId, sort: sortType, size: 12, keyword },
+      params: { postId: pageIndex, sort: sortType, size: 12, keyword },
     });
   }
 
   return await instance({
     url: API.FUND.LIST,
     method: "GET",
-    params: { postId: postId, sort: sortType, size: 12 },
+    params: {
+      page: pageIndex,
+      size: 12,
+      sort: sortType,
+    },
   });
 };
 
