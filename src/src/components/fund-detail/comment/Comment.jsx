@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import TestAccountIcon from "@/assets/icon/TestAccountIcon";
 import { useState } from "react";
-import ReplyInput from "@/components/fund-detail/comment/ReplyInput.jsx";
+import { PropTypes } from "prop-types";
 import { useNavigate } from "react-router-dom";
+import ReplyInput from "@/components/fund-detail/comment/ReplyInput.jsx";
 import formatDateToYYYYMMDD from "@/utils/formateDateToYYYYMMDD.js";
 import InfiniteReply from "@/components/fund-detail/comment/InfiniteReply.jsx";
 import { EpochSecondToDateObject } from "@/utils/EpochConverter.js";
-import { PropTypes } from "prop-types";
 
 const Styled = {
   CommentContainer: styled.div`

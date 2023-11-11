@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useRef } from "react";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver.js";
 import Comment from "@/components/fund-detail/comment/Comment.jsx";
+import CommentSkeleton from "@/components/fund-detail/comment/Comment.skeleton.jsx";
 
 function InfiniteComment() {
   const { fundId } = useParams();
@@ -18,7 +19,10 @@ function InfiniteComment() {
       {data?.pages.map((page) =>
         page.comments.map((info, index) => <Comment key={index} {...info} />),
       )}
-      <div ref={loaderRef}>load</div>
+      <CommentSkeleton
+        loaderRef={loaderRef}
+        style={data?.pages.at(-1)?.isLastPage && { display: "none" }}
+      />
     </>
   );
 }

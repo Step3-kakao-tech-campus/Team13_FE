@@ -9,6 +9,7 @@ function useInfiniteComments({ fundId }) {
       return await FundAPI.getCommentsByFundId({ fundId, pageIndex });
     },
     {
+      suspense: true,
       getNextPageParam: (lastPage) => {
         if (lastPage.isLastPage) return;
         return lastPage.currentPage + 1;
