@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { PropTypes } from "prop-types";
 import WithdrawalFundInfoSkeleton from "@/components/my-fund/approve-withdrawal/WithdrawalFundInfoSkeleton.jsx";
 
@@ -9,9 +9,8 @@ import WithdrawalFundInfoSkeleton from "@/components/my-fund/approve-withdrawal/
  * @constructor
  */
 
-function InfiniteWithdrawInfoLoader({ loaderRef }) {
+function InfiniteWithdrawalFundInfoLoader({ loaderRef }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const componentNumberRef = useRef(window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => {
@@ -23,21 +22,15 @@ function InfiniteWithdrawInfoLoader({ loaderRef }) {
     };
   }, []);
 
-  useEffect(() => {
-    componentNumberRef.current = windowWidth;
-  }, [windowWidth]);
-
   return (
     <div ref={loaderRef} style={{ margin: "3rem 0" }}>
-      {Array.from({ length: componentNumberRef.current }).map((_, index) => (
-        <WithdrawalFundInfoSkeleton key={index} />
-      ))}
+      <WithdrawalFundInfoSkeleton />
     </div>
   );
 }
 
-InfiniteWithdrawInfoLoader.propTypes = {
+InfiniteWithdrawalFundInfoLoader.propTypes = {
   loaderRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
 };
 
-export default InfiniteWithdrawInfoLoader;
+export default InfiniteWithdrawalFundInfoLoader;
