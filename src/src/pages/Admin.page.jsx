@@ -21,6 +21,7 @@ const Styled = {
 };
 
 function AdminPage() {
+
   return (
     <>
       <Styled.Title style={{ padding: "4rem 0" }}>관리자</Styled.Title>

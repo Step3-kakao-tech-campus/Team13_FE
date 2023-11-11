@@ -4,6 +4,7 @@ import { PropTypes } from "prop-types";
 import useInfiniteReplyQuery from "@/hooks/api/fund/useInfiniteReplyQuery.js";
 import Comment from "@/components/fund-detail/comment/Comment";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver.js";
+import CommentSkeleton from "@/components/fund-detail/comment/Comment.skeleton.jsx";
 
 /**
  * 대댓글 무한 스크롤
@@ -27,7 +28,11 @@ function InfiniteReply({ commentId }) {
         )),
       )}
 
-      <div ref={loaderRef}>loader</div>
+      <CommentSkeleton
+        isReply={true}
+        loaderRef={loaderRef}
+        style={data?.pages.at(-1)?.isLastPage && { display: "none" }}
+      />
     </>
   );
 }

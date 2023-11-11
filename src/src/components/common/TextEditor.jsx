@@ -1,10 +1,11 @@
 import ReactQuill, { Quill } from "react-quill";
-import { useEffect, useRef } from "react";
+import { useMemo, useRef } from "react";
 import { PropTypes } from "prop-types";
 import ImageResize from "quill-image-resize-module-react/src/ImageResize.js";
 import "react-quill/dist/quill.snow.css";
 import "@/styles/quill.custom.css";
 import styled from "styled-components";
+import ImageAPI from "@/api/ImageAPI.js";
 
 Quill.register("modules/imageResize", ImageResize);
 
@@ -36,62 +37,50 @@ const Styled = {
 function TextEditor({ text, setText, ...props }) {
   const quillRef = useRef();
 
-  const modules = {
-    toolbar: {
-      container: [
-        [{ header: [6, 5, false, 4, 3, 2, 1] }],
-        [{ align: [] }],
-        ["bold", "italic", "underline", "strike", "blockquote"],
-        [{ list: "ordered" }, { list: "bullet" }, "link"],
-        [{ color: [] }, { background: [] }],
-        ["image", "video"],
-      ],
-    },
-    imageResize: {
-      parchment: Quill.import("parchment"),
-      modules: ["Resize", "DisplaySize", "Toolbar"],
-    },
+  const imageHandler = async () => {
+    const input = document.createElement("input");
+    input.setAttribute("type", "file");
+    input.setAttribute("accept", "image/*");
+    input.click();
+    input.addEventListener("change", async () => {
+      const file = input.files?.[0];
+      const range = quillRef.current.getEditor().getSelection(true);
+
+      try {
+        const { data } = await ImageAPI.uploadImage(file);
+        const IMG_URL = data?.response;
+
+        // 받아온 url을 이미지 태그에 삽입
+        quillRef.current.getEditor().insertEmbed(range.index, "image", IMG_URL);
+
+        // 사용자 편의를 위해 커서 이미지 오른쪽으로 이동
+        quillRef.current.getEditor().setSelection(range.index + 1);
+      } catch (e) {
+        quillRef.current.getEditor().deleteText(range.index, 1);
+      }
+    });
   };
 
-  useEffect(() => {
-    const { getEditor } = quillRef.current;
-
-    const handleImage = () => {
-      const input = document.createElement("input");
-      input.setAttribute("type", "file");
-      input.setAttribute("accept", "image/*");
-      input.click();
-      input.onchange = async () => {
-        const file = input.files[0];
-
-        // 현재 커서 위치 저장
-        const range = getEditor().getSelection(true);
-
-        // 서버에 올려질때까지 표시할 로딩 placeholder 삽입
-        getEditor().insertEmbed(range.index, "image", `/images/loading.gif`);
-
-        try {
-          const url = await uploadImage(file, filePath);
-
-          // 정상적으로 업로드 됐다면 로딩 placeholder 삭제
-          getEditor().deleteText(range.index, 1);
-          // 받아온 url을 이미지 태그에 삽입
-          getEditor().insertEmbed(range.index, "image", url);
-
-          // 사용자 편의를 위해 커서 이미지 오른쪽으로 이동
-          getEditor().setSelection(range.index + 1);
-        } catch (e) {
-          getEditor().deleteText(range.index, 1);
-        }
-      };
+  const modules = useMemo(() => {
+    return {
+      toolbar: {
+        container: [
+          [{ header: [6, 5, false, 4, 3, 2, 1] }],
+          [{ align: [] }],
+          ["bold", "italic", "underline", "strike", "blockquote"],
+          [{ list: "ordered" }, { list: "bullet" }, "link"],
+          [{ color: [] }, { background: [] }],
+          ["image", "video"],
+        ],
+        handlers: {
+          image: imageHandler,
+        },
+      },
+      imageResize: {
+        parchment: Quill.import("parchment"),
+        modules: ["Resize", "DisplaySize", "Toolbar"],
+      },
     };
-
-    console.log(quillRef.current.getEditor());
-
-    if (quillRef.current) {
-      const toolbar = quillRef.current.getEditor().getModule("toolbar");
-      toolbar.addHandler("image", handleImage);
-    }
   }, []);
 
   return (

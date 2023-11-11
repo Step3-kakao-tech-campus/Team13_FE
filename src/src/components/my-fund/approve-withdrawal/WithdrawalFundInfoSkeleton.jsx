@@ -1,5 +1,4 @@
 import ProfileImageNameSkeleton from "@/components/common/ProfileImageName.skeleton.jsx";
-import Button from "@/components/common/button/Button.jsx";
 import styled from "styled-components";
 
 function WithdrawalFundInfoSkeleton() {

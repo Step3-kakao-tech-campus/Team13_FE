@@ -12,13 +12,13 @@ import {
  * @param {string=} sortType
  */
 
-const getCelebInfoList = async ({ cursorId, keyword, sortType }) => {
-  return await instance({
-    url: API.CELEBRITY.LIST + `?celebId=${cursorId}&keyword=${keyword || ""}`,
+const getCelebInfoList = async ({ pageIndex, keyword, sortType }) => {
+  const { data } = await instance({
+    url: API.CELEBRITY.LIST,
     method: "GET",
-    // params: { celebId: cursorId, keyword: keyword, sortType: sortType },
+    params: { page: pageIndex, keyword: keyword, size: 12 },
   });
-  //TODO: 백엔드 서버 수정 후 추후 params 수정
+  return data.response;
 };
 
 /**
@@ -65,10 +65,27 @@ const postCelebApply = async ({
   celebGroup,
   profileImage,
 }) => {
+  const formData = new FormData();
+  formData.append("thumbnail", profileImage);
+
+  const dto = {
+    celebName,
+    celebGender,
+    celebCategory,
+    celebGroup,
+  };
+  formData.append(
+    "celebRequestDTO",
+    new Blob([JSON.stringify(dto)], { type: "application/json" }),
+  );
+
   return await instance({
     url: API.CELEBRITY.REGISTER,
     method: "POST",
-    data: { celebName, celebGender, celebCategory, celebGroup, profileImage },
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    data: formData,
   });
 };
 
@@ -81,22 +98,33 @@ const getCelebDetailInfo = async (celebId) => {
     method: "GET",
   });
 
-  return new CelebDetailInfoDto(data);
+  return new CelebDetailInfoDto({
+    celebId: data?.response?.celebId,
+    celebName: data?.response?.celebName,
+    celebGender: data?.response?.celebGender,
+    celebGroup: data?.response?.celebGroup,
+    celebCategory: data?.response?.celebCategory,
+    profileUrl: data?.response?.profileImage,
+    followerNum: data?.response?.followerCount,
+    rank: { follower: data?.response?.followerRank },
+  });
 };
 
 /**
  * 셀럽관련 펀딩목록 조회 api
  */
 const getCelebRelatedFund = async ({ celebId, pageIndex, sortType }) => {
-  return await instance({
+  const { data } = await instance({
     url: API.CELEBRITY.FUNDING(celebId),
     method: "GET",
     params: {
       celebId: celebId,
-      pageIndex: pageIndex,
-      sortType: sortType,
+      page: pageIndex,
+      size: 12,
     },
   });
+
+  return data.response;
 };
 
 export default {

@@ -12,7 +12,10 @@ const getMyFundUserInfoByToken = async () => {
     url: API.MY_FUND.NICKNAME,
     method: "GET",
   });
-  return new MyFundUserInfoDto(data);
+  return new MyFundUserInfoDto({
+    nickname: data?.response?.email,
+    profileUrl: localStorage.getItem("userProfile"),
+  });
 };
 
 /**
@@ -24,7 +27,16 @@ const getFollowingCelebByToken = async () => {
     url: API.MY_FUND.FOLLOW,
     method: "GET",
   });
-  return data.followingCelebList.map((celeb) => new SimpleCelebInfoDto(celeb));
+  return data?.response?.map(
+    (celeb) =>
+      new SimpleCelebInfoDto({
+        celebId: celeb?.celebId,
+        celebName: celeb?.celebName,
+        following: true,
+        followingCount: celeb?.followerCount,
+        celebProfileImage: celeb?.profileImage,
+      }),
+  );
 };
 
 /**
@@ -87,6 +99,16 @@ const postWithdrawalRejection = async ({ postId, withdrawalId }) => {
   });
 };
 
+const getLikeFund = async ({ pageIndex }) => {
+  const { data } = await instance({
+    url: API.MY_FUND.LIKE,
+    method: "GET",
+    data: { page: pageIndex },
+  });
+
+  return data.response;
+};
+
 export default {
   getMyFundUserInfoByToken,
   getFollowingCelebByToken,
@@ -95,4 +117,5 @@ export default {
   getWithdrawlApplyList,
   postWithdrawalApproval,
   postWithdrawalRejection,
+  getLikeFund,
 };

@@ -30,19 +30,38 @@ function InfiniteCelebRelatedFund({ sortType }) {
   }, loaderRef);
 
   const mapInfoToCelebFundDto = (info) => {
-    return new CelebRelatedFundDto({ ...info });
+    return new CelebRelatedFundDto({
+      celebrityId: celebId,
+      celebrityName: info?.celebName,
+      celebrityProfileUrl: info?.celebImg,
+      fundId: info?.postId,
+      fundTitle: info?.title,
+      thumbnailUrl: info?.thumbnail,
+      targetMoney: info?.targetPrice,
+      targetDate: info?.deadline,
+      currentMoney: info?.currentAmount,
+      organizerId: info?.writerId,
+      organizerName: info?.writer,
+      isInUserWishList: info?.heart,
+    });
   };
 
   return (
     <>
       <GridTemplate>
         {infiniteCelebFundData?.pages.map((page) =>
-          page?.data?.celebRelatedFundList.map((info, index) => (
+          page?.content?.map((info, index) => (
             <FundInfoGridCard key={index} {...mapInfoToCelebFundDto(info)} />
           )),
         )}
       </GridTemplate>
-      <InfiniteFundInfoLoader loaderRef={loaderRef} />
+
+      <InfiniteFundInfoLoader
+        loaderRef={loaderRef}
+        style={
+          infiniteCelebFundData?.pages.at(-1).lastPage && { display: "none" }
+        }
+      />
     </>
   );
 }

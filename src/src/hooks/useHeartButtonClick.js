@@ -5,19 +5,21 @@ import useDeleteFundLikeMutation from "@/hooks/api/fund/useDeleteFundLikeMutatio
 function useHeartButtonClick({ fundId, isInUserWishList }) {
   const [isHeartClicked, setIsHeartClicked] = useState(isInUserWishList);
 
-  const { mutate: postLikeMutate } = usePostFundLikeMutation(() =>
-    setIsHeartClicked(true),
-  );
+  const { mutate: postLikeMutate } = usePostFundLikeMutation({
+    fundId,
+    handleSuccess: () => setIsHeartClicked(true),
+  });
 
-  const { mutate: deleteLikeMutate } = useDeleteFundLikeMutation(() =>
-    setIsHeartClicked(false),
-  );
+  const { mutate: deleteLikeMutate } = useDeleteFundLikeMutation({
+    fundId,
+    handleSuccess: () => setIsHeartClicked(false),
+  });
 
   const handleHeartClick = useCallback(
     (e) => {
       e.stopPropagation();
-      if (isHeartClicked) return deleteLikeMutate({ fundId });
-      return postLikeMutate({ fundId });
+      if (isHeartClicked) return deleteLikeMutate();
+      return postLikeMutate();
     },
     [fundId, isHeartClicked],
   );

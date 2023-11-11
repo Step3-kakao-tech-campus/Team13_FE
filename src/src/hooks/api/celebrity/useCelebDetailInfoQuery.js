@@ -4,7 +4,7 @@ import celebrityAPI from "@/api/celebrityAPI.js";
 
 function useCelebDetailInfoQuery({ celebId }) {
   return useQuery(
-    [API.CELEBRITY.DETAIL(celebId)],
+    [API.CELEBRITY.LIST, API.CELEBRITY.DETAIL(celebId)],
     async () => {
       return await celebrityAPI.getCelebDetailInfo(celebId);
     },

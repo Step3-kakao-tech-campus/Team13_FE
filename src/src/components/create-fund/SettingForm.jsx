@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { PropTypes } from "prop-types";
+import { Suspense } from "react";
 import AutoCelebSearch from "@/components/create-fund/AutoCelebSearch.jsx";
 
 const Styled = {
@@ -109,7 +110,9 @@ function SettingForm({ input, setInput }) {
 
       <Styled.InputBox>
         <Styled.Label>셀럽</Styled.Label>
-        <AutoCelebSearch input={input} setInput={setInput} />
+        <Suspense fallback={<div>로딩 중</div>}>
+          <AutoCelebSearch input={input} setInput={setInput} />
+        </Suspense>
       </Styled.InputBox>
     </>
   );

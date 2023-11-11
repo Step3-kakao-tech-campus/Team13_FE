@@ -27,7 +27,7 @@ function InfiniteCelebInfoLoader({ loaderRef, ...props }) {
   }, [windowWidth]);
 
   return (
-    <GridTemplate ref={loaderRef} style={{ margin: "3rem 0" }} {...props}>
+    <GridTemplate ref={loaderRef} {...props}>
       {Array.from({ length: componentNumberRef.current }).map((_, index) => (
         <CelebInfoGridCardSkeleton key={index} />
       ))}
