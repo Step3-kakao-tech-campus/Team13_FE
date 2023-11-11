@@ -277,17 +277,18 @@ const createFund = async ({
     targetPrice,
     deadline: deadline[0],
   };
+
   formData.append(
     "dto",
     new Blob([JSON.stringify(dto)], { type: "application/json" }),
   );
 
-  console.log(JSON.stringify(dto));
-
   return await instance({
     url: API.FUND.WRITE,
     method: "POST",
-    headers: { "Content-Type": "multipart/form-data" },
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
     data: formData,
   });
 };
