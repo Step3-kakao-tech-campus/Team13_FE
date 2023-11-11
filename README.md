@@ -1,4 +1,5 @@
 # 기술 스택
+![image](https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/917d194c-a948-4a1c-a5da-1a8be7fcf42c)
 
 ### **Bundler & Development Server**
 
