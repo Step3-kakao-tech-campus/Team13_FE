@@ -18,7 +18,6 @@ import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
 import FollowButton from "@/components/celebrity/FollowButton.jsx";
 import SimpleCelebCard from "@/components/celebrity/SimpleCelebCard.jsx";
 import CelebInfoGridCardSkeleton from "@/components/celebrity/CelebInfoGridCardSkeleton.jsx";
-import CelebRequestInfoCard from "@/components/celebrity/celebRequestInfoCard";
 
 const Styled = {
   GridExample: styled.article`
@@ -125,8 +124,6 @@ function Test() {
       <FollowButton celebId={2} isFollowing={true} />
 
       <GridTemplate>
-        <CelebRequestInfoCard></CelebRequestInfoCard>
-
         <CelebInfoGridCard
           celebId="sonny"
           celebName="손흥민"
