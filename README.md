@@ -60,9 +60,6 @@ https://k8188ddddcf83a.user-app.krampoline.com/
 
     ![image](https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/b874eb53-922e-4bc2-a53d-aee278ea27a6)
 
-# ERD
-
-![KakaoTalk_Photo_2023-11-11-23-33-43](https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/5257a2fe-7cdd-4e88-8f04-a33d4495503b)
 
 ### 셀럽 팬덤 (후원자)
 
@@ -163,7 +160,9 @@ https://k8188ddddcf83a.user-app.krampoline.com/
     
     ![carbon (9)](https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/ed3282d1-b78e-4dc8-baca-47e4ca68d6c0)
 
-    
+# ERD
+
+![KakaoTalk_Photo_2023-11-11-23-33-43](https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/5257a2fe-7cdd-4e88-8f04-a33d4495503b)
 
 # 관련 링크
 
