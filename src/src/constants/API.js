@@ -32,6 +32,7 @@ const FUND = {
   COMMENT_REPLY: ({ fundId, commentId }) =>
     `/posts/${fundId}/comments/${commentId}`,
   UPDATE: (fundId) => `/posts/${fundId}/updates`,
+  PAYMENT: (fundId) => `/posts/${fundId}/donate`,
 };
 
 const USER = {

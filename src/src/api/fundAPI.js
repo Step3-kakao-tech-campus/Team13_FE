@@ -269,7 +269,6 @@ const createFund = async ({
   const formData = new FormData();
   formData.append("thumbnail", imageFile);
 
-  console.log(deadline[0]);
   const dto = {
     celebId,
     title,
@@ -310,6 +309,17 @@ const postUpdateByFundId = async ({ fundId, title, content }) => {
   });
 };
 
+const postPaymentByFundId = async ({ fundId, amount, impUid }) => {
+  return await instance({
+    url: API.FUND.PAYMENT(fundId),
+    method: "POST",
+    data: {
+      amount,
+      impUid,
+    },
+  });
+};
+
 export default {
   getFundInfoList,
   postFundLike,
@@ -328,4 +338,5 @@ export default {
   createFund,
   getUpdateByFundId,
   postUpdateByFundId,
+  postPaymentByFundId,
 };
