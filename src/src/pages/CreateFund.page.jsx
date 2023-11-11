@@ -15,6 +15,7 @@ import TextEditor from "@/components/common/TextEditor.jsx";
 import Button from "@/components/common/button/Button.jsx";
 import routes from "@/constants/routes.js";
 import useSetImageFileToUrl from "@/hooks/useSetImageFileToUrl.js";
+import useCreateFundMutation from "@/hooks/api/fund/useCreateFundMutation.js";
 
 const Styled = {
   Container: styled.section`
@@ -55,8 +56,9 @@ function CreateFundPage() {
   });
 
   const [introductionText, setIntroductionText] = useState("");
+  const { mutate } = useCreateFundMutation();
 
-  const handleCreateFundSubmit = () => {
+  const handleCreateFundSubmit = async () => {
     if (!title || title === "") return toast.error("펀딩 제목을 입력해 주세요");
     if (!thumbnailFile) return toast.error("썸네일 이미지를 추가해 주세요");
     if (!settingInput.targetMoney || !settingInput.targetMoney === "0")
@@ -71,9 +73,16 @@ function CreateFundPage() {
     console.log(settingInput);
     console.log(introductionText);
     // console.log 대신 api 통신
+    await mutate({
+      celebId: settingInput.celebId,
+      deadline: settingInput.dueDate,
+      title: title,
+      targetPrice: settingInput.targetMoney,
+      introduction: introductionText,
+      imageFile: thumbnailFile,
+    });
 
-    toast.success("성공적으로 펀딩을 주최했습니다!");
-    navigate(routes.fund);
+    // navigate(routes.fund);
   };
 
   return (

@@ -65,10 +65,18 @@ const postCelebApply = async ({
   celebGroup,
   profileImage,
 }) => {
+  const formData = new FormData();
+  formData.append("thumbnail", profileImage);
+
   return await instance({
     url: API.CELEBRITY.REGISTER,
     method: "POST",
-    data: { celebName, celebGender, celebCategory, celebGroup, profileImage },
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    data: {
+      celebRequestDTO: { celebName, celebGender, celebGroup, celebCategory },
+    },
   });
 };
 

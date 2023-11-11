@@ -50,7 +50,7 @@ function CelebProfile({
   celebCategory,
   celebGender,
   celebId,
-  isFollowing = false,
+  isFollowing,
 }) {
   return (
     <Styled.ProfileContainer>
