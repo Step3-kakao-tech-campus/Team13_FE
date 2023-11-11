@@ -16,6 +16,7 @@ import Button from "@/components/common/button/Button.jsx";
 import routes from "@/constants/routes.js";
 import useSetImageFileToUrl from "@/hooks/useSetImageFileToUrl.js";
 import useCreateFundMutation from "@/hooks/api/fund/useCreateFundMutation.js";
+import formatDateToStringTime from "@/utils/formatDateToStringTime.js";
 
 const Styled = {
   Container: styled.section`
@@ -75,7 +76,9 @@ function CreateFundPage() {
     // console.log 대신 api 통신
     await mutate({
       celebId: settingInput.celebId,
-      deadline: settingInput.dueDate,
+      deadline: formatDateToStringTime(
+        new Date(settingInput.dueDate + "T23:59:59"),
+      ),
       title: title,
       targetPrice: settingInput.targetMoney,
       introduction: introductionText,
