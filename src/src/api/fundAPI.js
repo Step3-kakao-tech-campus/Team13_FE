@@ -101,7 +101,14 @@ const getCoAdminByFundId = async (fundId) => {
     method: "GET",
   });
 
-  return data.coAdminList.map((user) => new CoAdminUserDto(user));
+  return data.response.map(
+    (user) =>
+      new CoAdminUserDto({
+        userId: user.adminId,
+        nickname: user.nickname,
+        profileUrl: user.profile,
+      }),
+  );
 };
 
 /**

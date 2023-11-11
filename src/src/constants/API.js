@@ -10,7 +10,7 @@ const FUND = {
   LIKE: (fundId) => `/posts/${fundId}/heart`,
   UNLIKE: (fundId) => `/posts/${fundId}/unHeart`,
   CO_ADMIN: (fundId) => {
-    return `/posts/${fundId}/co-admin`;
+    return `/posts/${fundId}/admins`;
   },
   INTRODUCTION: (fundId) => {
     return `/posts/${fundId}/introduction`;
