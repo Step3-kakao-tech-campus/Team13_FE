@@ -5,6 +5,7 @@ import MyFollowingList from "@/components/my-fund/following/MyFollowingList.jsx"
 import MyHeartList from "@/components/my-fund/like/MyHeartList.jsx";
 import MyFundingList from "@/components/my-fund/support/MyFundingList.jsx";
 import MyHostingFundList from "@/components/my-fund/host/MyHostingFundList.jsx";
+import WithdrawalApproval from "@/components/my-fund/approve-withdrawal/WithdrawalApproval.jsx";
 
 /**
  * My펀딩페이지 탭 버튼 선택에 따른 하단 컴포넌트 변경
@@ -21,6 +22,8 @@ function DynamicRender({ type }) {
       return <MyFundingList />;
     case TABS.MY_FUND.HOST_FUND:
       return <MyHostingFundList />;
+    case TABS.MY_FUND.WITHDRAWAL_APPROVAL:
+      return <WithdrawalApproval />;
     default:
       return <div>잘못 선택되었습니다 다시 선택해 주세요</div>;
   }

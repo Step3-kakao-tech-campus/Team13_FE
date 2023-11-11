@@ -60,6 +60,9 @@ const MY_FUND = {
   LIKE: "/myfunding/like",
   SUPPORT: "/myfunding/support",
   HOST: "/myfunding/host",
+  WITHDRAWAL: "/myfunding/withdrawal",
+  APPROVAL: "/myfunding/withdrawal/approval",
+  REJECTION: "/myfunding/withdrawal/rejection",
 };
 
 Object.freeze(AUTH);

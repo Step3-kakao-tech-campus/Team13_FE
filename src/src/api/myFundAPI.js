@@ -51,9 +51,48 @@ const getHostFundListByToken = async ({ pageIndex }) => {
   });
 };
 
+/**
+ * My펀딩 공동관리자인 펀딩 출금신청 목록조회 api
+ */
+
+const getWithdrawlApplyList = async ({ pageIndex }) => {
+  return await instance({
+    url: API.MY_FUND.WITHDRAWAL,
+    method: "GET",
+    params: { pageIndex: pageIndex },
+  });
+};
+
+/**
+ * My펀딩 출금신청 승인 api
+ */
+
+const postWithdrawalApproval = async ({ postId, withdrawalId }) => {
+  return await instance({
+    url: API.MY_FUND.APPROVAL,
+    method: "POST",
+    data: { postId, withdrawalId },
+  });
+};
+
+/**
+ * My펀딩 출금신청 거절 api
+ */
+
+const postWithdrawalRejection = async ({ postId, withdrawalId }) => {
+  return await instance({
+    url: API.MY_FUND.REJECTION,
+    method: "POST",
+    data: { postId, withdrawalId },
+  });
+};
+
 export default {
   getMyFundUserInfoByToken,
   getFollowingCelebByToken,
   getSupportFundListByToken,
   getHostFundListByToken,
+  getWithdrawlApplyList,
+  postWithdrawalApproval,
+  postWithdrawalRejection,
 };
