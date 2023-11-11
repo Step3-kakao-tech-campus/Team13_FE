@@ -24,8 +24,7 @@ function InfiniteCelebInfo({ keyword, sortType }) {
       sortType,
     });
 
-  const isLastPage =
-    infiniteCelebInfoData.pages.at(-1)?.data?.response?.lastPage;
+  const isLastPage = infiniteCelebInfoData.pages.at(-1)?.lastPage;
 
   useIntersectionObserver(async () => {
     await fetchNextPage();
@@ -33,17 +32,22 @@ function InfiniteCelebInfo({ keyword, sortType }) {
 
   const mapInfoToCelebInfoDto = (info) => {
     return new CelebInfoDto({
-      celebId: info.celebId,
-      celebName: info.celebName,
-      profileUrl: info.profileImage,
+      celebId: info?.celebId,
+      celebName: info?.celebName,
+      profileUrl: info?.profileImage,
+      totalFundMoney: info?.fundingAmount,
+      fundInProgressNum: info?.ongoingFundingCount,
+      followerNum: 190,
+      isFollowing: info?.following,
+      rank: info?.celebRank,
     });
   };
 
   return (
     <>
-      <GridTemplate>
+      <GridTemplate style={{ marginBottom: "3rem" }}>
         {infiniteCelebInfoData?.pages.map((page) =>
-          page?.data?.response?.content.map((info, index) => (
+          page?.content?.map((info, index) => (
             <CelebInfoGridCard key={index} {...mapInfoToCelebInfoDto(info)} />
           )),
         )}

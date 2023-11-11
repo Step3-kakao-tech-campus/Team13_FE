@@ -14,19 +14,23 @@ import {
  * @returns {Promise<axios.AxiosResponse<any>>} a
  */
 
-const getFundInfoList = async ({ postId, keyword, sortType }) => {
+const getFundInfoList = async ({ pageIndex, keyword, sortType }) => {
   if (keyword) {
     return await instance({
       url: API.FUND.LIST + "/search/keyword",
       method: "GET",
-      params: { postId: postId, sort: sortType, size: 12, keyword },
+      params: { postId: pageIndex, sort: sortType, size: 12, keyword },
     });
   }
 
   return await instance({
     url: API.FUND.LIST,
     method: "GET",
-    params: { postId: postId, sort: sortType, size: 12 },
+    params: {
+      page: pageIndex,
+      size: 12,
+      sort: sortType,
+    },
   });
 };
 
@@ -101,7 +105,14 @@ const getCoAdminByFundId = async (fundId) => {
     method: "GET",
   });
 
-  return data.coAdminList.map((user) => new CoAdminUserDto(user));
+  return data.response.map(
+    (user) =>
+      new CoAdminUserDto({
+        userId: user.adminId,
+        nickname: user.nickname,
+        profileUrl: user.profile,
+      }),
+  );
 };
 
 /**
@@ -247,6 +258,58 @@ const postReplyByCommentId = async ({ fundId, commentId, content }) => {
   });
 };
 
+const createFund = async ({
+  celebId,
+  title,
+  introduction,
+  targetPrice,
+  deadline,
+  imageFile,
+}) => {
+  const formData = new FormData();
+  formData.append("thumbnail", imageFile);
+
+  console.log(deadline[0]);
+  const dto = {
+    celebId,
+    title,
+    introduction,
+    targetPrice,
+    deadline: deadline[0],
+  };
+
+  formData.append(
+    "dto",
+    new Blob([JSON.stringify(dto)], { type: "application/json" }),
+  );
+
+  return await instance({
+    url: API.FUND.WRITE,
+    method: "POST",
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    data: formData,
+  });
+};
+
+const getUpdateByFundId = async ({ fundId, cursor }) => {
+  const { data } = await instance({
+    url: API.FUND.UPDATE(fundId),
+    method: "GET",
+  });
+
+  return data.response;
+};
+
+const postUpdateByFundId = async ({ fundId, title, content }) => {
+  return await instance({
+    url: API.FUND.UPDATE(fundId),
+    method: "POST",
+    data: { title, content },
+  });
+};
+
 export default {
   getFundInfoList,
   postFundLike,
@@ -262,4 +325,7 @@ export default {
   postCommentByFundId,
   getReplyByCommentId,
   postReplyByCommentId,
+  createFund,
+  getUpdateByFundId,
+  postUpdateByFundId,
 };

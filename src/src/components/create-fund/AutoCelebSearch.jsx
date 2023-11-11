@@ -6,6 +6,7 @@ import useOutsideClick from "@/hooks/useOutsideClick.js";
 import CloseIcon from "@/assets/icon/CloseIcon.jsx";
 import AutoSearchData from "@/components/create-fund/AutoSearchData.jsx";
 import { PropTypes } from "prop-types";
+import useInfiniteCelebInfoQuery from "@/hooks/api/celebrity/useInfiniteCelebInfoQuery.js";
 
 const Styled = {
   Container: styled.div`
@@ -70,13 +71,6 @@ const Styled = {
   `,
 };
 
-const sonnyData = {
-  celebId: "sonny",
-  profileUrl:
-    "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
-  celebName: "손흥민",
-};
-
 /**
  * 펀딩 주최 자동완성 기능이 포함된 셀럽 선택 컴포넌트
  * @param {Object<targetMoney: string | number , dueDate: string, celebId: string | number, celebName: string >} input 소개 input 상태
@@ -85,6 +79,7 @@ const sonnyData = {
 
 function AutoCelebSearch({ input, setInput }) {
   const [keyword, setKeyword] = useState("");
+  const inputRef = useRef();
   const [isAutoDataListOpen, setIsAutoDataListOpen] = useState(false);
 
   const searchBarRef = useRef();
@@ -92,10 +87,11 @@ function AutoCelebSearch({ input, setInput }) {
     setIsAutoDataListOpen(false);
   });
 
+  const { data } = useInfiniteCelebInfoQuery({ keyword, sortType: "" });
+
   useEffect(() => {
     const debounce = setTimeout(() => {
-      if (!keyword) return;
-      // api 통신 후 검색 결과 업데이 updateData(keyword)
+      setKeyword(inputRef.current.value);
     }, 300);
 
     return () => clearTimeout(debounce);
@@ -107,9 +103,8 @@ function AutoCelebSearch({ input, setInput }) {
 
       {!input.celebId && !input.celebName ? (
         <Styled.Input
-          value={keyword}
+          ref={inputRef}
           onInput={(e) => {
-            setKeyword(e.target.value);
             setIsAutoDataListOpen(true);
           }}
         />
@@ -131,23 +126,25 @@ function AutoCelebSearch({ input, setInput }) {
 
       {isAutoDataListOpen && (
         <Styled.AutoDataList>
-          {new Array(10).fill(sonnyData).map((data, index) => (
-            <AutoSearchData
-              key={index}
-              profileUrl={data.profileUrl}
-              celebName={data.celebName}
-              onClick={() => {
-                setInput((prev) => {
-                  return {
-                    ...prev,
-                    celebId: data.celebId,
-                    celebName: data.celebName,
-                  };
-                });
-                setIsAutoDataListOpen(false);
-              }}
-            />
-          ))}
+          {data?.pages?.map((page) =>
+            page?.content?.map((data, index) => (
+              <AutoSearchData
+                key={index}
+                profileUrl={data.profileUrl}
+                celebName={data.celebName}
+                onClick={() => {
+                  setInput((prev) => {
+                    return {
+                      ...prev,
+                      celebId: data.celebId,
+                      celebName: data.celebName,
+                    };
+                  });
+                  setIsAutoDataListOpen(false);
+                }}
+              />
+            )),
+          )}
         </Styled.AutoDataList>
       )}
     </Styled.Container>

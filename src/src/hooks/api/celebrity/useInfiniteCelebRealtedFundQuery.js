@@ -15,7 +15,8 @@ function useInfiniteCelebRelatedFundQuery({ celebId, sortType }) {
     {
       suspense: true,
       getNextPageParam: (lastPage) => {
-        return lastPage.config.params.pageIndex + 1;
+        if (lastPage.lastPage) return;
+        return lastPage.currentPage;
       },
     },
   );

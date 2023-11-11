@@ -7,10 +7,11 @@ const AUTH = {
 
 const FUND = {
   LIST: "/posts",
+  WRITE: "/posts/write",
   LIKE: (fundId) => `/posts/${fundId}/heart`,
   UNLIKE: (fundId) => `/posts/${fundId}/unHeart`,
   CO_ADMIN: (fundId) => {
-    return `/posts/${fundId}/co-admin`;
+    return `/posts/${fundId}/admins`;
   },
   INTRODUCTION: (fundId) => {
     return `/posts/${fundId}/introduction`;
@@ -30,6 +31,7 @@ const FUND = {
   COMMENT: (fundId) => `/posts/${fundId}/comments`,
   COMMENT_REPLY: ({ fundId, commentId }) =>
     `/posts/${fundId}/comments/${commentId}`,
+  UPDATE: (fundId) => `/posts/${fundId}/updates`,
 };
 
 const USER = {

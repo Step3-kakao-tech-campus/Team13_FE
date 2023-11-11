@@ -17,7 +17,7 @@ function DynamicDetailRender({ type, isOrganizer }) {
     case TABS.FUND_DETAIL.INTRO:
       return <Introduction isOrganizer={isOrganizer} />;
     case TABS.FUND_DETAIL.UPDATE:
-      return <UpdateWrapper />;
+      return <UpdateWrapper isOrganizer={isOrganizer} />;
     case TABS.FUND_DETAIL.COMMENT:
       return <CommentWrapper />;
     case TABS.FUND_DETAIL.WITHDRAW:

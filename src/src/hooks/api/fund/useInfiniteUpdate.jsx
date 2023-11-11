@@ -2,20 +2,19 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import API from "@/constants/API.js";
 import FundAPI from "@/api/fundAPI.js";
 
-function useInfiniteComments({ fundId }) {
+function useInfiniteUpdate({ fundId }) {
   return useInfiniteQuery(
-    [API.FUND.COMMENT(fundId)],
-    async ({ pageIndex = 0 }) => {
-      return await FundAPI.getCommentsByFundId({ fundId, pageIndex });
+    [API.FUND.UPDATE(fundId)],
+    async ({ cursorId = 0 }) => {
+      return await FundAPI.getUpdateByFundId({ fundId, cursor: cursorId });
     },
     {
-      suspense: true,
       getNextPageParam: (lastPage) => {
         if (lastPage.isLastPage) return;
-        return lastPage.currentPage + 1;
+        return lastPage.cursor;
       },
     },
   );
 }
 
-export default useInfiniteComments;
+export default useInfiniteUpdate;

@@ -41,6 +41,7 @@ function CelebRank({ followerRank, fundingRank }) {
       2: <SecondRibbonIcon />,
       3: <ThirdRibbonIcon />,
     };
+
     return icons[rank] ? (
       icons[rank]
     ) : (
@@ -50,7 +51,7 @@ function CelebRank({ followerRank, fundingRank }) {
           marginBottom: "0.84rem",
           whiteSpace: "nowrap",
         }}
-      >{`${rank}등`}</div>
+      >{`${rank ?? "..."}등`}</div>
     );
   };
 
@@ -58,19 +59,19 @@ function CelebRank({ followerRank, fundingRank }) {
     <Styled.RankContainer>
       <Styled.Rank>
         <div>{renderIcon(followerRank)}</div>
-        <span>팔로워</span>
+        <span>팔로워 순위</span>
       </Styled.Rank>
-      <Styled.Rank>
-        <div>{renderIcon(fundingRank)}</div>
-        <span>펀딩금액</span>
-      </Styled.Rank>
+      {/*<Styled.Rank>*/}
+      {/*  <div>{renderIcon(fundingRank)}</div>*/}
+      {/*  <span>펀딩금액</span>*/}
+      {/*</Styled.Rank>*/}
     </Styled.RankContainer>
   );
 }
 
 CelebRank.propTypes = {
-  followerRank: PropTypes.number.isRequired,
-  fundingRank: PropTypes.number.isRequired,
+  followerRank: PropTypes.number,
+  fundingRank: PropTypes.number,
 };
 
 export default CelebRank;
