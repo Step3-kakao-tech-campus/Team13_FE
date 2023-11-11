@@ -4,9 +4,11 @@ import { useState } from "react";
 import ReplyInput from "@/components/fund-detail/comment/ReplyInput.jsx";
 import { useNavigate } from "react-router-dom";
 import formatDateToYYYYMMDD from "@/utils/formateDateToYYYYMMDD.js";
+import InfiniteReply from "@/components/fund-detail/comment/InfiniteReply.jsx";
 
 const Styled = {
   CommentContainer: styled.div`
+    padding: 0.25rem 0;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -48,6 +50,7 @@ const Styled = {
   `,
 
   ButtonBox: styled.div`
+    margin-bottom: 0.5rem;
     width: 100%;
 
     .open-reply-input {
@@ -70,6 +73,7 @@ function Comment({
   content,
   replyCount,
   createdAt,
+  isReply = false,
 }) {
   const [isReplyInputOpen, setIsReplyInputOpen] = useState(false);
   const navigate = useNavigate();
@@ -77,40 +81,47 @@ function Comment({
     navigate(`routes/${writerId}`);
   };
   return (
-    <>
-      <Styled.CommentContainer>
-        <Styled.UserProfileBox onClick={handleUserClick}>
-          {writerProfile ? (
-            <img src={writerProfile} alt={`프로필 사진`} />
-          ) : (
-            <TestAccountIcon />
-          )}
-        </Styled.UserProfileBox>
+    <Styled.CommentContainer>
+      <Styled.UserProfileBox onClick={handleUserClick}>
+        {writerProfile ? (
+          <img src={writerProfile} alt={`프로필 사진`} />
+        ) : (
+          <TestAccountIcon />
+        )}
+      </Styled.UserProfileBox>
 
-        <Styled.RightWrapper>
-          <Styled.TextBox>
-            <div className="top">
-              <div className="writer-name">{writerName}</div>
-              <div className="date">
-                {formatDateToYYYYMMDD(new Date(createdAt))}
-              </div>
+      <Styled.RightWrapper>
+        <Styled.TextBox>
+          <div className="top">
+            <div className="writer-name">{writerName}</div>
+            <div className="date">
+              {formatDateToYYYYMMDD(new Date(createdAt))}
             </div>
-            <div className="content">{content}</div>
-          </Styled.TextBox>
-          <Styled.ButtonBox>
-            <button
-              className="open-reply-input"
-              onClick={() => {
-                setIsReplyInputOpen((prev) => !prev);
-              }}
-            >
-              답글 {replyCount}
-            </button>
-          </Styled.ButtonBox>
-          {isReplyInputOpen && <ReplyInput />}
-        </Styled.RightWrapper>
-      </Styled.CommentContainer>
-    </>
+          </div>
+          <div className="content">{content}</div>
+        </Styled.TextBox>
+        {isReply || (
+          <>
+            <Styled.ButtonBox>
+              <button
+                className="open-reply-input"
+                onClick={() => {
+                  setIsReplyInputOpen((prev) => !prev);
+                }}
+              >
+                답글 {replyCount}
+              </button>
+            </Styled.ButtonBox>
+            {isReplyInputOpen && (
+              <>
+                <InfiniteReply commentId={commentId} />
+                <ReplyInput />
+              </>
+            )}
+          </>
+        )}
+      </Styled.RightWrapper>
+    </Styled.CommentContainer>
   );
 }
 

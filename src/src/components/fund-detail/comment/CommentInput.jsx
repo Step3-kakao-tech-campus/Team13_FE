@@ -3,6 +3,10 @@ import Button from "@/components/common/button/Button.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import { useRef } from "react";
 import handleEnterKeyDown from "@/utils/handleEnterKeyDown.js";
+import usePostCommentMutation from "@/hooks/api/fund/usePostCommentMutation.js";
+import { useNavigate, useParams } from "react-router-dom";
+import toast from "react-hot-toast";
+import routes from "@/constants/routes.js";
 
 const Styled = {
   Wrapper: styled.div`
@@ -30,12 +34,22 @@ const Styled = {
 
 function CommentInput() {
   const inputRef = useRef();
+  const { fundId } = useParams();
+  const { mutate } = usePostCommentMutation(fundId);
+  const navigate = useNavigate();
 
   const postComment = () => {
     try {
       console.log(inputRef.current.value);
+      mutate(inputRef.current.value);
       inputRef.current.value = "";
-    } catch (e) {}
+    } catch (e) {
+      toast.error("댓글 작성을 실패했습니다");
+
+      if (!localStorage.getItem("accessToken")) {
+        navigate(routes.signIn);
+      }
+    }
   };
 
   return (
@@ -43,6 +57,7 @@ function CommentInput() {
       <Styled.Input
         ref={inputRef}
         type="text"
+        placeholder="댓글 작성..."
         onKeyDown={(event) => handleEnterKeyDown(event, postComment)}
       />
       <Button

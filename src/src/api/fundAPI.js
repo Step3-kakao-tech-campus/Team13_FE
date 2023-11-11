@@ -193,7 +193,7 @@ const postFundWithdrawEvidenceImage = async ({
 };
 
 /**
- * 댓글 조회
+ * 펀딩 댓글 조회
  */
 const getCommentsByFundId = async ({ fundId, pageIndex }) => {
   const { data } = await instance({
@@ -203,6 +203,17 @@ const getCommentsByFundId = async ({ fundId, pageIndex }) => {
   });
 
   return data.response;
+};
+
+/** 펀딩 댓글 작성
+ *
+ */
+const postCommentByFundId = async (fundId, content) => {
+  return await instance({
+    url: API.FUND.COMMENT(fundId),
+    method: "POST",
+    data: { content },
+  });
 };
 
 export default {
@@ -217,4 +228,5 @@ export default {
   postFundWithdraw,
   postFundWithdrawEvidenceImage,
   getCommentsByFundId,
+  postCommentByFundId,
 };
