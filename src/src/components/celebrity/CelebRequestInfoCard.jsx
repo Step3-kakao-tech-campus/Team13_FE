@@ -105,8 +105,16 @@ function CelebRequestInfoCard() {
         >
           자세히
         </Button>
-        {/* {isModalOpen && <CelebRequestModal setOpen={setIsModalOpen} />} */}
-        {isModalOpen && <CelebRequestModal setOpen={setIsModalOpen} />}
+        {isModalOpen && (
+          <CelebRequestModal
+            setOpen={setIsModalOpen}
+            celebName={tmp.celebName}
+            celebGender={tmp.celebGender}
+            celebCategory={tmp.celebCategory}
+            celebGroup={tmp.celebGroup}
+            profileImage={tmp.profileImage}
+          />
+        )}
       </Styled.TextInfo>
     </Styled.Container>
   );
