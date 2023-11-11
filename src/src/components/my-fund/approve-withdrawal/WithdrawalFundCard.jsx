@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { PropTypes } from "prop-types";
 import styled from "styled-components";
 
 import routes from "@/constants/routes.js";
@@ -87,9 +88,21 @@ const Styled = {
   `,
 };
 
-// jsdoc추가예정
+/**
+ * My 펀딩 출금승인 정보 펀딩카드
+ * @param {string || number} withdrawalId 출금아이디
+ * @param {string || number} withdrawalAmount 출금 금액
+ * @param {string} usage 사용내역
+ *  @param {string || number} fundId 펀딩 아이디
+ * @param {string} thumbnailUrl 펀딩 대표 사진 url
+ * @param {string} fundTitle 펀딩 제목
+ * @param {string} targetDate 펀딩 마감 날짜
+ * @param {String || number} organizerId 주최자 아이디
+ * @param {string} organizerName 주최자 닉네임
+ * @param {string} organizerProfileUrl 주최자 프로필이미지
+ */
 
-function WithdrawalFundCard(
+function WithdrawalFundCard({
   withdrawalId,
   withdrawalAmount,
   usage,
@@ -99,7 +112,7 @@ function WithdrawalFundCard(
   organizerId,
   organizerName,
   organizerProfileUrl,
-) {
+}) {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -142,6 +155,18 @@ function WithdrawalFundCard(
   );
 }
 
-// propTypes 추가예정
+WithdrawalFundCard.propTypes = {
+  withdrawalId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  withdrawalAmount: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
+  usage: PropTypes.string.isRequired,
+  fundId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  thumbnailUrl: PropTypes.string,
+  fundTitle: PropTypes.string.isRequired,
+  organizerId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
+  organizerName: PropTypes.string.isRequired,
+  organizerProfileUrl: PropTypes.string,
+};
 
 export default WithdrawalFundCard;

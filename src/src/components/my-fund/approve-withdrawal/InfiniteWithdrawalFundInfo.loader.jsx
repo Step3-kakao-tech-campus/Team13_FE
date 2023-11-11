@@ -6,7 +6,6 @@ import WithdrawalFundInfoSkeleton from "@/components/my-fund/approve-withdrawal/
  * 출금승인 목록 페이지 로더
  * @param {React.RefObject} loaderRef
  * @returns {JSX.Element}
- * @constructor
  */
 
 function InfiniteWithdrawalFundInfoLoader({ loaderRef }) {

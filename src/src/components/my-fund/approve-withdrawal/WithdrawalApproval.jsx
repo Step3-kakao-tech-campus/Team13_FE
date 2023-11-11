@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import InfiniteWithdrawalFundInfo from "@/components/my-fund/approve-withdrawal/InfiniteWithdrawalFundInfo.jsx";
-import InfiniteWithdrawalFundInfoLoader from "./InfiniteWithdrawaIFundInfo.loader.jsx";
+import InfiniteWithdrawalFundInfoLoader from "@/components/my-fund/approve-withdrawal/InfiniteWithdrawalFundInfo.loader.jsx";
 /**
  * My펀딩 출금승인 tab 해당내용
  */
