@@ -7,7 +7,7 @@ function usePostWithdrawalRejectionMutation(handleSuccess) {
   return useMutation(
     [API.MY_FUND.REJECTION],
     async (id) => {
-      return myFundAPI.postWithdrawalApproval(id);
+      return myFundAPI.postWithdrawalRejection(id);
     },
     {
       onError: (err) => {
