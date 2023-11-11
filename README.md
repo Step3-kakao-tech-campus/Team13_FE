@@ -1,3 +1,8 @@
+# 펀더링(Fundering)
+
+https://k8188ddddcf83a.user-app.krampoline.com/
+![image](https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/c1ec4dcb-6075-408e-998f-daaad27bc339)
+
 # 기술 스택
 ![image](https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/917d194c-a948-4a1c-a5da-1a8be7fcf42c)
 
@@ -90,9 +95,7 @@
 - **주최자 측**
     - 이렇게 개인 계좌 대신 공동 계좌를 이용하여 실시간으로 후원금을 관리하고 관련 정보를 제3의 사이트에서 인증받음으로써, 셀럽 캠페인 주최자가 투명하게 후원금을 관리하고 투명성을 유지할 수 있도록 서비스를 제공하게 됩니다.
 
-## 펀더링(Fundering)
 
-![image](https://github.com/Step3-kakao-tech-campus/Team13_FE/assets/102893954/c1ec4dcb-6075-408e-998f-daaad27bc339)
 
 
 # 주요 개발 기능
