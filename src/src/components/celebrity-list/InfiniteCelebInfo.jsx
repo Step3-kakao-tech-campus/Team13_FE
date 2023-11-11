@@ -30,16 +30,16 @@ function InfiniteCelebInfo({ keyword, sortType }) {
     await fetchNextPage();
   }, loaderRef);
 
-  const mapInfoToCelebInfoDto = (info) => {
+  const mapInfoToCelebInfoDto = (index, info) => {
     return new CelebInfoDto({
       celebId: info?.celebId,
       celebName: info?.celebName,
       profileUrl: info?.profileImage,
       totalFundMoney: info?.fundingAmount,
       fundInProgressNum: info?.ongoingFundingCount,
-      followerNum: 190,
+      followerNum: info?.followerCount,
       isFollowing: info?.following,
-      rank: info?.celebRank,
+      rank: index + 1,
     });
   };
 
@@ -48,7 +48,10 @@ function InfiniteCelebInfo({ keyword, sortType }) {
       <GridTemplate style={{ marginBottom: "3rem" }}>
         {infiniteCelebInfoData?.pages.map((page) =>
           page?.content?.map((info, index) => (
-            <CelebInfoGridCard key={index} {...mapInfoToCelebInfoDto(info)} />
+            <CelebInfoGridCard
+              key={index}
+              {...mapInfoToCelebInfoDto(index, info)}
+            />
           )),
         )}
       </GridTemplate>
