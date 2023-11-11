@@ -3,6 +3,7 @@ import BackdropModal from "@/components/common/modal/BackdropModal.jsx";
 import ProfileImageName from "@/components/common/ProfileImageName.jsx";
 import BUTTON_TYPE from "@/constants/BUTTON_TYPE";
 import Button from "@/components/common/button/Button.jsx";
+import usePostWithdrawalApprovalMutation from "@/hooks/api/my-fund/usePostWithdrawalApprovalMutation.js";
 
 const Styled = {
   Container: styled.div`
@@ -52,50 +53,40 @@ const Styled = {
   `,
 };
 
-function WithdrawalModal({ setOpen }) {
-  const tmp = {
-    fundId: 1,
-    fundTitle:
-      "손흥민 주장된 기념 지하철 광고 🎉🎉 축구중독자가 책임지고 펀딩합니다 ❤️‍🔥",
-    thumbnailUrl:
-      "https://ichef.bbci.co.uk/news/640/cpsprodpb/4118/production/_119546661_gettyimages-1294130887.jpg",
-    createdAt: "2023-10-24",
-    targetDate: "2023-12-17",
-    targetMoney: "3000000",
-    currentMoney: "2340000",
-    participantNumber: 43,
-    celebrityId: "sonny",
-    celebrityName: "손흥민",
-    celebrityProfileUrl:
-      "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202308/13/3756de8c-1ea6-4988-b063-25f26d9b76d5.jpg",
-    isFollowing: true,
-    celebrityFollowerNum: 3450,
-    organizerId: "soccer123",
-    organizerName: "축구도사",
-    organizerProfileUrl:
-      "https://velog.velcdn.com/images/j8won/profile/55917697-2140-40be-ad07-d2d02137f38e/image.jpeg",
-    likeCount: 218,
-    isInUserWishList: true,
-    isOrganizer: true,
-    withdrawlHistory: "강남역 스크린도어",
-    withdrawlAmount: 1000000,
+function WithdrawalModal({
+  setOpen,
+  thumbnailUrl,
+  fundTitle,
+  organizerProfileUrl,
+  organizerName,
+  usage,
+  withdrawalAmount,
+  postId,
+  withdrawalId,
+}) {
+  const { mutate: postWithdrawalApprovalMutate } =
+    usePostWithdrawalApprovalMutation(() => setOpen(false));
+
+  const handleApprovalBtnClick = () => {
+    postWithdrawalApprovalMutate({
+      postId,
+      withdrawalId,
+    });
   };
+
   return (
     <BackdropModal setOpen={setOpen} modalStyle={{ padding: "1.5rem 2rem" }}>
       <Styled.Container>
         <Styled.Title>출금 승인하기</Styled.Title>
-        <Styled.FundImg src={tmp.thumbnailUrl} alt="출금 승인할 펀딩이미지" />
+        <Styled.FundImg src={thumbnailUrl} alt="출금 승인할 펀딩이미지" />
 
-        <Styled.FundTitle>{tmp.fundTitle}</Styled.FundTitle>
-        <ProfileImageName
-          name={tmp.organizerName}
-          imageUrl={tmp.organizerProfileUrl}
-        />
+        <Styled.FundTitle>{fundTitle}</Styled.FundTitle>
+        <ProfileImageName name={organizerName} imageUrl={organizerProfileUrl} />
 
         <Styled.WithdrawalInfo>
-          <div className="history">{tmp.withdrawlHistory}</div>
+          <div className="history">{usage}</div>
           <div className="amount">
-            {Number(tmp.withdrawlAmount).toLocaleString("ko-KR")}원
+            {Number(withdrawalAmount).toLocaleString("ko-KR")}원
           </div>
         </Styled.WithdrawalInfo>
 
@@ -109,6 +100,7 @@ function WithdrawalModal({ setOpen }) {
           <Button
             styleType={BUTTON_TYPE.PRIMARY}
             style={{ padding: "0.7rem ", fontWeight: 600, flex: 1 }}
+            onClick={handleApprovalBtnClick}
           >
             승인하기
           </Button>

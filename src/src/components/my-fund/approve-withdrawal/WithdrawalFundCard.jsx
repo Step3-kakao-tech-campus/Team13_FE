@@ -148,7 +148,19 @@ function WithdrawalFundCard({
           >
             자세히
           </Button>
-          {isModalOpen && <WithdrawalModal setOpen={setIsModalOpen} />}
+          {isModalOpen && (
+            <WithdrawalModal
+              setOpen={setIsModalOpen}
+              thumbnailUrl={thumbnailUrl}
+              fundTitle={fundTitle}
+              organizerProfileUrl={organizerProfileUrl}
+              organizerName={organizerName}
+              usage={usage}
+              withdrawalAmount={withdrawalAmount}
+              postId={fundId}
+              withdrawalId={withdrawalId}
+            />
+          )}
         </Styled.BottomBox>
       </Styled.RightWrapper>
     </Styled.Container>
