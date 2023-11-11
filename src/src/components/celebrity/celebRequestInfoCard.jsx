@@ -1,10 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { isMobile } from "react-device-detect";
 import { PropTypes } from "prop-types";
-
-import FollowButton from "@/components/celebrity/FollowButton.jsx";
-import routes from "@/constants/routes.js";
 
 import TestAccountIcon from "@/assets/icon/TestAccountIcon.jsx";
 import Button from "../common/button/Button";
@@ -34,19 +30,6 @@ const Styled = {
           transition: ${({ theme }) => theme.transition.gridCard};
         }
       `}
-  `,
-
-  ProfileImage: styled.img`
-    width: 100px;
-    height: 100px;
-    border-radius: 4px;
-    object-fit: cover;
-  `,
-
-  BadgeContainer: styled.div`
-    position: absolute;
-    left: 0.7rem;
-    top: 1rem;
   `,
 
   TextContainer: styled.div`
@@ -91,7 +74,11 @@ const Styled = {
  * @param {string=} profileUrl 셀럽 프로필 사진 url
  */
 
-function CelebRequestInfoCard({ celebId, celebName, profileUrl, isFollowing }) {
+function CelebRequestInfoCard({ celebId, celebName, profileUrl, openModal }) {
+  const handleModalOpen = () => {
+    openModal(true);
+  };
+
   return (
     <Styled.Container $isMobile={isMobile}>
       {profileUrl ? (
@@ -117,7 +104,7 @@ function CelebRequestInfoCard({ celebId, celebName, profileUrl, isFollowing }) {
         </Styled.Text>
       </Styled.TextContainer>
 
-      <Button styleType={BUTTON_TYPE.SECONDARY} style={{}}>
+      <Button styleType={BUTTON_TYPE.SECONDARY} onClick={handleModalOpen}>
         자세히
       </Button>
     </Styled.Container>
@@ -128,6 +115,7 @@ CelebRequestInfoCard.propTypes = {
   celebId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   celebName: PropTypes.string,
   profileUrl: PropTypes.string,
+  openModal: PropTypes.func,
 };
 
 export default CelebRequestInfoCard;
