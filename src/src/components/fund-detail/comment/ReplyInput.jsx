@@ -1,7 +1,14 @@
-import styled from "styled-components";
-import Button from "@/components/common/button/Button.jsx";
-import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
 import { useRef } from "react";
+import styled from "styled-components";
+import { useNavigate, useParams } from "react-router-dom";
+import toast from "react-hot-toast";
+import { PropTypes } from "prop-types";
+
+import BUTTON_TYPE from "@/constants/BUTTON_TYPE.js";
+import routes from "@/constants/routes.js";
+import Button from "@/components/common/button/Button.jsx";
+import usePostReplyMutation from "@/hooks/api/fund/usePostReplyMutation.js";
+import handleEnterKeyDown from "@/utils/handleEnterKeyDown.js";
 
 const Styled = {
   Container: styled.div`
@@ -29,19 +36,37 @@ const Styled = {
   ButtonWrapper: styled.div``,
 };
 
-function ReplyInput() {
+/**
+ * 대댓글 작성
+ * @param {number} commentId
+ */
+
+function ReplyInput({ commentId }) {
   const inputRef = useRef();
+  const { fundId } = useParams();
+  const navigate = useNavigate();
+  const { mutate } = usePostReplyMutation({ fundId, commentId });
 
   const postReply = () => {
     try {
-      console.log(inputRef.current.value);
+      mutate(inputRef.current.value);
       inputRef.current.value = "";
-    } catch (e) {}
+    } catch (e) {
+      toast.error("댓글 작성을 실패했습니다");
+
+      if (!localStorage.getItem("accessToken")) {
+        navigate(routes.signIn);
+      }
+    }
   };
 
   return (
     <Styled.Container>
-      <Styled.Input ref={inputRef} placeholder="답글 작성..." />
+      <Styled.Input
+        ref={inputRef}
+        placeholder="답글 작성..."
+        onKeyDown={(event) => handleEnterKeyDown(event, postReply)}
+      />
       <Styled.ButtonWrapper>
         <Button
           onClick={postReply}
@@ -58,5 +83,9 @@ function ReplyInput() {
     </Styled.Container>
   );
 }
+
+ReplyInput.propTypes = {
+  commentId: PropTypes.number,
+};
 
 export default ReplyInput;

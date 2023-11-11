@@ -31,7 +31,11 @@ instance.interceptors.response.use(
     return response;
   },
   async function (err) {
-    if (!err.response || !err.response.status) {
+    if (
+      !err.response ||
+      !err.response.status ||
+      !localStorage.getItem("refreshToken")
+    ) {
       return Promise.reject(err);
     }
 
@@ -40,14 +44,14 @@ instance.interceptors.response.use(
         const originalRequest = err.config;
         const refreshToken = localStorage
           .getItem("refreshToken")
-          .replace(/"/gi, "");
+          ?.replace(/"/gi, "");
 
         localStorage.removeItem("accessToken");
         localStorage.removeItem("refreshToken");
 
         if (!refreshToken) return Promise.reject(err);
 
-        const newAccessToken = authAPI.refreshToken({ baseUrl, refreshToken });
+        const newAccessToken = authAPI.refreshToken({ refreshToken });
         localStorage.setItem("accessToken", newAccessToken);
 
         originalRequest.headers.authorization = `Bearer ${newAccessToken}`;

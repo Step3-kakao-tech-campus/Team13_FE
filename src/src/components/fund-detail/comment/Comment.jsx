@@ -5,6 +5,8 @@ import ReplyInput from "@/components/fund-detail/comment/ReplyInput.jsx";
 import { useNavigate } from "react-router-dom";
 import formatDateToYYYYMMDD from "@/utils/formateDateToYYYYMMDD.js";
 import InfiniteReply from "@/components/fund-detail/comment/InfiniteReply.jsx";
+import { EpochSecondToDateObject } from "@/utils/EpochConverter.js";
+import { PropTypes } from "prop-types";
 
 const Styled = {
   CommentContainer: styled.div`
@@ -65,6 +67,18 @@ const Styled = {
   `,
 };
 
+/**
+ * 댓글 컴포넌트
+ * @param {number} commentId
+ * @param {number} writerId
+ * @param {string} writerName
+ * @param {string} writerProfile
+ * @param {string} content
+ * @param {number} replyCount
+ * @param {number} createdAt
+ * @param {boolean} isReply
+ */
+
 function Comment({
   commentId,
   writerId,
@@ -95,7 +109,7 @@ function Comment({
           <div className="top">
             <div className="writer-name">{writerName}</div>
             <div className="date">
-              {formatDateToYYYYMMDD(new Date(createdAt))}
+              {formatDateToYYYYMMDD(EpochSecondToDateObject(createdAt))}
             </div>
           </div>
           <div className="content">{content}</div>
@@ -115,7 +129,7 @@ function Comment({
             {isReplyInputOpen && (
               <>
                 <InfiniteReply commentId={commentId} />
-                <ReplyInput />
+                <ReplyInput commentId={commentId} />
               </>
             )}
           </>
@@ -125,4 +139,14 @@ function Comment({
   );
 }
 
+Comment.propTypes = {
+  commentId: PropTypes.number,
+  writerId: PropTypes.number,
+  writerName: PropTypes.string,
+  writerProfile: PropTypes.string,
+  content: PropTypes.string,
+  replyCount: PropTypes.number,
+  createdAt: PropTypes.number,
+  isReply: PropTypes.bool,
+};
 export default Comment;

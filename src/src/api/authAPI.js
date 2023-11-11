@@ -40,7 +40,7 @@ const refreshToken = ({ refreshToken }) => {
     },
   });
 
-  return "refreshedAccessToken";
+  return data.refreshToken;
 };
 
 /**

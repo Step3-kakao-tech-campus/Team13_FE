@@ -216,6 +216,37 @@ const postCommentByFundId = async (fundId, content) => {
   });
 };
 
+/**
+ * 대댓글 조회
+ * @param fundId
+ * @param commentId
+ * @return {Promise<*>}
+ */
+
+const getReplyByCommentId = async ({ fundId, commentId }) => {
+  const { data } = await instance({
+    url: API.FUND.COMMENT_REPLY({ fundId, commentId }),
+    method: "GET",
+  });
+
+  return data.response;
+};
+
+/**
+ * 대댓글 작성
+ * @param fundId
+ * @param commentId
+ * @param content
+ * @return {Promise<*>}
+ */
+const postReplyByCommentId = async ({ fundId, commentId, content }) => {
+  return await instance({
+    url: API.FUND.COMMENT_REPLY({ fundId, commentId }),
+    method: "POST",
+    data: { content },
+  });
+};
+
 export default {
   getFundInfoList,
   postFundLike,
@@ -229,4 +260,6 @@ export default {
   postFundWithdrawEvidenceImage,
   getCommentsByFundId,
   postCommentByFundId,
+  getReplyByCommentId,
+  postReplyByCommentId,
 };
