@@ -38,9 +38,8 @@ const getFundInfoList = async ({ postId, keyword, sortType }) => {
 
 const postFundLike = async (fundId) => {
   return await instance({
-    url: API.FUND.LIKE,
+    url: API.FUND.LIKE(fundId),
     method: "POST",
-    data: { fundId },
   });
 };
 
@@ -51,9 +50,8 @@ const postFundLike = async (fundId) => {
  */
 const deleteFundLike = async (fundId) => {
   return await instance({
-    url: API.FUND.LIKE,
-    method: "DELETE",
-    data: { fundId },
+    url: API.FUND.UNLIKE(fundId),
+    method: "POST",
   });
 };
 
@@ -87,6 +85,8 @@ const getDetailInfoByFundId = async (fundId) => {
     organizerProfileUrl: data?.writerImg,
     likeCount: data?.heartCount,
     isOrganizer: data?.eqWriter,
+    isInUserWishList: data?.heart,
+    isFollowing: data?.followed,
   });
 };
 
@@ -192,6 +192,61 @@ const postFundWithdrawEvidenceImage = async ({
   });
 };
 
+/**
+ * 펀딩 댓글 조회
+ */
+const getCommentsByFundId = async ({ fundId, pageIndex }) => {
+  const { data } = await instance({
+    url: API.FUND.COMMENT(fundId),
+    method: "GET",
+    data: { page: pageIndex },
+  });
+
+  return data.response;
+};
+
+/** 펀딩 댓글 작성
+ *
+ */
+const postCommentByFundId = async (fundId, content) => {
+  return await instance({
+    url: API.FUND.COMMENT(fundId),
+    method: "POST",
+    data: { content },
+  });
+};
+
+/**
+ * 대댓글 조회
+ * @param fundId
+ * @param commentId
+ * @return {Promise<*>}
+ */
+
+const getReplyByCommentId = async ({ fundId, commentId }) => {
+  const { data } = await instance({
+    url: API.FUND.COMMENT_REPLY({ fundId, commentId }),
+    method: "GET",
+  });
+
+  return data.response;
+};
+
+/**
+ * 대댓글 작성
+ * @param fundId
+ * @param commentId
+ * @param content
+ * @return {Promise<*>}
+ */
+const postReplyByCommentId = async ({ fundId, commentId, content }) => {
+  return await instance({
+    url: API.FUND.COMMENT_REPLY({ fundId, commentId }),
+    method: "POST",
+    data: { content },
+  });
+};
+
 export default {
   getFundInfoList,
   postFundLike,
@@ -203,4 +258,8 @@ export default {
   getFundBalance,
   postFundWithdraw,
   postFundWithdrawEvidenceImage,
+  getCommentsByFundId,
+  postCommentByFundId,
+  getReplyByCommentId,
+  postReplyByCommentId,
 };

@@ -43,22 +43,7 @@ function SignUpPage() {
 
   return (
     <Styled.SignUpContainer>
-      <Styled.SignUpTitle>간편가입</Styled.SignUpTitle>
-      <Button
-        style={{
-          width: "100%",
-          padding: "1rem",
-          margin: "1rem 0 4rem",
-          backgroundColor: "#FFEB02",
-          color: "#000000",
-          fontWeight: "bold",
-        }}
-        useHoverStyle={false}
-      >
-        카카오로 시작하기
-      </Button>
-
-      <Styled.SignUpTitle>이메일 간편가입</Styled.SignUpTitle>
+      <Styled.SignUpTitle>이메일로 가입하기</Styled.SignUpTitle>
 
       <Form
         onSubmit={(data) => {

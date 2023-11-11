@@ -84,11 +84,18 @@ class CelebRelatedFundDto {
 }
 
 class SimpleCelebInfoDto {
-  constructor({ celebId, celebName, profileUrl, followerNum }) {
+  constructor({
+    celebId,
+    celebName,
+    celebProfileImage,
+    followingCount,
+    following,
+  }) {
     this.celebId = celebId;
     this.celebName = celebName;
-    this.profileUrl = profileUrl;
-    this.followerNum = followerNum;
+    this.profileUrl = celebProfileImage;
+    this.followerNum = followingCount;
+    this.isFollowing = following;
   }
 }
 

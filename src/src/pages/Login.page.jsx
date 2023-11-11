@@ -45,7 +45,7 @@ function LoginPage() {
           onSubmit={({ email, password }) => {
             loginMutate({ email, password });
           }}
-          onError={err => console.log(err)}
+          onError={(err) => console.log(err)}
           inputInformations={FORM_INFO.SIGN_IN}
           defaultValues={FORM_DEFAULT.SIGN_IN}
         >
@@ -60,19 +60,6 @@ function LoginPage() {
             로그인
           </Button>
         </Form>
-        <Button
-          style={{
-            width: "100%",
-            padding: "1rem",
-            margin: "0.375rem 0",
-            backgroundColor: "#FFEB02",
-            color: "#000000",
-            fontWeight: "bold",
-          }}
-          useHoverStyle={false}
-        >
-          카카오 간편 로그인
-        </Button>
         <Styled.SignUpMsg>
           아직 펀더링 계정이 없으신가요?
           <span onClick={() => navigate(routes.signUp)}>회원가입</span>

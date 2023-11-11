@@ -7,7 +7,8 @@ const AUTH = {
 
 const FUND = {
   LIST: "/posts",
-  LIKE: "/posts/like",
+  LIKE: (fundId) => `/posts/${fundId}/heart`,
+  UNLIKE: (fundId) => `/posts/${fundId}/unHeart`,
   CO_ADMIN: (fundId) => {
     return `/posts/${fundId}/co-admin`;
   },
@@ -26,6 +27,9 @@ const FUND = {
   WITHDRAW_IMAGE: ({ fundId, withdrawId }) => {
     return `/posts/${fundId}/withdrawals/${withdrawId}`;
   },
+  COMMENT: (fundId) => `/posts/${fundId}/comments`,
+  COMMENT_REPLY: ({ fundId, commentId }) =>
+    `/posts/${fundId}/comments/${commentId}`,
 };
 
 const USER = {

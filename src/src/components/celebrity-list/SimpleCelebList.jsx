@@ -1,5 +1,5 @@
 import { GridTemplate } from "@/styles/CommonStyle";
-import SimpleCelebCard from "@/components/celebrity-list/SimpleCelebList.jsx";
+import SimpleCelebCard from "@/components/celebrity/SimpleCelebCard.jsx";
 import useSimpleCelebInfoQuery from "@/hooks/api/celebrity/useSimpleCelebInfoQuery.js";
 
 function SimpleCelebList() {
@@ -16,6 +16,7 @@ function SimpleCelebList() {
           celebId={celeb.celebId}
           celebName={celeb.celebName}
           followerNum={celeb.followerNum}
+          isFollowing={celeb.isFollowing}
         />
       ))}
     </GridTemplate>

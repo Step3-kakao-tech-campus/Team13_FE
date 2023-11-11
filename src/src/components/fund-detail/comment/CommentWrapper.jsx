@@ -1,16 +1,16 @@
-import styled from "styled-components";
 import CommentInput from "@/components/fund-detail/comment/CommentInput.jsx";
 import Comment from "@/components/fund-detail/comment/Comment.jsx";
+import InfiniteComment from "@/components/fund-detail/comment/InfiniteComment.jsx";
 
 const Styled = {};
 
-function CommentContainer() {
+function CommentWrapper() {
   return (
     <>
       <CommentInput />
-      <div>d</div>
-      <Comment />
+      {/*<Comment />*/}
+      <InfiniteComment />
     </>
   );
 }
-export default CommentContainer;
+export default CommentWrapper;
