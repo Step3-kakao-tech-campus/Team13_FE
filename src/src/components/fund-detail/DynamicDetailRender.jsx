@@ -15,7 +15,7 @@ import Withdraw from "@/components/fund-detail/withdraw/Withdraw.jsx";
 function DynamicDetailRender({ type, isOrganizer }) {
   switch (type) {
     case TABS.FUND_DETAIL.INTRO:
-      return <Introduction isOrganizer={isOrganizer} />;
+      return <Introduction />;
     case TABS.FUND_DETAIL.UPDATE:
       return <UpdateWrapper isOrganizer={isOrganizer} />;
     case TABS.FUND_DETAIL.COMMENT:

@@ -23,19 +23,36 @@ function InfiniteSupportFund() {
   }, loaderRef);
 
   const mapInfoToFundInfoDto = (info) => {
-    return new FundInfoDto({ ...info });
+    return new FundInfoDto({
+      fundId: info?.postId,
+      fundTitle: info?.title,
+      thumbnailUrl: info?.thumbnail,
+      targetDate: info?.deadline,
+      targetMoney: info?.targetPrice,
+      currentMoney: info?.paymentAmount,
+      celebrityName: info?.celebName,
+      celebrityProfileUrl: info?.celebImg,
+      organizerName: info?.nickname,
+    });
   };
 
   return (
     <>
       <GridTemplate>
-        {infiniteSupportFundData?.pages.map((page) =>
-          page?.data?.supportFundList.map((info, index) => (
+        {infiniteSupportFundData?.pages?.map((page) =>
+          page?.data?.response?.content?.map((info, index) => (
             <FundInfoGridCard key={index} {...mapInfoToFundInfoDto(info)} />
           )),
         )}
       </GridTemplate>
-      <InfiniteFundInfoLoader loaderRef={loaderRef} />
+      <InfiniteFundInfoLoader
+        loaderRef={loaderRef}
+        style={
+          infiniteSupportFundData?.pages?.at(-1)?.data?.response?.lastPage && {
+            display: "none",
+          }
+        }
+      />
     </>
   );
 }

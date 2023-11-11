@@ -23,19 +23,38 @@ function InfiniteHostFund() {
   }, loaderRef);
 
   const mapInfoToFundInfoDto = (info) => {
-    return new FundInfoDto({ ...info });
+    return new FundInfoDto({
+      fundId: info?.postId,
+      fundTitle: info?.title,
+      thumbnailUrl: info?.thumbnail,
+      targetDate: info?.deadline,
+      targetMoney: info.targetPrice,
+      currentMoney: info?.currentAmount,
+      celebrityId: info?.celebId,
+      celebrityName: info?.celebrity,
+      celebrityProfileUrl: info?.celebImg,
+      organizerId: info?.writerId,
+      organizerName: info?.writer,
+    });
   };
 
   return (
     <>
       <GridTemplate>
         {infiniteHostFundData?.pages.map((page) =>
-          page?.data?.hostFundList.map((info, index) => (
+          page?.data?.response?.content?.map((info, index) => (
             <FundInfoGridCard key={index} {...mapInfoToFundInfoDto(info)} />
           )),
         )}
       </GridTemplate>
-      <InfiniteFundInfoLoader loaderRef={loaderRef} />
+      <InfiniteFundInfoLoader
+        loaderRef={loaderRef}
+        style={
+          infiniteHostFundData?.pages?.at(-1)?.data?.response?.lastPage && {
+            display: "none",
+          }
+        }
+      />
     </>
   );
 }
