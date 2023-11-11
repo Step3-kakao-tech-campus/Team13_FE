@@ -127,6 +127,7 @@ function WithdrawalFundCard({
             <ProfileImageName
               name={organizerName}
               imageUrl={organizerProfileUrl}
+              id={organizerId}
               onClick={() => {
                 navigate(`${routes.user}/${organizerId}`);
               }}
@@ -159,6 +160,7 @@ function WithdrawalFundCard({
               withdrawalAmount={withdrawalAmount}
               postId={fundId}
               withdrawalId={withdrawalId}
+              organizerId={organizerId}
             />
           )}
         </Styled.BottomBox>

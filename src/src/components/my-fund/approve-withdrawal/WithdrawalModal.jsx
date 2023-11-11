@@ -65,6 +65,7 @@ function WithdrawalModal({
   withdrawalAmount,
   postId,
   withdrawalId,
+  organizerId,
 }) {
   const { mutate: postWithdrawalApprovalMutate } =
     usePostWithdrawalApprovalMutation(() => setOpen(false));
@@ -93,7 +94,11 @@ function WithdrawalModal({
         <Styled.FundImg src={thumbnailUrl} alt="출금 승인할 펀딩이미지" />
 
         <Styled.FundTitle>{fundTitle}</Styled.FundTitle>
-        <ProfileImageName name={organizerName} imageUrl={organizerProfileUrl} />
+        <ProfileImageName
+          name={organizerName}
+          imageUrl={organizerProfileUrl}
+          id={organizerId}
+        />
 
         <Styled.WithdrawalInfo>
           <div className="history">{usage}</div>
@@ -124,7 +129,7 @@ function WithdrawalModal({
 }
 
 WithdrawalModal.propTypes = {
-  setOpen: PropTypes.bolean,
+  setOpen: PropTypes.func.isRequired,
   withdrawalId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   withdrawalAmount: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     .isRequired,
