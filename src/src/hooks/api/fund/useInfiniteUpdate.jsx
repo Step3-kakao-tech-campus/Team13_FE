@@ -5,8 +5,8 @@ import FundAPI from "@/api/fundAPI.js";
 function useInfiniteUpdate({ fundId }) {
   return useInfiniteQuery(
     [API.FUND.UPDATE(fundId)],
-    async ({ cursorId = 0 }) => {
-      return await FundAPI.getUpdateByFundId({ fundId, cursor: cursorId });
+    async ({ pageParam = 0 }) => {
+      return await FundAPI.getUpdateByFundId({ fundId, cursor: pageParam });
     },
     {
       getNextPageParam: (lastPage) => {
