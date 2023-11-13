@@ -18,14 +18,15 @@ function usePostCelebFollowMutation({ celebId, handleSuccess }) {
         handleError(error);
         toast.error("팔로우 요청이 실패했습니다");
       },
-      onSuccess: () => {
+      onSuccess: async () => {
         handleSuccess();
-        queryClient.invalidateQueries(
-          [API.FUND.LIST, API.CELEBRITY.LIST, API.CELEBRITY.RECOMMEND],
-          {
-            refetchType: "all",
-          },
-        );
+
+        await queryClient.invalidateQueries({
+          queryKey: [API.FUND.LIST],
+        });
+        await queryClient.invalidateQueries({
+          queryKey: [API.CELEBRITY.LIST],
+        });
       },
     },
   );
