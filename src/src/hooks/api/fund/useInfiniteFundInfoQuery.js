@@ -15,8 +15,8 @@ function useInfiniteFundInfoQuery({ keyword, sortType }) {
     {
       suspense: true,
       getNextPageParam: (lastPage) => {
-        if (lastPage.data.response.lastPage) return;
-        return lastPage.data.response.currentPage;
+        if (lastPage?.data?.response?.lastPage) return;
+        return lastPage?.data?.response?.currentPage;
       },
     },
   );
