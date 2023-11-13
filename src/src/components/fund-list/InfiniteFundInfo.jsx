@@ -16,14 +16,14 @@ import { FundInfoDto } from "@/api/dto/fund.dto.js";
 function InfiniteFundInfo({ keyword, sortType }) {
   const loaderRef = useRef();
 
-  const { data: infiniteFundInfoData, fetchNextPage } =
-    useInfiniteFundInfoQuery({
-      keyword,
-      sortType,
-    });
-
-  const isLastPage =
-    infiniteFundInfoData.pages.at(-1)?.data?.response?.lastPage;
+  const {
+    data: infiniteFundInfoData,
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useInfiniteFundInfoQuery({
+    keyword,
+    sortType,
+  });
 
   useIntersectionObserver(async () => {
     await fetchNextPage();
@@ -58,11 +58,9 @@ function InfiniteFundInfo({ keyword, sortType }) {
 
       <InfiniteFundInfoLoader
         loaderRef={loaderRef}
-        style={
-          isLastPage && {
-            display: "none",
-          }
-        }
+        style={{
+          display: !isFetchingNextPage && "none",
+        }}
       />
     </>
   );

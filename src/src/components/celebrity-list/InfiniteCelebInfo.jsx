@@ -18,13 +18,14 @@ import InfiniteCelebInfoLoader from "./InfiniteCelebInfo.loader.jsx";
 function InfiniteCelebInfo({ keyword, sortType }) {
   const loaderRef = useRef();
 
-  const { data: infiniteCelebInfoData, fetchNextPage } =
-    useInfiniteCelebInfoQuery({
-      keyword,
-      sortType,
-    });
-
-  const isLastPage = infiniteCelebInfoData.pages.at(-1)?.lastPage;
+  const {
+    data: infiniteCelebInfoData,
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useInfiniteCelebInfoQuery({
+    keyword,
+    sortType,
+  });
 
   useIntersectionObserver(async () => {
     await fetchNextPage();
@@ -57,11 +58,7 @@ function InfiniteCelebInfo({ keyword, sortType }) {
       </GridTemplate>
       <InfiniteCelebInfoLoader
         loaderRef={loaderRef}
-        style={
-          isLastPage && {
-            visibility: "hidden",
-          }
-        }
+        style={{ display: !isFetchingNextPage && "none" }}
       />
     </>
   );
