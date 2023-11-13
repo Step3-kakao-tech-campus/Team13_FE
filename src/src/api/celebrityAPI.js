@@ -106,6 +106,7 @@ const getCelebDetailInfo = async (celebId) => {
     celebCategory: data?.response?.celebCategory,
     profileUrl: data?.response?.profileImage,
     followerNum: data?.response?.followerCount,
+    isFollowing: data?.response?.follow,
     rank: { follower: data?.response?.followerRank },
   });
 };
