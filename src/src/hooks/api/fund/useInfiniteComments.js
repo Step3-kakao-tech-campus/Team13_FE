@@ -5,8 +5,11 @@ import FundAPI from "@/api/fundAPI.js";
 function useInfiniteComments({ fundId }) {
   return useInfiniteQuery(
     [API.FUND.COMMENT(fundId)],
-    async ({ pageIndex = 0 }) => {
-      return await FundAPI.getCommentsByFundId({ fundId, pageIndex });
+    async ({ pageParam = 0 }) => {
+      return await FundAPI.getCommentsByFundId({
+        fundId,
+        pageIndex: pageParam,
+      });
     },
     {
       suspense: true,

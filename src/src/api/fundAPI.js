@@ -19,7 +19,7 @@ const getFundInfoList = async ({ pageIndex, keyword, sortType }) => {
     return await instance({
       url: API.FUND.LIST + "/search/keyword",
       method: "GET",
-      params: { postId: pageIndex, sort: sortType, size: 12, keyword },
+      params: { page: pageIndex, sort: sortType, size: 12, keyword },
     });
   }
 
@@ -231,12 +231,13 @@ const postCommentByFundId = async (fundId, content) => {
  * 대댓글 조회
  * @param fundId
  * @param commentId
+ * @param pageIndex
  * @return {Promise<*>}
  */
 
-const getReplyByCommentId = async ({ fundId, commentId }) => {
+const getReplyByCommentId = async ({ fundId, commentId, pageIndex }) => {
   const { data } = await instance({
-    url: API.FUND.COMMENT_REPLY({ fundId, commentId }),
+    url: API.FUND.COMMENT_REPLY({ fundId, commentId, page: pageIndex }),
     method: "GET",
   });
 

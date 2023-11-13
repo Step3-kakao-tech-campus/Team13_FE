@@ -5,9 +5,9 @@ import celebrityAPI from "@/api/celebrityAPI.js";
 function useInfiniteCelebInfoQuery({ keyword, sortType }) {
   return useInfiniteQuery(
     [API.CELEBRITY.LIST, keyword, sortType],
-    async ({ pageIndex = 0 }) => {
+    async ({ pageParam = 0 }) => {
       return celebrityAPI.getCelebInfoList({
-        pageIndex: pageIndex,
+        pageIndex: pageParam,
         keyword: keyword,
         sortType: sortType,
       });

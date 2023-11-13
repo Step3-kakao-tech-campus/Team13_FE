@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Suspense, useState } from "react";
 
 import { Title } from "@/styles/CommonStyle";
-import PageTitle from "@/components/common/PageTitle.jsx";
 import FundSupportInfo from "@/components/fund-support/FundSupportInfo.jsx";
 import FundSupportInfoSkeleton from "@/components/fund-support/FundSupportInfo.skeleton.jsx";
 import CheckBox from "@/components/common/button/CheckBox.jsx";
@@ -121,7 +120,6 @@ function FundSupportPage() {
 
   return (
     <>
-      <PageTitle title={"후원하기"} />
       <Styled.Container>
         <Title>펀딩 후원하기</Title>
         <Suspense fallback={<FundSupportInfoSkeleton />}>

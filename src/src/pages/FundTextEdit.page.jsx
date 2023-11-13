@@ -1,7 +1,6 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import PageTitle from "@/components/common/PageTitle.jsx";
 import EDIT_TYPE from "@/constants/EDIT_TYPE.js";
 import {
   Title,
@@ -70,40 +69,36 @@ function FundTextEditPage() {
   };
 
   return (
-    <>
-      <PageTitle title={EDIT_TYPE.PAGE_TITLE[type]} />
+    <Styled.Container>
+      <Title>{EDIT_TYPE.TITLE[type]}</Title>
 
-      <Styled.Container>
-        <Title>{EDIT_TYPE.TITLE[type]}</Title>
+      {type === EDIT_TYPE.FUND_UPDATE && (
+        <WhiteInputContainer>
+          <FundTitleInput
+            placeholder="업데이트 제목을 입력하세요"
+            value={updateTitle}
+            onChange={(e) => setUpdateTitle(e.target.value)}
+          />
+        </WhiteInputContainer>
+      )}
 
-        {type === EDIT_TYPE.FUND_UPDATE && (
-          <WhiteInputContainer>
-            <FundTitleInput
-              placeholder="업데이트 제목을 입력하세요"
-              value={updateTitle}
-              onChange={(e) => setUpdateTitle(e.target.value)}
-            />
-          </WhiteInputContainer>
-        )}
+      <TextEditor
+        text={editorText}
+        setText={setEditorText}
+        style={{ marginTop: "2rem", height: "calc(100vh - 20rem)" }}
+      />
 
-        <TextEditor
-          text={editorText}
-          setText={setEditorText}
-          style={{ marginTop: "2rem", height: "calc(100vh - 20rem)" }}
-        />
-
-        <Button
-          onClick={handleSubmit}
-          style={{
-            padding: "0.75rem",
-            marginBottom: "2rem",
-            float: "right",
-          }}
-        >
-          {EDIT_TYPE.BUTTON[type]}
-        </Button>
-      </Styled.Container>
-    </>
+      <Button
+        onClick={handleSubmit}
+        style={{
+          padding: "0.75rem",
+          marginBottom: "2rem",
+          float: "right",
+        }}
+      >
+        {EDIT_TYPE.BUTTON[type]}
+      </Button>
+    </Styled.Container>
   );
 }
 

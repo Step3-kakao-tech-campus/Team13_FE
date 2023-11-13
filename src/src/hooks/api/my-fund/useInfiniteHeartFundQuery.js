@@ -5,8 +5,8 @@ import myFundAPI from "@/api/myFundAPI.js";
 function useInfiniteHeartFundQuery() {
   return useInfiniteQuery(
     [API.MY_FUND.LIKE],
-    async ({ pageIndex = 0 }) => {
-      return await myFundAPI.getLikeFund({ pageIndex });
+    async ({ pageParam = 0 }) => {
+      return await myFundAPI.getLikeFund({ pageIndex: pageParam });
     },
     {
       getNextPageParam: (lastPage) => {
