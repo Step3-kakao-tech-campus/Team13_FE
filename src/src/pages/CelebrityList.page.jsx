@@ -7,7 +7,6 @@ import routes from "@/constants/routes.js";
 
 import MainLayout from "@/components/common/template/MainLayout.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
-import PageTitle from "@/components/common/PageTitle.jsx";
 import FloatButton from "@/components/common/button/FloatButton.jsx";
 import CelebApplyModal from "@/components/celebrity-list/CelebApplyModal.jsx";
 import InfiniteCelebInfo from "@/components/celebrity-list/InfiniteCelebInfo";
@@ -41,13 +40,6 @@ function CelebrityListPage() {
 
   return (
     <>
-      <PageTitle
-        title={
-          searchParams?.get("keyword")
-            ? `${searchParams?.get("keyword")} 셀럽`
-            : "셀럽"
-        }
-      />
       <MainLayout>
         <Styled.Title>셀럽</Styled.Title>
         <SearchBar

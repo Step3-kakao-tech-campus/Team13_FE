@@ -9,7 +9,6 @@ import SORT_ORDER from "@/constants/SORT_ORDER.js";
 import MainLayout from "@/components/common/template/MainLayout.jsx";
 import SearchBar from "@/components/common/SearchBar.jsx";
 import SortButtons from "@/components/common/button/SortButtons.jsx";
-import PageTitle from "@/components/common/PageTitle.jsx";
 import FloatButton from "@/components/common/button/FloatButton.jsx";
 import InfiniteFundInfo from "@/components/fund-list/InfiniteFundInfo.jsx";
 import InfiniteFundInfoLoader from "@/components/fund-list/InfiniteFundInfo.loader.jsx";
@@ -55,13 +54,6 @@ function FundListPage() {
 
   return (
     <>
-      <PageTitle
-        title={
-          searchParams?.get("keyword")
-            ? `${searchParams?.get("keyword")} 펀딩`
-            : "펀딩"
-        }
-      />
       <MainLayout>
         <Styled.Title style={{ paddingBottom: "2rem" }}>펀딩</Styled.Title>
         <SearchBar uri={routes.fund} style={{ marginBottom: "2rem" }} />

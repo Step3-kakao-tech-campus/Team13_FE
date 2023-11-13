@@ -3,7 +3,6 @@ import { createBrowserRouter } from "react-router-dom";
 import routes from "@/constants/routes.js";
 import PrivateLayout from "@/components/common/template/PrivateLayout.jsx";
 import Layout from "@/components/common/template/Layout.jsx";
-import Test from "@/pages/Test.jsx";
 import FundListPage from "@/pages/FundList.page.jsx";
 import LoginPage from "@/pages/Login.page.jsx";
 import MyAccountPage from "@/pages/MyAccount.page.jsx";
@@ -117,13 +116,8 @@ const router = createBrowserRouter([
       {
         // 사용자
         path: `${routes.user}/:userId`,
-        element: <Test />,
+        element: <div>사용자 페이지는 준비 중입니다</div>,
         errorElement: <div>존재하지 않는 사용자입니다</div>,
-      },
-      {
-        // 테스트용
-        path: "/test",
-        element: <Test />,
       },
       {
         // 로그인시에만 접속 가능

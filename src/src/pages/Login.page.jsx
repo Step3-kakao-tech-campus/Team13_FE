@@ -8,7 +8,6 @@ import Form from "@/components/common/form/Form.jsx";
 import FORM_INFO from "@/constants/FORM_INFO.js";
 import FORM_DEFAULT from "@/constants/FORM_DEFAULT.js";
 import { FormTemplate, Title } from "@/styles/CommonStyle.js";
-import PageTitle from "@/components/common/PageTitle.jsx";
 import useLogInMutation from "@/hooks/api/auth/useLogInMutation.js";
 
 const Styled = {
@@ -37,35 +36,32 @@ function LoginPage() {
   const { mutate: loginMutate } = useLogInMutation();
 
   return (
-    <>
-      <PageTitle title="로그인" />
-      <FormTemplate>
-        <Styled.LoginTitle>로그인</Styled.LoginTitle>
-        <Form
-          onSubmit={({ email, password }) => {
-            loginMutate({ email, password });
+    <FormTemplate>
+      <Styled.LoginTitle>로그인</Styled.LoginTitle>
+      <Form
+        onSubmit={({ email, password }) => {
+          loginMutate({ email, password });
+        }}
+        onError={(err) => console.log(err)}
+        inputInformations={FORM_INFO.SIGN_IN}
+        defaultValues={FORM_DEFAULT.SIGN_IN}
+      >
+        <Button
+          type="submit"
+          style={{
+            width: "100%",
+            padding: "1rem",
+            margin: "0.375rem 0",
           }}
-          onError={(err) => console.log(err)}
-          inputInformations={FORM_INFO.SIGN_IN}
-          defaultValues={FORM_DEFAULT.SIGN_IN}
         >
-          <Button
-            type="submit"
-            style={{
-              width: "100%",
-              padding: "1rem",
-              margin: "0.375rem 0",
-            }}
-          >
-            로그인
-          </Button>
-        </Form>
-        <Styled.SignUpMsg>
-          아직 펀더링 계정이 없으신가요?
-          <span onClick={() => navigate(routes.signUp)}>회원가입</span>
-        </Styled.SignUpMsg>
-      </FormTemplate>
-    </>
+          로그인
+        </Button>
+      </Form>
+      <Styled.SignUpMsg>
+        아직 펀더링 계정이 없으신가요?
+        <span onClick={() => navigate(routes.signUp)}>회원가입</span>
+      </Styled.SignUpMsg>
+    </FormTemplate>
   );
 }
 
