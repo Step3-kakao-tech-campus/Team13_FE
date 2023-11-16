@@ -61,6 +61,13 @@ const Styled = {
     font-size: 1.25rem;
     font-weight: 500;
     line-height: 130%;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-position: under;
+      text-underline-color: ${({ theme }) => theme.color.body};
+    }
   `,
 
   ProfileBox: styled.div`
@@ -73,7 +80,7 @@ const Styled = {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
   `,
 
   WithdrawalInfo: styled.div`
@@ -122,7 +129,13 @@ function WithdrawalFundCard({
 
       <Styled.RightWrapper>
         <Styled.TopBox>
-          <Styled.Title>{fundTitle}</Styled.Title>
+          <Styled.Title
+            onClick={() => {
+              navigate(`${routes.fund}/${fundId}`);
+            }}
+          >
+            {fundTitle}
+          </Styled.Title>
           <Styled.ProfileBox>
             <ProfileImageName
               name={organizerName}
@@ -144,7 +157,7 @@ function WithdrawalFundCard({
           </Styled.WithdrawalInfo>
           <Button
             styleType={BUTTON_TYPE.SECONDARY}
-            style={{ padding: "0.7rem 1.3rem ", fontSize: "1.25rem" }}
+            style={{ fontSize: "1rem" }}
             onClick={() => setIsModalOpen(true)}
           >
             자세히
@@ -171,15 +184,13 @@ function WithdrawalFundCard({
 
 WithdrawalFundCard.propTypes = {
   withdrawalId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  withdrawalAmount: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    .isRequired,
-  usage: PropTypes.string.isRequired,
+  withdrawalAmount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  usage: PropTypes.string,
   fundId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   thumbnailUrl: PropTypes.string,
-  fundTitle: PropTypes.string.isRequired,
-  organizerId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    .isRequired,
-  organizerName: PropTypes.string.isRequired,
+  fundTitle: PropTypes.string,
+  organizerId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  organizerName: PropTypes.string,
   organizerProfileUrl: PropTypes.string,
 };
 

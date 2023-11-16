@@ -6,8 +6,8 @@ import { toast } from "react-hot-toast";
 function usePostWithdrawalRejectionMutation(handleSuccess) {
   return useMutation(
     [API.MY_FUND.REJECTION],
-    async (id) => {
-      return myFundAPI.postWithdrawalRejection(id);
+    async ({ postId, withdrawalId }) => {
+      return myFundAPI.postWithdrawalRejection({ postId, withdrawalId });
     },
     {
       onError: (err) => {

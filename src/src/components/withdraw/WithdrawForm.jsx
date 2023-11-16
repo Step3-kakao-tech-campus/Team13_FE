@@ -106,7 +106,7 @@ function WithdrawForm() {
           <label>남은 금액</label>
           <Styled.InputBox>
             <div className="left-money">
-              {balanceMoney?.toLocaleString("ko-KR")} 원
+              {balanceMoney?.toLocaleString("ko-KR") || "0"} 원
             </div>
           </Styled.InputBox>
         </Styled.LabeledInput>

@@ -68,11 +68,13 @@ const getHostFundListByToken = async ({ pageIndex }) => {
  */
 
 const getWithdrawlApplyList = async ({ pageIndex }) => {
-  return await instance({
+  const { data } = await instance({
     url: API.MY_FUND.WITHDRAWAL,
     method: "GET",
     params: { pageIndex: pageIndex },
   });
+
+  return data.response;
 };
 
 /**
