@@ -91,7 +91,7 @@ function WithdrawalModal({
     <BackdropModal setOpen={setOpen} modalStyle={{ padding: "1.5rem 2rem" }}>
       <Styled.Container>
         <Styled.Title>출금 승인하기</Styled.Title>
-        <Styled.FundImg src={thumbnailUrl} alt="출금 승인할 펀딩이미지" />
+        <Styled.FundImg src={thumbnailUrl} alt={`${fundTitle} 대표 이미지`} />
 
         <Styled.FundTitle>{fundTitle}</Styled.FundTitle>
         <ProfileImageName

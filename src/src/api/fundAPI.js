@@ -156,7 +156,7 @@ const getFundBalance = async (fundId) => {
     method: "GET",
   });
 
-  return data.balance;
+  return data.response.balance;
 };
 
 /**

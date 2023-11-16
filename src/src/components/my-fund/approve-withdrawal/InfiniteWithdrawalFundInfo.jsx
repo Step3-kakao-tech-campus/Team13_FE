@@ -1,10 +1,6 @@
-import { useRef } from "react";
-
-import useInfiniteWithdrawalFundQuery from "@/hooks/api/my-fund/useInfiniteWithdrawalFundQuery.js";
-import useIntersectionObserver from "@/hooks/useIntersectionObserver.js";
+import useWithdrawalFundQuery from "@/hooks/api/my-fund/useWithdrawalFundQuery.js";
 import { MyFundWithdrawalInfoDto } from "@/api/dto/myFund.dto.js";
 
-import InfiniteWithdrawalFundInfoLoader from "@/components/my-fund/approve-withdrawal/InfiniteWithdrawalFundInfo.loader.jsx";
 import WithdrawalFundCard from "@/components/my-fund/approve-withdrawal/WithdrawalFundCard.jsx";
 
 /**
@@ -12,30 +8,27 @@ import WithdrawalFundCard from "@/components/my-fund/approve-withdrawal/Withdraw
  */
 
 function InfiniteWithdrawalFundInfo() {
-  const loaderRef = useRef();
-
-  const { data: infiniteWithdrawalFundData, fetchNextPage } =
-    useInfiniteWithdrawalFundQuery();
-
-  useIntersectionObserver(async () => {
-    await fetchNextPage();
-  }, loaderRef);
+  const { data: infiniteWithdrawalFundData } = useWithdrawalFundQuery();
 
   const mapInfoToWithdrawlFundDto = (info) => {
-    return new MyFundWithdrawalInfoDto({ ...info });
+    return new MyFundWithdrawalInfoDto({
+      withdrawalId: info?.withdrawalId,
+      withdrawalAmount: info?.withdrawalAmount,
+      usage: info?.usage,
+      fundId: info?.postId,
+      fundTitle: info?.title,
+      thumbnailUrl: info?.thumbnail,
+      organizerId: info?.userId,
+      organizerName: info?.nickname,
+      organizerProfileUrl: info?.profileImage,
+    });
   };
 
   return (
     <>
-      {infiniteWithdrawalFundData?.pages.map((page) =>
-        page?.data?.withdrawalApplyFundList.map((info, index) => (
-          <WithdrawalFundCard
-            key={index}
-            {...mapInfoToWithdrawlFundDto(info)}
-          />
-        )),
-      )}
-      <InfiniteWithdrawalFundInfoLoader loaderRef={loaderRef} />
+      {infiniteWithdrawalFundData?.map((info, index) => (
+        <WithdrawalFundCard key={index} {...mapInfoToWithdrawlFundDto(info)} />
+      ))}
     </>
   );
 }

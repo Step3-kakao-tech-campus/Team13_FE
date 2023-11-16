@@ -29,7 +29,7 @@ function InfiniteSupportFund() {
       thumbnailUrl: info?.thumbnail,
       targetDate: info?.deadline,
       targetMoney: info?.targetPrice,
-      currentMoney: info?.paymentAmount,
+      paymentAmount: info?.paymentAmount,
       celebrityName: info?.celebName,
       celebrityProfileUrl: info?.celebImg,
       organizerName: info?.nickname,
