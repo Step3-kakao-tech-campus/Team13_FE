@@ -126,6 +126,15 @@ function Information({ setIsOrganizer }) {
     navigate(`${routes.support}/${fundId}`);
   };
 
+  const calculateBalance = (target, current) => {
+    const balance = target - current;
+
+    if (balance > 0) {
+      return Number(target - current).toLocaleString("ko-KR");
+    }
+    return 0;
+  };
+
   return (
     <Styled.InfoWrap>
       <Styled.Thumbnail
@@ -156,9 +165,7 @@ function Information({ setIsOrganizer }) {
 
           <Styled.ParticipantBox $isRed={true}>
             <div className="number">
-              {Number(data?.targetMoney - data?.currentMoney).toLocaleString(
-                "ko-KR",
-              )}
+              {calculateBalance(data?.targetMoney, data?.currentMoney)}
             </div>
             <div className="text">원 남음</div>
           </Styled.ParticipantBox>
