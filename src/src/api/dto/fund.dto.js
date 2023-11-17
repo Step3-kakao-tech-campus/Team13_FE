@@ -94,14 +94,14 @@ class FundWithdrawDto {
     withdrawalAmount,
     withDrawalTime,
     usage,
-    evience,
+    evidence,
     balance,
   }) {
     this.id = withdrawalId;
     this.date = withDrawalTime;
     this.withdrawMoney = withdrawalAmount;
     this.usageTitle = usage;
-    this.evidenceUrl = evience;
+    this.evidenceUrl = evidence;
     this.totalMoney = balance;
   }
 }
