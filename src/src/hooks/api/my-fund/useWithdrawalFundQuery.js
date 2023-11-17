@@ -5,10 +5,8 @@ import myFundAPI from "@/api/myFundAPI.js";
 function useWithdrawalFundQuery() {
   return useQuery(
     [API.MY_FUND.WITHDRAWAL],
-    async ({ pageParam = 0 }) => {
-      return myFundAPI.getWithdrawlApplyList({
-        pageIndex: pageParam,
-      });
+    async () => {
+      return myFundAPI.getWithdrawlApplyList();
     },
     {
       suspense: true,
