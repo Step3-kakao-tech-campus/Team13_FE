@@ -104,9 +104,13 @@ const MY_ACCOUNT = [
   {
     id: "phoneNumber",
     label: "전화번호",
+    placeholder: "000-000-0000",
     type: "text",
     validation: {
-      disabled: true,
+      pattern: {
+        value: /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}/,
+        message: "-을 포함해 전화번호 형식에 맞춰 입력해 주세요",
+      },
     },
   },
   {
